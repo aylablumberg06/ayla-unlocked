@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
         from: 'Ayla Unlocked <hello@aylaunlocked.com>',
         to: [OWNER_EMAIL],
         replyTo: e,
-        subject: `Ayla Unlocked — New Message from ${n}`,
+        subject: `Ayla Unlocked, New Message from ${n}`,
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #FDF6F0; padding: 32px; color: #1A1A1A;">
             <div style="max-width: 560px; margin: 0 auto; background: white; border-radius: 16px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);">

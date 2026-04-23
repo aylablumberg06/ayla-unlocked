@@ -21,10 +21,10 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: 'Ayla Unlocked',
   description:
-    "A course by Ayla Blumberg. Learn how to build with AI — no code, no coding background, no gatekeeping. I'll teach you how to build things that run while you sleep.",
+    "A course by Ayla Blumberg. Learn how to build with AI, no code, no coding background, no gatekeeping. I'll teach you how to build things that run while you sleep.",
   openGraph: {
     title: 'Ayla Unlocked',
-    description: "Learn how to build with AI — I'll teach you how to build things that run while you sleep.",
+    description: "Learn how to build with AI, I'll teach you how to build things that run while you sleep.",
     type: 'website',
   },
 }

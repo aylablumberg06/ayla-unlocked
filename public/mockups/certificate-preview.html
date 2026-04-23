@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ayla Unlocked, Certificate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=Pinyon+Script&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FDF6F0;
+    --pink:#E8295C;
+    --pink-hot:#FF2E7E;
+    --pink-light:#FFE4ED;
+    --pink-pale:#FFF5F8;
+    --dark:#1A1A1A;
+    --mid:#5C5C5C;
+    --light:#ABABAB;
+    --gold:#E5B93E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'DM Sans',sans-serif;
+    background:
+      radial-gradient(circle at 10% 10%, #FFD6E3 0%, transparent 45%),
+      radial-gradient(circle at 90% 90%, #FFE4ED 0%, transparent 40%),
+      linear-gradient(135deg, #FDF6F0 0%, #FFEAF2 100%);
+    min-height:100vh;
+    padding:60px 20px;
+    color:var(--dark);
+  }
+
+  .frame{
+    max-width:1040px;
+    margin:0 auto;
+    background:linear-gradient(135deg, #FFFBFD 0%, #FFF0F5 100%);
+    border-radius:28px;
+    padding:72px 64px 80px;
+    position:relative;
+    box-shadow:0 40px 120px rgba(232,41,92,0.22);
+    overflow:hidden;
+    border:3px double rgba(232,41,92,0.35);
+  }
+
+  /* inner thin border frame */
+  .frame::before{
+    content:'';position:absolute;inset:18px;
+    border:1px solid rgba(232,41,92,0.25);
+    border-radius:18px;
+    pointer-events:none;
+  }
+
+  /* corner ornaments */
+  .orn{position:absolute;width:60px;height:60px;opacity:0.7;}
+  .orn.tl{top:38px;left:38px;}
+  .orn.tr{top:38px;right:38px;transform:scaleX(-1);}
+  .orn.bl{bottom:38px;left:38px;transform:scaleY(-1);}
+  .orn.br{bottom:38px;right:38px;transform:scale(-1,-1);}
+
+  /* sparkles */
+  .sparkle{position:absolute;color:var(--pink-hot);font-size:20px;pointer-events:none;opacity:0.6;}
+  .sparkle.a{top:80px;right:140px;transform:rotate(15deg);font-size:28px;}
+  .sparkle.b{bottom:120px;left:100px;transform:rotate(-8deg);font-size:22px;}
+  .sparkle.c{top:180px;left:60px;font-size:18px;}
+  .sparkle.d{bottom:200px;right:80px;transform:rotate(20deg);font-size:24px;opacity:0.5;}
+  .sparkle.e{top:40%;right:40px;font-size:16px;opacity:0.4;}
+
+  /* DELTA NU style badge at top */
+  .badge-row{text-align:center;margin-bottom:20px;position:relative;z-index:2;}
+  .badge-tag{
+    display:inline-block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:var(--pink);
+    padding:6px 18px;
+    border-top:1px solid var(--pink);
+    border-bottom:1px solid var(--pink);
+  }
+
+  /* header brand */
+  .brand{
+    text-align:center;
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px;
+    font-weight:400;
+    margin-bottom:42px;
+    letter-spacing:2px;
+    position:relative;z-index:2;
+    color:var(--dark);
+  }
+  .brand em{color:var(--pink);font-style:italic;}
+
+  /* HERO: Elle line */
+  .hero-wrap{text-align:center;position:relative;z-index:2;margin-bottom:36px;}
+  .hero-pre{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:22px;
+    color:var(--mid);
+    margin-bottom:8px;
+    font-weight:400;
+  }
+  .hero{
+    font-family:'Great Vibes',cursive;
+    font-size:128px;
+    color:var(--pink);
+    line-height:0.95;
+    letter-spacing:-2px;
+    margin-bottom:8px;
+    text-shadow:0 4px 30px rgba(232,41,92,0.15);
+  }
+  .hero-sub{
+    font-family:'Cormorant Garamond',serif;
+    font-size:15px;
+    font-style:italic;
+    color:var(--mid);
+    letter-spacing:1px;
+  }
+
+  /* presented to */
+  .presented{
+    text-align:center;
+    margin:44px 0 6px;
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--light);
+    position:relative;z-index:2;
+  }
+  .name{
+    text-align:center;
+    font-family:'Pinyon Script',cursive;
+    font-size:92px;
+    color:var(--pink-hot);
+    line-height:1;
+    padding:6px 40px 26px;
+    display:inline-block;
+    width:100%;
+    position:relative;z-index:2;
+  }
+  .name-line{
+    max-width:520px;
+    height:1px;
+    background:linear-gradient(to right, transparent, rgba(232,41,92,0.4), transparent);
+    margin:0 auto 36px;
+    position:relative;z-index:2;
+  }
+
+  /* body description */
+  .desc{
+    text-align:center;
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    font-weight:400;
+    font-style:italic;
+    line-height:1.55;
+    color:var(--dark);
+    max-width:640px;
+    margin:0 auto 18px;
+    position:relative;z-index:2;
+  }
+  .desc strong{color:var(--pink);font-weight:500;font-style:normal;}
+
+  .stats{
+    display:flex;justify-content:center;gap:30px;
+    margin:24px 0 44px;
+    font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--mid);
+    flex-wrap:wrap;
+    position:relative;z-index:2;
+  }
+  .stats span{display:inline-flex;align-items:center;gap:8px;}
+  .stats span strong{color:var(--pink);font-weight:600;font-size:13px;}
+
+  /* SEAL */
+  .seal-wrap{
+    text-align:center;
+    margin:40px 0 36px;
+    position:relative;z-index:2;
+  }
+  .seal{
+    display:inline-block;
+    position:relative;
+    width:130px;height:130px;
+  }
+  .seal-ring{
+    position:absolute;inset:0;
+    border-radius:50%;
+    background:conic-gradient(from 0deg, #E8295C, #FF6B9D, #FFB3C6, #FF6B9D, #E8295C);
+    padding:4px;
+  }
+  .seal-ring-inner{
+    width:100%;height:100%;
+    border-radius:50%;
+    background:linear-gradient(135deg, #FFFBFD 0%, #FFEAF2 100%);
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    position:relative;
+  }
+  .seal-monogram{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:48px;
+    color:var(--pink);
+    line-height:1;
+    font-weight:500;
+  }
+  .seal-text{
+    position:absolute;inset:0;
+  }
+  .seal-text svg{width:100%;height:100%;}
+  .seal-text text{
+    font-family:'DM Sans',sans-serif;
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    fill:var(--pink);
+    font-weight:600;
+  }
+
+  /* footer, signature block */
+  .footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    position:relative;z-index:2;
+    margin-top:24px;
+  }
+  .foot-col{flex:1;text-align:center;}
+  .foot-label{
+    font-size:10px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--light);
+    margin-top:14px;
+  }
+  .signature{
+    font-family:'Pinyon Script',cursive;
+    font-size:54px;
+    color:var(--pink);
+    line-height:1;
+    padding-bottom:6px;
+    border-bottom:1px dashed rgba(232,41,92,0.35);
+    display:inline-block;
+    padding-left:12px;padding-right:12px;
+  }
+  .date{
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;
+    font-style:italic;
+    color:var(--dark);
+    padding-bottom:6px;
+    border-bottom:1px dashed rgba(232,41,92,0.35);
+    display:inline-block;
+    padding-left:12px;padding-right:12px;
+  }
+  .id{
+    font-family:'Courier New',monospace;
+    font-size:11px;
+    color:var(--light);
+    letter-spacing:1.5px;
+    padding-bottom:6px;
+    border-bottom:1px dashed rgba(232,41,92,0.35);
+    display:inline-block;padding-left:12px;padding-right:12px;
+  }
+
+  /* bottom playful stamp */
+  .delta{
+    position:absolute;
+    bottom:32px;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:11px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--pink);
+    opacity:0.6;
+  }
+  .delta::before.delta::after{
+    content:'✦';margin:0 10px;color:var(--pink-hot);opacity:0.8;
+  }
+
+  /* info box */
+  .info{
+    max-width:1040px;margin:40px auto 0;
+    background:white;border-radius:14px;padding:22px 28px;
+    font-size:13px;line-height:1.6;color:var(--mid);
+    border-left:3px solid var(--pink);
+  }
+  .info strong{color:var(--dark);}
+
+  @media print{
+    body{background:white;padding:0;}
+    .frame{box-shadow:none;border-radius:0;}
+    .info{display:none;}
+  }
+
+  @media(max-width:720px){
+    .frame{padding:48px 28px 60px;}
+    .hero{font-size:74px;}
+    .name{font-size:62px;padding:4px 10px 16px;}
+    .desc{font-size:17px;}
+    .signature{font-size:36px;}
+    .footer{flex-direction:column;gap:28px;}
+    .orn{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <!-- corner ornaments -->
+  <svg class="orn tl" viewBox="0 0 60 60" fill="none">
+    <path d="M2 2 L2 30 M2 2 L30 2 M2 30 C 2 20, 10 10, 30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
+    <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
+    <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
+  </svg>
+  <svg class="orn tr" viewBox="0 0 60 60" fill="none">
+    <path d="M2 2 L2 30 M2 2 L30 2 M2 30 C 2 20, 10 10, 30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
+    <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
+    <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
+  </svg>
+  <svg class="orn bl" viewBox="0 0 60 60" fill="none">
+    <path d="M2 2 L2 30 M2 2 L30 2 M2 30 C 2 20, 10 10, 30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
+    <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
+    <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
+  </svg>
+  <svg class="orn br" viewBox="0 0 60 60" fill="none">
+    <path d="M2 2 L2 30 M2 2 L30 2 M2 30 C 2 20, 10 10, 30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
+    <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
+    <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
+  </svg>
+
+  <!-- sparkles -->
+  <div class="sparkle a">✦</div>
+  <div class="sparkle b">✦</div>
+  <div class="sparkle c">✧</div>
+  <div class="sparkle d">✦</div>
+  <div class="sparkle e">✧</div>
+
+  <!-- top tag -->
+  <div class="badge-row"><span class="badge-tag">Certificate of Completion</span></div>
+
+  <div class="brand">ayla <em>unlocked</em></div>
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <div class="hero-pre">you did the thing. and honestly ,</div>
+    <div class="hero">What? Like it's hard.</div>
+    <div class="hero-sub">, Elle Woods, probably speaking directly to you</div>
+  </div>
+
+  <!-- presented to -->
+  <div class="presented">This is officially presented to</div>
+  <div class="name">[Your Name Here]</div>
+  <div class="name-line"></div>
+
+  <!-- body -->
+  <div class="desc">
+    for completing all <strong>20 lessons</strong> of Ayla Unlocked, the course that teaches you
+    how to build with AI, no coding background required, no gatekeeping. You showed up.
+    You paid attention. You probably yelled at Claude at least once. <strong>Certified legendary.</strong>
+  </div>
+
+  <div class="stats">
+    <span><strong>20</strong> lessons completed</span>
+    <span><strong>0</strong> lines of code written</span>
+    <span><strong>∞</strong> things you can now build</span>
+  </div>
+
+  <!-- SEAL -->
+  <div class="seal-wrap">
+    <div class="seal">
+      <div class="seal-ring"><div class="seal-ring-inner">
+        <div class="seal-monogram">AU</div>
+      </div></div>
+      <div class="seal-text">
+        <svg viewBox="0 0 130 130">
+          <defs>
+            <path id="circle-top" d="M 65,65 m -50,0 a 50,50 0 1,1 100,0"/>
+            <path id="circle-bottom" d="M 65,65 m 50,0 a 50,50 0 1,1 -100,0"/>
+          </defs>
+          <text><textPath href="#circle-top" startOffset="50%" text-anchor="middle">★ AYLA UNLOCKED ★</textPath></text>
+          <text><textPath href="#circle-bottom" startOffset="50%" text-anchor="middle">CLASS OF 2026 · CUM LAUDE</textPath></text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="foot-col">
+      <div class="date">April 23, 2026</div>
+      <div class="foot-label">Conferred on</div>
+    </div>
+    <div class="foot-col">
+      <div class="signature">Ayla Blumberg</div>
+      <div class="foot-label">Founder, Ayla Unlocked</div>
+    </div>
+    <div class="foot-col">
+      <div class="id">AU-2026-XXXXXX</div>
+      <div class="foot-label">Certificate ID</div>
+    </div>
+  </div>
+
+  <div class="delta">Delta Nu · Cum Laude · Certified Legendary</div>
+</div>
+
+<div class="info">
+  <strong>This is a mockup.</strong> Open it in your browser. When live, it pulls the student's real name from their account and generates a unique ID per certificate. The "Complete Course" button at the end of the course emails this certificate to the student automatically (via Resend). They can also download as PDF. Fonts used: Pinyon Script for the calligraphy, Great Vibes for the hero line, Cormorant Garamond for everything else. Want me to tweak the wording, change the Elle reference, or adjust the pink vibe?
+</div>
+
+</body>
+</html>

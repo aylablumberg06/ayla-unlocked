@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
     }
 
     const admin = createSupabaseAdminClient()
-    // upsert by email — set paid=true. if they already exist with phone etc. just flip paid.
+    // upsert by email, set paid=true. if they already exist with phone etc. just flip paid.
     const { error } = await admin
       .from('users')
       .upsert({ email, paid: true }, { onConflict: 'email' })

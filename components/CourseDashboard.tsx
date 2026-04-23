@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 // ──────────────────────────────────────────────────────────
-// LESSON CONTENT — preserved word for word from ayla-unlocked.html
+// LESSON CONTENT, preserved word for word from ayla-unlocked.html
 // ──────────────────────────────────────────────────────────
 type Lesson = { tag: string; leftTitle: string; num: string; vid: string; html: string }
 
@@ -30,10 +30,10 @@ const lessons: Lesson[] = [
     <p class="l-sub">Let's actually understand what you're about to use.</p>
     <div class="l-body">
       <p>Claude is an AI made by a company called <strong>Anthropic</strong>. Anthropic is based in San Francisco and was started by a group of people who used to work at OpenAI (the company that makes ChatGPT). They left to make something they thought was safer and more useful. That's the short version.</p>
-      <p>Underneath, Claude is what's called an <strong>LLM</strong> &mdash; a Large Language Model. Which sounds scary but just means: it's a program that read basically the entire internet, and now it can predict what words should come next in any conversation. That's it. That's the whole magic.</p>
+      <p>Underneath, Claude is what's called an <strong>LLM</strong>, a Large Language Model. Which sounds scary but just means: it's a program that read basically the entire internet, and now it can predict what words should come next in any conversation. That's it. That's the whole magic.</p>
       <p>When you talk to Claude, you're not searching a database. You're talking to something that learned how to think in language by reading millions of books, articles, code files, conversations, and websites. That's why it can write, code, analyze, summarize, plan, debate, and explain things all in the same chat.</p>
       <div class="callout"><div class="callout-tag">Claude vs. ChatGPT vs. Gemini</div>Claude (Anthropic), ChatGPT (OpenAI), and Gemini (Google) are all LLMs. They do similar things. I use Claude because it's the best for actually building. It writes better code, follows instructions more carefully, and gets into fewer weird spirals. Other people swear by ChatGPT. Honestly, the exact model matters less than learning how to direct any of them well. This course teaches you with Claude because that's what I use every day.</div>
-      <p>Anthropic publishes something called a "Constitution" for Claude &mdash; basically a list of principles it's trained to follow. Things like: be honest, be helpful, don't help people hurt themselves or others. It's why Claude will sometimes push back on you or ask if you're sure. That's intentional. You're not just using software, you're working with something that has guardrails.</p>
+      <p>Anthropic publishes something called a "Constitution" for Claude, basically a list of principles it's trained to follow. Things like: be honest, be helpful, don't help people hurt themselves or others. It's why Claude will sometimes push back on you or ask if you're sure. That's intentional. You're not just using software, you're working with something that has guardrails.</p>
       <p>One more thing to know: <strong>Claude doesn't remember you between chats.</strong> Every time you start a new conversation, it's starting from scratch. We'll get into how to work around that later. Just know that going in.</p>
       <div class="a-quote">"It learned how language works by reading more than any human ever could. Now it can do anything you can describe in words."</div>
     </div>`
@@ -45,7 +45,7 @@ const lessons: Lesson[] = [
     <p class="l-sub">Most people use 5% of it. Here's the actual menu.</p>
     <div class="l-body">
       <p>Before we get into the "how," let's walk through what's actually possible. Because most people open Claude, ask it to summarize an email, and close the tab. They never find out what else is in there.</p>
-      <div class="callout"><div class="callout-tag">Writing</div>Emails, captions, business plans, pitch decks, proposals, cover letters, essays, scripts, ad copy, blog posts, newsletters, LinkedIn posts, tweets &mdash; anything. In your voice if you give it examples. From scratch if not.</div>
+      <div class="callout"><div class="callout-tag">Writing</div>Emails, captions, business plans, pitch decks, proposals, cover letters, essays, scripts, ad copy, blog posts, newsletters, LinkedIn posts, tweets, anything. In your voice if you give it examples. From scratch if not.</div>
       <div class="callout"><div class="callout-tag">Coding &amp; building</div>Websites, apps, tools, automations, calculators, forms, dashboards, browser extensions, iPhone shortcuts. You describe it, it builds it. No programming background needed on your end.</div>
       <div class="callout"><div class="callout-tag">Research</div>Comparing products, pulling information together from sources, breaking down industries, understanding any topic at the exact depth you want, analyzing trends, summarizing 100-page PDFs in one paragraph.</div>
       <div class="callout"><div class="callout-tag">Analysis</div>Upload a spreadsheet, ask what the data means. Upload a resume, ask what to change. Upload a contract, ask what to negotiate. Upload your calendar, ask where you're wasting time.</div>
@@ -271,14 +271,14 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Okay. So how do people actually buy things from you?</h1>
     <p class="l-sub">The answer is Stripe. And Claude knows exactly how to wire it up.</p>
     <div class="l-body">
-      <p>If you're building anything you want to sell &mdash; a course, a template, a service, a physical product, a digital download, a subscription &mdash; you need a way to charge people. That's where <strong>Stripe</strong> comes in.</p>
+      <p>If you're building anything you want to sell, a course, a template, a service, a physical product, a digital download, a subscription, you need a way to charge people. That's where <strong>Stripe</strong> comes in.</p>
       <p>Stripe is a company that handles payments online. Almost every site you've ever bought something from uses it under the hood. Shopify uses it. Substack uses it. This very course uses it. You sign up for an account, plug it into your site, and now you can take money from anyone in the world with a card.</p>
-      <div class="callout"><div class="callout-tag">What Stripe does for you</div>Charges credit cards, debit cards, Apple Pay, Google Pay. Handles the security stuff so you're not storing anyone's card info. Deposits the money directly into your bank account (minus a small fee &mdash; around 2.9% + 30&cent; per transaction).</div>
+      <div class="callout"><div class="callout-tag">What Stripe does for you</div>Charges credit cards, debit cards, Apple Pay, Google Pay. Handles the security stuff so you're not storing anyone's card info. Deposits the money directly into your bank account (minus a small fee, around 2.9% + 30&cent; per transaction).</div>
       <p>Before Stripe existed, accepting online payments was a nightmare. You had to get a "merchant account," deal with banks, pay monthly fees, build all kinds of security into your site. Now you sign up, verify your identity, and you're live in an afternoon.</p>
       <div class="divider"><span>The three things you need to know</span></div>
       <div class="callout"><div class="callout-tag">1. Products</div>The things you're selling. A one-time thing (a course, a template) or a subscription (monthly access to something). You create these in the Stripe dashboard.</div>
       <div class="callout"><div class="callout-tag">2. Prices</div>Each product has one or more prices attached to it. You can charge $39 one time. Or $10 a month. Or $100 a year. Stripe calls these "prices" and gives each one a unique ID.</div>
-      <div class="callout"><div class="callout-tag">3. Checkout</div>The page where your customer enters their card info. Stripe gives you a pre-built, pretty, secure checkout page for free &mdash; you just tell it what price ID to charge.</div>
+      <div class="callout"><div class="callout-tag">3. Checkout</div>The page where your customer enters their card info. Stripe gives you a pre-built, pretty, secure checkout page for free, you just tell it what price ID to charge.</div>
       <p>You build the site. Claude wires up the checkout. Money comes in. That's the whole model.</p>
       <div class="ss">[ Screenshot: Stripe dashboard products page ]</div>
     </div>`
@@ -300,7 +300,7 @@ const lessons: Lesson[] = [
       <p>Once you have the price ID and keys, just say this to Claude Code:</p>
       <div class="chat-ex"><div class="bubble u">Add Stripe checkout to my site. Here's my price ID: price_ABC123. I'll give you the keys in a second. When someone clicks the Buy button, they should go to Stripe's hosted checkout page. After they pay, redirect them to a thank-you page.</div></div>
       <p>That's it. Claude knows what to do from there. It'll ask you for the keys, create the files, and wire the whole thing up.</p>
-      <div class="callout"><div class="callout-tag">Webhooks &mdash; the one tricky part</div>A webhook is how Stripe tells your site when a payment actually went through. Without it, your site doesn't know who paid. When you ask Claude to add checkout, also say: "also set up a webhook so I know when someone pays." Claude will give you a URL to paste into Stripe's webhook settings, and Stripe will send you a signing secret to paste back.</div>
+      <div class="callout"><div class="callout-tag">Webhooks, the one tricky part</div>A webhook is how Stripe tells your site when a payment actually went through. Without it, your site doesn't know who paid. When you ask Claude to add checkout, also say: "also set up a webhook so I know when someone pays." Claude will give you a URL to paste into Stripe's webhook settings, and Stripe will send you a signing secret to paste back.</div>
       <div class="callout"><div class="callout-tag">Test mode vs. live mode</div>Always test in test mode first. Stripe gives you fake card numbers (like <strong>4242 4242 4242 4242</strong>) you can use to fake a successful payment. Once everything works in test mode, flip the switch to live mode, get new keys, get new price IDs, and paste those in. Then you're live.</div>
       <p>One more thing: Stripe handles taxes, receipts, refunds, and disputes through its dashboard. You barely have to think about any of it once it's set up. Customers pay. Money lands in your bank account 2-3 days later. That's the loop.</p>
       <div class="ss">[ Screenshot: Stripe checkout page on mobile ]</div>
@@ -444,6 +444,22 @@ const glossary = [
 // ──────────────────────────────────────────────────────────
 // COMPONENT
 // ──────────────────────────────────────────────────────────
+type Progress = {
+  last_lesson: number
+  bookmarks: number[]
+  confused: number[]
+  notes: Record<string, string>
+  completed_at: string | null
+}
+
+const DEFAULT_PROGRESS: Progress = {
+  last_lesson: 0,
+  bookmarks: [],
+  confused: [],
+  notes: {},
+  completed_at: null,
+}
+
 export default function CourseDashboard() {
   const [cur, setCur] = useState(0)
   const [glossaryOpen, setGlossaryOpen] = useState(false)
@@ -451,7 +467,115 @@ export default function CourseDashboard() {
   const [qStep, setQStep] = useState(0)
   const [qAns, setQAns] = useState<(string[] | string | null)[]>([[], null, null, null])
   const [completion, setCompletion] = useState(false)
+  const [progress, setProgress] = useState<Progress>(DEFAULT_PROGRESS)
+  const [progressLoaded, setProgressLoaded] = useState(false)
+  const [noteDraft, setNoteDraft] = useState('')
+  const [noteSaved, setNoteSaved] = useState<'idle' | 'saving' | 'saved'>('idle')
   const rightRef = useRef<HTMLDivElement>(null)
+
+  // Load progress once on mount, jump to last-visited lesson.
+  useEffect(() => {
+    let cancel = false
+    fetch('/api/progress')
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((p: Progress) => {
+        if (cancel) return
+        setProgress({
+          last_lesson: p.last_lesson ?? 0,
+          bookmarks: p.bookmarks ?? [],
+          confused: p.confused ?? [],
+          notes: p.notes ?? {},
+          completed_at: p.completed_at ?? null,
+        })
+        if (typeof p.last_lesson === 'number' && p.last_lesson > 0 && p.last_lesson < lessons.length) {
+          setCur(p.last_lesson)
+        }
+        setProgressLoaded(true)
+      })
+      .catch(() => setProgressLoaded(true))
+    return () => { cancel = true }
+  }, [])
+
+  // Persist last-visited lesson whenever it changes (after initial load).
+  useEffect(() => {
+    if (!progressLoaded) return
+    fetch('/api/progress', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ last_lesson: cur }),
+    }).catch(() => {})
+  }, [cur, progressLoaded])
+
+  // Sync note draft when lesson changes.
+  useEffect(() => {
+    setNoteDraft(progress.notes[String(cur)] ?? '')
+    setNoteSaved('idle')
+  }, [cur, progress.notes])
+
+  // Debounced save for note draft.
+  useEffect(() => {
+    if (!progressLoaded) return
+    const existing = progress.notes[String(cur)] ?? ''
+    if (noteDraft === existing) return
+    setNoteSaved('saving')
+    const t = setTimeout(async () => {
+      try {
+        const r = await fetch('/api/progress', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ note: { index: cur, text: noteDraft } }),
+        })
+        const out = await r.json().catch(() => null)
+        if (out?.notes) {
+          setProgress((prev) => ({ ...prev, notes: out.notes }))
+        }
+        setNoteSaved('saved')
+        setTimeout(() => setNoteSaved('idle'), 1200)
+      } catch {
+        setNoteSaved('idle')
+      }
+    }, 600)
+    return () => clearTimeout(t)
+  }, [noteDraft, cur, progressLoaded, progress.notes])
+
+  const isBookmarked = progress.bookmarks.includes(cur)
+  const isConfused = progress.confused.includes(cur)
+
+  async function toggleBookmark() {
+    const next = !isBookmarked
+    setProgress((prev) => ({
+      ...prev,
+      bookmarks: next
+        ? [...prev.bookmarks, cur].sort((a, b) => a - b)
+        : prev.bookmarks.filter((b) => b !== cur),
+    }))
+    await fetch('/api/progress', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ bookmark: { index: cur, on: next } }),
+    })
+  }
+
+  async function toggleConfused() {
+    const next = !isConfused
+    setProgress((prev) => ({
+      ...prev,
+      confused: next
+        ? [...prev.confused, cur].sort((a, b) => a - b)
+        : prev.confused.filter((b) => b !== cur),
+    }))
+    await fetch('/api/progress', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        confused: {
+          index: cur,
+          on: next,
+          tag: lessons[cur]?.tag,
+        },
+      }),
+    })
+  }
 
   // Scroll to top on lesson change
   useEffect(() => {
@@ -560,13 +684,18 @@ export default function CourseDashboard() {
     if (next < 0) next = 0
     if (next >= lessons.length) {
       setCompletion(true)
+      fetch('/api/progress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ completed: true }),
+      }).catch(() => {})
       return
     }
     setCur(next)
   }
 
   const l = lessons[cur]
-  const progress = ((cur + 1) / lessons.length) * 100
+  const progressPct = ((cur + 1) / lessons.length) * 100
 
   const interests = (Array.isArray(qAns[0]) ? qAns[0] : []) as string[]
   const pain = (typeof qAns[1] === 'string' ? qAns[1] : null) as string | null
@@ -578,7 +707,7 @@ export default function CourseDashboard() {
     <div className="course-root">
       <style jsx global>{`
         .course-root { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); min-height: 100vh; overflow: hidden; }
-        .progress-line { position: fixed; top: 0; left: 0; height: 2px; background: var(--pink); z-index: 101; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
+        .progress-line { position: fixed; top: 0; left: 0; height: 2px; background: var(--pink); z-index: 101; transition: width 0.5s cubic-bezier(.4,0.2,1); }
         .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: rgba(253,246,240,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 100; }
         .course-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.3px; color: var(--dark); }
         .course-brand span { color: var(--pink); }
@@ -588,6 +717,21 @@ export default function CourseDashboard() {
         .dot.now { background: var(--pink); border-color: var(--pink); transform: scale(1.5); }
         .glossary-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); background: var(--pink-light); border: none; padding: 7px 16px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
         .glossary-btn:hover { background: var(--pink); color: white; }
+        .top-links { display: flex; align-items: center; gap: 6px; }
+        .top-link { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--mid); padding: 7px 12px; border-radius: 20px; text-decoration: none; transition: all 0.2s; }
+        .top-link:hover { color: var(--pink); background: var(--pink-light); }
+        .dot.has-bookmark { box-shadow: 0 0 0 3px rgba(232,41,92,0.2); }
+        .lesson-toolbar { display: flex; gap: 8px; margin-bottom: 28px; }
+        .toolbar-btn { display: inline-flex; align-items: center; gap: 7px; background: white; border: 1px solid var(--border); color: var(--mid); padding: 8px 14px; border-radius: 20px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s; }
+        .toolbar-btn:hover { border-color: var(--pink); color: var(--pink); }
+        .toolbar-btn.on { background: var(--pink); border-color: var(--pink); color: white; }
+        .notes-pane { margin-top: 44px; background: white; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; max-width: 600px; }
+        .notes-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .notes-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); }
+        .notes-status { font-size: 10px; color: var(--light); letter-spacing: 1px; }
+        .notes-status.s-saved { color: #4CAF50; }
+        .notes-input { width: 100%; resize: vertical; border: none; outline: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.6; color: var(--dark); font-weight: 300; min-height: 90px; }
+        .notes-input::placeholder { color: var(--light); font-style: italic; }
         .layout { display: flex; height: 100vh; padding-top: 56px; }
         .left { width: 37%; min-width: 300px; background: var(--left-bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; position: relative; overflow: hidden; }
         .left-inner { padding: 44px 36px; display: flex; flex-direction: column; height: 100%; }
@@ -602,7 +746,7 @@ export default function CourseDashboard() {
         .right { flex: 1; overflow-y: auto; padding: 52px 60px 110px; }
         .right::-webkit-scrollbar { width: 3px; }
         .right::-webkit-scrollbar-thumb { background: rgba(232,41,92,0.2); border-radius: 2px; }
-        .lesson-wrap { max-width: 600px; animation: courseSlideIn 0.4s cubic-bezier(.4,0,.2,1); }
+        .lesson-wrap { max-width: 600px; animation: courseSlideIn 0.4s cubic-bezier(.4,0.2,1); }
         @keyframes courseSlideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
         .l-head { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 400; line-height: 1.1; color: var(--dark); margin-bottom: 10px; }
         .l-sub { font-size: 14px; color: var(--mid); font-weight: 300; margin-bottom: 36px; line-height: 1.5; }
@@ -610,7 +754,7 @@ export default function CourseDashboard() {
         .l-body p { margin-bottom: 18px; }
         .l-body strong { font-weight: 600; }
         .l-body em { font-style: italic; }
-        .l-body ul, .l-body ol { padding-left: 20px; margin: 14px 0; }
+        .l-body ul.l-body ol { padding-left: 20px; margin: 14px 0; }
         .l-body li { margin-bottom: 9px; line-height: 1.65; }
         .callout { background: var(--pink-pale); border-left: 3px solid var(--pink); border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 22px 0; font-size: 14.5px; line-height: 1.65; }
         .callout-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 7px; }
@@ -629,7 +773,7 @@ export default function CourseDashboard() {
         .stat-lab { font-size: 12px; color: var(--mid); line-height: 1.4; }
         .a-quote { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-style: italic; font-weight: 400; color: var(--dark); line-height: 1.5; border-left: 3px solid var(--pink); padding: 12px 20px; margin: 26px 0; }
         .divider { display: flex; align-items: center; gap: 14px; margin: 28px 0; }
-        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+        .divider::before.divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
         .divider span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--light); }
         .steps { list-style: none; padding: 0; counter-reset: s; }
         .steps li { counter-increment: s; display: flex; gap: 14px; margin-bottom: 22px; align-items: flex-start; }
@@ -648,7 +792,7 @@ export default function CourseDashboard() {
         .nav-cnt { font-size: 11px; color: var(--light); letter-spacing: 1px; }
         .g-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.28); z-index: 200; opacity: 0; visibility: hidden; transition: all 0.3s; }
         .g-overlay.open { opacity: 1; visibility: visible; }
-        .g-panel { position: absolute; top: 0; right: 0; bottom: 0; width: 370px; background: var(--cream); box-shadow: -8px 0 40px rgba(0,0,0,0.08); transform: translateX(100%); transition: transform 0.35s cubic-bezier(.4,0,.2,1); overflow-y: auto; padding: 44px 36px; }
+        .g-panel { position: absolute; top: 0; right: 0; bottom: 0; width: 370px; background: var(--cream); box-shadow: -8px 0 40px rgba(0,0,0,0.08); transform: translateX(100%); transition: transform 0.35s cubic-bezier(.4,0.2,1); overflow-y: auto; padding: 44px 36px; }
         .g-overlay.open .g-panel { transform: translateX(0); }
         .g-close { position: absolute; top: 18px; right: 18px; width: 30px; height: 30px; border: none; background: var(--pink-light); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; color: var(--pink); transition: all 0.2s; line-height: 1; }
         .g-close:hover { background: var(--pink); color: white; }
@@ -691,7 +835,7 @@ export default function CourseDashboard() {
           .layout { flex-direction: column; }
           .left { width: 100%; min-width: unset; height: auto; }
           .left-inner { padding: 20px 22px; flex-direction: row; align-items: center; gap: 14px; }
-          .l-num-bg, .vid-wrap { display: none; }
+          .l-num-bg.vid-wrap { display: none; }
           .l-title { font-size: 17px; margin-bottom: 0; }
           .l-tag { margin-bottom: 4px; }
           .right { padding: 28px 22px 100px; }
@@ -702,7 +846,7 @@ export default function CourseDashboard() {
         }
       `}</style>
 
-      <div className="progress-line" style={{ width: `${progress}%` }} />
+      <div className="progress-line" style={{ width: `${progressPct}%` }} />
 
       <nav className="top-nav">
         <div className="course-brand">ayla <span>unlocked</span></div>
@@ -710,13 +854,18 @@ export default function CourseDashboard() {
           {lessons.map((les, i) => (
             <div
               key={i}
-              className={`dot${i === cur ? ' now' : i < cur ? ' done' : ''}`}
+              className={`dot${i === cur ? ' now' : i < cur ? ' done' : ''}${progress.bookmarks.includes(i) ? ' has-bookmark' : ''}`}
               onClick={() => go(0, i)}
-              title={les.tag}
+              title={les.tag + (progress.bookmarks.includes(i) ? ' ★' : '')}
             />
           ))}
         </div>
-        <button className="glossary-btn" onClick={() => setGlossaryOpen(true)}>Glossary</button>
+        <div className="top-links">
+          <a className="top-link" href="/course/prompts">Prompts</a>
+          <a className="top-link" href="/course/real-chats">Chats</a>
+          <a className="top-link" href="/course/notes">Notes</a>
+          <button className="glossary-btn" onClick={() => setGlossaryOpen(true)}>Glossary</button>
+        </div>
       </nav>
 
       <div className="layout">
@@ -736,7 +885,54 @@ export default function CourseDashboard() {
           <div className="l-num-bg">{l.num}</div>
         </div>
         <div className="right" ref={rightRef}>
+          <div className="lesson-toolbar">
+            <button
+              className={`toolbar-btn ${isBookmarked ? 'on' : ''}`}
+              onClick={toggleBookmark}
+              title={isBookmarked ? 'Bookmarked, click to remove' : 'Bookmark this lesson'}
+              aria-label="Bookmark"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path
+                  d="M12 17.3L5.8 21l1.6-7.3L2 8.8l7.4-.6L12 1.5l2.6 6.7 7.4.6-5.4 4.9L18.2 21 12 17.3z"
+                  fill={isBookmarked ? 'currentColor' : 'none'}
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>{isBookmarked ? 'Saved' : 'Save'}</span>
+            </button>
+            <button
+              className={`toolbar-btn ${isConfused ? 'on' : ''}`}
+              onClick={toggleConfused}
+              title={isConfused ? "Flagged as confusing, click to un-flag" : "This part's confusing? Flag it for Ayla"}
+              aria-label="Confused"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <circle cx="12" cy="12" r="9.5" fill={isConfused ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" />
+                <path d="M9 9.5a3 3 0 1 1 4.5 2.6c-1 .5-1.5 1-1.5 2V15" stroke={isConfused ? 'white' : 'currentColor'} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+                <circle cx="12" cy="17.5" r="1" fill={isConfused ? 'white' : 'currentColor'} />
+              </svg>
+              <span>{isConfused ? 'Flagged' : 'Confusing?'}</span>
+            </button>
+          </div>
           <div className="lesson-wrap" key={cur} dangerouslySetInnerHTML={{ __html: l.html }} />
+          <div className="notes-pane">
+            <div className="notes-head">
+              <span className="notes-label">Your notes on this lesson</span>
+              <span className={`notes-status s-${noteSaved}`}>
+                {noteSaved === 'saving' ? 'saving…' : noteSaved === 'saved' ? 'saved' : ''}
+              </span>
+            </div>
+            <textarea
+              className="notes-input"
+              placeholder="Jot something down, ideas, questions, things you want to try..."
+              value={noteDraft}
+              onChange={(e) => setNoteDraft(e.target.value)}
+              rows={4}
+            />
+          </div>
         </div>
       </div>
 
@@ -814,13 +1010,141 @@ export default function CourseDashboard() {
       {/* COMPLETION */}
       <div className={`comp${completion ? ' open' : ''}`}>
         <canvas id="cc" ref={confettiRef} />
-        <div style={{ position: 'relative', zIndex: 401, textAlign: 'center', padding: '0 20px' }}>
-          <div style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--pink)', marginBottom: '14px' }}>You did it.</div>
-          <div className="comp-title">Now go build something.</div>
-          <div className="comp-sub">Seriously. Open Claude and start talking. That&apos;s all it takes.</div>
-          <button className="comp-btn" onClick={() => { setCompletion(false); setCur(0) }}>Start Over</button>
-        </div>
+        <CompletionPanel
+          savedName={progress.notes['_cert_name'] ?? ''}
+          onRestart={() => { setCompletion(false); setCur(0) }}
+        />
       </div>
+    </div>
+  )
+}
+
+// ──────────────────────────────────────────────────────────
+// CompletionPanel — final screen with name input + Complete Course button.
+// Calls POST /api/certificate to email the student their cert.
+// ──────────────────────────────────────────────────────────
+function CompletionPanel({
+  savedName,
+  onRestart,
+}: {
+  savedName: string
+  onRestart: () => void
+}) {
+  const [name, setName] = useState(savedName)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
+  const [certUrl, setCertUrl] = useState<string | null>(null)
+  const [err, setErr] = useState<string | null>(null)
+
+  async function complete() {
+    const n = name.trim()
+    if (!n) {
+      setErr('Drop your name so we can put it on your certificate.')
+      return
+    }
+    setErr(null)
+    setStatus('sending')
+    try {
+      const r = await fetch('/api/certificate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: n }),
+      })
+      const out = await r.json()
+      if (!r.ok) throw new Error(out?.error || 'Something went wrong.')
+      setCertUrl(out.viewUrl)
+      setStatus('done')
+    } catch (e: any) {
+      setErr(e?.message || 'Something went wrong.')
+      setStatus('error')
+    }
+  }
+
+  return (
+    <div style={{ position: 'relative', zIndex: 401, textAlign: 'center', padding: '0 20px', maxWidth: 560 }}>
+      <div style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--pink)', marginBottom: '14px' }}>
+        You did it.
+      </div>
+      {status !== 'done' ? (
+        <>
+          <div className="comp-title">What? Like it&apos;s hard.</div>
+          <div className="comp-sub">
+            Drop your name below and we&apos;ll send your certificate to your email. (Also kind of legally binding. Not really.)
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center', marginTop: 20 }}>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="The name you want on your certificate"
+              maxLength={60}
+              style={{
+                width: '100%',
+                maxWidth: 400,
+                padding: '14px 20px',
+                borderRadius: 999,
+                border: '1.5px solid rgba(232,41,92,0.25)',
+                background: 'white',
+                fontFamily: 'inherit',
+                fontSize: 15,
+                textAlign: 'center',
+                outline: 'none',
+              }}
+            />
+            {err && <div style={{ color: 'var(--pink)', fontSize: 12 }}>{err}</div>}
+            <button
+              className="comp-btn"
+              onClick={complete}
+              disabled={status === 'sending'}
+              style={{ opacity: status === 'sending' ? 0.6 : 1 }}
+            >
+              {status === 'sending' ? 'Minting your certificate…' : 'Complete Course'}
+            </button>
+            <button
+              onClick={onRestart}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--light)',
+                fontSize: 11,
+                letterSpacing: 1,
+                textTransform: 'uppercase',
+                marginTop: 6,
+                cursor: 'pointer',
+              }}
+            >
+              Or start from lesson 1 again
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="comp-title">Congrats, legend.</div>
+          <div className="comp-sub">
+            Your certificate just hit your inbox. Check it. Screenshot it. Post it. Go build something.
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', marginTop: 20 }}>
+            {certUrl && (
+              <a className="comp-btn" href={certUrl} style={{ display: 'inline-block', textDecoration: 'none' }}>
+                View my certificate
+              </a>
+            )}
+            <button
+              onClick={onRestart}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--light)',
+                fontSize: 11,
+                letterSpacing: 1,
+                textTransform: 'uppercase',
+                marginTop: 6,
+                cursor: 'pointer',
+              }}
+            >
+              Back to the course
+            </button>
+          </div>
+        </>
+      )}
     </div>
   )
 }

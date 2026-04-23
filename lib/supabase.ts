@@ -45,7 +45,7 @@ export function createSupabaseServerClient() {
               maxAge: SESSION_TTL,
             })
           } catch {
-            // server components can't set cookies — ignore
+            // server components can't set cookies, ignore
           }
         },
         remove(name: string, options: CookieOptions) {
@@ -61,7 +61,7 @@ export function createSupabaseServerClient() {
 }
 
 // ──────────────────────────────────────────────────────────
-// Middleware client — takes the request/response pair
+// Middleware client, takes the request/response pair
 // ──────────────────────────────────────────────────────────
 export function createSupabaseMiddlewareClient(req: NextRequest, res: NextResponse) {
   return createServerClient(
@@ -84,7 +84,7 @@ export function createSupabaseMiddlewareClient(req: NextRequest, res: NextRespon
 }
 
 // ──────────────────────────────────────────────────────────
-// Admin client — service role, server-only, no cookies
+// Admin client, service role, server-only, no cookies
 // ──────────────────────────────────────────────────────────
 export function createSupabaseAdminClient() {
   return createClient(

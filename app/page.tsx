@@ -15,17 +15,17 @@ export default function LandingPage() {
             href="/unlock"
             className="bg-pink text-white text-[11px] tracking-[1.5px] uppercase font-medium px-5 py-2.5 rounded-full hover:bg-[#C51F4E] transition"
           >
-            Get Access &mdash; $39
+            Get Access · $39
           </Link>
         </div>
       </nav>
 
-      {/* HERO COVER (client — handles video popup) */}
+      {/* HERO COVER (client, handles video popup) */}
       <HeroCover />
 
       {/* WHO THIS IS FOR */}
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
-        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">01 &mdash; Who this is for</div>
+        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">01 · Who this is for</div>
         <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-6">
           The girl who keeps seeing AI stuff online and doesn&apos;t know where to start.
         </h2>
@@ -33,7 +33,7 @@ export default function LandingPage() {
           Every explanation feels like it&apos;s made for someone who already knows what they&apos;re
           doing. Every tutorial assumes you know what a terminal is. Every thread is written by a
           tech bro for other tech bros. This course is the one that finally explains it like you&apos;re
-          talking to a friend &mdash; because I&apos;m 19, I taught myself from zero, and I remember what
+          talking to a friend, because I&apos;m 19, I taught myself from zero, and I remember what
           it felt like to have no idea where to start.
         </p>
       </section>
@@ -44,7 +44,7 @@ export default function LandingPage() {
 
       {/* WHAT YOU'LL BE ABLE TO DO */}
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
-        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">02 &mdash; What you&apos;ll be able to do</div>
+        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">02 · What you&apos;ll be able to do</div>
         <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-6">
           Build websites. Automate repetitive tasks. Create systems that run on their own.
         </h2>
@@ -68,7 +68,7 @@ export default function LandingPage() {
 
       {/* WHAT'S INSIDE */}
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
-        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">03 &mdash; What&apos;s inside</div>
+        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">03 · What&apos;s inside</div>
         <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-10">
           20 lessons. Four sections. Zero gatekeeping.
         </h2>
@@ -109,7 +109,7 @@ export default function LandingPage() {
               <li>16 &middot; Stripe step-by-step</li>
               <li>17 &middot; When Claude gets it wrong</li>
               <li>18 &middot; Staying organized</li>
-              <li>19 &middot; Agents &mdash; the next level</li>
+              <li>19 &middot; Agents, the next level</li>
             </ul>
           </div>
         </div>
@@ -121,14 +121,14 @@ export default function LandingPage() {
 
       {/* WHY ME */}
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
-        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">04 &mdash; Why me</div>
+        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">04 · Why me</div>
         <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-6">
           I&apos;m no genius. I&apos;m just ambitious and patient.
         </h2>
         <p className="text-lg text-mid leading-relaxed font-light mb-6">
           I learned Claude mid-March and wrote this course mid-April. That&apos;s how learnable this is.
           If I can do it from nothing, in a month, you can too. You just need someone who will actually
-          explain it &mdash; without the jargon, without the gatekeeping, without assuming you already know.
+          explain it, without the jargon, without the gatekeeping, without assuming you already know.
         </p>
         <blockquote className="font-serif italic text-2xl md:text-3xl leading-snug border-l-2 border-pink pl-6 text-dark my-10">
           &ldquo;All this stuff is intimidating and can sometimes feel like it&apos;s impossible to catch up.
@@ -140,7 +140,7 @@ export default function LandingPage() {
             href="/unlock"
             className="bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-8 py-4 rounded-full hover:bg-[#C51F4E] transition inline-block"
           >
-            Get Access &mdash; $39
+            Get Access · $39
           </Link>
         </div>
       </section>
@@ -153,7 +153,7 @@ export default function LandingPage() {
         </h2>
         <p className="text-mid mb-10 font-light">
           I read every message that comes in. Whether you&apos;re on the fence, stuck somewhere, or
-          want to hire me to build with you &mdash; tell me what&apos;s up.
+          want to hire me to build with you, tell me what&apos;s up.
         </p>
         <ContactForm />
       </section>

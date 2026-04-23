@@ -1,14 +1,14 @@
 import { Suspense } from 'react'
-import Paygate from '@/components/Paygate'
+import LoginForm from '@/components/LoginForm'
 
 export const metadata = {
-  title: 'Ayla Unlocked, Get Access',
+  title: 'Ayla Unlocked, Log in',
 }
 
-export default function UnlockPage() {
+export default function LoginPage() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-cream" />}>
-      <Paygate />
+      <LoginForm />
     </Suspense>
   )
 }

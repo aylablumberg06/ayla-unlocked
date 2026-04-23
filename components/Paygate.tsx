@@ -46,7 +46,7 @@ function SignupForm() {
       <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-3">Payment confirmed</div>
       <h2 className="font-serif text-3xl md:text-4xl mb-3">Now let&apos;s get you in.</h2>
       <p className="text-mid font-light mb-8">
-        Drop your email and we&apos;ll send a magic link to log in. That&apos;s your permanent access &mdash;
+        Drop your email and we&apos;ll send a magic link to log in. That&apos;s your permanent access ,
         good for life.
       </p>
       <form onSubmit={onSubmit} className="space-y-5">
@@ -68,7 +68,7 @@ function SignupForm() {
             className="w-full px-4 py-3 rounded-lg border border-[color:var(--border)] bg-white focus:border-pink focus:outline-none"
             placeholder="(optional)"
           />
-          <p className="text-[11px] text-muted-light mt-2">Optional &mdash; backup contact in case you ever lose access to your email.</p>
+          <p className="text-[11px] text-muted-light mt-2">Optional, backup contact in case you ever lose access to your email.</p>
         </div>
         {error && <p className="text-sm text-pink">{error}</p>}
         <button
@@ -113,7 +113,7 @@ function CheckoutCard() {
         <li className="flex gap-3"><span className="text-pink">&#10003;</span>Interactive idea generator quiz</li>
         <li className="flex gap-3"><span className="text-pink">&#10003;</span>Full glossary in plain English</li>
         <li className="flex gap-3"><span className="text-pink">&#10003;</span>Video walkthroughs (coming soon)</li>
-        <li className="flex gap-3"><span className="text-pink">&#10003;</span>Lifetime access &mdash; every update, free</li>
+        <li className="flex gap-3"><span className="text-pink">&#10003;</span>Lifetime access, every update, free</li>
       </ul>
       {err && <p className="text-sm text-pink mb-3">{err}</p>}
       <button
@@ -121,7 +121,7 @@ function CheckoutCard() {
         disabled={loading}
         className="w-full bg-pink text-white px-8 py-4 rounded-full text-xs tracking-[1.5px] uppercase font-medium hover:bg-[#C51F4E] transition disabled:opacity-50"
       >
-        {loading ? 'Redirecting…' : 'Get Access &mdash; $39'}
+        {loading ? 'Redirecting…' : 'Get Access · $39'}
       </button>
       <p className="text-[11px] text-muted-light mt-4 text-center">Secure checkout via Stripe</p>
     </div>

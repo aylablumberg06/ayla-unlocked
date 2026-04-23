@@ -7,7 +7,7 @@ type Msg = { role: 'user' | 'assistant'; content: string }
 const INITIAL_BOT_MSG: Msg = {
   role: 'assistant',
   content:
-    "hi! i'm ayla's little assistant. ask me anything about the course, claude, pricing, setup — whatever. if i can't answer it, i'll get ayla for you.",
+    "hi! i'm ayla's little assistant. ask me anything about the course, claude, pricing, setup, whatever. if i can't answer it, i'll get ayla for you.",
 }
 
 export default function AskAylaWidget() {
@@ -47,7 +47,7 @@ export default function AskAylaWidget() {
         {
           role: 'assistant',
           content:
-            "hmm — i'm having trouble right now. tap 'ask ayla' below and she'll get back to you directly.",
+            "hmm, i'm having trouble right now. tap 'ask ayla' below and she'll get back to you directly.",
         },
       ])
     } finally {
@@ -84,11 +84,11 @@ export default function AskAylaWidget() {
         className="fixed bottom-5 right-5 z-[70] group"
       >
         <span className="block relative w-16 h-16 rounded-full bg-pink text-white shadow-xl shadow-pink/25 hover:shadow-pink/40 transition-all overflow-hidden border-2 border-white">
-          {/* Ayla avatar — thinking face SVG placeholder. Swap /public/ayla-thinking.png in when you have a real photo. */}
+          {/* Ayla avatar, thinking face SVG placeholder. Swap /public/ayla-thinking.png in when you have a real photo. */}
           <AylaThinkingAvatar />
         </span>
-        {/* pulse */}
-        <span className="absolute inset-0 rounded-full animate-ping bg-pink/30 -z-0" />
+        {/* static ring (no pulsing) */}
+        <span className="absolute inset-0 rounded-full ring-2 ring-pink/20 -z-0" />
         {/* label */}
         <span className="absolute -top-9 right-0 bg-dark text-white text-[10px] tracking-[1.5px] uppercase px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
           Ask Ayla
@@ -268,13 +268,13 @@ function AylaThinkingAvatar() {
       <ellipse cx="32" cy="34" rx="15" ry="17" fill="#F5D2B8" />
       {/* hair bangs */}
       <path d="M17 26 C20 19 26 15 32 15 C38 15 44 18 47 26 C43 22 37 21 32 21 C27 21 22 23 17 26 Z" fill="#6B3D2A" />
-      {/* eyes — looking up (thinking) */}
+      {/* eyes, looking up (thinking) */}
       <ellipse cx="26" cy="31" rx="1.4" ry="2" fill="#1A1A1A" />
       <ellipse cx="38" cy="31" rx="1.4" ry="2" fill="#1A1A1A" />
-      {/* brow — raised on one side */}
+      {/* brow, raised on one side */}
       <path d="M23 28 C25 26 28 26 29 28" stroke="#3B2416" strokeWidth="1.2" fill="none" strokeLinecap="round" />
       <path d="M35 27 C37 25 40 26 41 28" stroke="#3B2416" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-      {/* mouth — slight side purse, thinking */}
+      {/* mouth, slight side purse, thinking */}
       <path d="M28 42 C30 43 33 43 36 41" stroke="#C45575" strokeWidth="1.6" fill="none" strokeLinecap="round" />
       {/* cheek blush */}
       <circle cx="23" cy="38" r="2.3" fill="#FF9BB3" opacity="0.55" />

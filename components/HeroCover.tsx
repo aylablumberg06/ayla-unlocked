@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 /**
- * HERO COVER — full-height, cinematic, video-ready.
+ * HERO COVER, full-height, cinematic, video-ready.
  * When you have a welcome video, drop the file into /public/hero-video.mp4
  * and the "Play intro" button will play it in a modal.
  */
@@ -36,13 +36,8 @@ export default function HeroCover() {
           <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink">A course by Ayla Blumberg &middot; 2026</div>
         </div>
 
-        {/* massive serif name */}
-        <div className="font-serif italic text-4xl md:text-6xl text-pink mb-2 md:mb-4">
-          Ayla Blumberg
-        </div>
-
-        {/* title — hero */}
-        <h1 className="font-serif text-[72px] md:text-[148px] leading-[0.9] tracking-tight mb-6 md:mb-8">
+        {/* title, hero */}
+        <h1 className="font-serif text-[72px] md:text-[148px] leading-[0.9] tracking-tight mb-6 md:mb-8 mt-2">
           Ayla <span className="italic">Unlocked</span>.
         </h1>
 
@@ -51,8 +46,8 @@ export default function HeroCover() {
             <p className="text-base md:text-lg leading-relaxed text-mid font-light mb-6">
               I&apos;ve never taken a coding class or watched a YouTube tutorial. I&apos;m 19, building
               two AI businesses, and starting to get hired to make AI agent teams for companies.
-              I built this course in a month to teach you exactly what I know &mdash; in the way I actually
-              talk.
+              I built this course based on what I learned in a month to teach you exactly what I know,
+              in the way I actually talk.
             </p>
             <p className="text-lg md:text-xl font-semibold text-dark mb-8 leading-snug">
               I&apos;ll teach you how to build things that run while you sleep.
@@ -63,7 +58,7 @@ export default function HeroCover() {
                 href="/unlock"
                 className="bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-8 py-4 rounded-full hover:bg-[#C51F4E] transition shadow-lg shadow-pink/20"
               >
-                Get Access &mdash; $39
+                Get Access · $39
               </Link>
               <button
                 onClick={() => setVideoOpen(true)}
