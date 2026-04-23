@@ -1,53 +1,53 @@
 'use client'
 
 import { useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 function SignupForm() {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const router = useRouter()
+  const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle')
   const [error, setError] = useState<string | null>(null)
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setStatus('sending')
     setError(null)
     const fd = new FormData(e.currentTarget)
+    const email = String(fd.get('email') || '').trim().toLowerCase()
+    const password = String(fd.get('password') || '')
+    const passwordConfirm = String(fd.get('password_confirm') || '')
+    const phone = String(fd.get('phone') || '').trim()
+
+    if (password.length < 6) {
+      setError('Password needs at least 6 characters.')
+      return
+    }
+    if (password !== passwordConfirm) {
+      setError('Passwords don\'t match.')
+      return
+    }
+
+    setStatus('sending')
     try {
       const r = await fetch('/api/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: String(fd.get('email') || '').trim().toLowerCase(),
-          phone: String(fd.get('phone') || '').trim(),
-        }),
+        body: JSON.stringify({ email, password, phone }),
       })
-      if (!r.ok) {
-        const { error: err } = await r.json().catch(() => ({ error: 'Something went wrong.' }))
-        throw new Error(err || 'Something went wrong.')
-      }
-      setStatus('sent')
+      const out = await r.json().catch(() => ({}))
+      if (!r.ok) throw new Error(out?.error || 'Something went wrong.')
+      router.push(out?.redirect || '/course/welcome')
     } catch (err: any) {
       setStatus('error')
       setError(err?.message || 'Something went wrong.')
     }
   }
 
-  if (status === 'sent') {
-    return (
-      <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--pink-pale)] p-10 text-center">
-        <p className="font-serif text-3xl italic text-dark mb-3">Check your email.</p>
-        <p className="text-mid leading-relaxed">Your access link is on its way. Click it and you&apos;re in.</p>
-      </div>
-    )
-  }
-
   return (
     <div className="rounded-2xl border border-[color:var(--border)] bg-white/50 p-8 md:p-10">
       <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-3">Payment confirmed</div>
-      <h2 className="font-serif text-3xl md:text-4xl mb-3">Now let&apos;s get you in.</h2>
+      <h2 className="font-serif text-3xl md:text-4xl mb-3">Create your account.</h2>
       <p className="text-mid font-light mb-8">
-        Drop your email and we&apos;ll send a magic link to log in. That&apos;s your permanent access ,
-        good for life.
+        Set a password. Log in any time with just email + password. No inbox ping-pong.
       </p>
       <form onSubmit={onSubmit} className="space-y-5">
         <div>
@@ -56,8 +56,34 @@ function SignupForm() {
             name="email"
             type="email"
             required
+            autoComplete="email"
             className="w-full px-4 py-3 rounded-lg border border-[color:var(--border)] bg-white focus:border-pink focus:outline-none"
             placeholder="you@email.com"
+          />
+          <p className="text-[11px] text-muted-light mt-2">Must match the email you used at checkout.</p>
+        </div>
+        <div>
+          <label className="block text-[11px] font-semibold tracking-[2px] uppercase text-pink mb-2">Password</label>
+          <input
+            name="password"
+            type="password"
+            required
+            minLength={6}
+            autoComplete="new-password"
+            className="w-full px-4 py-3 rounded-lg border border-[color:var(--border)] bg-white focus:border-pink focus:outline-none"
+            placeholder="At least 6 characters"
+          />
+        </div>
+        <div>
+          <label className="block text-[11px] font-semibold tracking-[2px] uppercase text-pink mb-2">Confirm password</label>
+          <input
+            name="password_confirm"
+            type="password"
+            required
+            minLength={6}
+            autoComplete="new-password"
+            className="w-full px-4 py-3 rounded-lg border border-[color:var(--border)] bg-white focus:border-pink focus:outline-none"
+            placeholder="Type it again"
           />
         </div>
         <div>
@@ -65,18 +91,19 @@ function SignupForm() {
           <input
             name="phone"
             type="tel"
+            autoComplete="tel"
             className="w-full px-4 py-3 rounded-lg border border-[color:var(--border)] bg-white focus:border-pink focus:outline-none"
             placeholder="(optional)"
           />
-          <p className="text-[11px] text-muted-light mt-2">Optional, backup contact in case you ever lose access to your email.</p>
+          <p className="text-[11px] text-muted-light mt-2">Optional, backup contact in case you ever lose your email.</p>
         </div>
         {error && <p className="text-sm text-pink">{error}</p>}
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="w-full bg-pink text-white px-8 py-4 rounded-full text-xs tracking-[1.5px] uppercase font-medium hover:bg-[#C51F4E] transition disabled:opacity-50"
+          className="magnetic w-full bg-pink text-white px-8 py-4 rounded-full text-xs tracking-[1.5px] uppercase font-medium hover:bg-[#C51F4E] disabled:opacity-50"
         >
-          {status === 'sending' ? 'Sending…' : 'Send me my link'}
+          {status === 'sending' ? 'Setting up your account…' : 'Create account & enter course'}
         </button>
       </form>
     </div>

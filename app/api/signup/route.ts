@@ -1,45 +1,102 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { cookies } from 'next/headers'
 import { createSupabaseAdminClient } from '@/lib/supabase'
+
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
+/**
+ * POST /api/signup
+ * Called after Stripe payment. Accepts { email, password, phone? }.
+ * Creates the Supabase auth user with that password, flips users.paid,
+ * then server-side signs them in (sets cookies) and returns { ok, redirect }.
+ *
+ * If a user tries to sign up without paying first, we refuse.
+ */
+const OWNER_EMAIL = 'aylablumberg06@gmail.com'
 
 export async function POST(req: NextRequest) {
   try {
-    const { email: rawEmail, phone } = await req.json()
-    const email = String(rawEmail || '').trim().toLowerCase()
+    const body = await req.json().catch(() => ({}))
+    const email = String(body.email || '').trim().toLowerCase()
+    const password = String(body.password || '')
+    const phone = String(body.phone || '').trim()
+
     if (!email || !email.includes('@')) {
       return NextResponse.json({ error: 'Valid email required.' }, { status: 400 })
+    }
+    if (password.length < 6) {
+      return NextResponse.json(
+        { error: 'Password must be at least 6 characters.' },
+        { status: 400 }
+      )
     }
 
     const admin = createSupabaseAdminClient()
 
-    // Make sure a row exists & attach phone if provided.
-    // Stripe webhook should have already set paid=true for this email.
-    // If not, we still create a row (paid stays false until Stripe confirms).
-    const { error: upsertErr } = await admin
+    // Confirm this email has actually paid (Stripe webhook writes users.paid=true)
+    const { data: userRow } = await admin
       .from('users')
-      .upsert(
-        { email, phone: phone || null },
-        { onConflict: 'email', ignoreDuplicates: false }
+      .select('paid, email')
+      .eq('email', email)
+      .maybeSingle()
+
+    const isOwner = email === OWNER_EMAIL
+    if (!isOwner && (!userRow || userRow.paid !== true)) {
+      return NextResponse.json(
+        { error: 'We don\'t see a paid account for that email. Try the email you used at checkout.' },
+        { status: 403 }
       )
-    if (upsertErr) {
-      console.error('[signup] upsert error', upsertErr)
     }
 
-    const site = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    // Find or create the auth user
+    const { data: list } = await admin.auth.admin.listUsers({ page: 1, perPage: 200 })
+    const existing = list.users.find((u) => u.email?.toLowerCase() === email)
 
-    // Fire the magic link. Supabase will send it via the SMTP you configured (Resend).
-    const { error: linkErr } = await admin.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: `${site}/api/auth/callback`,
-        shouldCreateUser: true,
-      },
-    })
-    if (linkErr) {
-      console.error('[signup] magic link error', linkErr)
-      return NextResponse.json({ error: 'Could not send magic link.' }, { status: 500 })
+    if (existing) {
+      await admin.auth.admin.updateUserById(existing.id, {
+        password,
+        email_confirm: true,
+      })
+    } else {
+      await admin.auth.admin.createUser({
+        email,
+        password,
+        email_confirm: true,
+      })
     }
 
-    return NextResponse.json({ ok: true })
+    // Keep/update the users row (phone is optional)
+    await admin.from('users').upsert(
+      { email, phone: phone || null, paid: true },
+      { onConflict: 'email' }
+    )
+
+    // Sign them in on this request so they land logged in
+    const res = NextResponse.json({ ok: true, redirect: '/course/welcome' })
+    const cookieStore = cookies()
+    const supa = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) { return cookieStore.get(name)?.value },
+          set(name: string, value: string, options: CookieOptions) {
+            res.cookies.set({ name, value, ...options, maxAge: 60 * 60 * 24 * 5 })
+          },
+          remove(name: string, options: CookieOptions) {
+            res.cookies.set({ name, value: '', ...options, maxAge: 0 })
+          },
+        },
+      }
+    )
+    const { error: signErr } = await supa.auth.signInWithPassword({ email, password })
+    if (signErr) {
+      console.error('[signup] auto signIn failed', signErr)
+      return NextResponse.json({ ok: true, redirect: '/login' })
+    }
+    return res
   } catch (e: any) {
     console.error('[signup] unhandled', e)
     return NextResponse.json({ error: 'Something went wrong.' }, { status: 500 })

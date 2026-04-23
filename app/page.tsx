@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import ContactForm from '@/components/ContactForm'
 import HeroCover from '@/components/HeroCover'
+import ScrollReveal, { ScrollProgressBar } from '@/components/ScrollReveal'
 
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-cream text-dark">
+      <ScrollProgressBar />
       {/* sticky nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[rgba(253,246,240,0.88)] border-b border-[color:var(--border)]">
         <div className="max-w-6xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
@@ -14,13 +16,13 @@ export default function LandingPage() {
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/login"
-              className="text-[11px] tracking-[1.5px] uppercase text-mid hover:text-pink px-3 py-2.5 rounded-full transition"
+              className="link-underline text-[11px] tracking-[1.5px] uppercase text-mid hover:text-pink px-3 py-2.5 transition"
             >
               Log in
             </Link>
             <Link
               href="/unlock"
-              className="bg-pink text-white text-[11px] tracking-[1.5px] uppercase font-medium px-5 py-2.5 rounded-full hover:bg-[#C51F4E] transition"
+              className="magnetic bg-pink text-white text-[11px] tracking-[1.5px] uppercase font-medium px-5 py-2.5 rounded-full hover:bg-[#C51F4E]"
             >
               Get Access · $39
             </Link>
@@ -34,9 +36,9 @@ export default function LandingPage() {
       {/* WHO THIS IS FOR */}
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
         <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">01 · Who this is for</div>
-        <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-6">
+        <ScrollReveal><h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-6">
           The girl who keeps seeing AI stuff online and doesn&apos;t know where to start.
-        </h2>
+        </h2></ScrollReveal>
         <p className="text-lg text-mid leading-relaxed font-light">
           Every explanation feels like it&apos;s made for someone who already knows what they&apos;re
           doing. Every tutorial assumes you know what a terminal is. Every thread is written by a
@@ -143,7 +145,7 @@ export default function LandingPage() {
             href="https://aylablumberg.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7 hover:border-pink hover:shadow-xl hover:shadow-pink/10 transition"
+            className="card-hover group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7"
           >
             <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">Personal site</div>
             <h3 className="font-serif text-2xl mb-2 leading-tight">aylablumberg.com</h3>
@@ -156,10 +158,10 @@ export default function LandingPage() {
           </a>
 
           <a
-            href="https://theaylaedit.com"
+            href="/showcase.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7 hover:border-pink hover:shadow-xl hover:shadow-pink/10 transition"
+            className="card-hover group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7"
           >
             <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">AI services</div>
             <h3 className="font-serif text-2xl mb-2 leading-tight">The Ayla Edit</h3>
@@ -172,10 +174,10 @@ export default function LandingPage() {
           </a>
 
           <a
-            href="https://ayla-sites.vercel.app"
+            href="/showcase.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7 hover:border-pink hover:shadow-xl hover:shadow-pink/10 transition"
+            className="card-hover group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7"
           >
             <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">Agent team</div>
             <h3 className="font-serif text-2xl mb-2 leading-tight">Ayla Sites</h3>

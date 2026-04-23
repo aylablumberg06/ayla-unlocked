@@ -38,7 +38,7 @@ export default function HeroCover() {
 
         {/* title, hero */}
         <h1 className="font-serif text-[72px] md:text-[148px] leading-[0.9] tracking-tight mb-6 md:mb-8 mt-2">
-          Ayla <span className="italic">Unlocked</span>.
+          Ayla <span className="italic text-pink">Unlocked</span>.
         </h1>
 
         <div className="grid md:grid-cols-[1.5fr_1fr] gap-10 items-start">
@@ -147,15 +147,23 @@ export default function HeroCover() {
               src="/hero-video.mp4"
               controls
               playsInline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover relative z-10"
               onError={(e) => { (e.currentTarget as HTMLVideoElement).style.display = 'none' }}
             />
-            {/* fallback placeholder behind the video */}
-            <div className="absolute inset-0 -z-0 flex items-center justify-center text-center p-8">
-              <div>
-                <div className="text-[10px] tracking-[3px] uppercase text-pink mb-4 font-semibold">Intro video coming soon</div>
-                <div className="font-serif italic text-white text-3xl md:text-4xl mb-2">Drop your video at</div>
-                <code className="text-pink-light font-mono text-sm">/public/hero-video.mp4</code>
+            {/* Ambient fallback — shows only if no video file */}
+            <div className="absolute inset-0 z-0 pointer-events-none"
+                 style={{
+                   background:
+                     'radial-gradient(circle at 30% 30%, #FFB3C6 0%, transparent 60%),' +
+                     'radial-gradient(circle at 70% 70%, #E8295C 0%, transparent 50%),' +
+                     'linear-gradient(135deg, #1A1A1A 0%, #3B1020 60%, #1A1A1A 100%)',
+                 }}>
+              <div className="absolute inset-0 flex items-center justify-center text-center p-8">
+                <div>
+                  <div className="text-[10px] tracking-[4px] uppercase text-pink-light mb-5 font-semibold opacity-80">Intro film</div>
+                  <div className="font-serif italic text-white text-4xl md:text-6xl leading-[1] tracking-tight">Coming soon.</div>
+                  <div className="mt-5 text-white/60 text-sm font-light">A real one. From me, on camera.</div>
+                </div>
               </div>
             </div>
           </div>

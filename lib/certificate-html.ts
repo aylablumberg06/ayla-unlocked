@@ -96,7 +96,7 @@ export function renderCertificateHtml({
       <div class="brand">ayla <em>unlocked</em></div>
       <div class="hero-wrap">
         <div class="hero-pre">you did the thing. and honestly,</div>
-        <div class="hero">What? Like it's hard.</div>
+        <div class="hero">What? Like it's hard?</div>
         <div class="hero-sub">officially presented to</div>
       </div>
       <div class="name">${escapeHtml(displayName)}</div>

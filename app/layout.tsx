@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import './globals.css'
-import AskAylaWidget from '@/components/AskAylaWidget'
+import ConditionalChrome from '@/components/ConditionalChrome'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body className="grain">
         {children}
-        <AskAylaWidget />
+        <ConditionalChrome />
       </body>
     </html>
   )

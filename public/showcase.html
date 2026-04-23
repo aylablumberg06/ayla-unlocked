@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayla Blumberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --rose:#C2627A;--rose-deep:#9E3F58;--rose-light:#F5E0E6;--rose-xlight:#FDF0F3;
+  --blush:#FBF0F2;--cream:#FDFAF8;--white:#FFFFFF;--gold:#C4965A;
+  --green:#5C9E6E;--blue:#5A8FBF;--dark:#1A1018;--mid:#6B4F5A;
+  --muted:#A8909A;--border:#EDD8DF;
+  --serif:'Cormorant Garamond',serif;--mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+
+/* PROGRESS */
+#pb{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--gold));z-index:999;width:0%;transition:width .1s}
+
+/* TICKER */
+.ticker{position:fixed;bottom:0;left:0;right:0;background:rgba(253,250,248,.96);backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:8px 0;z-index:100;overflow:hidden}
+.ticker-track{display:inline-flex;gap:48px;animation:tickGo 30s linear infinite;white-space:nowrap}
+@keyframes tickGo{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tk{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.tk b{color:var(--rose);font-weight:500}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px;position:relative;overflow:hidden}
+.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(194,98,122,.07) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 10% 80%,rgba(196,150,90,.05) 0%,transparent 60%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:80px 80px;opacity:.35;pointer-events:none}
+.h-ey{font-family:var(--mono);font-size:11px;letter-spacing:3px;color:var(--rose);text-transform:uppercase;margin-bottom:24px;opacity:0;animation:up .6s ease forwards .1s}
+.h-nm{font-family:var(--serif);font-size:clamp(68px,10vw,140px);font-weight:300;line-height:.9;letter-spacing:-3px;margin-bottom:20px;opacity:0;animation:up .7s ease forwards .25s}
+.h-nm em{font-style:italic;color:var(--rose)}
+.h-sb{font-size:17px;color:var(--muted);margin-bottom:52px;opacity:0;animation:up .6s ease forwards .4s}
+.h-chips{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .6s ease forwards .55s}
+.hc{padding:6px 16px;border-radius:100px;font-size:12px}
+.hc-r{background:rgba(194,98,122,.1);border:1px solid rgba(194,98,122,.25);color:var(--rose-deep)}
+.hc-d{border:1px solid var(--border);color:var(--muted)}
+.h-arr{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:up .6s ease forwards .8s}
+.h-arr-lbl{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+.h-arr-ln{width:1px;height:36px;background:linear-gradient(to bottom,var(--rose),transparent);animation:ap 2s ease-in-out infinite}
+@keyframes ap{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* SECTIONS */
+.sec{padding:100px;max-width:1200px;margin:0 auto}
+.hr{height:1px;background:var(--border);max-width:1200px;margin:0 auto}
+.s-lbl{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.s-lbl::after{content:'';flex:1;height:1px;background:var(--border);max-width:80px}
+.s-ttl{font-family:var(--serif);font-size:clamp(38px,4.5vw,68px);font-weight:300;line-height:1.0;margin-bottom:16px}
+.s-ttl em{font-style:italic;color:var(--rose)}
+.s-bod{font-size:15px;color:var(--muted);line-height:1.8;max-width:580px;margin-bottom:56px}
+
+/* UNIVERSE FUNNEL */
+.u-wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.u-tier{display:flex;flex-direction:column;align-items:center;width:100%;opacity:0;transform:translateY(16px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.u-tier.vis{opacity:1;transform:translateY(0)}
+.u-tier:nth-child(1){transition-delay:.0s}.u-tier:nth-child(2){transition-delay:.12s}.u-tier:nth-child(3){transition-delay:.24s}.u-tier:nth-child(4){transition-delay:.36s}.u-tier:nth-child(5){transition-delay:.5s}
+.u-bar{min-height:64px;height:auto;border-radius:10px;display:flex;align-items:center;padding:14px 20px;gap:14px;border:1px solid;overflow:visible;position:relative;transition:box-shadow .3s;width:100%}
+.u-bar:hover{box-shadow:0 8px 28px rgba(194,98,122,.12)}
+.u-b0{background:#F6FAFF;border-color:#BACDE8;width:100%}
+.u-b1{background:#F4FFF6;border-color:#B0D9BC;width:82%}
+.u-b2{background:rgba(194,98,122,.04);border-color:rgba(194,98,122,.18);width:62%}
+.u-b3{background:rgba(194,98,122,.09);border-color:rgba(194,98,122,.35);width:36%}
+.u-b4{background:var(--rose);border-color:var(--rose-deep);width:22%;justify-content:center}
+.u-em{font-size:22px;flex-shrink:0}
+.u-txt{flex:1}
+.u-main{font-size:15px;font-weight:500;margin-bottom:2px}
+.u-sub{font-size:12px;opacity:.6}
+.u-stat{text-align:right;flex-shrink:0;min-width:90px}
+.u-num{font-family:var(--mono);font-size:18px;font-weight:700}
+.u-pct{font-size:10px;opacity:.55;letter-spacing:.5px;margin-top:1px}
+.u-conn{width:2px;height:20px;background:linear-gradient(to bottom,var(--border),var(--rose-light));margin:2px 0}
+.u-you{background:var(--rose-deep);color:white;border-radius:100px;padding:9px 22px;font-size:12px;font-weight:600;letter-spacing:.5px;margin-top:14px;display:flex;align-items:center;gap:8px}
+.u-dot{width:7px;height:7px;border-radius:50%;background:white;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* 3 LEVELS */
+.lvs{display:flex;flex-direction:column;gap:0;max-width:860px;width:100%}
+.lv{display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:24px;opacity:0;transform:translateX(-24px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.lv.vis{opacity:1;transform:translateX(0)}
+.lv:nth-child(1){transition-delay:.0s}.lv:nth-child(3){transition-delay:.2s}.lv:nth-child(5){transition-delay:.4s}
+.lv-n{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--border);line-height:1;text-align:center}
+.lv.vis .lv-n{color:var(--rose-light)}
+.lv-card{border:1px solid var(--border);border-radius:14px;padding:24px 28px;background:var(--white);transition:all .3s}
+.lv-card:hover{border-color:var(--rose);box-shadow:0 8px 32px rgba(194,98,122,.1)}
+.lv-title{font-size:19px;font-weight:500;color:var(--dark);margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.lv-desc{font-size:13px;color:var(--muted);line-height:1.65}
+.lv-scale{font-family:var(--mono);text-align:center;min-width:72px;flex-shrink:0}
+.lv-big{font-size:22px;font-weight:700;display:block;line-height:1;margin-bottom:4px}
+.lv-lbl{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.lv-arr{display:flex;justify-content:center;padding:8px 0;opacity:0;transition:opacity .4s ease}
+.lv-arr.vis{opacity:1}
+.lv-arr-ln{width:1px;height:28px;background:linear-gradient(to bottom,var(--rose),var(--rose-light));position:relative}
+.lv-arr-ln::after{content:'▼';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--rose-light)}
+
+/* ELLE + TEAMS */
+.elle-card{background:var(--dark);border-radius:18px;padding:28px 36px;display:flex;align-items:center;gap:24px;position:relative;overflow:hidden}
+.elle-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(194,98,122,.25) 0%,transparent 70%)}
+.elle-bdg{background:rgba(194,98,122,.2);border:1px solid rgba(194,98,122,.35);border-radius:12px;padding:14px 20px;text-align:center;flex-shrink:0}
+.elle-n{font-family:var(--mono);font-size:18px;font-weight:700;color:#F5C0CC}
+.elle-r{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.35);margin-top:3px}
+.elle-info h3{font-family:var(--serif);font-size:28px;font-weight:300;color:white;margin-bottom:6px}
+.elle-info p{font-size:14px;color:rgba(255,255,255,.4);line-height:1.65}
+.elle-info strong{color:rgba(255,255,255,.7);font-weight:500}
+.org-conn{display:flex;justify-content:center;height:40px;position:relative}
+.org-conn::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:100%;background:linear-gradient(to bottom,var(--dark),var(--border))}
+.teams-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.team-block{border:1px solid var(--border);border-radius:16px;overflow:hidden;opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.team-block.vis{opacity:1;transform:translateY(0)}
+.team-block:first-child{transition-delay:.1s}.team-block:last-child{transition-delay:.25s}
+.team-hdr{padding:16px 20px;display:flex;align-items:center;gap:12px}
+.team-hdr.hsm{background:var(--rose-xlight);border-bottom:1px solid var(--rose-light)}
+.team-hdr.pnf{background:#FFF8F0;border-bottom:1px solid #F0DBBE}
+.team-icon{font-size:22px}
+.team-nm{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--dark)}
+.team-sb{font-size:11px;color:var(--muted);margin-top:1px}
+.agents-g{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.ag{background:var(--white);padding:14px 16px;transition:background .2s}
+.ag:hover{background:var(--blush)}
+.ag-n{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--rose-deep);margin-bottom:2px}
+.ag-r{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:5px}
+.ag-d{font-size:11px;color:var(--muted);line-height:1.55}
+.ag-n-pnf{color:#A0622A}
+.team-block:last-child .ag:hover{background:#FFF8F0}
+.total-pill{display:flex;justify-content:center;margin-top:20px}
+.total-pill span{background:var(--dark);color:white;border-radius:100px;padding:8px 24px;font-family:var(--mono);font-size:12px;letter-spacing:.5px}
+.total-pill em{color:#F5C0CC;font-style:normal;font-weight:700}
+
+/* STATS */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:56px}
+.stat{background:var(--white);padding:28px 20px;text-align:center}
+.stat-n{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--rose);line-height:1;margin-bottom:6px}
+.stat-l{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+
+/* WINS */
+.wins-g{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.win{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;gap:18px;align-items:flex-start;transition:all .3s;opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease,border-color .3s}
+.win.vis{opacity:1;transform:translateY(0)}
+.win:nth-child(1){transition-delay:.0s}.win:nth-child(2){transition-delay:.1s}.win:nth-child(3){transition-delay:.2s}.win:nth-child(4){transition-delay:.3s}
+.win:hover{border-color:var(--rose)}
+.win-e{font-size:26px;flex-shrink:0;margin-top:2px}
+.win-t{font-size:15px;font-weight:500;color:var(--dark);margin-bottom:5px}
+.win-d{font-size:13px;color:var(--muted);line-height:1.65}
+.pill{display:inline-flex;align-items:center;gap:4px;margin-top:10px;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:500}
+.p-g{background:rgba(92,158,110,.1);color:#3A7A50;border:1px solid rgba(92,158,110,.25)}
+.p-r{background:rgba(194,98,122,.1);color:var(--rose-deep);border:1px solid rgba(194,98,122,.2)}
+.ldot{width:6px;height:6px;border-radius:50%;background:#5C9E6E;animation:pulse 2s ease-in-out infinite;display:inline-block;margin-right:3px}
+
+/* STACK */
+.stack-g{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.stk{background:var(--white);border:1px solid var(--border);border-radius:11px;padding:14px 12px;text-align:center;transition:all .25s;opacity:0;transform:scale(.92);transition:opacity .4s ease,transform .4s ease,border-color .25s,box-shadow .25s}
+.stk.vis{opacity:1;transform:scale(1)}
+.stk:hover{border-color:var(--rose);box-shadow:0 4px 20px rgba(194,98,122,.1)}
+.stk-e{font-size:20px;display:block;margin-bottom:7px}
+.stk-n{font-size:11px;font-weight:500;color:var(--dark)}
+.stk-c{font-size:9px;color:var(--muted);margin-top:2px}
+
+/* OUTRO */
+.outro{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:100px;text-align:center;background:var(--dark);position:relative;overflow:hidden;padding-bottom:120px}
+.outro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 70% 30%,rgba(194,98,122,.14) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 20% 70%,rgba(196,150,90,.07) 0%,transparent 60%)}
+.outro-big{font-family:var(--serif);font-size:clamp(44px,7vw,96px);font-weight:300;line-height:.95;color:white;margin-bottom:20px;z-index:1}
+.outro-big em{font-style:italic;color:#F5C0CC}
+.outro-sub{font-size:16px;color:rgba(255,255,255,.3);margin-bottom:48px;z-index:1}
+.crow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;z-index:1}
+.cp{padding:11px 22px;border:1px solid rgba(255,255,255,.12);border-radius:100px;font-size:12px;color:rgba(255,255,255,.4);font-family:var(--mono);text-decoration:none;transition:all .25s}
+.cp:hover{border-color:var(--rose);color:#F5C0CC}
+
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<div id="pb"></div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="tk">💰 <b>$6K deal closed</b> — Ninety Five Media</span>
+    <span class="tk">🤖 <b>10 custom agents</b> deployed</span>
+    <span class="tk">🌐 <b>Live sites</b> on Vercel</span>
+    <span class="tk">📊 <b>50K+ views across TikTok</span>
+    <span class="tk">⚡ Claude API · Nanoclaw · Telegram · fal.ai</span>
+    <span class="tk">🎓 Texas RE exam — <b>first try</b></span>
+    <span class="tk">⏱ Built all of this in <b>~1 month</b></span>
+    <span class="tk">💰 <b>$6K deal closed</b> — Ninety Five Media</span>
+    <span class="tk">🤖 <b>10 custom agents</b> deployed</span>
+    <span class="tk">🌐 <b>Live sites</b> on Vercel</span>
+    <span class="tk">📊 <b>50K+ views across TikTok</span>
+    <span class="tk">⚡ Claude API · Nanoclaw · Telegram · fal.ai</span>
+    <span class="tk">🎓 Texas RE exam — <b>first try</b></span>
+    <span class="tk">⏱ Built all of this in <b>~1 month</b></span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="h-ey">Dallas, TX · April 2026 · @aylablumberg.realestate</div>
+  <h1 class="h-nm">Ayla<br><em>Blumberg</em></h1>
+  <p class="h-sb">19 · AI Agent Builder · ~1 month in · Gap year before UT Austin</p>
+  <div class="h-chips">
+    <span class="hc hc-r">⚡ Multi-agent pipelines</span>
+    <span class="hc hc-r">🤖 Claude Code</span>
+    <span class="hc hc-r">💰 $6K first deal</span>
+    <span class="hc hc-d">Nanoclaw</span>
+    <span class="hc hc-d">fal.ai</span>
+    <span class="hc hc-d">Vercel</span>
+    <span class="hc hc-d">Apify</span>
+    <span class="hc hc-d">Texas RE License</span>
+  </div>
+  <div class="h-arr">
+    <div class="h-arr-lbl">scroll</div>
+    <div class="h-arr-ln"></div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- UNIVERSE -->
+<section class="sec">
+  <div class="s-lbl">The Landscape</div>
+  <h2 class="s-ttl rv">The enterprise AI <em>talent gap</em></h2>
+  <p class="s-bod rv">Every company wants AI agents. Almost no one can build them.</p>
+
+  <div class="u-wrap">
+    <div class="u-tier">
+      <div class="u-bar u-b0" style="width:100%">
+        <div class="u-em">🏢</div>
+        <div class="u-txt"><div class="u-main">Enterprise companies talking about AI</div><div class="u-sub">"We need an AI strategy" — every boardroom, 2024–2026</div></div>
+        <div class="u-stat"><div class="u-num" style="color:#4A7AA8">~90%</div><div class="u-pct">of Fortune 500</div></div>
+      </div>
+    </div>
+    <div class="u-conn"></div>
+    <div class="u-tier">
+      <div class="u-bar u-b1" style="width:100%">
+        <div class="u-em">🤝</div>
+        <div class="u-txt"><div class="u-main">Companies actually deploying AI tools</div><div class="u-sub">Copilot, ChatGPT Enterprise, basic automations — using, not building</div></div>
+        <div class="u-stat"><div class="u-num" style="color:#3E7A52">~39%</div><div class="u-pct">experimenting (McKinsey)</div></div>
+      </div>
+    </div>
+    <div class="u-conn"></div>
+    <div class="u-tier">
+      <div class="u-bar u-b2" style="width:100%">
+        <div class="u-em">⚙️</div>
+        <div class="u-txt"><div class="u-main">Companies with autonomous agent pipelines</div><div class="u-sub">Multi-agent workflows that actually run — not pilots, not demos</div></div>
+        <div class="u-stat"><div class="u-num" style="color:var(--rose)">~23%</div><div class="u-pct">scaling agents (McKinsey)</div></div>
+      </div>
+    </div>
+    <div class="u-conn"></div>
+    <div class="u-tier">
+      <div class="u-bar u-b3" style="width:100%">
+        <div class="u-em">🔧</div>
+        <div class="u-txt"><div class="u-main">People who can actually build those systems</div><div class="u-sub">Not prompt engineers. Not consultants. People who architect and ship working pipelines.</div></div>
+        <div class="u-stat"><div class="u-num" style="color:var(--rose-deep)">Rare</div><div class="u-pct">and getting rarer</div></div>
+      </div>
+    </div>
+    <div class="u-conn" style="background:linear-gradient(to bottom,var(--rose-light),var(--rose))"></div>
+    <div class="u-tier">
+      <div class="u-you"><div class="u-dot"></div>Ayla — builds them. 19. One month in. Already closed $6K.</div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- 3 LEVELS -->
+<section class="sec" id="levels-sec" style="overflow:hidden">
+  <div class="s-lbl">The Evolution</div>
+  <h2 class="s-ttl rv">Each level is a <em>bigger universe</em></h2>
+  <p class="s-bod rv" style="margin-bottom:64px">Started with one site. Ended up building companies.</p>
+
+  <div class="scope-stack">
+
+    <!-- L1 -->
+    <div class="scope-item s1 rv">
+      <div class="scope-inner">
+        <div class="scope-orb s1-orb"></div>
+        <div class="scope-left">
+          <div class="scope-tag">Level 01</div>
+          <div class="scope-title">🌐 AI builds <em>a</em> website</div>
+          <div class="scope-desc">Give Claude a brief. One site built and deployed in minutes. Vanilla HTML, deployed to Vercel. This is where it started.</div>
+          <div class="scope-links">
+            <a href="https://aylablumberg.com" target="_blank" class="sc-link">↗ aylablumberg.com</a>
+            <a href="https://designlistcollective.com" target="_blank" class="sc-link">↗ designlistcollective.com</a>
+            <a href="https://no1courier.vercel.app" target="_blank" class="sc-link">↗ no1courier.vercel.app</a>
+          </div>
+        </div>
+        <div class="scope-right">
+          <div class="scope-bubble s1-bubble">
+            <div class="sb-num">1</div>
+            <div class="sb-label">site</div>
+          </div>
+          <div class="scope-width-label">small scope</div>
+        </div>
+      </div>
+      <div class="scope-bar s1-bar"></div>
+    </div>
+
+    <div class="scope-connector">
+      <div class="sc-line"></div>
+      <div class="sc-arrow">↓</div>
+      <div class="sc-text">scale up</div>
+    </div>
+
+    <!-- L2 -->
+    <div class="scope-item s2 rv">
+      <div class="scope-inner">
+        <div class="scope-orb s2-orb"></div>
+        <div class="scope-left">
+          <div class="scope-tag" style="color:var(--rose);background:rgba(194,98,122,.08);border-color:rgba(194,98,122,.2)">Level 02</div>
+          <div class="scope-title">⚙️ A system of agents builds websites — <em>automatically</em></div>
+          <div class="scope-desc">Lead scrape → brand brief → build → QA → deploy → cold email. 8 agents. Pipeline runs without me touching it.</div>
+          <div class="scope-pipeline">
+            <span class="sp">Chad</span><span class="sp-arr">→</span>
+            <span class="sp">Zeke</span><span class="sp-arr">→</span>
+            <span class="sp">Ryan</span><span class="sp-arr">→</span>
+            <span class="sp">Sharpay</span><span class="sp-arr">→</span>
+            <span class="sp">Taylor</span><span class="sp-arr">→</span>
+            <span class="sp">Troy</span>
+          </div>
+          <div class="scope-links">
+            <a href="https://ayla-sites.vercel.app/upkeep-med-spa/" target="_blank" class="sc-link">↗ Example client site</a>
+            <a href="file:///Users/ayla/Downloads/ayla_agent_system_4.html" target="_blank" class="sc-link">↗ Agent system map</a>
+            <a href="file:///Users/ayla/Desktop/elle-brain/agents-universe.html" target="_blank" class="sc-link">↗ Agents universe</a>
+          </div>
+        </div>
+        <div class="scope-right">
+          <div class="scope-bubble s2-bubble">
+            <div class="sb-num" style="font-size:44px">∞</div>
+            <div class="sb-label">sites</div>
+          </div>
+          <div class="scope-width-label" style="color:var(--rose)">bigger scope</div>
+        </div>
+      </div>
+      <div class="scope-bar s2-bar"></div>
+    </div>
+
+    <div class="scope-connector">
+      <div class="sc-line" style="background:linear-gradient(to bottom,var(--rose),var(--gold))"></div>
+      <div class="sc-arrow" style="color:var(--gold)">↓</div>
+      <div class="sc-text" style="color:var(--gold)">scale again</div>
+    </div>
+
+    <!-- L3 -->
+    <div class="scope-item s3 rv">
+      <div class="scope-inner">
+        <div class="scope-orb s3-orb"></div>
+        <div class="scope-left">
+          <div class="scope-tag" style="color:var(--gold);background:rgba(196,150,90,.08);border-color:rgba(196,150,90,.25)">Level 03</div>
+          <div class="scope-title">🏢 I build AI agent teams <em>for other companies</em></div>
+          <div class="scope-desc">Ayla Intelligence — full custom agent pipelines deployed to client infrastructure. They own it. I built it. The Proposal Factory.</div>
+          <div class="scope-deal">
+            <span class="sd-badge">✓ First deal: $6,000</span>
+            <span class="sd-client">Ninety Five Media · Emma Tessler</span>
+          </div>
+          <div class="scope-links">
+            <a href="https://theaylaedit-ai.vercel.app" target="_blank" class="sc-link sc-link-gold">↗ Ayla Intelligence</a>
+            <a href="https://aylablumberg06.github.io/ayla-intel-vault/" target="_blank" class="sc-link sc-link-gold">↗ Intel Vault</a>
+            <a href="file:///Users/ayla/Downloads/proposal-factory-spec_1.html" target="_blank" class="sc-link sc-link-gold">↗ Proposal Factory spec</a>
+          </div>
+        </div>
+        <div class="scope-right">
+          <div class="scope-bubble s3-bubble">
+            <div class="sb-num" style="font-size:36px;letter-spacing:-2px">$$$</div>
+            <div class="sb-label">per build</div>
+          </div>
+          <div class="scope-width-label" style="color:var(--gold)">biggest scope</div>
+        </div>
+      </div>
+      <div class="scope-bar s3-bar"></div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.scope-stack{display:flex;flex-direction:column;gap:0;max-width:100%}
+
+.scope-item{
+  border-radius:20px;border:1px solid;padding:0;
+  overflow:hidden;position:relative;
+  transition:transform .25s,box-shadow .25s;
+}
+.scope-item:hover{transform:translateY(-3px)}
+
+.s1{border-color:var(--border);background:var(--white);width:62%}
+.s2{border-color:rgba(194,98,122,.25);background:rgba(194,98,122,.02);width:81%}
+.s3{border-color:rgba(196,150,90,.3);background:rgba(196,150,90,.03);width:100%}
+.s1:hover{box-shadow:0 12px 40px rgba(90,143,191,.1)}
+.s2:hover{box-shadow:0 12px 40px rgba(194,98,122,.12)}
+.s3:hover{box-shadow:0 12px 40px rgba(196,150,90,.15)}
+
+.scope-inner{padding:32px 36px;display:flex;align-items:flex-start;gap:32px;position:relative;z-index:1}
+
+.scope-orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;opacity:.12}
+.s1-orb{width:200px;height:200px;background:var(--blue);top:-40px;right:80px}
+.s2-orb{width:280px;height:280px;background:var(--rose);top:-60px;right:60px}
+.s3-orb{width:360px;height:360px;background:var(--gold);top:-80px;right:40px}
+
+.scope-tag{
+  display:inline-block;
+  font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 12px;border-radius:100px;border:1px solid var(--border);
+  color:var(--blue);background:rgba(90,143,191,.07);
+  margin-bottom:12px;
+}
+
+.scope-title{
+  font-family:var(--serif);font-size:clamp(22px,2.5vw,32px);font-weight:300;
+  line-height:1.15;margin-bottom:10px;color:var(--dark);
+}
+.scope-title em{font-style:italic;color:inherit}
+.s2 .scope-title em{color:var(--rose-deep)}
+.s3 .scope-title em{color:var(--gold)}
+
+.scope-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px;max-width:480px}
+
+.scope-pipeline{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:16px}
+.sp{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  padding:3px 10px;border-radius:100px;
+  background:rgba(194,98,122,.08);border:1px solid rgba(194,98,122,.2);
+  color:var(--rose-deep);
+  animation:pipelineGlow 3s ease-in-out infinite;
+}
+.sp:nth-child(2){animation-delay:.3s}.sp:nth-child(4){animation-delay:.6s}.sp:nth-child(6){animation-delay:.9s}.sp:nth-child(8){animation-delay:1.2s}.sp:nth-child(10){animation-delay:1.5s}
+@keyframes pipelineGlow{0%,100%{opacity:.7}50%{opacity:1;box-shadow:0 0 8px rgba(194,98,122,.2)}}
+.sp-arr{font-size:11px;color:var(--muted)}
+
+.scope-deal{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.sd-badge{
+  background:rgba(92,158,110,.1);border:1px solid rgba(92,158,110,.25);
+  color:#3A7A50;border-radius:100px;padding:4px 12px;
+  font-size:12px;font-weight:600;
+}
+.sd-client{font-size:12px;color:var(--muted);font-family:var(--mono)}
+
+.scope-links{display:flex;gap:10px;flex-wrap:wrap}
+.sc-link{
+  font-family:var(--mono);font-size:11px;letter-spacing:.3px;
+  color:var(--blue);text-decoration:none;
+  padding:5px 12px;border-radius:100px;
+  border:1px solid rgba(90,143,191,.25);
+  background:rgba(90,143,191,.05);
+  transition:all .2s;
+}
+.sc-link:hover{background:rgba(90,143,191,.12);border-color:rgba(90,143,191,.5);transform:translateX(2px)}
+.s2 .sc-link{color:var(--rose);border-color:rgba(194,98,122,.25);background:rgba(194,98,122,.05)}
+.s2 .sc-link:hover{background:rgba(194,98,122,.12);border-color:rgba(194,98,122,.5)}
+.sc-link-gold{color:var(--gold)!important;border-color:rgba(196,150,90,.25)!important;background:rgba(196,150,90,.05)!important}
+.sc-link-gold:hover{background:rgba(196,150,90,.12)!important;border-color:rgba(196,150,90,.5)!important}
+
+.scope-right{
+  flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:8px;
+  margin-left:auto;padding-top:4px;
+}
+
+.scope-bubble{
+  width:88px;height:88px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;
+}
+.s1-bubble{background:rgba(90,143,191,.08);border:2px solid rgba(90,143,191,.2)}
+.s2-bubble{background:rgba(194,98,122,.08);border:2px solid rgba(194,98,122,.25);width:110px;height:110px}
+.s3-bubble{background:rgba(196,150,90,.1);border:2px solid rgba(196,150,90,.3);width:130px;height:130px}
+
+.sb-num{
+  font-family:var(--serif);font-size:36px;font-weight:300;line-height:1;
+  color:var(--blue);
+}
+.s2-bubble .sb-num{color:var(--rose)}
+.s3-bubble .sb-num{color:var(--gold)}
+.sb-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:2px}
+
+.scope-width-label{
+  font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--blue);opacity:.6;
+}
+
+/* bottom bar showing visual width */
+.scope-bar{height:4px;border-radius:0 0 20px 20px}
+.s1-bar{background:linear-gradient(90deg,rgba(90,143,191,.3),transparent);width:40%}
+.s2-bar{background:linear-gradient(90deg,rgba(194,98,122,.4),transparent);width:70%}
+.s3-bar{background:linear-gradient(90deg,rgba(196,150,90,.5),transparent);width:100%}
+
+/* connector */
+.scope-connector{
+  display:flex;flex-direction:column;align-items:flex-start;padding-left:36px;
+  gap:2px;padding-top:8px;padding-bottom:8px;
+}
+.sc-line{width:1px;height:24px;background:linear-gradient(to bottom,var(--border),var(--rose-light))}
+.sc-arrow{font-size:14px;color:var(--rose-light);margin-left:-3px;line-height:1}
+.sc-text{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:2px}
+</style>
+
+<div class="hr"></div>
+
+<!-- ELLE + TEAMS -->
+<section class="sec">
+  <div class="s-lbl">The Teams</div>
+  <h2 class="s-ttl rv">10 agents. <em>Two teams.</em> One orchestrator.</h2>
+  <p class="s-bod rv">Elle sits above both. Every other agent has a defined job and hands off to the next.</p>
+
+  <div style="max-width:1000px;width:100%">
+    <div class="elle-card rv">
+      <div class="elle-bdg"><div class="elle-n">Elle</div><div class="elle-r">Orchestrator</div></div>
+      <div class="elle-info">
+        <h3>Master Orchestrator — runs both teams</h3>
+        <p>Manages the full pipeline, assigns tasks, handles errors, sends Telegram updates. Has <strong>shared memory across ElevenLabs Voice and Telegram</strong> — same brain, two interfaces.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+          <a href="https://elle-sandy.vercel.app" target="_blank" style="font-family:var(--mono);font-size:11px;color:#F5C0CC;text-decoration:none;padding:5px 12px;border-radius:100px;border:1px solid rgba(245,192,204,.25);background:rgba(245,192,204,.08);transition:all .2s" onmouseover="this.style.background='rgba(245,192,204,.18)'" onmouseout="this.style.background='rgba(245,192,204,.08)'">↗ Talk to Elle live</a>
+          <a href="file:///Users/ayla/Desktop/elle-brain/agents-universe.html" target="_blank" style="font-family:var(--mono);font-size:11px;color:#F5C0CC;text-decoration:none;padding:5px 12px;border-radius:100px;border:1px solid rgba(245,192,204,.25);background:rgba(245,192,204,.08);transition:all .2s" onmouseover="this.style.background='rgba(245,192,204,.18)'" onmouseout="this.style.background='rgba(245,192,204,.08)'">↗ Agents universe</a>
+        </div>
+      </div>
+    </div>
+    <div class="org-conn"></div>
+    <div class="teams-grid">
+
+      <!-- HSM -->
+      <div class="team-block">
+        <div class="team-hdr hsm">
+          <span class="team-icon">🎬</span>
+          <div><div class="team-nm">HSM Team</div><div class="team-sb">The Ayla Edit · Web design automation</div></div>
+        </div>
+        <div class="agents-g">
+          <div class="ag"><div class="ag-n">Chad</div><div class="ag-r">Lead Research</div><div class="ag-d">Pulls leads from Google Maps via Outscraper, deduplicates against the Sheet</div></div>
+          <div class="ag"><div class="ag-n">Zeke</div><div class="ag-r">Brand Brief</div><div class="ag-d">Scrapes the business, writes voice, tone, and aesthetic direction</div></div>
+          <div class="ag"><div class="ag-n">Ryan</div><div class="ag-r">Builder</div><div class="ag-d">Writes the full HTML/CSS/JS site from the brand brief in one pass</div></div>
+          <div class="ag"><div class="ag-n">Sharpay</div><div class="ag-r">Aesthetic QA</div><div class="ag-d">Reviews every build — blocks anything that misses the brief</div></div>
+          <div class="ag"><div class="ag-n">Taylor</div><div class="ag-r">Deploy</div><div class="ag-d">Deploys to Vercel, confirms the live URL, handles env vars</div></div>
+          <div class="ag"><div class="ag-n">Troy</div><div class="ag-r">Cold Email</div><div class="ag-d">Personalized outreach referencing the preview URL, sends via Gmail API</div></div>
+          <div class="ag" style="grid-column:span 2"><div class="ag-n">Gabriella</div><div class="ag-r">Error Diagnosis</div><div class="ag-d">Monitors pipeline failures, diagnoses root cause, suggests fixes without touching production</div></div>
+        </div>
+      </div>
+
+      <!-- PHINEAS -->
+      <div class="team-block">
+        <div class="team-hdr pnf">
+          <span class="team-icon">🔬</span>
+          <div><div class="team-nm">Phineas Team</div><div class="team-sb">Ayla Intelligence · Proposal Factory · Builds AI teams for companies</div></div>
+        </div>
+        <div class="agents-g">
+          <div class="ag"><div class="ag-n ag-n-pnf">Phineas</div><div class="ag-r">Architect</div><div class="ag-d">Designs the full agent system — roles, tools, data flows for each client</div></div>
+          <div class="ag"><div class="ag-n ag-n-pnf">Ferb</div><div class="ag-r">Builder</div><div class="ag-d">Executes the build — writes every agent in Nanoclaw, deploys to client server</div></div>
+          <div class="ag"><div class="ag-n ag-n-pnf">Isabella</div><div class="ag-r">Proposal Writer</div><div class="ag-d">Generates scoped proposals and pricing docs for new Ayla Intelligence clients</div></div>
+          <div class="ag"><div class="ag-n ag-n-pnf">Baljeet</div><div class="ag-r">Research</div><div class="ag-d">Deep-dives the prospect — stack, pain points, market — before a build starts</div></div>
+          <div class="ag"><div class="ag-n ag-n-pnf">Candace</div><div class="ag-r">QA + Testing</div><div class="ag-d">Validates the client's agent system end-to-end before handoff</div></div>
+          <div class="ag"><div class="ag-n ag-n-pnf">Agent P</div><div class="ag-r">Competitive Intel</div><div class="ag-d">Researches the competitive landscape for client's industry before scoping</div></div>
+          <div class="ag" style="grid-column:span 2"><div class="ag-n ag-n-pnf">Major Monogram</div><div class="ag-r">Orchestrator</div><div class="ag-d">Coordinates the Phineas team — manages the proposal factory pipeline from lead to delivery</div></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="total-pill">
+      <span>Elle + 7 HSM + Phineas team = <em>10 agents deployed</em> · more rolling out</span>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- WINS -->
+<section class="sec">
+  <div class="s-lbl">What's Shipped</div>
+  <h2 class="s-ttl rv">Real things. <em>Real money.</em></h2>
+
+  <div class="stat-row">
+    <div class="stat"><div class="stat-n">$6K</div><div class="stat-l">First deal closed</div></div>
+    <div class="stat"><div class="stat-n">10</div><div class="stat-l">Agents deployed</div></div>
+    <div class="stat"><div class="stat-n">50K+</div><div class="stat-l">TikTok views</div></div>
+    <div class="stat"><div class="stat-n">~1mo</div><div class="stat-l">Time to get here</div></div>
+  </div>
+
+  <div class="wins-g">
+    <div class="win"><div class="win-e">💰</div><div><div class="win-t">Ninety Five Media — $6K deal</div><div class="win-d">Emma Tessler's social media agency. Instagram scraping, Canva previews, Gmail outreach. Setup fee + monthly retainer.</div><span class="pill p-g">✓ Closed April 2026</span></div></div>
+    <div class="win"><div class="win-e">🧠</div><div><div class="win-t">Elle — shared memory across two interfaces</div><div class="win-d">ElevenLabs Voice + Telegram Elle share memory via Supabase + Vercel webhook. Same brain, two channels.</div><span class="pill p-r">Architecture live</span></div></div>
+    <div class="win"><div class="win-e">🌐</div><div><div class="win-t">Live sites deployed via pipeline</div><div class="win-d">aylablumberg.com · designlistcollective.com · no1courier.vercel.app — Claude Code, deployed to Vercel.</div><span class="pill p-r"><span class="ldot"></span>Live now</span></div></div>
+    <div class="win"><div class="win-e">🎬</div><div><div class="win-t">fal.ai TikTok content pipeline</div><div class="win-d">Flux Kontext (likeness-preserving images) → Kling (video animation). Set up in Claude Desktop Cowork.</div><span class="pill p-r">@aylablumberg.realestate</span></div></div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- STACK -->
+<section class="sec" style="padding-bottom:120px">
+  <div class="s-lbl">The Stack</div>
+  <h2 class="s-ttl rv">Everything I <em>actually</em> use</h2>
+  <p class="s-bod rv" style="margin-bottom:40px">No courses. No tutorials. Every tool learned by shipping something real with it.</p>
+  <div class="stack-g">
+    <div class="stk"><span class="stk-e">🤖</span><div class="stk-n">Claude API</div><div class="stk-c">Core AI</div></div>
+    <div class="stk"><span class="stk-e">⚙️</span><div class="stk-n">Nanoclaw</div><div class="stk-c">Agent Runtime</div></div>
+    <div class="stk"><span class="stk-e">💻</span><div class="stk-n">Claude Code</div><div class="stk-c">Build Env</div></div>
+    <div class="stk"><span class="stk-e">📱</span><div class="stk-n">Telegram</div><div class="stk-c">Agent UI</div></div>
+    <div class="stk"><span class="stk-e">📧</span><div class="stk-n">Gmail API</div><div class="stk-c">Outreach</div></div>
+    <div class="stk"><span class="stk-e">📊</span><div class="stk-n">Google Sheets</div><div class="stk-c">Lead DB</div></div>
+    <div class="stk"><span class="stk-e">🕷️</span><div class="stk-n">Apify</div><div class="stk-c">Scraping</div></div>
+    <div class="stk"><span class="stk-e">📍</span><div class="stk-n">Outscraper</div><div class="stk-c">Lead Data</div></div>
+    <div class="stk"><span class="stk-e">🚀</span><div class="stk-n">Vercel</div><div class="stk-c">Deploy</div></div>
+    <div class="stk"><span class="stk-e">🎨</span><div class="stk-n">fal.ai</div><div class="stk-c">Image + Video</div></div>
+    <div class="stk"><span class="stk-e">🗄️</span><div class="stk-n">Supabase</div><div class="stk-c">Agent Memory</div></div>
+    <div class="stk"><span class="stk-e">🔊</span><div class="stk-n">ElevenLabs</div><div class="stk-c">Voice Agent</div></div>
+    <div class="stk"><span class="stk-e">🎭</span><div class="stk-n">Flux Kontext</div><div class="stk-c">Likeness AI</div></div>
+    <div class="stk"><span class="stk-e">🎬</span><div class="stk-n">Kling</div><div class="stk-c">Video Gen</div></div>
+    <div class="stk"><span class="stk-e">🐙</span><div class="stk-n">GitHub</div><div class="stk-c">Version Control</div></div>
+  </div>
+</section>
+
+<!-- OUTRO -->
+<section class="outro">
+  <div class="outro-big">One month.<br><em>Ten agents.</em><br>Two businesses.</div>
+  <p class="outro-sub">And I'm just getting started.</p>
+  <div class="crow">
+    <a class="cp" href="https://aylablumberg.com" target="_blank">aylablumberg.com</a>
+    <a class="cp" href="mailto:aylablumberg06@gmail.com">aylablumberg06@gmail.com</a>
+    <a class="cp" href="https://tiktok.com/@aylablumberg.realestate" target="_blank">@aylablumberg.realestate</a>
+  </div>
+</section>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('pb').style.width=pct+'%';
+});
+
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:0.1});
+
+document.querySelectorAll('.u-tier,.lv,.lv-arr,.team-block,.win,.stk,.rv').forEach(el=>obs.observe(el));
+
+document.querySelectorAll('.stk').forEach((el,i)=>{el.style.transitionDelay=(i*0.035)+'s'});
+document.querySelectorAll('.lv').forEach((el,i)=>{el.style.transitionDelay=(i*0.2)+'s'});
+document.querySelectorAll('.lv-arr').forEach((el,i)=>{el.style.transitionDelay=((i*0.2)+0.1)+'s'});
+</script>
+</body>
+</html>

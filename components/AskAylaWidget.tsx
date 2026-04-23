@@ -7,7 +7,7 @@ type Msg = { role: 'user' | 'assistant'; content: string }
 const INITIAL_BOT_MSG: Msg = {
   role: 'assistant',
   content:
-    "hi! i'm ayla's little assistant. ask me anything about the course, claude, pricing, setup, whatever. if i can't answer it, i'll get ayla for you.",
+    "hi! i'm Ayla's little assistant. ask me anything about the course, Claude, pricing, setup, whatever. if i can't answer it, i'll get Ayla for you.",
 }
 
 export default function AskAylaWidget() {

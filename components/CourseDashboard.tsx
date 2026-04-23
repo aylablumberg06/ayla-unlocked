@@ -1066,9 +1066,10 @@ function CompletionPanel({
       </div>
       {status !== 'done' ? (
         <>
-          <div className="comp-title">What? Like it&apos;s hard.</div>
+          <div className="comp-title">What? Like it&apos;s hard?</div>
           <div className="comp-sub">
-            Drop your name below and we&apos;ll send your certificate to your email. (Also kind of legally binding. Not really.)
+            Drop your name and we&apos;ll mint your certificate right now. You&apos;ll get it emailed,
+            plus you can download it as a PDF from the next screen.
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center', marginTop: 20 }}>
             <input
@@ -1091,7 +1092,7 @@ function CompletionPanel({
             />
             {err && <div style={{ color: 'var(--pink)', fontSize: 12 }}>{err}</div>}
             <button
-              className="comp-btn"
+              className="magnetic comp-btn"
               onClick={complete}
               disabled={status === 'sending'}
               style={{ opacity: status === 'sending' ? 0.6 : 1 }}
@@ -1111,7 +1112,7 @@ function CompletionPanel({
                 cursor: 'pointer',
               }}
             >
-              Or start from lesson 1 again
+              Or start from the beginning again
             </button>
           </div>
         </>
@@ -1119,14 +1120,18 @@ function CompletionPanel({
         <>
           <div className="comp-title">Congrats, legend.</div>
           <div className="comp-sub">
-            Your certificate just hit your inbox. Check it. Screenshot it. Post it. Go build something.
+            Certificate generated. Check your email, or open and download the PDF below.
+            Screenshot it. Post it. Go build something.
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', marginTop: 20 }}>
             {certUrl && (
-              <a className="comp-btn" href={certUrl} style={{ display: 'inline-block', textDecoration: 'none' }}>
-                View my certificate
+              <a className="magnetic comp-btn" href={certUrl} style={{ display: 'inline-block', textDecoration: 'none' }}>
+                Open my certificate &amp; download PDF &rarr;
               </a>
             )}
+            <p style={{ fontSize: 11, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--pink)', marginTop: 14 }}>
+              Check your inbox (and spam) &middot; arrives within a minute
+            </p>
             <button
               onClick={onRestart}
               style={{

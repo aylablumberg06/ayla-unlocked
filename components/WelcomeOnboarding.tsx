@@ -43,7 +43,7 @@ export default function WelcomeOnboarding() {
             Welcome in.
           </h1>
           <p className="text-lg md:text-xl text-mid leading-relaxed font-light max-w-xl mx-auto">
-            Before you dive into lesson 1, here&apos;s the five-second tour so you know what every
+            Before you dive in, here&apos;s the five-second tour so you know what every
             button does. It&apos;s short. I promise.
           </p>
         </div>
@@ -141,9 +141,9 @@ export default function WelcomeOnboarding() {
         <button
           onClick={startCourse}
           disabled={starting}
-          className="bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-10 py-5 rounded-full hover:bg-[#C51F4E] transition shadow-xl shadow-pink/25 disabled:opacity-60"
+          className="magnetic bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-10 py-5 rounded-full hover:bg-[#C51F4E] shadow-xl shadow-pink/25 disabled:opacity-60"
         >
-          {starting ? 'Opening the course…' : 'Start Lesson 1 →'}
+          {starting ? 'Opening the course…' : "Let's go →"}
         </button>
         <p className="text-[12px] text-muted-light mt-5 italic">
           You can bounce in and out anytime. We&apos;ll drop you right back where you left off.
