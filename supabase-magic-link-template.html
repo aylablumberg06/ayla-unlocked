@@ -1,0 +1,41 @@
+<!--
+Paste this into:
+Supabase Dashboard > Authentication > Email Templates > Magic Link
+Subject: Your Ayla Unlocked access link
+
+Supabase variables available: {{ .ConfirmationURL }}, {{ .Email }}, {{ .SiteURL }}
+-->
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #FDF6F0; padding: 48px 20px; color: #1A1A1A;">
+  <div style="max-width: 520px; margin: 0 auto; background: white; border-radius: 20px; padding: 48px 40px; box-shadow: 0 4px 32px rgba(0,0,0,0.04);">
+    <div style="font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #E8295C; margin-bottom: 12px; text-align: center;">Ayla Unlocked</div>
+
+    <h1 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 38px; font-style: italic; font-weight: 400; line-height: 1.15; margin: 0 0 16px; text-align: center; color: #1A1A1A;">
+      Welcome in.
+    </h1>
+
+    <p style="font-size: 15px; line-height: 1.7; color: #5C5C5C; margin: 0 0 32px; text-align: center; font-weight: 300;">
+      Click the button below to open the course. This link expires in an hour and can only be used once. You&rsquo;ll stay signed in for 5 days after, on whatever device you open it on.
+    </p>
+
+    <div style="text-align: center; margin: 32px 0;">
+      <a href="{{ .ConfirmationURL }}"
+         style="display: inline-block; background: #E8295C; color: white; text-decoration: none; padding: 16px 40px; border-radius: 40px; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;">
+        Enter Ayla Unlocked
+      </a>
+    </div>
+
+    <p style="font-size: 13px; line-height: 1.6; color: #ABABAB; margin: 32px 0 0; text-align: center;">
+      If the button doesn&rsquo;t work, copy this link into your browser:<br>
+      <a href="{{ .ConfirmationURL }}" style="color: #E8295C; word-break: break-all;">{{ .ConfirmationURL }}</a>
+    </p>
+
+    <div style="height: 1px; background: rgba(232,41,92,0.13); margin: 40px 0 24px;"></div>
+
+    <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 16px; color: #1A1A1A; text-align: center; margin: 0;">
+      &mdash; Ayla Blumberg
+    </p>
+    <p style="font-size: 11px; color: #ABABAB; text-align: center; margin: 6px 0 0; letter-spacing: 1px;">
+      You&rsquo;re receiving this because you signed up at Ayla Unlocked.
+    </p>
+  </div>
+</div>
