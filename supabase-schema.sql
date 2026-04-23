@@ -30,6 +30,7 @@ create table if not exists contact_submissions (
 --   bookmarks: array of lesson indexes the student starred
 --   confused: array of lesson indexes the student flagged "this is confusing"
 --   notes: jsonb map of { lessonIndex: "my notes" }
+--   onboarded: whether the student has seen /course/welcome
 -- ──────────────────────────────────────────────────────────
 create table if not exists user_progress (
   email text primary key,
@@ -38,8 +39,39 @@ create table if not exists user_progress (
   confused int[] default '{}',
   notes jsonb default '{}',
   completed_at timestamp with time zone,
+  onboarded boolean default false,
   updated_at timestamp with time zone default now()
 );
+alter table user_progress add column if not exists onboarded boolean default false;
+
+-- ──────────────────────────────────────────────────────────
+-- chat_logs: every ask-claude exchange, logged for the admin dashboard.
+-- ──────────────────────────────────────────────────────────
+create table if not exists chat_logs (
+  id uuid primary key default gen_random_uuid(),
+  email text,
+  session_id text,
+  role text not null,
+  content text not null,
+  created_at timestamp with time zone default now()
+);
+create index if not exists chat_logs_created_idx on chat_logs (created_at desc);
+create index if not exists chat_logs_session_idx on chat_logs (session_id);
+
+-- ──────────────────────────────────────────────────────────
+-- visits: lightweight page-visit log so the dashboard can show
+-- "who's active" and which pages get traffic. Server-inserted only.
+-- ──────────────────────────────────────────────────────────
+create table if not exists visits (
+  id uuid primary key default gen_random_uuid(),
+  email text,
+  path text,
+  user_agent text,
+  referrer text,
+  created_at timestamp with time zone default now()
+);
+create index if not exists visits_created_idx on visits (created_at desc);
+create index if not exists visits_path_idx on visits (path);
 
 -- ──────────────────────────────────────────────────────────
 -- confused_flags: aggregate table so Ayla can see what topics

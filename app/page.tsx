@@ -9,14 +9,22 @@ export default function LandingPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[rgba(253,246,240,0.88)] border-b border-[color:var(--border)]">
         <div className="max-w-6xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
           <div className="font-serif text-lg tracking-wide">
-            ayla <span className="text-pink italic">unlocked</span>
+            Ayla <span className="text-pink italic">Unlocked</span>
           </div>
-          <Link
-            href="/unlock"
-            className="bg-pink text-white text-[11px] tracking-[1.5px] uppercase font-medium px-5 py-2.5 rounded-full hover:bg-[#C51F4E] transition"
-          >
-            Get Access · $39
-          </Link>
+          <div className="flex items-center gap-2 md:gap-3">
+            <Link
+              href="/login"
+              className="text-[11px] tracking-[1.5px] uppercase text-mid hover:text-pink px-3 py-2.5 rounded-full transition"
+            >
+              Log in
+            </Link>
+            <Link
+              href="/unlock"
+              className="bg-pink text-white text-[11px] tracking-[1.5px] uppercase font-medium px-5 py-2.5 rounded-full hover:bg-[#C51F4E] transition"
+            >
+              Get Access · $39
+            </Link>
+          </div>
         </div>
       </nav>
 
@@ -70,7 +78,7 @@ export default function LandingPage() {
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
         <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">03 · What&apos;s inside</div>
         <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-10">
-          20 lessons. Four sections. Zero gatekeeping.
+          Four sections. Twenty lessons. Zero gatekeeping.
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div>
@@ -94,7 +102,7 @@ export default function LandingPage() {
           <div>
             <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Part 3 &middot; Building for real</div>
             <ul className="space-y-2 text-dark font-light text-[15px]">
-              <li>09 &middot; Chat vs. Claude Code vs. Cowork</li>
+              <li>09 &middot; Chat vs. Code vs. Cowork</li>
               <li>10 &middot; HTML files, explained</li>
               <li>11 &middot; Deploying to the internet</li>
               <li>12 &middot; Terminal, demystified</li>
@@ -119,9 +127,83 @@ export default function LandingPage() {
         <div className="h-px bg-[color:var(--border)]" />
       </div>
 
+      {/* WHAT I'VE BUILT — portfolio proof */}
+      <section className="px-6 md:px-10 py-24 max-w-5xl mx-auto">
+        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">04 · What I&apos;ve built</div>
+        <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-4">
+          This is what I&apos;ve shipped with Claude.
+        </h2>
+        <p className="text-lg text-mid font-light mb-10 max-w-2xl">
+          All of this was built without writing code. Just by talking to Claude. If I can do it, you can too.
+          The course teaches you exactly how.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          <a
+            href="https://aylablumberg.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7 hover:border-pink hover:shadow-xl hover:shadow-pink/10 transition"
+          >
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">Personal site</div>
+            <h3 className="font-serif text-2xl mb-2 leading-tight">aylablumberg.com</h3>
+            <p className="text-[14px] text-mid font-light leading-relaxed mb-4">
+              My own portfolio. First thing I ever built with Claude. Resume in, design references in, site out. One chat.
+            </p>
+            <span className="inline-flex items-center gap-2 text-[11px] tracking-[1.5px] uppercase text-pink group-hover:gap-3 transition-all">
+              Visit site →
+            </span>
+          </a>
+
+          <a
+            href="https://theaylaedit.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7 hover:border-pink hover:shadow-xl hover:shadow-pink/10 transition"
+          >
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">AI services</div>
+            <h3 className="font-serif text-2xl mb-2 leading-tight">The Ayla Edit</h3>
+            <p className="text-[14px] text-mid font-light leading-relaxed mb-4">
+              Automated web-design pipeline for small businesses. Finds leads, builds them a site, cold-emails them. Runs while I sleep.
+            </p>
+            <span className="inline-flex items-center gap-2 text-[11px] tracking-[1.5px] uppercase text-pink group-hover:gap-3 transition-all">
+              See what I built →
+            </span>
+          </a>
+
+          <a
+            href="https://ayla-sites.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7 hover:border-pink hover:shadow-xl hover:shadow-pink/10 transition"
+          >
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">Agent team</div>
+            <h3 className="font-serif text-2xl mb-2 leading-tight">Ayla Sites</h3>
+            <p className="text-[14px] text-mid font-light leading-relaxed mb-4">
+              A dashboard that tracks every prospect, proposal, and site my agents generate. One pane of glass for an entire ops team.
+            </p>
+            <span className="inline-flex items-center gap-2 text-[11px] tracking-[1.5px] uppercase text-pink group-hover:gap-3 transition-all">
+              Peek inside →
+            </span>
+          </a>
+
+          <div className="bg-gradient-to-br from-[color:var(--pink-pale)] to-white rounded-2xl border-2 border-dashed border-pink/30 p-6 md:p-7 flex flex-col justify-center text-center">
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">And 10+ others</div>
+            <h3 className="font-serif italic text-2xl mb-2 leading-tight">Cold outreach systems. Agent teams. Dashboards.</h3>
+            <p className="text-[14px] text-mid font-light leading-relaxed">
+              Proposal factories, lead trackers, content agents. Built in months, not years. Every single one learnable in this course.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-6 md:px-10">
+        <div className="h-px bg-[color:var(--border)]" />
+      </div>
+
       {/* WHY ME */}
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
-        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">04 · Why me</div>
+        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">05 · Why me</div>
         <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-6">
           I&apos;m no genius. I&apos;m just ambitious and patient.
         </h2>

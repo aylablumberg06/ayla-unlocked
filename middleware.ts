@@ -5,9 +5,26 @@ const OWNER_EMAIL = 'aylablumberg06@gmail.com'
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next()
+  const path = req.nextUrl.pathname
 
-  // only guard /course
-  if (!req.nextUrl.pathname.startsWith('/course')) {
+  // /admin is owner-only
+  if (path.startsWith('/admin')) {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    if (!url || url.includes('placeholder')) {
+      return NextResponse.redirect(new URL('/login', req.url))
+    }
+    try {
+      const supabase = createSupabaseMiddlewareClient(req, res)
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user?.email?.toLowerCase() === OWNER_EMAIL) return res
+      return NextResponse.redirect(new URL('/login', req.url))
+    } catch {
+      return NextResponse.redirect(new URL('/login', req.url))
+    }
+  }
+
+  // only guard /course further
+  if (!path.startsWith('/course')) {
     return res
   }
 
@@ -49,5 +66,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/course/:path*'],
+  matcher: ['/course/:path*', '/admin/:path*'],
 }

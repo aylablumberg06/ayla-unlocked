@@ -137,7 +137,7 @@ export default function Paygate() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[rgba(253,246,240,0.88)] border-b border-[color:var(--border)]">
         <div className="max-w-6xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
           <a href="/" className="font-serif text-lg tracking-wide">
-            ayla <span className="text-pink italic">unlocked</span>
+            Ayla <span className="text-pink italic">Unlocked</span>
           </a>
           <a href="/" className="text-[11px] tracking-[1.5px] uppercase text-mid hover:text-pink">&larr; Back</a>
         </div>

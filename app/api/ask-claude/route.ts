@@ -74,6 +74,23 @@ export async function POST(req: NextRequest) {
       .join('\n')
       .trim()
 
+    // Log the new exchange (last user msg + assistant reply). Best-effort.
+    try {
+      const { createSupabaseAdminClient, createSupabaseServerClient } = await import('@/lib/supabase')
+      const supa = createSupabaseServerClient()
+      const { data: { user } } = await supa.auth.getUser().catch(() => ({ data: { user: null } as any }))
+      const email = user?.email?.toLowerCase() ?? null
+      const sessionId = req.headers.get('x-session-id') ?? null
+      const lastUser = [...trimmed].reverse().find((m) => m.role === 'user')
+      const admin = createSupabaseAdminClient()
+      const rows = []
+      if (lastUser) rows.push({ email, session_id: sessionId, role: 'user', content: String(lastUser.content).slice(0, 4000) })
+      if (text) rows.push({ email, session_id: sessionId, role: 'assistant', content: text.slice(0, 4000) })
+      if (rows.length) await admin.from('chat_logs').insert(rows)
+    } catch (logErr) {
+      console.warn('[ask-claude] log failed', logErr)
+    }
+
     return NextResponse.json({ reply: text })
   } catch (e: any) {
     console.error('[ask-claude]', e)

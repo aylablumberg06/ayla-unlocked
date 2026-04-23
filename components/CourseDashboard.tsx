@@ -849,7 +849,7 @@ export default function CourseDashboard() {
       <div className="progress-line" style={{ width: `${progressPct}%` }} />
 
       <nav className="top-nav">
-        <div className="course-brand">ayla <span>unlocked</span></div>
+        <div className="course-brand">Ayla <span>Unlocked</span></div>
         <div className="progress-dots">
           {lessons.map((les, i) => (
             <div

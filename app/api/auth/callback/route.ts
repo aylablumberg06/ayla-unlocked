@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createSupabaseServerClient } from '@/lib/supabase'
+import { createSupabaseServerClient, createSupabaseAdminClient } from '@/lib/supabase'
 
 const OWNER_EMAIL = 'aylablumberg06@gmail.com'
 
@@ -19,25 +19,35 @@ export async function GET(req: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) {
+  if (!user?.email) {
     return NextResponse.redirect(`${origin}/unlock`)
   }
 
-  // Owner override
-  if (user.email?.toLowerCase() === OWNER_EMAIL) {
-    return NextResponse.redirect(`${origin}/course`)
+  const email = user.email.toLowerCase()
+  const isOwner = email === OWNER_EMAIL
+  const admin = createSupabaseAdminClient()
+
+  // paid check (owner always allowed)
+  if (!isOwner) {
+    const { data: row } = await admin
+      .from('users')
+      .select('paid')
+      .eq('email', email)
+      .maybeSingle()
+    if (row?.paid !== true) {
+      return NextResponse.redirect(`${origin}/unlock`)
+    }
   }
 
-  // Check paid flag
-  const { data: row } = await supabase
-    .from('users')
-    .select('paid')
-    .eq('email', user.email!.toLowerCase())
+  // First-time? → welcome. Otherwise → course.
+  const { data: prog } = await admin
+    .from('user_progress')
+    .select('onboarded')
+    .eq('email', email)
     .maybeSingle()
 
-  if (row?.paid === true) {
-    return NextResponse.redirect(`${origin}/course`)
+  if (!prog?.onboarded) {
+    return NextResponse.redirect(`${origin}/course/welcome`)
   }
-
-  return NextResponse.redirect(`${origin}/unlock`)
+  return NextResponse.redirect(`${origin}/course`)
 }
