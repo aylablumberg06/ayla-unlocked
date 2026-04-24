@@ -34,6 +34,11 @@ export const INTRO_TRAILER_SCRIPT = {
     {
       label: "TEACH",
       text:
+        "Also quick thing. Everyone says \"easier said than done.\" I actually think it's the opposite — everything is easier DONE than said the first time. Like, stuff sounds really hard, and then you just do it, and you're like, oh damn, that was easy, what's next? This course is exactly that. It sounds intimidating and crazy at first. Twenty-nine lessons, API keys, agents, deploying to the internet — that reads scary. Then you start doing it and within like two hours you're building stuff and going, wait, this is not hard at all. I promise.",
+    },
+    {
+      label: "TEACH",
+      text:
         "Inside you get 29 lessons. Short videos. Every lesson you watch, read, highlight, try it, repeat. I show you my real chats with Claude — the exact way I talk to it when I'm building. My top prompts. How I get paid. How I set up agents that run my business while I'm at the gym.",
     },
     {

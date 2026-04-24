@@ -86,7 +86,9 @@ const lessons: Lesson[] = [
         </div>
       </div>
 
-      <div class="callout"><div class="callout-tag">One more thing</div>This course is meant to be <em>multi-modal</em>. That's a fancy way of saying: you can watch, read, highlight, try things, ask questions, and post about what you're building — all in here. Not every lesson works the same way for every brain. That's the point.</div>
+      <div class="callout"><div class="callout-tag">One more thing</div>This course is meant to be <em>multi-modal</em>. That's a fancy way of saying: you can watch, read, highlight, try things, ask questions, and post about what you're building &mdash; all in here. Not every lesson works the same way for every brain. That's the point.</div>
+
+      <div class="callout"><div class="callout-tag">Take breaks whenever you want</div>For real, close this tab mid-lesson if you need to. Go get coffee. Come back tomorrow. We&rsquo;ll drop you right where you left off. It&rsquo;s not like I can see where you&rsquo;re at and judge you&hellip; <br><br><em>Actually. I can. I have a dashboard where I can see exactly what lesson everyone&rsquo;s on. But don&rsquo;t let me judge you. Take the break. Go.</em></div>
     </div>`
   },
   {
