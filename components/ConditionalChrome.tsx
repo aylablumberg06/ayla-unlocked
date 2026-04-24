@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation'
 import AskAylaWidget from '@/components/AskAylaWidget'
 import PageTracker from '@/components/PageTracker'
+import CmdKSearch from '@/components/CmdKSearch'
 
 /**
  * Client wrapper that decides whether to render the Ask-Ayla widget
@@ -20,6 +21,7 @@ export default function ConditionalChrome() {
   return (
     <>
       <PageTracker />
+      <CmdKSearch />
       {!hideWidget && <AskAylaWidget />}
     </>
   )

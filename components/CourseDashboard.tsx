@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { PROFANITY_REGEX } from '@/lib/censor'
+import VideoPlayer from '@/components/VideoPlayer'
 
 // ──────────────────────────────────────────────────────────
 // LESSON CONTENT, preserved word for word from ayla-unlocked.html
@@ -20,7 +22,71 @@ const lessons: Lesson[] = [
       <p>This course is for the person who keeps seeing AI stuff online and thinking: <em>this looks insane, I don't know where to start, and every explanation feels like it's made for someone who already knows what they're doing.</em></p>
       <p>That's exactly who this is for. Let's go.</p>
       <div class="callout"><div class="callout-tag">What you'll be able to do after this</div>Build websites, automate repetitive tasks, generate content, create business plans, and make things that run on their own while you sleep. All just by talking. No code required.</div>
-      <div class="ss">[ Photo: Something Ayla built ]</div>
+      <figure class="lesson-photo">
+        <img src="/lesson-welcome-hero.jpg" alt="Ayla's Agent Empire dashboard with Zeke and Gabriella agents running live" />
+        <figcaption>One of the dashboards my agent team runs on. Stuff like this is what you'll be able to build.</figcaption>
+      </figure>
+
+      <hr class="l-divider" />
+
+      <h2 class="l-sub-head">How this course actually works.</h2>
+      <p>Before we jump in — a 60 second walkthrough of how I built this so you actually know how to use it. I'd rather spend a minute now than have you miss half of what's here.</p>
+
+      <div class="how-it-works">
+        <div class="how-step">
+          <div class="how-step-n">01</div>
+          <div class="how-step-body">
+            <h3>Every lesson has a video.</h3>
+            <p>Press play at the top. It's me, talking at you the way I'd talk at a friend. Sometimes I demo something on screen. Watch it on 1.5x if I'm yapping too slow — I won't be offended.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-n">02</div>
+          <div class="how-step-body">
+            <h3>Every lesson has text too.</h3>
+            <p>Exactly what's in the video, but written. So you can skim, re-read, or copy something without scrubbing back through the video. If you're a reader instead of a watcher — it's all here.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-n">03</div>
+          <div class="how-step-body">
+            <h3>You can highlight anything.</h3>
+            <p>Drag your cursor across any sentence that hits you. It'll save. Your highlights live in <strong>Notes</strong> so you can pull them up later. This works the same way highlighting does in a Kindle book.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-n">04</div>
+          <div class="how-step-body">
+            <h3>Press <kbd>⌘ K</kbd> anywhere to search.</h3>
+            <p>Forgot which lesson I talked about Stripe? Press Command-K (or Control-K on Windows), type "stripe," and jump there. It searches every lesson title and every section. Faster than scrolling.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-n">05</div>
+          <div class="how-step-body">
+            <h3>Three tabs in the nav bar you'll actually use.</h3>
+            <p><strong>Prompts</strong> → my library of prompts I actually paste into Claude every single day. Copy them, paste them, edit them. These took me months to figure out.<br>
+            <strong>My Chats</strong> → real anonymized conversations I've had with Claude. Watch how I actually talk to it, word for word, when I'm building stuff. Nothing edited for the camera.<br>
+            <strong>Ask Ayla</strong> → a little widget in the corner if you get stuck on a lesson. It can answer questions about the course.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-n">06</div>
+          <div class="how-step-body">
+            <h3>Mark the <em>confused</em> flag if you need me to redo something.</h3>
+            <p>If a lesson loses you, there's a confused button. It tells me. I'll rewrite the lesson. This course gets better because you told me it wasn't working.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-n">07</div>
+          <div class="how-step-body">
+            <h3>Certificate at the end.</h3>
+            <p>Finish all the lessons and you get a real certificate you can screenshot, print, post, put on LinkedIn. Yes, I'm serious. You earned it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout"><div class="callout-tag">One more thing</div>This course is meant to be <em>multi-modal</em>. That's a fancy way of saying: you can watch, read, highlight, try things, ask questions, and post about what you're building — all in here. Not every lesson works the same way for every brain. That's the point.</div>
     </div>`
   },
   {
@@ -36,7 +102,16 @@ const lessons: Lesson[] = [
       <p>Anthropic publishes something called a "Constitution" for Claude, basically a list of principles it's trained to follow. Things like: be honest, be helpful, don't help people hurt themselves or others. It's why Claude will sometimes push back on you or ask if you're sure. That's intentional. You're not just using software, you're working with something that has guardrails.</p>
       <p>One more thing to know: <strong>Claude doesn't remember you between chats.</strong> Every time you start a new conversation, it's starting from scratch. We'll get into how to work around that later. Just know that going in.</p>
       <div class="a-quote">"It learned how language works by reading more than any human ever could. Now it can do anything you can describe in words."</div>
-    </div>`
+          <div class="exercise" data-exercise-id="ex-01a-meet">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Try it now · 2 min
+        </div>
+        <div class="exercise-title">Go say hi.</div>
+        <div class="exercise-body">Open <strong>claude.ai</strong> in a new tab. In the message box, type anything. <em>Anything</em>. Ask it how its day is. Ask it to describe itself. Ask it what you should order for lunch. <br><br>Point: feel how it answers you. That vibe is what you&rsquo;ll be riding for the next few hours.</div>
+        <button class="exercise-done" data-exercise-id="ex-01a-meet">I did it →</button>
+      </div>
+</div>`
   },
   {
     tag: '02 - What Claude Can Do', leftTitle: 'The full list. Wider than you think.', num: '02', vid: 'Lesson 02: Capabilities tour',
@@ -54,7 +129,16 @@ const lessons: Lesson[] = [
       <div class="callout"><div class="callout-tag">Agents &amp; automation</div>Claude can run on its own on a schedule, do tasks without you, and report back. This is the top of the pyramid. We get to this at the end of the course.</div>
       <p>The pattern: anything that involves language, logic, or structured thinking, Claude can help with. And with the right setup, it can go do those things for you while you sleep.</p>
       <p>This course walks you through exactly how to unlock each level. By the end, you'll know when to use Claude for a quick answer, when to use it to build something real, and when to set it up as an agent that works while you don't.</p>
-    </div>`
+          <div class="exercise" data-exercise-id="ex-02a-upload">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Try it now · 3 min
+        </div>
+        <div class="exercise-title">Throw a random file at it.</div>
+        <div class="exercise-body">Grab something off your desktop. A screenshot, a PDF, a spreadsheet, your resume, whatever. Drag it into Claude and type:<div class="q">What is this, what can I do with it, and what would you build from it?</div>Read what Claude says. Notice how it didn&rsquo;t need instructions. It just&hellip; got it.</div>
+        <button class="exercise-done" data-exercise-id="ex-02a-upload">I did it →</button>
+      </div>
+</div>`
   },
   {
     tag: '03 - The Mindset', leftTitle: 'Think of Claude like a really smart friend who can do anything.', num: '03', vid: 'Lesson 03: How to think about Claude',
@@ -91,7 +175,33 @@ const lessons: Lesson[] = [
     </div>`
   },
   {
-    tag: '05 - Setup', leftTitle: 'Getting you set up takes about 5 minutes.', num: '05', vid: 'Lesson 05: Setup walkthrough',
+    tag: '05 - Imposter Syndrome', leftTitle: "You're not behind. Nobody is.", num: '05', vid: 'Lesson 05: The imposter thing',
+    html: `
+    <h1 class="l-head">Nobody actually knows what they&rsquo;re doing.</h1>
+    <p class="l-sub">Real talk from somebody who taught herself.</p>
+    <div class="l-body">
+      <p>I need to say this because I think about it a lot. And I see a lot of women in the AI space hang back because of it.</p>
+
+      <p><strong>You&rsquo;re not behind.</strong> Not on anything. The honest truth is that <em>everybody in AI is lost right now.</em> The tools change every month. What counted as expertise six months ago is outdated. The people on Twitter calling themselves &ldquo;AI experts&rdquo; are mostly just louder, not smarter.</p>
+
+      <p>I built two businesses inside of a few months. I&rsquo;m nineteen. I had no background. What I had was <strong>a willingness to look stupid in public for long enough to stop being stupid.</strong> That is the whole skill.</p>
+
+      <div class="a-quote">&ldquo;If you&rsquo;re feeling imposter-y, that means you&rsquo;re in new territory. It&rsquo;s a signal you&rsquo;re learning. Not a signal you should stop.&rdquo;</div>
+
+      <p>A few reframes that helped me:</p>
+
+      <ul>
+        <li><strong>&ldquo;I don&rsquo;t know the vocab&rdquo;</strong> &mdash; fine. Use different words. The concepts matter, not the jargon. Most of it is a gatekeeping scam anyway.</li>
+        <li><strong>&ldquo;I&rsquo;ll look dumb if I ask&rdquo;</strong> &mdash; you look dumber when you pretend. Ask Claude the &ldquo;dumb&rdquo; question. It won&rsquo;t judge. And after a while you&rsquo;ll stop asking because you&rsquo;ll actually know.</li>
+        <li><strong>&ldquo;Other people are further along&rdquo;</strong> &mdash; the only comparison that matters is you vs. you a month ago. Everybody&rsquo;s chart starts flat. Mine did.</li>
+        <li><strong>&ldquo;What if I sell something and it breaks&rdquo;</strong> &mdash; charge less at first. Overdeliver. Fix it when it breaks. This is how every business in history has worked.</li>
+      </ul>
+
+      <p>The people who make it are the ones who just keep building through the feeling. <strong>You&rsquo;re not behind. Go build the thing.</strong></p>
+    </div>`
+  },
+  {
+    tag: '06 - Setup', leftTitle: 'Getting you set up takes about 5 minutes.', num: '06', vid: 'Lesson 06: Setup walkthrough',
     html: `
     <h1 class="l-head">Let's get you set up.</h1>
     <p class="l-sub">Three steps. That's all.</p>
@@ -102,10 +212,42 @@ const lessons: Lesson[] = [
         <li><div><strong>Know that Cowork exists, for later.</strong> Cowork is a separate desktop tool where Claude can literally control your computer, click through apps, open files, and do things for you. I don't personally use Cowork yet, but it's a powerful option once you're comfortable with the basics.</div></li>
       </ol>
       <div class="callout"><div class="callout-tag">If anything is confusing</div>You can send Claude a screenshot of whatever you're looking at and say "I don't understand this, explain it more simply." You can also just say "explain this like I'm in 8th grade" at any point and it will. Claude does not judge you for not knowing things. It just helps.</div>
+          <div class="exercise" data-exercise-id="ex-05a-download">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Do this now · 3 min
+        </div>
+        <div class="exercise-title">Download Claude. For real.</div>
+        <div class="exercise-body">Go to <strong>claude.ai</strong> in Chrome. Click the <strong>Download desktop app</strong> link at the top. Drag Claude into your Applications folder. Sign in with Google. Pin it to your dock. <br><br>That&rsquo;s it. Everything after this assumes you&rsquo;ve got the app open.</div>
+        <button class="exercise-done" data-exercise-id="ex-05a-download">I did it →</button>
+      </div>
+</div>`
+  },
+  {
+    tag: '07 - Pricing Tiers', leftTitle: 'Free vs. Pro vs. Max. What to actually pay for.', num: '07', vid: 'Lesson 07: Which Claude plan to pick',
+    html: `
+    <h1 class="l-head">Free vs. Pro vs. Max. What to actually pay for.</h1>
+    <p class="l-sub">Short version: start free. Upgrade only when you actually need to.</p>
+    <div class="l-body">
+      <p>Claude has three tiers. Free, Pro, and Max. The price jumps are real, so you should know which one fits where you are right now. Don&rsquo;t prepay for something you&rsquo;re not using yet.</p>
+
+      <div class="callout"><div class="callout-tag">Free, $0/month</div>Totally fine for learning, brainstorming, writing, and light coding. You get a solid daily message limit and access to the current Claude model. When you hit the limit, Claude literally tells you and waits a few hours to reset. <strong>Start here.</strong> It&rsquo;s perfect for this course.</div>
+
+      <div class="callout"><div class="callout-tag">Pro, $20/month</div>Roughly 5x the message limit. Upload more files at once. Access to the newest model first. This is what I personally pay for. The moment you&rsquo;re building a real thing and getting cut off mid-project is the moment Pro is worth it. If you&rsquo;re actively working on something for more than 2 hours a day, upgrade.</div>
+
+      <div class="callout"><div class="callout-tag">Max, $100&ndash;200/month</div>The &ldquo;I&rsquo;m running this as my job&rdquo; tier. Effectively unlimited. Priority access when servers are slammed. Only jump here if you&rsquo;re building every day, running client work, or operating agents at volume. If you&rsquo;re a one-person agency or doing cold outreach daily, Max pays for itself in an afternoon.</div>
+
+      <div class="a-quote">&ldquo;Start free. You&rsquo;ll know when you need Pro because Claude will literally cut you off mid-thought. That&rsquo;s the signal.&rdquo;</div>
+
+      <p><strong>My actual progression.</strong> I was on free the first two weeks. Hit the limit constantly. Upgraded to Pro. Stayed there for two months. Once I was using it for client work every day, jumped to Max.</p>
+
+      <div class="callout"><div class="callout-tag">The rule of thumb</div>Hit rate limits more than twice a week? Upgrade one tier. Hit them daily? Jump again. Never hit them? You&rsquo;re on the right tier.</div>
+
+      <div class="ss">[ Screenshot: The 3 plan cards on claude.ai/pricing ]</div>
     </div>`
   },
   {
-    tag: '06 - Grammar? Never.', leftTitle: "You can yap. You can be mean. Claude doesn't care.", num: '06', vid: 'Lesson 06: Just talk to it',
+    tag: '08 - Grammar? Never.', leftTitle: "You can yap. You can be mean. Claude doesn't care.", num: '08', vid: 'Lesson 08: Just talk to it',
     html: `
     <h1 class="l-head">Claude does not care about your grammar.</h1>
     <p class="l-sub">This is not your English teacher. Type however you want.</p>
@@ -117,33 +259,19 @@ const lessons: Lesson[] = [
       <div class="chat-ex"><div class="bubble u mad">so i pay $100 a month and you cant do a simple task but make me wait 2 hours to figure that out and tell me to just do it myself. fuck this.</div></div>
       <p>Claude doesn't have feelings. It doesn't take anything personally. It just keeps going. That said, being specific about what went wrong ("the colors are wrong, I wanted pink not purple, and the button needs to be on the right side not the left") will get you a better fix than just yelling. But both technically work.</p>
       <div class="callout"><div class="callout-tag">When you don't understand something</div>If Claude explains something and you don't get it, just say "I have no idea what that means, explain it way more simply." Or take a screenshot of your screen and paste it in and say "help, what is this." You can literally just send a photo of your screen. It will tell you what to do.</div>
-    </div>`
+          <div class="exercise" data-exercise-id="ex-07a-typo">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Try it now · 1 min
+        </div>
+        <div class="exercise-title">Send Claude a mess.</div>
+        <div class="exercise-body">Open a new chat and type something deliberately broken. Fragment it. Typo it. Change your mind mid-sentence. Something like:<div class="q">ok so like&hellip; i want a thing that&hellip; you know like a website but not really for my mom&rsquo;s book club idk can u just make something</div>Watch it figure you out.</div>
+        <button class="exercise-done" data-exercise-id="ex-07a-typo">I did it →</button>
+      </div>
+</div>`
   },
   {
-    tag: '07 - Get an Idea', leftTitle: 'You need something to build before we go any further.', num: '07', vid: 'Lesson 07: Finding your idea',
-    html: `
-    <h1 class="l-head">First: you need an idea.</h1>
-    <p class="l-sub">Claude can't do anything if you don't have a direction. That part is on you.</p>
-    <div class="l-body">
-      <p>Claude is a tool. An incredibly powerful tool, but it doesn't generate your vision. You bring the idea. It handles the execution.</p>
-      <p>Your idea doesn't have to be huge. It could be something tiny that would save you time. Something you want to sell. A website for yourself. A business plan you've been sitting on. Start anywhere.</p>
-      <p>Some ideas to get your brain going:</p>
-      <ul>
-        <li><strong>A personal website or portfolio</strong> (this is the first thing I built with Claude and what I recommend starting with. You can give Claude inspo screenshots of sites you like and upload your resume, and it builds your whole site in one conversation.)</li>
-        <li>A website or landing page for something you want to sell</li>
-        <li>An automated email or outreach system so you're not doing it manually</li>
-        <li>A business plan or pitch deck you can show people</li>
-        <li>A proposal template that builds itself once you fill in a few details</li>
-        <li>A content calendar for your social media</li>
-        <li>A lead tracker that organizes your clients automatically</li>
-        <li>Anything at your job or in your life that's repetitive and annoying</li>
-      </ul>
-      <p>Still nothing? Take the quiz below. Answer four questions and I'll give you three personalized ideas based on what you're actually into.</p>
-      <button class="quiz-btn" data-quiz="1"><span>&#10022;</span> Find my idea</button>
-    </div>`
-  },
-  {
-    tag: '08 - Just Yap', leftTitle: "How to actually talk to Claude. (It's very casual.)", num: '08', vid: 'Lesson 08: Voice, memos, and talking',
+    tag: '09 - Just Yap', leftTitle: "How to actually talk to Claude. (It's very casual.)", num: '09', vid: 'Lesson 09: Voice, memos, and talking',
     html: `
     <h1 class="l-head">You talk. Claude builds.</h1>
     <p class="l-sub">Shockingly casual. Like texting a friend who's also a genius.</p>
@@ -162,32 +290,236 @@ const lessons: Lesson[] = [
       <p><strong>Even better on Mac:</strong> go to System Settings, then Keyboard, and set up a keyboard shortcut for dictation. I set mine so double-tapping Control starts the mic anywhere on my computer. No matter what I'm looking at, I just double-tap and start talking.</p>
       <p><strong>For voice memos:</strong> if you recorded something in the iPhone Voice Memos app, press the three dots on the recording and tap Transcribe. Copy the transcript and paste it directly into Claude. Or just upload the audio file and Claude will read it. Either works.</p>
       <div class="ss">[ Screenshot: Mic button in Claude + system settings dictation shortcut ]</div>
+
+      <div class="callout"><div class="callout-tag">This is actually the best part &mdash; you can bring it anywhere</div>I voice-dictate to Claude while I&rsquo;m doing my makeup. While I&rsquo;m doing my homework. While I&rsquo;m walking. While I&rsquo;m driving (hands-free, relax). While I&rsquo;m in line at a coffee shop thinking about something. The whole point is: <strong>you don&rsquo;t have to be at a desk to use this.</strong> If you can talk, you can build. Five minutes of rambling in your car is a 500-word spec. Claude turns it into something real by the time you&rsquo;re home.</div>
+
+      <div class="callout"><div class="callout-tag">Chain tasks in one conversation</div>Once Claude builds something for you, don&rsquo;t start a new chat. Keep going. Say: <em>&ldquo;Now write me a TikTok script explaining this.&rdquo;</em> Or: <em>&ldquo;Now draft an email pitching this to my email list.&rdquo;</em> Or: <em>&ldquo;Now turn the main idea into three Instagram captions.&rdquo;</em> Claude already has all the context &mdash; it knows exactly what you built. One conversation, ten outputs. Way better than starting over every time.</div>
+          <div class="exercise" data-exercise-id="ex-09a-clarify">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Try it now · 5 min
+        </div>
+        <div class="exercise-title">Use THE prompt.</div>
+        <div class="exercise-body">Pick one of the ideas from the last lesson. Open a new chat. Paste:<div class="q">I want to build [your idea]. Ask me any clarifying questions before you start.</div>Answer every question. Don&rsquo;t skip any. <em>This is the single most important habit in this whole course.</em></div>
+        <button class="exercise-done" data-exercise-id="ex-09a-clarify">I did it →</button>
+      </div>
+</div>`
+  },
+  {
+    tag: "10 - When It's Wrong", leftTitle: "Claude will mess up. Here's exactly what to do.", num: '10', vid: 'Lesson 10: Course correcting',
+    html: `
+    <h1 class="l-head">Claude will get it wrong sometimes.</h1>
+    <p class="l-sub">This is completely normal and it happens to everyone including me constantly.</p>
+    <div class="l-body">
+      <p>Claude is going to misunderstand you, build the wrong thing, go off on a tangent, or give you something that's close but not quite right. This is just part of the process. Don't let it spiral you out.</p>
+      <div class="callout"><div class="callout-tag">Think of it like&hellip;</div><strong>Your intern messed up.</strong> A smart intern on day three. They're sharp, they're fast, they want to get it right, but they don't know everything about you or your taste or your project. So they guess. Sometimes they guess wrong. You don't fire them when they mess up once. You say, &ldquo;hey, not that &mdash; more like <em>this</em>,&rdquo; and they get it right on the second try. That's the whole vibe.</div>
+      <p>What actually helps when something goes wrong:</p>
+      <ul>
+        <li><strong>Be specific about what's wrong.</strong> Not "this is bad" but "the colors are wrong, I wanted pink not purple, the button needs to be on the right side, and the font is too small."</li>
+        <li><strong>Send a screenshot.</strong> If something on your screen doesn't make sense or you got an error you don't understand, paste a screenshot directly into the chat and say "what is this and what do I do." Claude will read it and tell you exactly what's happening.</li>
+        <li><strong>Ask for simpler instructions.</strong> If it's explaining something too technically, say "explain this like I'm in 8th grade" and it will break it all the way down.</li>
+        <li><strong>Start fresh if needed.</strong> Sometimes a conversation gets so tangled that it's faster to open a new chat and be more specific from the beginning. That's not failure, it's just efficiency. Happens to me all the time.</li>
+      </ul>
+      <p>You're the director. Claude is the production team. When the scene isn't right, you give specific notes on what to change. That's the whole relationship.</p>
+      <figure class="lesson-photo">
+        <img src="/lesson-bad-output.jpg" alt="A real Ayla Unlocked admin error: null is not an object evaluating e.email.toLowerCase" />
+        <figcaption>This is a real error from one of MY sites while I was building. Notice it's just a one-line explanation. Screenshot it, paste into Claude, say "fix this." Done.</figcaption>
+      </figure>
+          <div class="exercise" data-exercise-id="ex-18a-break">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Try it now · 5 min
+        </div>
+        <div class="exercise-title">Break Claude on purpose.</div>
+        <div class="exercise-body">Open a chat. Type something intentionally vague and impossible:<div class="q">Make me a thing that is good</div>Watch it struggle or ask questions. Now follow up with:<div class="q">Stop. Re-read my first message. What did I actually tell you?</div>This is the reset muscle. Practice it before you actually need it.</div>
+        <button class="exercise-done" data-exercise-id="ex-18a-break">I did it →</button>
+      </div>
+</div>`
+  },
+  {
+    tag: '11 - Stay Organized', leftTitle: "Projects and staying in the right chat. More important than you'd think.", num: '11', vid: 'Lesson 11: Organizing your work',
+    html: `
+    <h1 class="l-head">Organization actually matters here.</h1>
+    <p class="l-sub">Claude only knows what's in the current chat. Use that to your advantage.</p>
+    <div class="l-body">
+      <p>Claude doesn't carry anything between separate chats. Start a new conversation and it has no idea who you are, what you've been building, or what you discussed before. Every new chat is a blank slate.</p>
+      <p>This is why how you structure your work really matters.</p>
+      <div class="callout"><div class="callout-tag">Rule 1: Stay in the same chat</div>If you're actively building something, don't start a new chat in the middle of it. Keep going in the same one. Claude remembers everything you've discussed throughout that conversation. Starting over means it forgets everything and you have to re-explain your whole project.</div>
+      <div class="callout"><div class="callout-tag">Rule 2: Use Projects</div>Claude has a Projects feature that groups related chats together and lets you add notes Claude always has access to, like a permanent briefing. Set up a Project for anything ongoing. Name it clearly. Keep all related chats inside it. This is the closest thing Claude has to actually remembering you.</div>
+      <div class="callout"><div class="callout-tag">Rule 3: Always check which chat you're in</div>This sounds obvious but I've made this mistake more than once. Before you start typing, make sure you're in the right chat for the right project. Starting in the wrong place means Claude has no context and you'll waste time re-explaining everything.</div>
+      <div class="ss">[ Screenshot: Claude Projects feature, how to create and name a project ]</div>
+
+      <div class="divider"><span>The reference-doc habit</span></div>
+      <p>This is the move that changed how much I retain and how fast I rebuild things. Every time Claude figures something out for me &mdash; how to set up Stripe, how to deploy to Vercel, how I configured a cron, whatever &mdash; I say one of these at the end:</p>
+      <div class="callout"><div class="callout-tag">The exact prompt I use</div><div class="bubble u">Now write this up as a reference doc so I can rebuild it later. Step by step, everything you just did, including why you made each choice. Save it as a markdown file I can stash in my Project.</div></div>
+      <p>Claude will drop you a clean, self-contained doc. <strong>Save it in the Project&rsquo;s instructions or attach it as a file.</strong> Three weeks from now, when you vaguely remember fixing this exact thing, you can open that doc and redo it in four minutes instead of another 2-hour rabbit hole.</p>
+      <p>Over time these compound. You end up with a personal knowledge base that reads exactly like you think. Nobody else has one like it.</p>
+
+      <div class="callout"><div class="callout-tag">The even-better version &mdash; build a dashboard of all your docs</div>Once you have 10+ reference docs scattered across Projects, ask Claude to build you a simple HTML dashboard that links to all of them. Something like: <em>&ldquo;Make me a one-page dashboard I can open from my browser, with every reference doc I&rsquo;ve made, grouped by category (Stripe, deploy, Claude workflows, business ops), with a search bar.&rdquo;</em> Claude will ship it. You&rsquo;ll end up with your own personal Notion-style hub, except you built it in 20 minutes and it&rsquo;s exactly the way you think. Mine is the first thing I open every morning.</div>
+
+      <div class="divider"><span>Customizing Claude so it acts the way you want</span></div>
+      <p>This is the part that makes Claude feel like <em>yours</em> instead of a generic chatbot. You can tell Claude your preferences <strong>once</strong>, and it&rsquo;ll apply them to every chat &mdash; as long as you tell it to remember.</p>
+      <p>Examples of things I&rsquo;ve locked in on my Claude:</p>
+      <ul>
+        <li>&ldquo;Always default to <strong>pink</strong> as the primary brand color when building anything for me, unless I specify otherwise.&rdquo;</li>
+        <li>&ldquo;When I ask for code, skip the explanation unless I ask. Just give me the code.&rdquo;</li>
+        <li>&ldquo;I&rsquo;m a 19-year-old solo founder in Dallas, so tailor business advice to that scale &mdash; no enterprise assumptions.&rdquo;</li>
+        <li>&ldquo;Use casual tone. Drop the &lsquo;certainly!&rsquo; and &lsquo;I&rsquo;d be happy to&rsquo; &mdash; just answer.&rdquo;</li>
+      </ul>
+      <div class="callout"><div class="callout-tag">The exact magic words</div>After any preference you&rsquo;ve just explained, add: <div class="bubble u">Remember this for all future chats.</div>That tells Claude to push the preference into your account-level memory (or the active Project&rsquo;s instructions, depending on where you are). From that point on, every new conversation starts with that preference already loaded. You don&rsquo;t have to repeat yourself.</div>
+      <p>You can also go straight to <strong>Settings &rarr; Personalization</strong> in the Claude app and type the preferences in yourself. Same effect. Either way, the goal is the same: Claude stops being a blank slate every time and starts knowing you.</p>
+      <p><strong>Pro move:</strong> every few weeks, ask Claude &ldquo;what do you currently remember about me?&rdquo; It&rsquo;ll read back your memory. Edit anything that&rsquo;s stale.</p>
+
+          <div class="exercise" data-exercise-id="ex-19a-project">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Do it now · 2 min
+        </div>
+        <div class="exercise-title">Create your first Project.</div>
+        <div class="exercise-body">In the Claude app, find the <strong>Projects</strong> button in the left sidebar. Click <strong>New Project</strong>. Name it whatever you&rsquo;re working on. Add a short description in the &ldquo;Instructions&rdquo; box. <br><br>From now on, every chat about this project goes inside it. Claude remembers the context across all of them.</div>
+        <button class="exercise-done" data-exercise-id="ex-19a-project">I did it →</button>
+      </div>
+</div>`
+  },
+  {
+    tag: '12 - Get an Idea', leftTitle: 'You need something to build before we go any further.', num: '12', vid: 'Lesson 12: Finding your idea',
+    html: `
+    <h1 class="l-head">First: you need an idea.</h1>
+    <p class="l-sub">Claude can't do anything if you don't have a direction. That part is on you.</p>
+    <div class="l-body">
+      <p>Claude is a tool. An incredibly powerful tool, but it doesn't generate your vision. You bring the idea. It handles the execution.</p>
+      <p>Your idea doesn't have to be huge. It could be something tiny that would save you time. Something you want to sell. A website for yourself. A business plan you've been sitting on. Start anywhere.</p>
+      <p>Some ideas to get your brain going:</p>
+      <ul>
+        <li><strong>A personal website or portfolio</strong> (this is the first thing I built with Claude and what I recommend starting with. You can give Claude inspo screenshots of sites you like and upload your resume, and it builds your whole site in one conversation. Mine lives at <a href="https://aylablumberg.com" target="_blank" rel="noopener noreferrer" style="color:var(--pink);text-decoration:underline;font-weight:500;">aylablumberg.com</a> if you want to see what you can get out of a first build.)</li>
+        <li>A website or landing page for something you want to sell</li>
+        <li>An automated email or outreach system so you're not doing it manually</li>
+        <li>A business plan or pitch deck you can show people</li>
+        <li>A proposal template that builds itself once you fill in a few details</li>
+        <li>A content calendar for your social media</li>
+        <li>A lead tracker that organizes your clients automatically</li>
+        <li>Anything at your job or in your life that's repetitive and annoying</li>
+      </ul>
+      <p>Still nothing? Take the quiz below. Answer four questions and I'll give you three personalized ideas based on what you're actually into.</p>
+      <button class="quiz-btn" data-quiz="1"><span>&#10022;</span> Find my idea</button>
+
+      <div class="divider"><span>The thing nobody says about ideas</span></div>
+      <p>Here&rsquo;s the part everyone gets wrong. You are <em>not</em> trying to pick THE idea. You&rsquo;re not trying to find the one perfect thing that&rsquo;ll change your life. That pressure is what kept me stuck for years.</p>
+      <p>You&rsquo;re just trying to get your brain into <strong>idea-mode.</strong> Once you&rsquo;re in it, one thing unlocks the next. You make the ugly first thing. It sparks a better version. That one sparks something completely different. The third idea is usually where the real thing lives.</p>
+
+      <figure class="idea-spiral-figure">
+        <svg class="idea-spiral" viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Idea spiral: one idea unlocks the next, which unlocks the next">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#c41f5a"/>
+            </marker>
+          </defs>
+          <rect x="20" y="90" width="120" height="80" rx="12" fill="#fff1f5" stroke="#c41f5a" stroke-width="1.5"/>
+          <text x="80" y="125" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" font-weight="600" fill="#c41f5a">the ugly first one</text>
+          <text x="80" y="143" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#555">personal site</text>
+          <path d="M140 130 Q 180 80, 220 130" fill="none" stroke="#c41f5a" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="220" y="90" width="140" height="80" rx="12" fill="#fff1f5" stroke="#c41f5a" stroke-width="1.5"/>
+          <text x="290" y="125" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" font-weight="600" fill="#c41f5a">the better version</text>
+          <text x="290" y="143" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#555">site with client portal</text>
+          <path d="M360 130 Q 400 180, 440 130" fill="none" stroke="#c41f5a" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="440" y="90" width="170" height="80" rx="12" fill="#c41f5a" stroke="#c41f5a" stroke-width="1.5"/>
+          <text x="525" y="122" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" font-weight="600" fill="#fff">the real thing</text>
+          <text x="525" y="142" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#fff" opacity="0.85">client portal as a product</text>
+          <text x="320" y="30" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" letter-spacing="2" font-weight="600" fill="#888">THE IDEA SPIRAL</text>
+          <text x="320" y="230" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#888" font-style="italic">you weren&rsquo;t supposed to find #3 first. you had to make #1 to see it.</text>
+        </svg>
+      </figure>
+
+      <p>So when you&rsquo;re staring at the list above and nothing feels right &mdash; <strong>just pick something.</strong> Even something dumb. The point of the first build isn&rsquo;t to be the right one. The point is to unlock the next one. And the one after that.</p>
+      <div class="a-quote">&ldquo;You&rsquo;re not hunting for the idea. You&rsquo;re warming up your idea brain. It gets louder the more you build.&rdquo;</div>
+          <div class="exercise" data-exercise-id="ex-08a-interview">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Try it now · 10 min
+        </div>
+        <div class="exercise-title">Have Claude interview you.</div>
+        <div class="exercise-body">Open a chat and paste:<div class="q">I don&rsquo;t know what to build. Interview me. Ask me one question at a time about my life, my job, what annoys me, what I want to sell. After 8 questions, give me 3 concrete project ideas based only on my answers.</div>Actually answer the questions. Save the 3 ideas. One of them is what you&rsquo;re about to build.</div>
+        <button class="exercise-done" data-exercise-id="ex-08a-interview">I did it →</button>
+      </div>
+</div>`
+  },
+  {
+    tag: '13 - When Not to AI', leftTitle: 'The counter-intuitive lesson.', num: '13', vid: 'Lesson 13: When to step away from Claude',
+    html: `
+    <h1 class="l-head">When NOT to use AI.</h1>
+    <p class="l-sub">Building something great includes knowing what to not ask Claude to do.</p>
+    <div class="l-body">
+      <p>I know. Whole course telling you to use AI for everything. But being good at this also means <strong>knowing when to put it away.</strong></p>
+
+      <p>A short list of things I don&rsquo;t use Claude for:</p>
+
+      <div class="callout"><div class="callout-tag">Personal writing where vulnerability matters</div>Birthday notes. Eulogies. A message to someone who&rsquo;s hurting. A caption about something that actually happened to you. Claude can write technically beautiful things, but the messy, specific, unrepeatable part of your voice is you. Use it there and people can tell. Don&rsquo;t.</div>
+
+      <div class="callout"><div class="callout-tag">Anything where being wrong is dangerous</div>Medical questions. Legal advice. Safety-critical calculations. Financial decisions with real money. Claude can be confidently wrong about specific facts, and &ldquo;the AI said so&rdquo; is not a defense. Use it as a starting point, then verify with a professional.</div>
+
+      <div class="callout"><div class="callout-tag">Tasks that are genuinely faster by hand</div>Sometimes a thing takes 2 minutes manually and 20 minutes to properly explain to Claude. If your gut says &ldquo;just do it yourself,&rdquo; trust it. I write emails by hand all the time. I&rsquo;m not religious about this.</div>
+
+      <div class="callout"><div class="callout-tag">Creative work where you WANT your style to show</div>Your first TikTok. Your about page. The opening line of your book. Claude can write 50 drafts of the same idea. If you&rsquo;re trying to find <strong>your</strong> voice, the fastest way is to stare at a blank page until something real comes out. Claude short-circuits that process. Sometimes that&rsquo;s bad.</div>
+
+      <div class="callout"><div class="callout-tag">Skills you actually want to learn</div>If you&rsquo;re trying to learn Spanish, don&rsquo;t have Claude translate every sentence for you. If you&rsquo;re trying to learn to code (for real), don&rsquo;t let it write everything. Using AI when you&rsquo;re learning can delete the learning.</div>
+
+      <p>The people who go the furthest with AI are the ones who are intentional about when they use it. <strong>Using it for everything is a sign you haven&rsquo;t figured out what it&rsquo;s actually for.</strong></p>
     </div>`
   },
   {
-    tag: '09 - The Three Modes', leftTitle: 'Chat, Claude Code, and Cowork. Very different things.', num: '09', vid: 'Lesson 09: The three modes explained',
+    tag: '14 - The Four Modes', leftTitle: 'Chat, Claude Code, Cowork, and the Chrome extension. All different.', num: '14', vid: 'Lesson 14: The four modes explained',
     html: `
-    <h1 class="l-head">Claude has three different modes.</h1>
+    <h1 class="l-head">Claude has four different modes.</h1>
     <p class="l-sub">They do completely different things and it matters which one you use.</p>
     <div class="l-body">
       <div class="callout">
-        <div class="callout-tag">Claude Chat (claude.ai)</div>
+        <div class="callout-tag">1. Claude Chat (claude.ai)</div>
         The one you're using right now. You talk, it responds. It can write things, make plans, build files, create HTML pages. But everything it makes only lives on your computer. Nobody else can access it from the internet. Think of this as your drafting table.<br><br><strong>Use this for:</strong> learning, brainstorming, prototyping, making things for yourself.
       </div>
       <div class="callout">
-        <div class="callout-tag">Claude Code</div>
+        <div class="callout-tag">2. Claude Code</div>
         This is what you use when you want something actually live. A real website people can visit. A system that runs automatically. Claude Code installs inside VS Code (a free app) and handles all the technical stuff itself. You barely have to touch Terminal.<br><br><strong>Use this for:</strong> anything you want on the internet or running automatically.
       </div>
       <div class="callout">
-        <div class="callout-tag">Cowork</div>
-        Claude with hands. It can literally control your computer, open apps, fill out forms, and move files around. I don't personally use Cowork yet, but it's there when you're ready for it.<br><br><strong>Use this for:</strong> repetitive tasks that involve a lot of clicking around on your computer.
+        <div class="callout-tag">3. Cowork</div>
+        Claude with hands, on your whole computer. It can open apps, fill out forms, move files around, anything you can do with a mouse and keyboard. Runs in the background while you watch.<br><br><strong>Use this for:</strong> repetitive tasks that involve clicking around in different apps.
       </div>
-      <p style="margin-top:10px;">Rule of thumb: <strong>Chat while learning. Claude Code when you're ready to launch something. Cowork when you want to automate computer tasks.</strong></p>
-      <div class="ss">[ Screenshot: Chat vs Claude Code vs Cowork side by side ]</div>
+      <div class="callout">
+        <div class="callout-tag">4. Claude for Chrome (browser extension)</div>
+        A Chrome extension that adds Claude directly to your browser. It opens a sidebar on any website and can click, scroll, type, fill forms, and search for you. Different from Cowork in that it only lives inside your browser, not your whole computer. <strong>This is the one that feels the most like magic day one.</strong>
+        <br><br><strong>Real examples:</strong>
+        <br>&bull; &ldquo;Find me the cheapest white sneakers on Amazon in my size and add them to cart.&rdquo; It goes to Amazon, searches, filters, picks, adds.
+        <br>&bull; &ldquo;Open my Gmail and delete every promotional email from this week.&rdquo; It opens Gmail, scrolls, selects the junk, deletes.
+        <br>&bull; &ldquo;Fill out this 12-field form using the info on my resume.&rdquo; Done in 15 seconds.
+        <br>&bull; &ldquo;Research the top five competitors to my business and make me a comparison chart.&rdquo; It browses, takes notes, summarizes.
+        <br><br><strong>Use this for:</strong> repetitive clicking-around tasks on websites you already use. Shopping, inbox cleanup, form filling, online research.
+      </div>
+      <p style="margin-top:10px;">Rule of thumb: <strong>Chat</strong> while learning. <strong>Claude Code</strong> when you're launching real projects. <strong>Cowork</strong> for computer-wide automation. <strong>Chrome extension</strong> when the thing you want done lives in a browser tab.</p>
+      <figure class="lesson-photo">
+        <img src="/lesson-four-modes.jpg" alt="The Claude desktop app showing Chat, Cowork, and Code tabs at the top with an HTML preview on the side" />
+        <figcaption>That's the Claude desktop app. See the tabs at the top: Chat, Cowork, Code. That's you switching modes in one click. On the right is an HTML preview of something I was building.</figcaption>
+      </figure>
+
+      <div class="divider"><span>My favorite workflow: talk it out in Chat, then hand off to Code</span></div>
+
+      <p>Here's the move almost nobody tells you about. <strong>Use Chat to think. Use Code to build.</strong> You don't have to pick one or the other, you use them together.</p>
+
+      <p>What I actually do: I open <strong>Claude Chat</strong> first and just yap. I describe the thing I want to build in plain English, I go back and forth until Claude and I agree on exactly what it's going to be, what pages it needs, what colors, what the flow is. No pressure, no code, just talking. I'll often say <em>"ask me any clarifying questions before we start"</em> and let it grill me until the idea is tight.</p>
+
+      <p>Then, <strong>once we've figured out what we're actually building</strong>, I type this exact sentence into the Chat:</p>
+
+      <div class="chat-ex"><div class="bubble u">okay i&rsquo;m about to open Claude Code and build this for real. write me a full handoff prompt i can paste into Code so it&rsquo;s completely caught up on what we decided, what the vibe is, what the pages are, and what to build first. include anything i told you about my style, colors, goals, and any decisions we made. format it so i can just copy and paste.</div></div>
+
+      <p>Chat spits out a giant handoff paragraph. I copy it. Open Claude Code. First message: <strong>paste it.</strong> Now Code knows everything Chat knew, without me having to re-explain any of it. It starts building. I don't lose a single thing from the conversation.</p>
+
+      <div class="callout"><div class="callout-tag">Why this matters</div>Chat and Code <strong>don't share memory.</strong> They're separate. If you just switch to Code and say "build that thing we talked about," Code has no idea what you're talking about. The handoff prompt is how you get Chat's entire brain into Code's head in one paste.</div>
+
+      <p>Same trick works in reverse too. If you're deep in Claude Code and hit a weird problem, switch to Chat, paste the code, ask Chat to <em>think about it out loud</em> at a higher level. Chat is better for strategy, Code is better for execution. <strong>Pingpong them.</strong></p>
+
     </div>`
   },
   {
-    tag: '10 - HTML Files', leftTitle: "What Claude actually makes when you're in Chat.", num: '10', vid: 'Lesson 10: What is an HTML file',
+    tag: '15 - HTML Files', leftTitle: "What Claude actually makes when you're in Chat.", num: '15', vid: 'Lesson 15: What is an HTML file',
     html: `
     <h1 class="l-head">When Claude builds you something in Chat, here's what it is.</h1>
     <p class="l-sub">It's called an HTML file. It's way less scary than it sounds.</p>
@@ -201,11 +533,23 @@ const lessons: Lesson[] = [
         <li>Making something just for yourself that doesn't need to be public</li>
       </ul>
       <p>When you're ready for it to be real and live on the internet, that's when you use Claude Code and deploy it. Which is exactly what we cover next.</p>
-      <div class="ss">[ Screenshot: HTML file in Finder on left, what it looks like when opened in browser on right ]</div>
-    </div>`
+      <figure class="lesson-photo">
+        <img src="/lesson-html-file.jpg" alt="An HTML file I built opened in Safari. The URL bar shows file:///Users/ayla/Downloads/ai-gap-animation.html" />
+        <figcaption>See the URL at the top? <code>file:///Users/ayla/Downloads/...</code>. That means it's not on the internet. It's just a file Claude made me, sitting in my Downloads, open in a browser.</figcaption>
+      </figure>
+          <div class="exercise" data-exercise-id="ex-11a-htmlfile">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Build it now · 10 min
+        </div>
+        <div class="exercise-title">Make your first HTML file.</div>
+        <div class="exercise-body">In any chat, paste:<div class="q">Make me a pretty single-page HTML website that says &ldquo;Hi, I&rsquo;m [your name]&rdquo; and has a paragraph about me. Soft pink, feminine, not basic.</div>Download the file. Double-click it. Watch your browser open your actual website. <br><br>That file is only on your computer. Nobody else can see it. That&rsquo;s the point of this lesson.</div>
+        <button class="exercise-done" data-exercise-id="ex-11a-htmlfile">I did it →</button>
+      </div>
+</div>`
   },
   {
-    tag: '11 - Deploying', leftTitle: 'Homebrew. GitHub. Vercel. Your three best friends.', num: '11', vid: 'Lesson 11: Putting it live',
+    tag: '16 - Deploying', leftTitle: 'Homebrew. GitHub. Vercel. Your three best friends.', num: '16', vid: 'Lesson 16: Putting it live',
     html: `
     <h1 class="l-head">Homebrew. GitHub. Vercel.</h1>
     <p class="l-sub">Three tools that get your website live on the actual internet. Here's what each one is and how to install them.</p>
@@ -214,7 +558,24 @@ const lessons: Lesson[] = [
       <div class="callout"><div class="callout-tag">Homebrew</div>A tool you install on your Mac that makes it possible to install other tools. Even developers can't fully explain what it does under the hood. You just need it installed before anything else works. It's the foundation. Install it first, don't question it.</div>
       <div class="callout"><div class="callout-tag">GitHub</div>Cloud storage for code. Think of it like Google Drive but specifically for your project's code. It holds everything so Vercel can find it and put it live.</div>
       <div class="callout"><div class="callout-tag">Vercel</div>The thing that actually puts your site live on the internet. It reads your code from GitHub and hosts it for free. This is what I use for aylablumberg.com and everything else I build. Once it's on Vercel, you can buy a real domain name on GoDaddy and point it there so it has a real address.</div>
-      <div class="divider"><span>How to install all three</span></div>
+      <div class="divider"><span>The Vercel part, step by step</span></div>
+
+      <p>Vercel is the piece students get most confused on. Here&rsquo;s the full walkthrough so you don&rsquo;t have to guess.</p>
+
+      <ol class="steps">
+        <li><div><strong>Go to vercel.com and click &ldquo;Sign Up.&rdquo;</strong> Use <strong>Continue with GitHub</strong>. If you don&rsquo;t have a GitHub account yet, make one first. Vercel and GitHub are linked: your code lives in GitHub, Vercel reads it and puts it live.</div></li>
+        <li><div><strong>Pick the Hobby (free) plan.</strong> Plenty for anything in this course.</div></li>
+        <li><div><strong>Let Claude Code push your project to GitHub for you.</strong> In Claude Code, type: <em>&ldquo;push this to a new private GitHub repo called [name].&rdquo;</em> Claude creates the repo, pushes the code, and hands you the URL.</div></li>
+        <li><div><strong>Back on Vercel, click &ldquo;Add New &rsaquo; Project.&rdquo;</strong> Pick the GitHub repo you just pushed. Hit <strong>Import</strong>.</div></li>
+        <li><div><strong>Click the pink Deploy button.</strong> Don&rsquo;t touch any of the settings. Wait about 60 seconds.</div></li>
+        <li><div><strong>Open the URL.</strong> It&rsquo;ll look like <code>yourproject.vercel.app</code>. That&rsquo;s your real site, live on the actual internet, that anyone in the world can visit right now.</div></li>
+      </ol>
+
+      <p><strong>Every time you make a change</strong>, tell Claude Code: <em>&ldquo;push this to GitHub and redeploy.&rdquo;</em> Vercel watches your repo, notices the change, and auto-redeploys in a minute. You don&rsquo;t touch anything.</p>
+
+      <div class="callout"><div class="callout-tag">Want a real domain like yourname.com?</div>Buy one on <strong>GoDaddy</strong> or <strong>Namecheap</strong> (about $12/year). In Vercel: your project &rsaquo; Settings &rsaquo; Domains &rsaquo; Add. Vercel literally tells you exactly what DNS records to paste into GoDaddy. Wait a few minutes. Your domain points to your site.</div>
+
+      <div class="divider"><span>Installing the helper tools (for later, more advanced stuff)</span></div>
       <p>Open Terminal on your Mac (press Command + Space, type "Terminal", hit Enter). Then paste these one at a time and hit Enter after each:</p>
       <p><strong>Step 1: Install Homebrew</strong></p>
       <div class="code-wrap"><div class="code-block" data-code="cb1">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</div><button class="copy-btn" data-copy="cb1">Copy</button></div>
@@ -223,10 +584,28 @@ const lessons: Lesson[] = [
       <div class="code-wrap"><div class="code-block" data-code="cb2">brew install node gh &amp;&amp; npm install -g vercel</div><button class="copy-btn" data-copy="cb2">Copy</button></div>
       <p>If anything throws an error, paste the error message directly into Claude and it will tell you exactly what to do next. Claude is very good at debugging its own instructions.</p>
       <div class="ss">[ Diagram: Your computer to GitHub to Vercel to live website ]</div>
-    </div>`
+          <div class="exercise" data-exercise-id="ex-12a-homebrew">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Do this now · 15 min
+        </div>
+        <div class="exercise-title">Install Homebrew.</div>
+        <div class="exercise-body">Open Terminal (Cmd+Space, type &ldquo;Terminal&rdquo;). Paste the Homebrew install command you copied from this lesson. Hit Enter. Wait. It&rsquo;ll ask for your Mac password, type it (you won&rsquo;t see characters, that&rsquo;s normal). When it finishes, run the <strong>brew install node gh &amp;&amp; npm install -g vercel</strong> command. <br><br>If anything errors, copy the error straight into Claude and say &ldquo;what do I do.&rdquo; It&rsquo;ll fix it.</div>
+        <button class="exercise-done" data-exercise-id="ex-12a-homebrew">I did it →</button>
+      </div>
+      <div class="stuck-callout">
+        <div class="stuck-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="stuck-body">
+          <div class="stuck-title">Stuck? Just screenshot it.</div>
+          <p>If anything on this page or your screen doesn&rsquo;t make sense, <strong>take a screenshot, paste it into Claude, and type &ldquo;help, explain this and tell me exactly what to do.&rdquo;</strong> Works every time. You don&rsquo;t have to understand the words on your screen, Claude does.</p>
+        </div>
+      </div>
+</div>`
   },
   {
-    tag: '12 - Terminal', leftTitle: 'The black text window. Not as scary as it looks.', num: '12', vid: 'Lesson 12: Terminal demystified',
+    tag: '17 - Terminal', leftTitle: 'The black text window. Not as scary as it looks.', num: '17', vid: 'Lesson 17: Terminal demystified',
     html: `
     <h1 class="l-head">Terminal looks scary. It's really not.</h1>
     <p class="l-sub">You already opened it to install Homebrew. Basically a pro now.</p>
@@ -235,38 +614,134 @@ const lessons: Lesson[] = [
       <p>The workflow when you need it is simple: <strong>Claude tells you what to paste. You paste it. Terminal does something. You copy what Terminal says back to Claude.</strong> That's it. Back and forth.</p>
       <p>You'll know Terminal is done when the cursor comes back to a new line ending in a % symbol.</p>
       <div class="callout"><div class="callout-tag">How to mostly avoid Terminal</div>When you use Claude Code, you almost never have to touch Terminal. It handles everything itself. And if Claude ever tells you to go do something yourself, you can try saying "can you do that for me directly?" and it will often just handle it. But not always. Some things, like creating accounts or entering passwords, you have to do yourself for security reasons.</div>
-      <div class="ss">[ Screenshot: What Terminal looks like, with the % cursor visible ]</div>
-    </div>`
+
+      <div class="divider"><span>How you actually start Claude Code</span></div>
+      <p>This is the part nobody explains. Claude Code isn&rsquo;t a separate app you download. <strong>It lives inside Terminal.</strong> Here&rsquo;s how to open it:</p>
+      <ol>
+        <li>Open Terminal (Cmd + Space, type &ldquo;Terminal,&rdquo; hit return).</li>
+        <li>Type <code>claude</code> and press enter.</li>
+        <li>The first time you run it, Claude will pop open a browser window asking you to sign in with your Anthropic account. This is the authentication step &mdash; it&rsquo;s how Terminal proves you&rsquo;re actually you.</li>
+        <li>Sign in, approve, come back to Terminal. Done. You&rsquo;re inside Claude Code.</li>
+        <li>Now you just talk to it like normal: &ldquo;build me a landing page,&rdquo; &ldquo;fix this bug,&rdquo; whatever.</li>
+      </ol>
+
+      <div class="callout"><div class="callout-tag">Heads up on the browser auth</div>The browser sign-in happens the <em>first time only</em>. After that, <code>claude</code> just opens straight into a session. If you ever see the browser pop open later, it usually means your token expired (every few weeks). Just sign in again and you&rsquo;re back.</div>
+
+      <div class="callout"><div class="callout-tag">Wait &mdash; is this the same as the Claude app?</div>Nope. Two different things, both called &ldquo;Claude.&rdquo; <strong>Claude app</strong> (claude.ai website + the mobile app + the Mac app) is regular chat &mdash; what you use for thinking, writing, brainstorming. <strong>Claude Code</strong> (what you just opened with <code>claude</code> in Terminal) is the builder version &mdash; it can actually touch files on your computer and build things for you. Same brain, different powers. Use chat for thinking. Use Claude Code for shipping.</div>
+      <figure class="lesson-photo">
+        <img src="/lesson-terminal.jpg" alt="My Mac terminal running a Python script. You can see the percent prompt at the bottom." />
+        <figcaption>My actual terminal while one of my agents was running. Don't panic at the red error, that's just a warning. The line <code>ayla@Aylas-MacBook-Air-2021 website-bot %</code> is the <strong>%</strong> prompt I was talking about. That's how you know it's ready.</figcaption>
+      </figure>
+          <div class="stuck-callout">
+        <div class="stuck-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="stuck-body">
+          <div class="stuck-title">Stuck? Just screenshot it.</div>
+          <p>If anything on this page or your screen doesn&rsquo;t make sense, <strong>take a screenshot, paste it into Claude, and type &ldquo;help, explain this and tell me exactly what to do.&rdquo;</strong> Works every time. You don&rsquo;t have to understand the words on your screen, Claude does.</p>
+        </div>
+      </div>
+</div>`
   },
   {
-    tag: '13 - API Keys', leftTitle: 'The thing that connects Claude to every other app.', num: '13', vid: 'Lesson 13: API keys',
+    tag: '18 - API Keys', leftTitle: 'The thing that connects Claude to every other app.', num: '18', vid: 'Lesson 18: API keys',
     html: `
     <h1 class="l-head">API keys: how Claude connects to other apps.</h1>
     <p class="l-sub">The moment you want Claude to touch Gmail, Instagram, Canva, or anything else, you need one of these.</p>
     <div class="l-body">
       <p><strong>Technically:</strong> an API key is a long string of random letters and numbers that acts as a private password between two apps. It tells the other app "yes, this person's Claude is allowed to come in and do things here."</p>
       <p><strong>The real-life analogy:</strong> think of it like a hotel key card. The hotel (Gmail, Canva, whatever) gives you a card that only works for your room. You hand that card to Claude, and now Claude can get into your room and do things on your behalf. The hotel doesn't let just anyone in without the card.</p>
+      <figure class="diagram-figure">
+        <svg class="diagram-svg" viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An API key flow: Claude uses your key to talk to another app">
+          <defs>
+            <marker id="arr-api" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#c41f5a"/>
+            </marker>
+          </defs>
+          <text x="340" y="26" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" letter-spacing="2" font-weight="600" fill="#888">HOW AN API KEY ACTUALLY WORKS</text>
+
+          <!-- Claude circle -->
+          <circle cx="90" cy="130" r="48" fill="#c41f5a"/>
+          <text x="90" y="127" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#fff">Claude</text>
+          <text x="90" y="144" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#fff" opacity="0.85">(you)</text>
+
+          <!-- key icon between -->
+          <g transform="translate(180,115)">
+            <rect x="0" y="0" width="130" height="32" rx="6" fill="#fff1f5" stroke="#c41f5a" stroke-width="1.5"/>
+            <text x="65" y="20" text-anchor="middle" font-family="SF Mono, monospace" font-size="11" font-weight="600" fill="#c41f5a">sk-ant-api03-x9•••</text>
+            <text x="65" y="-6" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#888">your api key</text>
+          </g>
+
+          <!-- arrow -->
+          <path d="M140 130 H 175" fill="none" stroke="#c41f5a" stroke-width="1.5" marker-end="url(#arr-api)"/>
+          <path d="M315 130 H 480" fill="none" stroke="#c41f5a" stroke-width="1.5" marker-end="url(#arr-api)"/>
+
+          <!-- The other app -->
+          <rect x="485" y="80" width="170" height="100" rx="12" fill="#fff" stroke="#c41f5a" stroke-width="1.5"/>
+          <text x="570" y="120" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#c41f5a">The other app</text>
+          <text x="570" y="138" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#555">Gmail, Stripe,</text>
+          <text x="570" y="154" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#555">Apify, anything</text>
+
+          <text x="340" y="205" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#888" font-style="italic">the key is proof. &ldquo;yes, Claude is allowed in on my behalf.&rdquo;</text>
+        </svg>
+      </figure>
       <div class="callout"><div class="callout-tag">Why you never paste API keys publicly</div>If someone else gets your key card, they can walk into your room, charge things to your account, and access everything in it. Same with API keys. If yours leaks into a screenshot, a public Google Doc, a group chat, or anywhere someone else can see it, they can use that app as if they're you. Rack up charges. Access your data. Make a mess. API keys only go inside your own private Claude setup. Nowhere else, ever.</div>
       <p>Claude will always tell you when you need a key and where to go get it. Just follow its steps. It walks you through everything.</p>
-      <div class="ss">[ Screenshot: Example of where to find an API key in an app dashboard ]</div>
-    </div>`
+      <figure class="lesson-photo">
+        <img src="/lesson-api-keys.jpg" alt="My Supabase dashboard showing the API URL page with a copy button" />
+        <figcaption>Real example. This is Supabase (the database I use for this site). You click around in their dashboard until you find the <strong>API URL</strong> box, hit <em>Copy</em>, and paste it into Claude. That's it. That's the whole process, every time.</figcaption>
+      </figure>
+          <div class="exercise" data-exercise-id="ex-14a-getkey">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Do it now · 5 min
+        </div>
+        <div class="exercise-title">Grab your first API key.</div>
+        <div class="exercise-body">Go to <strong>console.anthropic.com</strong>. Sign in. Click <strong>API Keys</strong>. Click <strong>Create Key</strong>. Copy it. Paste it into a notes app you trust. <br><br>You just got the key that unlocks everything in the agents section. Don&rsquo;t lose it. Don&rsquo;t share it.</div>
+        <button class="exercise-done" data-exercise-id="ex-14a-getkey">I did it →</button>
+      </div>
+</div>`
   },
   {
-    tag: '14 - Real APIs', leftTitle: 'Specific APIs you will actually end up using.', num: '14', vid: 'Lesson 14: Gmail, Apify, and more',
+    tag: '19 - Real APIs', leftTitle: 'Specific APIs you will actually end up using.', num: '19', vid: 'Lesson 19: Gmail, Apify, and more',
     html: `
     <h1 class="l-head">The APIs you'll actually care about.</h1>
-    <p class="l-sub">Here are the ones that come up constantly when building real things.</p>
+    <p class="l-sub">Plus the newer options that are making APIs less painful.</p>
     <div class="l-body">
-      <div class="callout"><div class="callout-tag">Gmail API</div>Lets Claude send emails from your Gmail, read incoming messages, and respond to them. If you're building any outreach system, automated follow-up tool, or client communication system, this is the one you need. You get the key through Google Cloud Console. Claude walks you through it.</div>
+      <p>Before we list the specific apps, you should know there are now <strong>three different ways</strong> Claude can talk to other tools. Use whichever is easiest for what you need.</p>
+
+      <div class="callout"><div class="callout-tag">1. APIs (the classic way)</div>Every app has an API, a private door for other programs to come in and do things. You grab an API key, hand it to Claude, and Claude uses it to send emails from your Gmail, scrape data from Apify, charge a card on Stripe, whatever. Most of this course uses APIs. <strong>Works for almost everything, but you have to copy-paste keys and sometimes debug errors.</strong></div>
+
+      <div class="callout"><div class="callout-tag">2. MCPs (Model Context Protocol)</div>A newer standard built specifically for AI. Instead of Claude learning a custom integration for every app, the app exposes something called an MCP server, and Claude already knows how to use it. <strong>Think USB vs. a thousand custom cables.</strong> Tools like Notion, Linear, Figma, Slack now have official MCP servers you can plug into Claude Desktop or Claude Code with one command. You only have to know about MCPs if you want to use them, but you'll see the word a lot.</div>
+
+      <div class="callout"><div class="callout-tag">3. Connectors (the easiest way, right now)</div>Claude has a built-in menu inside the app called "Connectors." Gmail, Google Drive, Calendar, more get added every month. You click "Enable," sign in once, and Claude can use them directly in chats. <strong>No API key copy-paste. No installation.</strong> If there's a Connector for what you need, always use it first.</div>
+
+      <div class="callout"><div class="callout-tag">Rule of thumb</div>Check for a <strong>Connector</strong> first (easiest). If none, look for an <strong>MCP server</strong> (still easy). If neither, use the <strong>API</strong> directly (always works, just more setup). Claude will always tell you which option is available for what you're trying to build.</div>
+
+      <div class="divider"><span>The actual APIs you'll use the most</span></div>
+
+      <div class="callout"><div class="callout-tag">Gmail API</div>Lets Claude send emails from your Gmail, read incoming messages, and respond to them. If you're building any outreach system, automated follow-up tool, or client communication system, this is the one you need. You get the key through Google Cloud Console. Claude walks you through it. <em>(Also available as a Connector in Claude, so try that first.)</em></div>
       <div class="callout"><div class="callout-tag">Apify</div>Apify scrapes data from the internet. TikTok comments, Instagram follower info, business listings from Google Maps, anything on a website. If you want to know what people are saying about something online or you need a list of leads from a platform, Apify is how you get that data. One of the most useful tools once you start building anything marketing or outreach related.</div>
       <div class="callout"><div class="callout-tag">Canva API</div>Lets Claude create and edit designs in Canva automatically. Useful if you want to generate batches of graphics or build something that makes designs based on inputs without you doing it manually every time.</div>
       <div class="callout"><div class="callout-tag">Anthropic API</div>Claude's own API. This is the one you use when you start building agents, because it gives your agent access to Claude's intelligence. It's the brain you plug in to power the whole system. You get the key at console.anthropic.com.</div>
       <p>For every one of these, the process is the same: find the API key in that app's settings or developer dashboard, paste it into your Claude setup when prompted, and Claude handles the connection from there.</p>
-      <div class="ss">[ Screenshot: Where to find Gmail API key + Apify API key ]</div>
+      <figure class="lesson-photo">
+        <img src="/lesson-gmail-setup.jpg" alt="Terminal showing the Gmail API setup error with the five steps Claude gave me to fix it" />
+        <figcaption>Real moment from when I was setting up the Gmail API for my outreach agent. It errored, I pasted the error into Claude, it gave me the 5 steps you see here. That's the loop.</figcaption>
+      </figure>
+          <div class="exercise" data-exercise-id="ex-19-connect">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Do it now &middot; 3 min
+        </div>
+        <div class="exercise-title">Turn on one Connector.</div>
+        <div class="exercise-body">Open Claude Desktop. Click your avatar (bottom left) &rarr; <strong>Connectors</strong>. Pick one, Gmail is the easiest if you use it. Click <strong>Enable</strong>, sign in through Google, come back. <br><br>Now try asking Claude in a new chat: <em>"what's the latest email from [someone] about?"</em> It'll answer. That's an API talking, without you ever seeing a key.</div>
+        <button class="exercise-done" data-exercise-id="ex-19-connect">I did it &rarr;</button>
+      </div>
     </div>`
   },
   {
-    tag: '15 - Selling Online', leftTitle: 'How to actually take money from people on your site.', num: '15', vid: 'Lesson 15: Selling online with Stripe',
+    tag: '20 - Selling Online', leftTitle: 'How to actually take money from people on your site.', num: '20', vid: 'Lesson 20: Selling online with Stripe',
     html: `
     <h1 class="l-head">Okay. So how do people actually buy things from you?</h1>
     <p class="l-sub">The answer is Stripe. And Claude knows exactly how to wire it up.</p>
@@ -280,11 +755,57 @@ const lessons: Lesson[] = [
       <div class="callout"><div class="callout-tag">2. Prices</div>Each product has one or more prices attached to it. You can charge $39 one time. Or $10 a month. Or $100 a year. Stripe calls these "prices" and gives each one a unique ID.</div>
       <div class="callout"><div class="callout-tag">3. Checkout</div>The page where your customer enters their card info. Stripe gives you a pre-built, pretty, secure checkout page for free, you just tell it what price ID to charge.</div>
       <p>You build the site. Claude wires up the checkout. Money comes in. That's the whole model.</p>
-      <div class="ss">[ Screenshot: Stripe dashboard products page ]</div>
-    </div>`
+      <figure class="diagram-figure">
+        <svg class="diagram-svg" viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How Stripe money flow works: customer pays, Stripe handles it, money lands in your bank">
+          <defs>
+            <marker id="arr-stripe" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#c41f5a"/>
+            </marker>
+          </defs>
+          <text x="340" y="24" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" letter-spacing="2" font-weight="600" fill="#888">HOW THE MONEY ACTUALLY GETS TO YOU</text>
+
+          <!-- Customer -->
+          <rect x="20" y="80" width="140" height="80" rx="12" fill="#fff1f5" stroke="#c41f5a" stroke-width="1.5"/>
+          <text x="90" y="116" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#c41f5a">your customer</text>
+          <text x="90" y="136" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#555">types card info</text>
+
+          <!-- arrow 1 -->
+          <path d="M160 120 H 210" fill="none" stroke="#c41f5a" stroke-width="1.5" marker-end="url(#arr-stripe)"/>
+
+          <!-- Stripe -->
+          <rect x="215" y="80" width="160" height="80" rx="12" fill="#c41f5a" stroke="#c41f5a" stroke-width="1.5"/>
+          <text x="295" y="110" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#fff">Stripe</text>
+          <text x="295" y="128" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#fff" opacity="0.85">charges the card,</text>
+          <text x="295" y="142" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#fff" opacity="0.85">keeps 2.9% + 30&cent;</text>
+
+          <!-- arrow 2 -->
+          <path d="M375 120 H 425" fill="none" stroke="#c41f5a" stroke-width="1.5" marker-end="url(#arr-stripe)"/>
+
+          <!-- Bank -->
+          <rect x="430" y="80" width="200" height="80" rx="12" fill="#fff" stroke="#c41f5a" stroke-width="1.5"/>
+          <text x="530" y="110" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#c41f5a">your bank</text>
+          <text x="530" y="128" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#555">money lands in</text>
+          <text x="530" y="144" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#555">2-3 business days</text>
+
+          <text x="340" y="195" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#888" font-style="italic">you never touch a credit card. you never store card info. Stripe does all of it.</text>
+        </svg>
+      </figure>
+      <figure class="lesson-photo">
+        <div style="background: var(--pink-pale); border-radius: 12px; padding: 28px 20px; text-align: center; color: var(--pink); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; font-weight: 300;">[ Drop a Stripe dashboard Products screenshot at /public/lesson-stripe-products.jpg to replace this block ]</div>
+      </figure>
+          <div class="exercise" data-exercise-id="ex-16a-stripe">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Do it now · 10 min
+        </div>
+        <div class="exercise-title">Create a Stripe account.</div>
+        <div class="exercise-body">Go to <strong>stripe.com</strong>. Sign up with your email. Flip on <strong>Test mode</strong> (top right). Click <strong>Product catalog</strong> &rarr; <strong>Add product</strong>. Name it anything. Set a test price ($1 or $39, whatever). Save. <br><br>You just have the infrastructure to accept money. Cool.</div>
+        <button class="exercise-done" data-exercise-id="ex-16a-stripe">I did it →</button>
+      </div>
+</div>`
   },
   {
-    tag: '16 - Stripe Walkthrough', leftTitle: 'Actually setting it up. Step by step.', num: '16', vid: 'Lesson 16: Stripe setup walkthrough',
+    tag: '21 - Stripe Walkthrough', leftTitle: 'Actually setting it up. Step by step.', num: '21', vid: 'Lesson 21: Stripe setup walkthrough',
     html: `
     <h1 class="l-head">Let's actually wire up Stripe.</h1>
     <p class="l-sub">This is the exact same flow I used to set up payments for this course.</p>
@@ -304,42 +825,112 @@ const lessons: Lesson[] = [
       <div class="callout"><div class="callout-tag">Test mode vs. live mode</div>Always test in test mode first. Stripe gives you fake card numbers (like <strong>4242 4242 4242 4242</strong>) you can use to fake a successful payment. Once everything works in test mode, flip the switch to live mode, get new keys, get new price IDs, and paste those in. Then you're live.</div>
       <p>One more thing: Stripe handles taxes, receipts, refunds, and disputes through its dashboard. You barely have to think about any of it once it's set up. Customers pay. Money lands in your bank account 2-3 days later. That's the loop.</p>
       <div class="ss">[ Screenshot: Stripe checkout page on mobile ]</div>
-    </div>`
+          <div class="exercise" data-exercise-id="ex-17a-checkout">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Build it now · 20 min
+        </div>
+        <div class="exercise-title">Add Stripe checkout to something.</div>
+        <div class="exercise-body">In Claude Code, with a site open (doesn&rsquo;t matter what, even your HTML file from lesson 11), paste:<div class="q">Add a Stripe checkout button for my price_XXX. When clicked, go to Stripe&rsquo;s hosted page. Redirect to /thanks on success. Also set up the webhook.</div>When it asks for your keys, paste them. Walk through whatever it prompts. Test with card <strong>4242 4242 4242 4242</strong>. <br><br>You just built an actual payment flow.</div>
+        <button class="exercise-done" data-exercise-id="ex-17a-checkout">I did it →</button>
+      </div>
+      <div class="stuck-callout">
+        <div class="stuck-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="stuck-body">
+          <div class="stuck-title">Stuck? Just screenshot it.</div>
+          <p>If anything on this page or your screen doesn&rsquo;t make sense, <strong>take a screenshot, paste it into Claude, and type &ldquo;help, explain this and tell me exactly what to do.&rdquo;</strong> Works every time. You don&rsquo;t have to understand the words on your screen, Claude does.</p>
+        </div>
+      </div>
+</div>`
   },
   {
-    tag: "17 - When It's Wrong", leftTitle: "Claude will mess up. Here's exactly what to do.", num: '17', vid: 'Lesson 17: Course correcting',
+    tag: '22 - Your First Client', leftTitle: 'From zero to a paid invoice. The tactical version.', num: '22', vid: 'Lesson 22: How to actually get hired',
     html: `
-    <h1 class="l-head">Claude will get it wrong sometimes.</h1>
-    <p class="l-sub">This is completely normal and it happens to everyone including me constantly.</p>
+    <h1 class="l-head">How to find your first paying client.</h1>
+    <p class="l-sub">The actual tactics, not the LinkedIn platitudes.</p>
     <div class="l-body">
-      <p>Claude is going to misunderstand you, build the wrong thing, go off on a tangent, or give you something that's close but not quite right. This is just part of the process. Don't let it spiral you out.</p>
-      <p>What actually helps when something goes wrong:</p>
+      <p>Most tutorials are vague on this. &ldquo;Network!&rdquo; &ldquo;Post on social media!&rdquo; Cool. I&rsquo;ll be specific.</p>
+      <p>First, know <strong>what you&rsquo;re selling.</strong> You don&rsquo;t need to be an &ldquo;AI consultant.&rdquo; You need <strong>one specific thing a specific person will pay for.</strong> Here are things students have actually sold:</p>
       <ul>
-        <li><strong>Be specific about what's wrong.</strong> Not "this is bad" but "the colors are wrong, I wanted pink not purple, the button needs to be on the right side, and the font is too small."</li>
-        <li><strong>Send a screenshot.</strong> If something on your screen doesn't make sense or you got an error you don't understand, paste a screenshot directly into the chat and say "what is this and what do I do." Claude will read it and tell you exactly what's happening.</li>
-        <li><strong>Ask for simpler instructions.</strong> If it's explaining something too technically, say "explain this like I'm in 8th grade" and it will break it all the way down.</li>
-        <li><strong>Start fresh if needed.</strong> Sometimes a conversation gets so tangled that it's faster to open a new chat and be more specific from the beginning. That's not failure, it's just efficiency. Happens to me all the time.</li>
+        <li><strong>Websites for local businesses</strong> without one ($500 to $2,500 each)</li>
+        <li><strong>Personal portfolio sites</strong> for people in creative fields ($200 to $800)</li>
+        <li><strong>Automated cold outreach systems</strong> for sales teams ($1,500 to $5,000)</li>
+        <li><strong>Content generators</strong> for creators who post daily ($300 to $1,200 a month)</li>
+        <li><strong>Proposal factories</strong> for agencies who write a lot of proposals ($800 to $2,500)</li>
+        <li><strong>Booking / scheduling automations</strong> for service businesses</li>
+        <li><strong>Lead lists</strong> scraped + enriched for early-stage startups ($500 to $2,000)</li>
+        <li><strong>Internal AI dashboards</strong> (trackers, pipelines) for small teams</li>
+        <li><strong>Agent teams</strong> that run a whole function (outreach, support, content) &mdash; premium pricing</li>
       </ul>
-      <p>You're the director. Claude is the production team. When the scene isn't right, you give specific notes on what to change. That's the whole relationship.</p>
-      <div class="ss">[ Screenshot: Example of a bad first output vs the corrected version after feedback ]</div>
+      <p>Pick one. Literally one. You can diversify later. Right now you need a clear answer when someone asks &ldquo;what do you do?&rdquo;</p>
+
+      <div class="divider"><span>The three places I actually get clients</span></div>
+
+      <div class="callout"><div class="callout-tag">1. Local businesses without websites</div>Google Maps your city for [type of business]. Filter for ones without websites listed. Walk in, DM, or email the owner. Script: &ldquo;Hi, I build small websites for businesses like yours in [city]. Most of my clients pay around $[X]. Want one?&rdquo; Do this 60 times. At least three say yes.</div>
+
+      <div class="callout"><div class="callout-tag">2. Instagram DMs to creators</div>Find creators (20k-200k followers) whose vibe you like. Look for the ones <strong>without sponsorships yet</strong> or with outdated media kits. Slide in with something specific: &ldquo;Saw your last 3 posts, your vibe is [X]. I built a tool that does [Y] in your exact style. Want to see it?&rdquo; Show, don&rsquo;t pitch.</div>
+
+      <div class="callout"><div class="callout-tag">3. Your own network</div>You have more contacts than you think. Post one thing on Instagram: &ldquo;Taking 3 clients this month to build [specific thing] for $[X]. DM me.&rdquo; Tag nobody. Let it breathe. Somebody in your circle has been waiting for exactly this.</div>
+
+      <p>My first paying client came from option 3. <strong>$400 to build her a personal website.</strong> That was it. Then she told two friends. Then I raised my prices. That&rsquo;s the whole arc.</p>
+
+      <div class="callout"><div class="callout-tag">The one rule</div>Don&rsquo;t undersell. Your first client sets your pricing anchor. Pick a number that feels <em>slightly</em> uncomfortable. That&rsquo;s the right price.</div>
+
+      <div class="exercise" data-exercise-id="ex-22-outreach">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Do it today &middot; 15 min
+        </div>
+        <div class="exercise-title">Send one outreach message.</div>
+        <div class="exercise-body">Pick ONE of the three channels above. Write to ONE person. Use this prompt to draft it: <div class="q">Draft a 3-sentence outreach message to a [local business / creator / person in my network] offering to build them [X]. Specific, warm, no buzzwords. Pricing: $[number]. Use my real voice, casual, lowercase.</div> Paste Claude&rsquo;s draft. Tweak one line so it sounds like you. Send it. That&rsquo;s the exercise.</div>
+        <button class="exercise-done" data-exercise-id="ex-22-outreach">I sent it &rarr;</button>
+      </div>
     </div>`
   },
   {
-    tag: '18 - Stay Organized', leftTitle: "Projects and staying in the right chat. More important than you'd think.", num: '18', vid: 'Lesson 18: Organizing your work',
+    tag: '23 - Proposal vs Contract', leftTitle: 'Two different documents. Both matter.', num: '23', vid: 'Lesson 23: Closing the deal properly',
     html: `
-    <h1 class="l-head">Organization actually matters here.</h1>
-    <p class="l-sub">Claude only knows what's in the current chat. Use that to your advantage.</p>
+    <h1 class="l-head">Proposal vs. contract.</h1>
+    <p class="l-sub">People confuse these constantly. They do totally different things.</p>
     <div class="l-body">
-      <p>Claude doesn't carry anything between separate chats. Start a new conversation and it has no idea who you are, what you've been building, or what you discussed before. Every new chat is a blank slate.</p>
-      <p>This is why how you structure your work really matters.</p>
-      <div class="callout"><div class="callout-tag">Rule 1: Stay in the same chat</div>If you're actively building something, don't start a new chat in the middle of it. Keep going in the same one. Claude remembers everything you've discussed throughout that conversation. Starting over means it forgets everything and you have to re-explain your whole project.</div>
-      <div class="callout"><div class="callout-tag">Rule 2: Use Projects</div>Claude has a Projects feature that groups related chats together and lets you add notes Claude always has access to, like a permanent briefing. Set up a Project for anything ongoing. Name it clearly. Keep all related chats inside it. This is the closest thing Claude has to actually remembering you.</div>
-      <div class="callout"><div class="callout-tag">Rule 3: Always check which chat you're in</div>This sounds obvious but I've made this mistake more than once. Before you start typing, make sure you're in the right chat for the right project. Starting in the wrong place means Claude has no context and you'll waste time re-explaining everything.</div>
-      <div class="ss">[ Screenshot: Claude Projects feature, how to create and name a project ]</div>
+      <p>When you&rsquo;re about to work with a client, there are two documents flying around. Most beginners only do one and get burned. Do both.</p>
+
+      <div class="callout"><div class="callout-tag">The Proposal</div><strong>A sales document.</strong> You send it <em>before</em> they say yes. It explains what you&rsquo;ll do, when, for how much. Its job is to close the deal. It&rsquo;s allowed to be pretty. It&rsquo;s allowed to talk about why you&rsquo;re the right person. Think of it as your pitch in written form. It&rsquo;s not legally binding.</div>
+
+      <div class="callout"><div class="callout-tag">The Contract</div><strong>A legal document.</strong> You send it <em>after</em> they say yes, before any work starts. It protects both of you. Payment terms, cancellation, what happens if scope changes, who owns the final work, what happens if one of you ghosts. Boring by design. It is legally binding.</div>
+
+      <p>Order: <strong>proposal closes the deal. Contract protects the deal.</strong> You need both.</p>
+
+      <div class="divider"><span>What to put in the proposal</span></div>
+      <ul>
+        <li><strong>One-line summary</strong> &mdash; what you&rsquo;re building, in plain English</li>
+        <li><strong>Scope</strong> &mdash; what&rsquo;s included and (crucial) what&rsquo;s NOT included</li>
+        <li><strong>Timeline</strong> &mdash; realistic, with a little buffer</li>
+        <li><strong>Price</strong> &mdash; fixed amount or hourly rate + estimated hours</li>
+        <li><strong>Deliverables</strong> &mdash; bullet list of what they&rsquo;ll actually receive</li>
+        <li><strong>Why me</strong> &mdash; one paragraph. Don&rsquo;t oversell.</li>
+        <li><strong>Next steps</strong> &mdash; &ldquo;reply if this looks right and I&rsquo;ll send the contract + invoice.&rdquo;</li>
+      </ul>
+
+      <div class="divider"><span>What to put in the contract</span></div>
+      <ul>
+        <li><strong>Names &amp; dates</strong> (you, them, start, end)</li>
+        <li><strong>Payment schedule</strong> (50% upfront, 50% on delivery is standard)</li>
+        <li><strong>What happens if they change the scope</strong> (my rule: &ldquo;1 round of revisions included, additional revisions billed at $X&rdquo;)</li>
+        <li><strong>What happens if they cancel</strong> (deposit non-refundable, remaining work billed pro rata)</li>
+        <li><strong>Who owns the final work</strong> (usually them, once paid in full)</li>
+        <li><strong>How disputes get handled</strong> (one round of good-faith discussion, then mediation)</li>
+      </ul>
+
+      <div class="callout"><div class="callout-tag">The easy way</div>Tell Claude: &ldquo;Write me a freelance proposal for [project] and a matching contract. Use $[X] total, [timeline], and these deliverables: [list]. Warm tone, not legalese on the proposal, clear on the contract.&rdquo; Two docs in 60 seconds. Edit the parts that don&rsquo;t sound like you.</div>
+
+      <p>One real tip: <strong>put the price in the proposal, not just the contract.</strong> A surprising number of deals die because the price was buried. Show it confidently on page 1. You&rsquo;re not embarrassed, they shouldn&rsquo;t be either.</p>
     </div>`
   },
   {
-    tag: "19 - What's Next", leftTitle: 'Agents. The thing that makes this go from a tool to a business.', num: '19', vid: 'Lesson 19: What agents are',
+    tag: '24 - Agents', leftTitle: 'Agents. The thing that makes this go from a tool to a business.', num: '24', vid: 'Lesson 24: What agents are',
     html: `
     <h1 class="l-head">Agents: Claude doing things on its own.</h1>
     <p class="l-sub">Everything in this course was the foundation. Here's where it gets actually wild.</p>
@@ -355,9 +946,367 @@ const lessons: Lesson[] = [
       <p>Building agents uses the exact same skills you've been practicing this whole course: talking clearly, being specific, and iterating when something isn't right. It's just more layers on top of what you already know.</p>
       <div class="a-quote">"My outreach system finds businesses without websites, builds them a site, and sends a cold email every single morning. I didn't write any code. I just explained what I wanted and kept refining it."</div>
       <p>Agents are what take this from a useful tool to a business. They're how you do the work of a whole team by yourself. They're the next level, and you're ready to start going there.</p>
-      <div class="callout"><div class="callout-tag">You're done. Go build something.</div>Open a new chat. Type "I want to build [your idea]. Ask me any clarifying questions before we start." That's literally it. That's the whole thing. Go.</div>
+
+      <div class="divider"><span>How I actually come up with agent ideas</span></div>
+
+      <p>Every agent I've built started the same way. I noticed I was doing the exact same annoying task over and over. Writing the same email. Checking the same sites. Tracking the same thing in a spreadsheet. <strong>That's the signal. If you do it more than twice a week, it's agent territory.</strong></p>
+
+      <p>From there I don't try to figure out the plan myself. I just open Claude and brain-dump it:</p>
+
+      <div class="chat-ex"><div class="bubble u">i keep doing [the annoying thing] manually and it's eating my time. help me think through whether this could be an agent. walk me through what it would need to do, what apps it would need to connect to, and what could go wrong. ask me clarifying questions first.</div></div>
+
+      <p>Claude turns into my co-founder for the next hour. It asks questions I wouldn't have thought of. It breaks the task into steps. It tells me which steps can be fully automated and which ones I'd need to keep doing myself. <strong>By the end of the chat I have a full spec</strong> &mdash; the order of operations, the integrations needed, the edge cases.</p>
+
+      <p>Only then do I build. I just paste back to Claude:</p>
+
+      <div class="chat-ex"><div class="bubble u">okay build me this agent. set up the API keys we need, write the code, and make it run every morning at 8am. walk me through each step as you go and ask me for any keys when you need them.</div></div>
+
+      <p>That's literally it. Claude writes the whole thing. I paste API keys when it asks, fix errors when they pop up (by screenshotting them back into Claude), and <strong>watch the agent start running while I do something else.</strong></p>
+
+      <div class="callout"><div class="callout-tag">The real trick</div>Don&rsquo;t try to design the agent in your head first. You&rsquo;ll get stuck. Describe the annoying task in plain English, let Claude interview you, and the agent design falls out of the conversation. <strong>You don&rsquo;t design agents. You describe problems.</strong></div>
+
+      <p>A few agents I&rsquo;ve built this way, just so you can see the range:</p>
+      <ul>
+        <li><strong>Cold outreach system</strong> &mdash; finds local businesses without websites, builds each one a preview site, and sends a personalized cold email every morning. Replies land in my Gmail. I just hit send on the ones I like.</li>
+        <li><strong>Prospect tracker</strong> &mdash; watches a Google Sheet of leads, re-scores them every night based on replies, moves them between stages, and pings me if a hot one goes cold.</li>
+        <li><strong>Content caption agent</strong> &mdash; reads my drafts folder, writes three caption options per video in my voice, and drops them into a doc for me to pick.</li>
+      </ul>
+      <p>None of these took more than a weekend. None of them required me to know what I was doing. <strong>Just me, Claude, and a clear description of what was annoying me.</strong></p>
+
+      <div class="divider"><span>Meet Elle &mdash; my personal agent</span></div>
+
+      <p>Before I show you my whole team, I want to zoom in on one agent specifically: <strong>Elle.</strong> She&rsquo;s my personal assistant agent and the one I talk to the most. If you take nothing else from this lesson, take this: <em>you should have an Elle.</em></p>
+
+      <div class="callout"><div class="callout-tag">Why I named her Elle Woods</div>I named her after Elle from Legally Blonde on purpose. Elle is what I want my assistant agent to be &mdash; warm, relentless, underestimated, and actually good at the job. She&rsquo;s not a robot checking off tasks. She&rsquo;s a team member who speaks in my voice, handles the boring stuff, and keeps me sane. Also &mdash; naming her matters. I know it sounds dumb, but you talk to her differently when she&rsquo;s Elle than when she&rsquo;s &ldquo;assistant.&rdquo; The name pulls a personality out of her.</div>
+
+      <p>What Elle actually does every day:</p>
+      <ul>
+        <li><strong>Morning brief at 8:10am.</strong> She pings me in Telegram with everything that happened overnight &mdash; which client replies came in, which automated tasks completed, what errored, what needs my eyes first. So I wake up and instead of opening 9 apps, I open Telegram and read one message from Elle.</li>
+        <li><strong>Error triage.</strong> When any of my other agents break, Elle is the first to know. She screenshots the error, tags the right fixer (usually Gabriella), and tells me whether I can ignore it or need to jump in.</li>
+        <li><strong>Status on demand.</strong> I can text her anytime: &ldquo;how&rsquo;s the pipeline,&rdquo; &ldquo;any client replies today,&rdquo; &ldquo;did the cron run,&rdquo; &ldquo;summarize the week.&rdquo; She answers in 10 seconds. That&rsquo;s what I mean by &ldquo;personal agent&rdquo; &mdash; she&rsquo;s the front door to everything else.</li>
+        <li><strong>Free-text help.</strong> I can also just vent to her. &ldquo;Elle I&rsquo;m stressed about X what should I do.&rdquo; Because I gave her context about my business, she gives actually useful answers.</li>
+      </ul>
+
+      <p>Elle runs on a Mac launch agent called <code>com.ayla.elle-telegram</code> that I set up once and haven&rsquo;t touched since. She uses Claude&rsquo;s API to think, Telegram&rsquo;s bot API to talk, and a tiny Postgres database to remember things across days.</p>
+
+      <div class="a-quote">&ldquo;Elle is the one you build first. She&rsquo;s the command center. Everything else is just another teammate she introduces to you.&rdquo;</div>
+
+      <div class="divider"><span>What my first real agent team looked like</span></div>
+
+      <p>About two weeks into learning Claude, I built a whole <strong>team</strong> around Elle for my web-design business. Each one has a specific job. They talk to each other, they report through Elle. Here&rsquo;s who they are:</p>
+
+      <figure class="diagram-figure">
+        <svg class="diagram-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent team hierarchy: you talk to Elle, Elle talks to everyone else">
+          <defs>
+            <marker id="arr-team" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#c41f5a"/>
+            </marker>
+          </defs>
+          <text x="340" y="22" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" letter-spacing="2" font-weight="600" fill="#888">YOU TALK TO ELLE. ELLE TALKS TO EVERYONE ELSE.</text>
+
+          <!-- YOU -->
+          <rect x="280" y="42" width="120" height="44" rx="22" fill="#c41f5a"/>
+          <text x="340" y="69" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#fff">you</text>
+
+          <!-- arrow down to Elle -->
+          <path d="M340 86 V 110" fill="none" stroke="#c41f5a" stroke-width="1.5" marker-end="url(#arr-team)"/>
+
+          <!-- ELLE -->
+          <rect x="265" y="114" width="150" height="50" rx="12" fill="#fff1f5" stroke="#c41f5a" stroke-width="1.5"/>
+          <text x="340" y="138" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#c41f5a">Elle</text>
+          <text x="340" y="154" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#888">chief of staff</text>
+
+          <!-- arrows to specialists -->
+          <path d="M290 164 Q 160 190, 90 215" fill="none" stroke="#c41f5a" stroke-width="1.2" marker-end="url(#arr-team)"/>
+          <path d="M310 164 Q 240 190, 215 215" fill="none" stroke="#c41f5a" stroke-width="1.2" marker-end="url(#arr-team)"/>
+          <path d="M340 164 V 215" fill="none" stroke="#c41f5a" stroke-width="1.2" marker-end="url(#arr-team)"/>
+          <path d="M370 164 Q 440 190, 465 215" fill="none" stroke="#c41f5a" stroke-width="1.2" marker-end="url(#arr-team)"/>
+          <path d="M390 164 Q 520 190, 590 215" fill="none" stroke="#c41f5a" stroke-width="1.2" marker-end="url(#arr-team)"/>
+
+          <!-- specialist boxes -->
+          <rect x="20" y="218" width="140" height="44" rx="10" fill="#fff" stroke="#c41f5a" stroke-width="1"/>
+          <text x="90" y="238" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="#c41f5a">Troy</text>
+          <text x="90" y="252" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#888">orchestrator</text>
+
+          <rect x="170" y="218" width="130" height="44" rx="10" fill="#fff" stroke="#c41f5a" stroke-width="1"/>
+          <text x="235" y="238" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="#c41f5a">Gabriella</text>
+          <text x="235" y="252" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#888">error fixer</text>
+
+          <rect x="308" y="218" width="110" height="44" rx="10" fill="#fff" stroke="#c41f5a" stroke-width="1"/>
+          <text x="363" y="238" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="#c41f5a">Sharpay</text>
+          <text x="363" y="252" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#888">aesthetic QA</text>
+
+          <rect x="428" y="218" width="130" height="44" rx="10" fill="#fff" stroke="#c41f5a" stroke-width="1"/>
+          <text x="493" y="238" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="#c41f5a">Barney</text>
+          <text x="493" y="252" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#888">lead gen</text>
+
+          <rect x="568" y="218" width="90" height="44" rx="10" fill="#fff" stroke="#c41f5a" stroke-width="1"/>
+          <text x="613" y="238" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="#c41f5a">Chad</text>
+          <text x="613" y="252" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#888">deploy</text>
+        </svg>
+      </figure>
+
+
+      <div class="agent-team">
+        <div class="agent-card"><div class="agent-head"><div class="agent-avatar">E</div><div><div class="agent-name">Elle</div><div class="agent-meta">Legally Blonde &middot; Chief of Staff</div></div></div><div class="agent-quote">&ldquo;Good morning. Two things resolved overnight. Three items need your eyes. What do you want first?&rdquo;</div></div>
+        <div class="agent-card"><div class="agent-head"><div class="agent-avatar">S</div><div><div class="agent-name">Sharpay</div><div class="agent-meta">HSM &middot; Aesthetic QA</div></div></div><div class="agent-quote">&ldquo;Rejected. The font pairing is giving budget PowerPoint. This is not going live. Do not show me this again until it&rsquo;s fixed.&rdquo;</div></div>
+        <div class="agent-card"><div class="agent-head"><div class="agent-avatar">G</div><div><div class="agent-name">Gabriella</div><div class="agent-meta">HSM &middot; Error Fixer</div></div></div><div class="agent-quote">&ldquo;288KB of base64 image data was getting crammed into every prompt. The drop logic thought it was removing them. Patched.&rdquo;</div></div>
+        <div class="agent-card"><div class="agent-head"><div class="agent-avatar">C</div><div><div class="agent-name">Chad</div><div class="agent-meta">HSM &middot; Deploy</div></div></div><div class="agent-quote">&ldquo;On it. Sites 2, 4, 5 deploying now. All live. Site 3 had a build timeout, flagged for Gabriella.&rdquo;</div></div>
+        <div class="agent-card"><div class="agent-head"><div class="agent-avatar">T</div><div><div class="agent-name">Taylor</div><div class="agent-meta">HSM &middot; Review &amp; Taste</div></div></div><div class="agent-quote">&ldquo;4 sites ready. I&rsquo;d approve #2 and #5, both polished. #1 borderline. #4 reject. Want me to auto-approve the good ones?&rdquo;</div></div>
+        <div class="agent-card"><div class="agent-head"><div class="agent-avatar">L</div><div><div class="agent-name">Lily</div><div class="agent-meta">HIMYM &middot; Client Intel</div></div></div><div class="agent-quote">&ldquo;Johnson brief: frequents certain local spots. Recent life events noted. Vibe: warm, modern, neighborhood-rooted. Lead with walkability.&rdquo;</div></div>
+        <div class="agent-card"><div class="agent-head"><div class="agent-avatar">B</div><div><div class="agent-name">Barney</div><div class="agent-meta">HIMYM &middot; Lead Gen</div></div></div><div class="agent-quote">&ldquo;12 outreach emails sent, 3 opened, 1 replied. The Garcias want a call. Flagged Ted to prep the brief. Legendary.&rdquo;</div></div>
+        <div class="agent-card"><div class="agent-head"><div class="agent-avatar">T</div><div><div class="agent-name">Troy</div><div class="agent-meta">HSM &middot; Orchestrator</div></div></div><div class="agent-quote">&ldquo;Pipeline: 6 sites generated. Sharpay approved 4, rejected 2. Gabriella fixed a font import bug. Taylor has 4 queued. Chad is holding for your call.&rdquo;</div></div>
+      </div>
+
+      <p class="agent-footnote"><em>Yes I named them after Legally Blonde, High School Musical, and How I Met Your Mother characters. Yes it&rsquo;s on brand. No I won&rsquo;t apologize.</em></p>
+
+      <figure class="agent-team-photo">
+        <img src="/agent-team.jpg" alt="A screenshot of my first real agent team, running in Telegram" />
+        <figcaption>My actual agent team. This is them running in Telegram, reporting back while I was still in bed.</figcaption>
+      </figure>
+
+      <div class="divider"><span>How agents actually talk to you</span></div>
+
+      <p>The question I get the most once someone understands agents: <em>&ldquo;so once it&rsquo;s running, how do I know what it did?&rdquo;</em></p>
+
+      <p><strong>Telegram.</strong> You set up a Telegram bot, give the bot&rsquo;s token to your agents, and they start messaging you from inside Telegram like a real contact. You can message them back. I can literally text Elle &ldquo;how&rsquo;s the pipeline today?&rdquo; and she replies with a status in seconds.</p>
+
+      <p>Telegram is the secret weapon because it&rsquo;s <strong>free, instant, and handles anything</strong>: text, images, files, voice notes. Plus no character limit, and you can reply from your phone at any hour. Email works too but clogs up your inbox and feels slower.</p>
+
+      <div class="callout"><div class="callout-tag">Wait &mdash; what is Telegram?</div>Quick context in case you&rsquo;ve never used it: Telegram is basically iMessage / WhatsApp, but free on every platform and it lets <strong>bots</strong> live inside your chat list like real people. Install the Telegram app, make an account, and now any agent you build can text you there. It&rsquo;s the same chat list that has your friends, except Elle is in it too. That&rsquo;s all.</div>
+
+      <div class="divider"><span>How to actually set up Telegram for your agents</span></div>
+      <ol>
+        <li><strong>Install Telegram.</strong> Download the app on your phone + laptop. Sign up with your phone number.</li>
+        <li><strong>Find @BotFather inside Telegram.</strong> Search &ldquo;BotFather&rdquo; in Telegram. It&rsquo;s the official bot-creator bot (yes, a bot that makes bots, very Claude-coded of them).</li>
+        <li><strong>Send <code>/newbot</code> to BotFather.</strong> It&rsquo;ll ask you what to name your bot and what username to give it. I named mine &ldquo;Elle&rdquo; with the handle <code>@ayla_elle_bot</code>.</li>
+        <li><strong>Copy the token it gives you.</strong> Looks like <code>123456789:ABC-DEF1234ghIkl...</code>. Don&rsquo;t share this token anywhere public &mdash; it&rsquo;s the password to your bot. Save it in a password manager or a <code>.env</code> file.</li>
+        <li><strong>Get your chat ID.</strong> Tell Claude: &ldquo;I just made a Telegram bot, walk me through getting my chat ID so the bot knows where to message me.&rdquo; It&rsquo;ll give you a little curl command that returns your chat ID. Save that too.</li>
+        <li><strong>Give Claude the token and chat ID</strong> when you&rsquo;re building an agent, and tell it: &ldquo;every time something important happens, have the bot send me a message.&rdquo; Claude does the rest.</li>
+      </ol>
+
+      <div class="callout"><div class="callout-tag">Why this specifically &mdash; and not Slack / email / texting</div>Telegram bots are the easiest integration of anything I&rsquo;ve tried. No approval process, no marketplace, no rate limit for personal use, no cost. You set one up in under 10 minutes. Slack bots require a whole app setup. iMessage is Apple-only and locked down. Email gets marked as spam. Telegram just &hellip; works.</div>
+
+      <div class="divider"><span>Making it actually run 24/7</span></div>
+
+      <p>This is the part most tutorials skip. When Claude Code builds you an agent, <strong>by default it only runs while your laptop is open and online.</strong> Close the lid, agent stops. Which defeats the point.</p>
+
+      <p>To make an agent run truly 24/7 you have to <strong>host it in the cloud</strong>, the same way you host a website. A few options:</p>
+      <ul>
+        <li><strong>Nanoclaw.</strong> What I use. A hosted Claude runtime specifically designed for agents. You drop your agent in, it runs on their servers, you pay a small monthly fee, and you never think about it. Closest thing to &ldquo;it just works.&rdquo;</li>
+        <li><strong>Vercel Cron Jobs.</strong> Free for scheduled tasks (like &ldquo;run every morning at 8am&rdquo;). Limited to short runs, but fine for simple agents.</li>
+        <li><strong>Railway / Render / Replit.</strong> Cheap Linux servers you can rent for a few bucks a month. More flexible, but you&rsquo;ll deal with setup pain.</li>
+      </ul>
+
+      <p>Whichever you pick, <strong>the setup process is the same</strong>: you tell Claude &ldquo;deploy this agent to [the service]&rdquo; and it walks you through adding the keys, pushing the code, and scheduling it.</p>
+
+      <div class="callout"><div class="callout-tag">Real talk: agents are the hardest part of this course</div>
+      <strong>I&rsquo;m going to be honest with you.</strong> Building real, always-on agents is the most finicky, frustrating, trial-and-error-heavy thing you will do with Claude. Expect to spend a full weekend on your first one. Expect the message &ldquo;invalid API key&rdquo; to haunt you. Expect to screenshot 40 error messages back to Claude. Expect to add an API, hit a rate limit, fix it, add another, realize you forgot a dependency, and start over.
+      <br><br>
+      <strong>But the process is still the same thing you&rsquo;ve been doing this whole course.</strong> You describe the annoying problem. You let Claude interview you. You build one piece at a time. You screenshot errors back. You keep going. Eventually it works, and then you have a tiny employee working for you forever.
+      <br><br>
+      The difference between agents and websites is just <em>more pieces, more things that can break, more patience.</em> <strong>Not more skill. You already have the skill.</strong>
+      </div>
+
+      <div class="callout"><div class="callout-tag">You&rsquo;re done. Go build something.</div>Open a new chat. Type &ldquo;I want to build [your idea]. Ask me any clarifying questions before we start.&rdquo; That&rsquo;s literally it. That&rsquo;s the whole thing. Go.</div>
     </div>`
   },
+  {
+    tag: '25 - Claude on My Phone', leftTitle: 'The mobile workflow almost nobody uses.', num: '25', vid: 'Lesson 25: Claude from your phone',
+    html: `
+    <h1 class="l-head">How I use Claude on my phone.</h1>
+    <p class="l-sub">Half my best work happens when I&rsquo;m not at my desk.</p>
+    <div class="l-body">
+      <p>Everybody thinks AI work requires a laptop. It doesn&rsquo;t. Most of what I do day-to-day happens on my phone. I think it&rsquo;s actually <em>better</em> this way: you&rsquo;re forced to think in plain English instead of fiddling with code.</p>
+
+      <div class="callout"><div class="callout-tag">The Claude mobile app</div>Download it from the App Store. Same account, same chats, same Projects. Everything syncs in real time. I&rsquo;ll start a thought on my phone in an Uber and pick it up on my laptop at home.</div>
+
+      <div class="callout"><div class="callout-tag">Important &mdash; the phone app is CHAT ONLY</div>Quick clarification because this trips people up: <strong>the Claude app on your phone is just chat.</strong> Regular conversations, voice, image uploads, photos &mdash; all that works. But the thing we call <em>Claude Code</em> (the terminal-based builder from lesson 14) <strong>does not exist on phone.</strong> Claude Code is desktop only. It has to be &mdash; it needs a terminal and a file system. So on your phone: chat for thinking, brainstorming, and quick builds. On your laptop: chat + Claude Code for actually shipping stuff. Both are &ldquo;Claude,&rdquo; same account, different tools.</div>
+
+      <div class="callout"><div class="callout-tag">Voice dictation is the superpower</div>I talk to Claude way more than I type to it. Tap the mic, explain the problem out loud like you&rsquo;re venting to a friend, hit send. I&rsquo;ve ranted at it about business strategy while walking to coffee. I&rsquo;ve explained a whole agent idea in a 3-minute voice note. <strong>Your phone mic is a better brain-dumper than your keyboard.</strong></div>
+
+      <div class="callout"><div class="callout-tag">iPhone Shortcuts + Claude</div>I built a Shortcut so hitting a button on my lock screen opens Claude with a specific prompt ready to go. &ldquo;Give me 5 cold email openers for a [X] business,&rdquo; with a blank for the business type. One tap. Takes 5 minutes to set up once, saves hours forever.</div>
+
+      <div class="callout"><div class="callout-tag">Photograph anything and ask about it</div>Receipt I don&rsquo;t understand? Take a picture, send to Claude, &ldquo;break this down.&rdquo; Weird error on my laptop? Phone picture of the screen, &ldquo;what do I do?&rdquo; A sign in a foreign language? Same. A plant I&rsquo;m not sure how to take care of? Same. The photo &rarr; Claude habit alone is worth the monthly fee.</div>
+
+      <div class="callout"><div class="callout-tag">Texting my agents from Telegram</div>My agents live in Telegram (we covered this in lesson 20). That means I can <strong>text them from anywhere.</strong> I&rsquo;ve sent Elle a status request from my bed, from the Uber, from the bathroom. She replies in 10 seconds. Nobody would know I&rsquo;m not at a desk running a business.</div>
+
+      <p>The phone is an underrated tool. <strong>If you can only use Claude on a laptop, you&rsquo;re missing half of what it can do for you.</strong></p>
+    </div>`
+  },
+  {
+    tag: '26 - Day in My Life', leftTitle: 'What a chaotic AI life actually looks like.', num: '26', vid: 'Lesson 26: A real schedule',
+    html: `
+    <h1 class="l-head">A day in my AI life.</h1>
+    <p class="l-sub">I live a chaotic life. I&rsquo;m not going to pretend otherwise.</p>
+    <div class="l-body">
+      <p>People always ask &ldquo;what does your day look like?&rdquo; I kept promising a YouTube vlog and never made it. So here it is in writing, actually honest, actually chaotic.</p>
+
+      <div class="callout"><div class="callout-tag">7:12 AM &mdash; wake up, check Telegram</div>Before my feet hit the floor I open Telegram. Elle (my chief-of-staff agent) dropped a morning brief overnight. Two things resolved. Three need my input. I swipe through, mentally flag the urgent one, get out of bed.</div>
+
+      <div class="callout"><div class="callout-tag">8 AM &mdash; coffee + Claude chat</div>While the espresso runs I open Claude and brain-dump whatever&rsquo;s on my plate. Emails to write. A client meeting at 11. A thing I want to build on the side. I say &ldquo;structure my day and tell me what to do first.&rdquo; I do what it says 80% of the time. The other 20% I disagree and tell it why.</div>
+
+      <div class="callout"><div class="callout-tag">9:30 AM &mdash; the morning I actually build</div>Best focus window of my day. I do all real Claude Code work here. One site, one agent, one problem at a time. No Instagram, no Twitter, Telegram notifications off. Just me and Claude. This is where the actual money gets made.</div>
+
+      <div class="callout"><div class="callout-tag">11 AM &mdash; client or prospect call</div>Usually on Zoom. Sometimes in person if they&rsquo;re local. I take notes in real time into a Claude chat I&rsquo;ve opened on my phone. After the call I tell Claude to &ldquo;turn this into a proposal&rdquo; or &ldquo;pull out the three things I agreed to do.&rdquo;</div>
+
+      <div class="callout"><div class="callout-tag">12:30 PM &mdash; lunch + inbox</div>Claude already went through my inbox this morning. I just clear the small stuff, reply to whatever my reply-handling agent flagged. Takes 15 minutes instead of 2 hours.</div>
+
+      <div class="callout"><div class="callout-tag">2 PM &mdash; the chaos block</div>This is where the day goes off the rails. Someone texts a problem. A client emails a change. I get an idea. My TikTok blows up or doesn&rsquo;t. A friend wants to hang. I pivot 6 times. I answer everything from my phone via Claude. Half of what I ship happens in this chunk. I&rsquo;m usually not at my desk.</div>
+
+      <div class="callout"><div class="callout-tag">5 PM &mdash; check agent output, review</div>Every agent drops a daily report. Barney (cold outreach) tells me what went out and who replied. Taylor (QA) tells me what&rsquo;s ready to ship. Gabriella (error fixer) tells me what she caught and fixed. I read, approve, reject, comment.</div>
+
+      <div class="callout"><div class="callout-tag">7 PM &mdash; actual life</div>Dinner. Friends. Phone down mostly. The agents keep running whether I&rsquo;m watching or not.</div>
+
+      <div class="callout"><div class="callout-tag">10 PM &mdash; &ldquo;I&rsquo;ll just tweak one thing&rdquo;</div>This is how I end up working until 2 AM. We covered this in the welcome warning. It&rsquo;s still happening.</div>
+
+      <p><strong>The shape of the day is: chaotic human, steady agents.</strong> I&rsquo;m messy. My agents are not. Together we ship. That&rsquo;s the whole system.</p>
+    </div>`
+  },
+  {
+    tag: '27 - Favorite Mistakes', leftTitle: "Things I screwed up so you don't have to.", num: '27', vid: 'Lesson 27: My 5 biggest fails',
+    html: `
+    <h1 class="l-head">My five favorite mistakes.</h1>
+    <p class="l-sub">These are the stories I&rsquo;d tell you at dinner if you asked how I learned.</p>
+    <div class="l-body">
+      <p>None of these broke me. All of them taught me something more useful than a tutorial could. Here they are, ranked by how embarrassed I am.</p>
+
+      <div class="callout"><div class="callout-tag">1. The morning the container deleted everything</div>I woke up one morning and the iMac container running my entire agent setup had wiped itself. Code, configs, scheduled tasks, everything. <strong>I flipped out.</strong> I cried for real. I thought months of work was gone.<br><br>Then I opened Claude and scrolled through the chat history. Because <em>every piece of that system had been built in conversation with Claude,</em> the logic, the decisions, the API connections, the edge cases, were all in there. I said: &ldquo;rebuild everything we had, you have the context.&rdquo; Three hours later it was running again.<br><br><strong>Lesson: your conversations with Claude are a backup. But actually back up your code too.</strong> Push to GitHub every single day. It&rsquo;s free. Do it.</div>
+
+      <div class="callout"><div class="callout-tag">2. Sent a proposal with the wrong price</div>I asked Claude to write a proposal and accidentally swapped the digits in the price. $250 instead of $2,500. Client accepted immediately. I had to write her the most awkward follow-up of my life explaining I&rsquo;d missed a zero.<br><br>She still paid, at the real price, because I explained honestly. But I almost lost ten grand to a typo.<br><br><strong>Lesson: Claude is great at words. Always double-check numbers, dates, and dollar signs yourself before anything goes out.</strong></div>
+
+      <div class="callout"><div class="callout-tag">3. Tried to build the whole agent team on day one</div>My first agent attempt was going to be a full pipeline: scrape, qualify, outreach, reply-handle, nurture, close. All day one. It crashed constantly. Nothing worked. I got so frustrated I almost quit.<br><br>Then I deleted everything, built ONE agent that just sent cold emails. It worked in an hour. Then I added the scraper. Then the reply handler. One piece at a time.<br><br><strong>Lesson: build one thing. Get it working. Add the next. Don&rsquo;t design the Death Star on day one.</strong></div>
+
+      <div class="callout"><div class="callout-tag">4. Pasted an API key into a group chat</div>Exactly what it sounds like. I was troubleshooting something, screen-shared, and <strong>forgot to hide the .env file.</strong> Someone in the chat (a friend, thankfully) texted me immediately: &ldquo;rotate that, now.&rdquo; I did. Cost me an hour and the cold sweats.<br><br><strong>Lesson: keep API keys in a password manager. Never in a chat, email, or screenshot. Rotate them the second you think they might have leaked.</strong></div>
+
+      <div class="callout"><div class="callout-tag">5. Thought I was too early to charge</div>I spent two months doing free work for friends because I thought I wasn&rsquo;t &ldquo;real&rdquo; yet. Every one of those projects came out just as good as the paid ones later. I just didn&rsquo;t get paid.<br><br><strong>Lesson: if it&rsquo;s worth doing, it&rsquo;s worth charging. The second you charge something, two things happen: you treat the work more seriously, and the client does too. Free work attracts the worst clients. Paid work attracts real ones.</strong></div>
+
+      <p>These mistakes didn&rsquo;t end my AI journey. They became the stories. Every one of them made me slightly better. <strong>Yours will too.</strong></p>
+          <div class="exercise" data-exercise-id="ex-27-backup">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Do it now &middot; 2 min
+        </div>
+        <div class="exercise-title">Back up your thing, right now.</div>
+        <div class="exercise-body">Whatever you&rsquo;re currently building with Claude, <strong>push it to GitHub today.</strong> If it&rsquo;s a website, the whole folder. If it&rsquo;s a set of prompts, save them in a Google Doc. If it&rsquo;s a conversation you&rsquo;d hate to lose, export the chat. <br><br>Two minutes. You won&rsquo;t feel it now. You&rsquo;ll feel it the day something wipes.</div>
+        <button class="exercise-done" data-exercise-id="ex-27-backup">I did it &rarr;</button>
+      </div>
+    </div>`
+  },
+  {
+    tag: '28 - My Top Prompts', leftTitle: 'The 10 prompts I actually paste every single day.', num: '28', vid: 'Lesson 28: My daily driver prompts',
+    html: `
+    <h1 class="l-head">My top 10 prompts, ranked.</h1>
+    <p class="l-sub">If the prompt library is the menu, these are what I actually order.</p>
+    <div class="l-body">
+      <p>You&rsquo;ve already seen the full prompt library in the top nav. These are the 10 I keep coming back to. Copy them, paste them, swap the brackets, use them daily.</p>
+
+      <div class="callout"><div class="callout-tag">#1 &mdash; The clarifying-questions opener</div><div class="bubble u">I want to build [your thing]. Ask me any clarifying questions before you start so we don&rsquo;t build the wrong thing.</div>This is the single most important one. Forever. Every project.</div>
+
+      <div class="callout"><div class="callout-tag">#2 &mdash; The &ldquo;explain like I&rsquo;m in 8th grade&rdquo; reset</div><div class="bubble u">I don&rsquo;t understand any of this. Explain it like I&rsquo;m in 8th grade. Use an analogy if you can.</div>I use this every time something sounds smart and I&rsquo;m quietly lost.</div>
+
+      <div class="callout"><div class="callout-tag">#3 &mdash; The voice-match prompt</div><div class="bubble u">Here are 10 real captions/emails/posts I wrote. Match my voice. Don&rsquo;t generic-ify me.</div>Pasting real samples is the only way to get actual-you output instead of AI-ish output.</div>
+
+      <div class="callout"><div class="callout-tag">#4 &mdash; The &ldquo;stop&rdquo; reset</div><div class="bubble u">Stop. Re-read what I originally asked. You&rsquo;re doing something I didn&rsquo;t ask for. Here&rsquo;s what I actually need: [one sentence]. Do only that.</div>When Claude is off the rails, this pulls it back faster than anything.</div>
+
+      <div class="callout"><div class="callout-tag">#5 &mdash; The interview-me prompt</div><div class="bubble u">Interview me. One question at a time. After 8 questions, give me a plan.</div>Anywhere I&rsquo;m stuck on deciding what to build or pitch, this one wins.</div>
+
+      <div class="callout"><div class="callout-tag">#6 &mdash; The &ldquo;make it feel expensive&rdquo; design prompt</div><div class="bubble u">Redo this. Make it feel expensive. Better fonts, real color palette, actual hierarchy, subtle animations. Mobile-first.</div>Magic phrase. Works way better than &ldquo;make it nicer.&rdquo;</div>
+
+      <div class="callout"><div class="callout-tag">#7 &mdash; The &ldquo;don&rsquo;t rewrite my whole site&rdquo; guard</div><div class="bubble u">Add [this feature] to my site. Don&rsquo;t rewrite the whole site. Hand me the new section and tell me exactly where to paste it.</div>Protects you from Claude &ldquo;helpfully&rdquo; changing 14 other things.</div>
+
+      <div class="callout"><div class="callout-tag">#8 &mdash; The &ldquo;what would you change&rdquo; critique</div><div class="bubble u">Here&rsquo;s [thing I made]. Pretend you&rsquo;re [target audience]. What&rsquo;s confusing? What&rsquo;s boring? What would make you close the tab?</div>Harsh feedback on demand. Always use &ldquo;pretend you&rsquo;re&rdquo; for honesty.</div>
+
+      <div class="callout"><div class="callout-tag">#9 &mdash; The cold-email rule set</div><div class="bubble u">Write a cold email to [person] offering [thing]. Under 120 words. Open with something specific, not &ldquo;I hope this finds you well.&rdquo; Don&rsquo;t use: leverage, solution, partner, synergy.</div>The banned-words trick is what stops your email from sounding like every cold email.</div>
+
+      <div class="callout"><div class="callout-tag">#10 &mdash; The &ldquo;do it for me&rdquo; command</div><div class="bubble u">Stop telling me to do it myself. You have the tools. Do it. If you really can&rsquo;t, explain why in one sentence.</div>Only works in Claude Code / Cowork / Chrome extension. Doesn&rsquo;t work in Chat. But when it works, it works.</div>
+
+      <p>Pin these. Screenshot them. Memorize them. <strong>You don&rsquo;t need 500 prompts. You need 10 you actually use.</strong></p>
+
+      <div class="exercise" data-exercise-id="ex-28-pickprompts">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Try it now &middot; 3 min
+        </div>
+        <div class="exercise-title">Copy your three favorite prompts.</div>
+        <div class="exercise-body">Scroll back up. Pick the <strong>three prompts</strong> that would make the biggest difference for what you&rsquo;re building right now. Copy them into a note on your phone, or into a pinned Claude chat called &ldquo;Daily prompts.&rdquo; Next time you sit down to work, paste one and go. That&rsquo;s how you actually internalize these &mdash; by using them on day one.</div>
+        <button class="exercise-done" data-exercise-id="ex-28-pickprompts">I copied them &rarr;</button>
+      </div>
+    </div>`
+  },
+  {
+    tag: '29 - Post While You Build', leftTitle: 'Nobody talks about this part. Post what you\u2019re building.', num: '29', vid: 'Lesson 29: Post while you build',
+    html: `
+    <h1 class="l-head">Post while you\u2019re building.</h1>
+    <p class="l-sub">This is the unlock nobody tells you about. The reason you should post isn&rsquo;t ego. It&rsquo;s compounding.</p>
+    <div class="l-body">
+      <p>Here&rsquo;s a thing that nobody tells you when you start learning this stuff, and I wish someone had told me: <strong>post about what you&rsquo;re building as you&rsquo;re building it.</strong> Not when it&rsquo;s done. Not when it&rsquo;s perfect. While it&rsquo;s half-broken and you&rsquo;re figuring it out in real time.</p>
+
+      <div class="a-quote">"The stuff I posted at the ugliest stage &mdash; when I had no idea what I was doing &mdash; is what got me my first three clients."</div>
+
+      <h2 class="l-sub-head">Why posting changes everything.</h2>
+      <p>When you post what you&rsquo;re working on, a bunch of things happen at once:</p>
+      <ul>
+        <li><strong>You attract the right people.</strong> Other builders. People curious about AI. Potential clients. They find you <em>because</em> you\u2019re the person making stuff.</li>
+        <li><strong>You get feedback.</strong> Somebody in the comments will tell you about a tool you didn\u2019t know existed. Or a bug in your demo. Or a use case you hadn\u2019t thought of.</li>
+        <li><strong>You start a community.</strong> The DMs start coming. &ldquo;Hey, I\u2019m trying to do this too, can we talk.&rdquo; Some of those people will become friends. Some of them will become collaborators. Some will pay you.</li>
+        <li><strong>You build a portfolio in public.</strong> Instead of a fake case study deck, you have 40 TikToks of you actually doing the thing. That\u2019s a thousand times more credible.</li>
+        <li><strong>It forces you to learn out loud.</strong> Explaining a thing on camera makes you understand it. That\u2019s just how the brain works.</li>
+      </ul>
+
+      <h2 class="l-sub-head">The honest thing about the gap.</h2>
+      <p>I\u2019m going to say this plainly. When I started posting about AI building on TikTok and Instagram, I noticed almost immediately: <strong>there are way fewer women doing this publicly.</strong> Most of the faces are guys in their 30s with headsets. Not all. But a lot.</p>
+      <p>That\u2019s an opportunity, not a grievance. If you&rsquo;re a girl watching this: the space is wide open. Post. Tag me. I will literally re-share you. I want more of us up here.</p>
+      <p>And if you\u2019re a guy taking this course: welcome. This isn&rsquo;t a course &ldquo;only for girls,&rdquo; it&rsquo;s a course for anyone who wants to actually build with AI. I\u2019m just pointing out where the gap is because it\u2019s the kind of thing nobody says out loud. The space gets better when all kinds of people show up in it.</p>
+
+      <h2 class="l-sub-head">What to actually post.</h2>
+      <div class="how-it-works">
+        <div class="how-step">
+          <div class="how-step-n">01</div>
+          <div class="how-step-body">
+            <h3>The &ldquo;I don\u2019t know what I&rsquo;m doing&rdquo; post.</h3>
+            <p>Screen-record Claude making something for you. Voiceover: &ldquo;I&rsquo;m trying to build X, here\u2019s what&rsquo;s happening.&rdquo; That\u2019s a full post. Seriously.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-n">02</div>
+          <div class="how-step-body">
+            <h3>The before &#47; after.</h3>
+            <p>Two screens: the prompt you gave, the thing Claude made. That&rsquo;s a TikTok. 15 seconds.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-n">03</div>
+          <div class="how-step-body">
+            <h3>The &ldquo;why I even did this&rdquo; post.</h3>
+            <p>Talk about the problem before the solution. &ldquo;I was spending 2 hours a day on X. So I built a thing that does it for me.&rdquo; Problem-first posts do numbers.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-n">04</div>
+          <div class="how-step-body">
+            <h3>The &ldquo;things I learned this week&rdquo; post.</h3>
+            <p>Every Sunday. Three bullet points. What surprised you. What broke. What clicked. That\u2019s it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout"><div class="callout-tag">Pro tip &mdash; let Claude write your TikTok scripts</div>After Claude builds something for you, say: <em>&ldquo;Now write me a TikTok script explaining this in 45 seconds. Casual, no hashtags, first person.&rdquo;</em> It will. Then you just hit record. Same for captions, threads, LinkedIn posts &mdash; whatever platform you\u2019re on. The thing you just built is the content.</div>
+
+      <h2 class="l-sub-head">The one rule.</h2>
+      <p>Don\u2019t wait until you&rsquo;re &ldquo;ready.&rdquo; You will never be ready. The people you\u2019re watching online weren\u2019t ready either. They just posted before they were.</p>
+      <p>Post this week. Tag me. <strong>@aylablumberg.ai on TikTok and IG.</strong> I&rsquo;ll see it.</p>
+
+      <div class="exercise" data-exercise-id="ex-29-first-post">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Try it now \u00b7 10 min
+        </div>
+        <p><strong>Post one thing this week about what you&rsquo;re building.</strong> Doesn\u2019t have to be polished. A screen recording with a voiceover counts. A single photo of your laptop with a caption counts. Tag me. That&rsquo;s the whole exercise.</p>
+      </div>
+    </div>`
+  },
+
 ]
 
 // ──────────────────────────────────────────────────────────
@@ -449,10 +1398,24 @@ type Progress = {
   bookmarks: number[]
   confused: number[]
   notes: Record<string, string>
+  highlights: Record<string, string[]>
+  completed_lessons: number[]
+  exercises_done: string[]
+  streak_days: number
+  longest_streak: number
+  last_visit_date: string | null
+  notifications_seen: Record<string, boolean>
   completed_at: string | null
 }
 
 const DEFAULT_PROGRESS: Progress = {
+  highlights: {},
+  completed_lessons: [],
+  exercises_done: [],
+  streak_days: 0,
+  longest_streak: 0,
+  last_visit_date: null,
+  notifications_seen: {},
   last_lesson: 0,
   bookmarks: [],
   confused: [],
@@ -485,8 +1448,33 @@ export default function CourseDashboard() {
           bookmarks: p.bookmarks ?? [],
           confused: p.confused ?? [],
           notes: p.notes ?? {},
+          highlights: p.highlights ?? {},
+          completed_lessons: p.completed_lessons ?? [],
+          exercises_done: p.exercises_done ?? [],
+          streak_days: p.streak_days ?? 0,
+          longest_streak: p.longest_streak ?? 0,
+          last_visit_date: p.last_visit_date ?? null,
+          notifications_seen: p.notifications_seen ?? {},
           completed_at: p.completed_at ?? null,
         })
+        // Fire daily check-in so the streak counter ticks
+        fetch('/api/progress', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ checkin: true }),
+        })
+          .then((r) => (r.ok ? r.json() : null))
+          .then((out) => {
+            if (out?.streak_days !== undefined) {
+              setProgress((prev) => ({
+                ...prev,
+                streak_days: out.streak_days,
+                longest_streak: out.longest_streak,
+                last_visit_date: out.last_visit_date,
+              }))
+            }
+          })
+          .catch(() => {})
         if (typeof p.last_lesson === 'number' && p.last_lesson > 0 && p.last_lesson < lessons.length) {
           setCur(p.last_lesson)
         }
@@ -540,6 +1528,229 @@ export default function CourseDashboard() {
 
   const isBookmarked = progress.bookmarks.includes(cur)
   const isConfused = progress.confused.includes(cur)
+  const lessonHighlights = progress.highlights[String(cur)] ?? []
+
+  // Selection-based highlight toolbar ────────────────────────
+  const [highlightPopup, setHighlightPopup] = useState<{ x: number; y: number; text: string } | null>(null)
+  const [notesOpen, setNotesOpen] = useState(false)
+
+  useEffect(() => {
+    const el = rightRef.current
+    if (!el) return
+    const onMouseUp = (e: MouseEvent) => {
+      // If the click/mouseup happened ON the highlight popup itself, let onClick handle it
+      const t = e.target as HTMLElement | null
+      if (t && t.closest('.hl-popup')) return
+      const sel = window.getSelection()
+      if (!sel || sel.isCollapsed) { setHighlightPopup(null); return }
+      const text = sel.toString().trim()
+      if (!text || text.length < 2) { setHighlightPopup(null); return }
+      // Only count selections inside the lesson body
+      const range = sel.getRangeAt(0)
+      const container = el.querySelector('.lesson-wrap')
+      if (!container || !container.contains(range.commonAncestorContainer)) { setHighlightPopup(null); return }
+      const rect = range.getBoundingClientRect()
+      // Use pageY/pageX so coords survive scroll; actually rect is viewport — set fixed positioning
+      setHighlightPopup({
+        x: rect.left + rect.width / 2,
+        y: rect.top - 4,
+        text,
+      })
+    }
+    const onMouseDown = (e: MouseEvent) => {
+      const t = e.target as HTMLElement | null
+      // Don't dismiss if the user is clicking the popup button itself
+      if (t && t.closest('.hl-popup')) return
+      setHighlightPopup(null)
+    }
+    document.addEventListener('mouseup', onMouseUp)
+    document.addEventListener('mousedown', onMouseDown)
+    return () => {
+      document.removeEventListener('mouseup', onMouseUp)
+      document.removeEventListener('mousedown', onMouseDown)
+    }
+  }, [cur])
+
+  async function addHighlight(text: string) {
+    const t = text.trim()
+    if (!t) return
+    setProgress((prev) => {
+      const key = String(cur)
+      const existing = prev.highlights[key] ?? []
+      if (existing.includes(t)) return prev
+      return { ...prev, highlights: { ...prev.highlights, [key]: [...existing, t] } }
+    })
+    setHighlightPopup(null)
+    window.getSelection()?.removeAllRanges()
+    await fetch('/api/progress', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ highlight: { index: cur, text: t, op: 'add' } }),
+    })
+  }
+
+  async function removeHighlight(text: string) {
+    setProgress((prev) => {
+      const key = String(cur)
+      const existing = prev.highlights[key] ?? []
+      const next = existing.filter((t) => t !== text)
+      const highlights = { ...prev.highlights }
+      if (next.length) highlights[key] = next
+      else delete highlights[key]
+      return { ...prev, highlights }
+    })
+    await fetch('/api/progress', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ highlight: { index: cur, text, op: 'remove' } }),
+    })
+  }
+
+  // Auto-censor: wrap any profanity in the rendered lesson in <s class="au-censor">.
+  useEffect(() => {
+    const wrap = rightRef.current?.querySelector('.lesson-wrap') as HTMLElement | null
+    if (!wrap) return
+    wrap.querySelectorAll('s.au-censor').forEach((s) => {
+      const parent = s.parentNode
+      if (!parent) return
+      while (s.firstChild) parent.insertBefore(s.firstChild, s)
+      parent.removeChild(s)
+      parent.normalize()
+    })
+    const walker = document.createTreeWalker(wrap, NodeFilter.SHOW_TEXT)
+    const nodes: Text[] = []
+    let n: Node | null
+    // eslint-disable-next-line no-cond-assign
+    while ((n = walker.nextNode())) nodes.push(n as Text)
+    for (const textNode of nodes) {
+      const parentEl = textNode.parentElement
+      if (!parentEl) continue
+      const tag = parentEl.tagName
+      if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'CODE' || tag === 'PRE') continue
+      if (parentEl.classList.contains('au-censor')) continue
+      const txt = textNode.nodeValue ?? ''
+      PROFANITY_REGEX.lastIndex = 0
+      if (!PROFANITY_REGEX.test(txt)) continue
+      PROFANITY_REGEX.lastIndex = 0
+      const frag = document.createDocumentFragment()
+      let last = 0
+      let m: RegExpExecArray | null
+      // eslint-disable-next-line no-cond-assign
+      while ((m = PROFANITY_REGEX.exec(txt))) {
+        if (m.index > last) frag.appendChild(document.createTextNode(txt.slice(last, m.index)))
+        const s = document.createElement('s')
+        s.className = 'au-censor'
+        s.textContent = m[0]
+        frag.appendChild(s)
+        last = m.index + m[0].length
+      }
+      if (last < txt.length) frag.appendChild(document.createTextNode(txt.slice(last)))
+      const parent = textNode.parentNode
+      if (parent) parent.replaceChild(frag, textNode)
+    }
+  }, [cur])
+
+  // Paint glossary-term hovers onto the rendered lesson HTML.
+  // Runs after each lesson switch, before highlights so hover tooltips don't
+  // collide with user highlights.
+  useEffect(() => {
+    const wrap = rightRef.current?.querySelector('.lesson-wrap') as HTMLElement | null
+    if (!wrap) return
+    // Strip any old auto-underlines
+    wrap.querySelectorAll('span.au-gloss').forEach((s) => {
+      const parent = s.parentNode
+      if (!parent) return
+      while (s.firstChild) parent.insertBefore(s.firstChild, s)
+      parent.removeChild(s)
+      parent.normalize()
+    })
+    // Longest terms first so "Claude Code" matches before "Claude"
+    const terms = [...glossary].sort((a, b) => b.word.length - a.word.length)
+    for (const { word, def } of terms) {
+      const walker = document.createTreeWalker(wrap, NodeFilter.SHOW_TEXT)
+      const nodes: Text[] = []
+      let n: Node | null
+      // eslint-disable-next-line no-cond-assign
+      while ((n = walker.nextNode())) nodes.push(n as Text)
+      for (const textNode of nodes) {
+        const parentEl = textNode.parentElement
+        if (!parentEl) continue
+        // skip inside marks, existing gloss, headings, code, buttons
+        const tag = parentEl.tagName
+        if (tag === 'MARK' || tag === 'CODE' || tag === 'BUTTON' || tag === 'PRE') continue
+        if (parentEl.classList.contains('au-gloss')) continue
+        // skip inside headings too — word definitions clutter titles
+        if (tag === 'H1' || tag === 'H2' || tag === 'H3') continue
+        const txt = textNode.nodeValue ?? ''
+        const lower = txt.toLowerCase()
+        const needle = word.toLowerCase()
+        const idx = lower.indexOf(needle)
+        if (idx === -1) continue
+        // Word boundary check
+        const before = idx > 0 ? txt[idx - 1] : ' '
+        const after = idx + word.length < txt.length ? txt[idx + word.length] : ' '
+        if (/[a-z0-9]/i.test(before) || /[a-z0-9]/i.test(after)) continue
+        const matchText = txt.slice(idx, idx + word.length)
+        const span = document.createElement('span')
+        span.className = 'au-gloss'
+        span.textContent = matchText
+        span.setAttribute('data-def', def)
+        const parent = textNode.parentNode
+        if (!parent) break
+        const beforeText = txt.slice(0, idx)
+        const afterText = txt.slice(idx + word.length)
+        if (beforeText) parent.insertBefore(document.createTextNode(beforeText), textNode)
+        parent.insertBefore(span, textNode)
+        if (afterText) parent.insertBefore(document.createTextNode(afterText), textNode)
+        parent.removeChild(textNode)
+        break // only first occurrence per lesson per term
+      }
+    }
+  }, [cur])
+
+  // Paint saved highlights onto the rendered lesson HTML whenever the lesson
+  // changes or the highlight set for this lesson changes.
+  useEffect(() => {
+    const wrap = rightRef.current?.querySelector('.lesson-wrap') as HTMLElement | null
+    if (!wrap) return
+    // Strip existing marks first
+    wrap.querySelectorAll('mark.au-hl').forEach((m) => {
+      const parent = m.parentNode
+      if (!parent) return
+      while (m.firstChild) parent.insertBefore(m.firstChild, m)
+      parent.removeChild(m)
+      parent.normalize()
+    })
+    if (lessonHighlights.length === 0) return
+    // For each saved highlight, walk text nodes and wrap first match
+    lessonHighlights.forEach((snippet) => {
+      const needle = snippet.trim()
+      if (!needle) return
+      const walker = document.createTreeWalker(wrap, NodeFilter.SHOW_TEXT)
+      const nodes: Text[] = []
+      let n: Node | null
+      // eslint-disable-next-line no-cond-assign
+      while ((n = walker.nextNode())) nodes.push(n as Text)
+      for (const textNode of nodes) {
+        const text = textNode.nodeValue ?? ''
+        const idx = text.indexOf(needle)
+        if (idx === -1) continue
+        const before = text.slice(0, idx)
+        const match = text.slice(idx, idx + needle.length)
+        const after = text.slice(idx + needle.length)
+        const mark = document.createElement('mark')
+        mark.className = 'au-hl'
+        mark.textContent = match
+        const parent = textNode.parentNode
+        if (!parent) break
+        if (before) parent.insertBefore(document.createTextNode(before), textNode)
+        parent.insertBefore(mark, textNode)
+        if (after) parent.insertBefore(document.createTextNode(after), textNode)
+        parent.removeChild(textNode)
+        break // one occurrence per snippet
+      }
+    })
+  }, [cur, lessonHighlights])
 
   async function toggleBookmark() {
     const next = !isBookmarked
@@ -582,6 +1793,81 @@ export default function CourseDashboard() {
     rightRef.current?.scrollTo({ top: 0 })
   }, [cur])
 
+  // Arrow-key navigation between lessons (ignore when typing)
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      const t = e.target as HTMLElement | null
+      const tag = t?.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || t?.isContentEditable) return
+      if (glossaryOpen || quizOpen || completion) return
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(1) }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1) }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [cur, glossaryOpen, quizOpen, completion])
+
+  // Mark previous lesson complete whenever user advances (going forward only)
+  const prevCurRef = useRef<number>(cur)
+  useEffect(() => {
+    if (!progressLoaded) { prevCurRef.current = cur; return }
+    const was = prevCurRef.current
+    prevCurRef.current = cur
+    if (cur > was) {
+      // moving forward — mark the lesson we just left complete
+      const completeIdx = was
+      if (!progress.completed_lessons.includes(completeIdx)) {
+        setProgress((prev) => ({
+          ...prev,
+          completed_lessons: Array.from(new Set([...prev.completed_lessons, completeIdx])).sort((a, b) => a - b),
+        }))
+        fetch('/api/progress', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ complete_lesson: { index: completeIdx, on: true } }),
+        }).catch(() => {})
+      }
+    }
+  }, [cur, progressLoaded])
+
+  // TikTok nudges on specific lessons
+  const tiktokNotifs: Record<number, { key: string; title: string; body: string; cta: string }> = {
+    4: {
+      key: 'tiktok-1',
+      title: 'Quick favor.',
+      body: "Follow me on TikTok @aylablumberg.ai for more of this but in video form.",
+      cta: 'Open TikTok',
+    },
+    8: {
+      key: 'tiktok-2',
+      title: "You better already be following me.",
+      body: "If you're not on TikTok @aylablumberg.ai by now, we have a problem. Fix it real quick.",
+      cta: 'Follow @aylablumberg.ai',
+    },
+    13: {
+      key: 'tiktok-3',
+      title: "One more ask.",
+      body: "Send this course to a friend and tell them to follow me on TikTok too. @aylablumberg.ai. It's how this gets bigger.",
+      cta: 'Share my TikTok',
+    },
+  }
+  const activeNotif = tiktokNotifs[cur]
+  const showNotif = !!activeNotif && !progress.notifications_seen[activeNotif.key]
+
+  async function dismissNotif() {
+    if (!activeNotif) return
+    const key = activeNotif.key
+    setProgress((prev) => ({
+      ...prev,
+      notifications_seen: { ...prev.notifications_seen, [key]: true },
+    }))
+    await fetch('/api/progress', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ notification_seen: key }),
+    })
+  }
+
   // Delegate clicks for copy buttons + quiz trigger inside dangerouslySetInnerHTML lesson content
   useEffect(() => {
     const el = rightRef.current
@@ -602,11 +1888,47 @@ export default function CourseDashboard() {
       const quizBtn = t.closest('[data-quiz]') as HTMLElement | null
       if (quizBtn) {
         openQuiz()
+        return
+      }
+      const exerciseBtn = t.closest('.exercise-done') as HTMLElement | null
+      if (exerciseBtn) {
+        const id = exerciseBtn.getAttribute('data-exercise-id') || ''
+        if (!id) return
+        const exerciseEl = exerciseBtn.closest('.exercise') as HTMLElement | null
+        const wasDone = exerciseEl?.classList.contains('done') ?? false
+        const nextDone = !wasDone
+        if (exerciseEl) exerciseEl.classList.toggle('done', nextDone)
+        exerciseBtn.textContent = nextDone ? '✓ Nice, done' : 'I did it →'
+        setProgress((prev) => {
+          const set = new Set(prev.exercises_done)
+          if (nextDone) set.add(id)
+          else set.delete(id)
+          return { ...prev, exercises_done: Array.from(set) }
+        })
+        fetch('/api/progress', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ exercise: { id, on: nextDone } }),
+        }).catch(() => {})
       }
     }
     el.addEventListener('click', onClick)
     return () => el.removeEventListener('click', onClick)
   }, [cur])
+
+  // Paint "done" class on exercises that are already marked done for this user
+  useEffect(() => {
+    const wrap = rightRef.current?.querySelector('.lesson-wrap') as HTMLElement | null
+    if (!wrap) return
+    wrap.querySelectorAll('.exercise').forEach((node) => {
+      const el = node as HTMLElement
+      const id = el.getAttribute('data-exercise-id') || ''
+      const done = id && progress.exercises_done.includes(id)
+      el.classList.toggle('done', !!done)
+      const btn = el.querySelector('.exercise-done') as HTMLElement | null
+      if (btn) btn.textContent = done ? '✓ Nice, done' : 'I did it →'
+    })
+  }, [cur, progress.exercises_done])
 
   // Confetti on completion
   const confettiRef = useRef<HTMLCanvasElement>(null)
@@ -718,6 +2040,22 @@ export default function CourseDashboard() {
         .glossary-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); background: var(--pink-light); border: none; padding: 7px 16px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
         .glossary-btn:hover { background: var(--pink); color: white; }
         .top-links { display: flex; align-items: center; gap: 6px; }
+        .streak { display: inline-flex; align-items: center; gap: 4px; background: linear-gradient(135deg, #FF6B1A, #FF2E7E); color: white; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.3px; margin-right: 4px; box-shadow: 0 2px 8px rgba(255,46,126,0.25); }
+        .tk-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 250; display: flex; align-items: center; justify-content: center; padding: 20px; animation: tkFade 0.2s ease; }
+        @keyframes tkFade { from { opacity: 0; } to { opacity: 1; } }
+        .tk-card { background: white; max-width: 420px; width: 100%; border-radius: 22px; padding: 32px 28px 26px; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.28); animation: tkPop 0.25s cubic-bezier(0.22,0.61,0.36,1); }
+        @keyframes tkPop { from { transform: translateY(14px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+        .tk-close { position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border: none; border-radius: 50%; background: var(--pink-light); color: var(--pink); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
+        .tk-close:hover { background: var(--pink); color: white; }
+        .tk-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 8px; }
+        .tk-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 30px; line-height: 1.15; color: var(--dark); margin-bottom: 10px; }
+        .tk-body { font-size: 14.5px; line-height: 1.6; color: var(--mid); font-weight: 300; margin-bottom: 16px; }
+        .tk-handle { font-family: 'Courier New', monospace; font-size: 15px; color: var(--pink); font-weight: 600; padding: 10px 14px; background: var(--pink-pale); border-radius: 10px; margin-bottom: 18px; text-align: center; letter-spacing: 0.3px; }
+        .tk-actions { display: flex; gap: 10px; }
+        .tk-primary { flex: 1; background: var(--pink); color: white; text-decoration: none; text-align: center; padding: 12px 14px; border-radius: 999px; font-size: 11px; tracking-[1.5px]; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; transition: background 0.2s; }
+        .tk-primary:hover { background: #C51F4E; }
+        .tk-secondary { background: transparent; border: 1px solid var(--border); color: var(--mid); padding: 12px 18px; border-radius: 999px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+        .tk-secondary:hover { border-color: var(--pink); color: var(--pink); }
         .top-link { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--mid); padding: 7px 12px; border-radius: 20px; text-decoration: none; transition: all 0.2s; }
         .top-link:hover { color: var(--pink); background: var(--pink-light); }
         .dot.has-bookmark { box-shadow: 0 0 0 3px rgba(232,41,92,0.2); }
@@ -725,21 +2063,138 @@ export default function CourseDashboard() {
         .toolbar-btn { display: inline-flex; align-items: center; gap: 7px; background: white; border: 1px solid var(--border); color: var(--mid); padding: 8px 14px; border-radius: 20px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s; }
         .toolbar-btn:hover { border-color: var(--pink); color: var(--pink); }
         .toolbar-btn.on { background: var(--pink); border-color: var(--pink); color: white; }
-        .notes-pane { margin-top: 44px; background: white; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; max-width: 600px; }
+        .toolbar-btn-icon { padding: 8px 10px; }
+        .lesson-wrap mark.au-hl { background: var(--pink-light); color: var(--dark); padding: 1px 3px; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; cursor: pointer; transition: background 0.2s; }
+        .lesson-wrap mark.au-hl:hover { background: #FFCFDE; }
+        .lesson-wrap span.au-gloss { border-bottom: 1px dotted var(--pink); cursor: help; position: relative; }
+        .lesson-wrap span.au-gloss:hover { color: var(--pink); }
+        .lesson-wrap span.au-gloss::after {
+          content: attr(data-def);
+          position: absolute; left: 50%; top: calc(100% + 8px); transform: translateX(-50%);
+          width: 260px; max-width: 82vw;
+          background: var(--dark); color: white; padding: 10px 14px; border-radius: 10px;
+          font-size: 12px; line-height: 1.5; font-weight: 300; letter-spacing: 0.2px;
+          z-index: 200; box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+          text-transform: none; font-style: normal;
+          opacity: 0; pointer-events: none; transition: opacity 0.15s;
+        }
+        .lesson-wrap span.au-gloss::before {
+          content: ''; position: absolute; left: 50%; top: 100%; transform: translateX(-50%);
+          margin-top: 2px; border: 6px solid transparent; border-bottom-color: var(--dark);
+          z-index: 201; opacity: 0; transition: opacity 0.15s; pointer-events: none;
+        }
+        .lesson-wrap span.au-gloss:hover::after,
+        .lesson-wrap span.au-gloss:hover::before { opacity: 1; }
+        .au-censor, .lesson-wrap s.au-censor, .bubble s.au-censor { text-decoration: line-through; text-decoration-color: currentColor; text-decoration-thickness: 1.5px; text-decoration-skip-ink: none; opacity: 0.85; }
+        .exercise {
+          margin: 28px 0;
+          background: linear-gradient(135deg, #FFF5F8 0%, #FFE4ED 100%);
+          border: 2px solid var(--pink);
+          border-radius: 16px;
+          padding: 22px 22px 20px;
+          position: relative;
+          box-shadow: 0 6px 20px rgba(232,41,92,0.08);
+          transition: all 0.3s ease;
+        }
+        .exercise.done {
+          background: linear-gradient(135deg, #FFFBFC 0%, #FFF0F5 100%);
+          border-color: rgba(232,41,92,0.3);
+          opacity: 0.75;
+        }
+        .exercise.done::after {
+          content: '✓';
+          position: absolute;
+          top: 14px;
+          right: 14px;
+          width: 28px; height: 28px; border-radius: 50%;
+          background: var(--pink); color: white;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 14px; font-weight: 700;
+        }
+        .exercise-tag {
+          display: inline-flex; align-items: center; gap: 6px;
+          font-size: 10px; font-weight: 600; letter-spacing: 2.5px;
+          text-transform: uppercase; color: var(--pink);
+          background: white; padding: 5px 12px; border-radius: 999px;
+          margin-bottom: 10px;
+        }
+        .exercise-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 22px; font-style: italic; font-weight: 500;
+          color: var(--dark); line-height: 1.3; margin: 4px 0 10px;
+        }
+        .exercise-body {
+          font-size: 14.5px; line-height: 1.65; color: var(--dark); font-weight: 300;
+          margin-bottom: 14px;
+        }
+        .exercise-body strong { font-weight: 600; }
+        .exercise-body code {
+          background: white; color: var(--pink);
+          padding: 2px 8px; border-radius: 6px;
+          font-family: 'Courier New', monospace; font-size: 13px;
+          border: 1px solid rgba(232,41,92,0.2);
+        }
+        .exercise-body .q {
+          background: white; border: 1px dashed rgba(232,41,92,0.35);
+          border-radius: 10px; padding: 12px 16px; margin: 10px 0;
+          font-size: 13.5px; color: var(--dark); font-weight: 400;
+          font-family: 'Courier New', monospace; line-height: 1.55;
+        }
+        .exercise-done {
+          background: var(--pink); color: white; border: none;
+          padding: 10px 20px; border-radius: 999px;
+          font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+          text-transform: uppercase; cursor: pointer;
+          font-family: 'DM Sans', sans-serif;
+          transition: all 0.2s;
+        }
+        .exercise-done:hover { background: #C51F4E; transform: translateY(-1px); }
+        .exercise.done .exercise-done { background: rgba(232,41,92,0.3); }
+        .agent-team { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 24px 0 8px; }
+        .agent-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .agent-card:hover { border-color: var(--pink); box-shadow: 0 6px 22px rgba(232,41,92,0.12); }
+        .agent-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .agent-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #FFD6E3 0%, #FF8FAB 100%); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 18px; font-style: italic; flex-shrink: 0; }
+        .agent-name { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: var(--dark); line-height: 1; }
+        .agent-meta { font-size: 10px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--pink); margin-top: 3px; }
+        .agent-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13.5px; line-height: 1.45; color: var(--dark); font-weight: 400; padding-top: 8px; border-top: 1px dashed var(--border); }
+        .agent-footnote { font-size: 12.5px; color: var(--mid); margin-top: 10px; text-align: center; }
+        .stuck-callout { display: flex; gap: 14px; align-items: flex-start; background: linear-gradient(135deg, #FFFBFC 0%, #FFF0F5 100%); border: 2px dashed rgba(232,41,92,0.35); border-radius: 14px; padding: 16px 18px; margin: 24px 0; }
+        .stuck-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--pink); color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(232,41,92,0.25); }
+        .stuck-body { flex: 1; min-width: 0; }
+        .stuck-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: var(--dark); margin-bottom: 4px; font-weight: 500; }
+        .stuck-body p { font-size: 14px; color: var(--dark); font-weight: 300; line-height: 1.55; margin: 0; }
+        @media (max-width: 800px) { .agent-team { grid-template-columns: 1fr; } }
+        .agent-team-photo { margin: 32px 0 12px; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        .agent-team-photo img { width: 100%; max-width: 640px; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 12px 40px rgba(0,0,0,0.10); display: block; }
+        .agent-team-photo figcaption { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--mid); margin-top: 12px; text-align: center; font-weight: 300; }
+        .lesson-photo { margin: 28px 0 8px; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        .lesson-photo img { width: 100%; max-width: 720px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 32px rgba(0,0,0,0.08); display: block; }
+        .lesson-photo figcaption { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--mid); margin-top: 10px; text-align: center; font-weight: 300; max-width: 560px; line-height: 1.45; }
+        .lesson-photo figcaption code { font-family: 'SF Mono', ui-monospace, monospace; font-size: 12px; background: var(--pink-light); color: var(--pink); padding: 1px 6px; border-radius: 4px; font-style: normal; }
+        .hl-popup { position: fixed; transform: translate(-50%, -100%); z-index: 1000; background: var(--pink); color: white; padding: 8px 14px; border-radius: 999px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; box-shadow: 0 8px 24px rgba(232,41,92,0.3); cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px; animation: popIn 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hl-popup:hover { background: #C51F4E; }
+        @keyframes popIn { from { opacity: 0; transform: translate(-50%, -95%); } to { opacity: 1; transform: translate(-50%, -100%); } }
+        .notes-popover { margin: 14px 0 0; background: white; border: 1.5px solid var(--pink); border-radius: 14px; padding: 16px 18px 12px; max-width: 600px; box-shadow: 0 10px 28px rgba(232,41,92,0.12); animation: notePop 0.22s cubic-bezier(0.22,0.61,0.36,1); }
+        @keyframes notePop { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
         .notes-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
         .notes-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); }
         .notes-status { font-size: 10px; color: var(--light); letter-spacing: 1px; }
         .notes-status.s-saved { color: #4CAF50; }
-        .notes-input { width: 100%; resize: vertical; border: none; outline: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.6; color: var(--dark); font-weight: 300; min-height: 90px; }
+        .notes-input { width: 100%; resize: vertical; border: none; outline: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.6; color: var(--dark); font-weight: 300; min-height: 100px; }
         .notes-input::placeholder { color: var(--light); font-style: italic; }
+        .notes-all-link { display: inline-block; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); font-weight: 500; text-decoration: none; width: 100%; transition: color 0.15s; }
+        .notes-all-link:hover { color: #C51F4E; }
         .layout { display: flex; height: 100vh; padding-top: 56px; }
         .left { width: 37%; min-width: 300px; background: var(--left-bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; position: relative; overflow: hidden; }
         .left-inner { padding: 44px 36px; display: flex; flex-direction: column; height: 100%; }
         .l-tag { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 14px; }
-        .l-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; line-height: 1.3; color: var(--dark); font-style: italic; margin-bottom: auto; }
-        .l-num-bg { font-family: 'Cormorant Garamond', serif; font-size: 170px; font-weight: 300; color: rgba(232,41,92,0.065); line-height: 1; position: absolute; bottom: 60px; right: -15px; user-select: none; pointer-events: none; transition: all 0.4s; }
-        .vid-wrap { margin-top: 32px; }
-        .vid-box { background: rgba(232,41,92,0.05); border: 1.5px dashed rgba(232,41,92,0.22); border-radius: 14px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+        .l-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; line-height: 1.3; color: var(--dark); font-style: italic; }
+        .l-num-bg { font-family: 'Cormorant Garamond', serif; font-size: 140px; font-weight: 300; color: rgba(232,41,92,0.12); line-height: 0.9; margin: 24px 0 20px; text-align: right; user-select: none; pointer-events: none; font-style: italic; letter-spacing: -2px; }
+        .vid-wrap { margin-top: 8px; }
+        .vid-box { background: rgba(232,41,92,0.05); border: 1.5px dashed rgba(232,41,92,0.22); border-radius: 14px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; overflow: hidden; position: relative; }
+        .vid-box video { width: 100%; height: 100%; object-fit: cover; }
+        .vid-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 100%; }
         .vid-icon { width: 44px; height: 44px; background: var(--pink-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .vid-icon svg { width: 16px; height: 16px; fill: var(--pink); margin-left: 3px; }
         .vid-label { font-size: 11px; color: var(--light); text-align: center; padding: 0 16px; line-height: 1.4; }
@@ -752,12 +2207,27 @@ export default function CourseDashboard() {
         .l-sub { font-size: 14px; color: var(--mid); font-weight: 300; margin-bottom: 36px; line-height: 1.5; }
         .l-body { font-size: 15.5px; line-height: 1.78; color: var(--dark); font-weight: 300; }
         .l-body p { margin-bottom: 18px; }
-        .l-body strong { font-weight: 600; }
-        .l-body em { font-style: italic; }
+        .l-body strong { font-weight: 700; color: var(--pink); }
+        .l-body em { font-style: italic; color: var(--dark); font-weight: 400; }
+        .l-body .pop { color: var(--pink); font-weight: 700; }
         .l-body ul.l-body ol { padding-left: 20px; margin: 14px 0; }
         .l-body li { margin-bottom: 9px; line-height: 1.65; }
         .callout { background: var(--pink-pale); border-left: 3px solid var(--pink); border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 22px 0; font-size: 14.5px; line-height: 1.65; }
         .callout-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 7px; }
+        .l-divider { border: 0; border-top: 1px solid var(--border); margin: 36px 0 28px; }
+        .l-sub-head { font-size: 26px; font-weight: 600; margin: 0 0 14px; color: var(--dark); letter-spacing: -0.01em; }
+        .how-it-works { display: flex; flex-direction: column; gap: 14px; margin: 22px 0 10px; }
+        .how-step { display: grid; grid-template-columns: 42px 1fr; gap: 16px; align-items: start; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; transition: border-color 0.15s ease, transform 0.15s ease; }
+        .how-step:hover { border-color: var(--pink); }
+        .how-step-n { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; color: var(--pink); letter-spacing: 2px; padding-top: 4px; }
+        .how-step-body h3 { font-size: 15.5px; font-weight: 600; margin: 0 0 6px; color: var(--dark); letter-spacing: -0.005em; }
+        .how-step-body p { font-size: 14px; line-height: 1.65; color: var(--muted, #555); margin: 0; font-weight: 400; }
+        .how-step-body kbd { font-family: 'SFMono-Regular', 'Consolas', monospace; font-size: 12px; padding: 2px 7px; border-radius: 5px; background: #f4f0f2; border: 1px solid var(--border); color: var(--dark); font-weight: 600; }
+        @media (max-width: 560px) { .how-step { grid-template-columns: 1fr; gap: 4px; } .how-step-n { padding-top: 0; } }
+        .idea-spiral-figure { margin: 28px 0; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+        .idea-spiral { width: 100%; height: auto; max-height: 260px; display: block; }
+        .diagram-figure { margin: 28px 0; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+        .diagram-svg { width: 100%; height: auto; display: block; }
         .code-wrap { position: relative; margin: 22px 0; }
         .code-block { background: #181818; color: #E8E8E8; padding: 18px 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.65; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
         .copy-btn { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1); border: none; color: #888; font-size: 11px; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; letter-spacing: 0.5px; }
@@ -835,7 +2305,7 @@ export default function CourseDashboard() {
           .layout { flex-direction: column; }
           .left { width: 100%; min-width: unset; height: auto; }
           .left-inner { padding: 20px 22px; flex-direction: row; align-items: center; gap: 14px; }
-          .l-num-bg.vid-wrap { display: none; }
+          .l-num-bg, .vid-wrap { display: none; }
           .l-title { font-size: 17px; margin-bottom: 0; }
           .l-tag { margin-bottom: 4px; }
           .right { padding: 28px 22px 100px; }
@@ -851,19 +2321,30 @@ export default function CourseDashboard() {
       <nav className="top-nav">
         <div className="course-brand">Ayla <span>Unlocked</span></div>
         <div className="progress-dots">
-          {lessons.map((les, i) => (
-            <div
-              key={i}
-              className={`dot${i === cur ? ' now' : i < cur ? ' done' : ''}${progress.bookmarks.includes(i) ? ' has-bookmark' : ''}`}
-              onClick={() => go(0, i)}
-              title={les.tag + (progress.bookmarks.includes(i) ? ' ★' : '')}
-            />
-          ))}
+          {lessons.map((les, i) => {
+            const isDone = progress.completed_lessons.includes(i)
+            const hasBm = progress.bookmarks.includes(i)
+            return (
+              <div
+                key={i}
+                className={`dot${i === cur ? ' now' : (isDone || i < cur) ? ' done' : ''}${hasBm ? ' has-bookmark' : ''}`}
+                onClick={() => go(0, i)}
+                title={les.tag + (hasBm ? ' ★' : '') + (isDone ? ' ✓' : '')}
+              />
+            )
+          })}
         </div>
         <div className="top-links">
+          {progress.streak_days > 0 && (
+            <span className="streak" title={`Longest streak: ${progress.longest_streak} days`}>
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M13 2S4 12 4 17a8 8 0 0 0 16 0c0-2-1-4-2.5-5.5L15 9s1 4-1 5c0-3-1-5-1-5V2z"/></svg>
+              {progress.streak_days}
+            </span>
+          )}
           <a className="top-link" href="/course/prompts">Prompts</a>
           <a className="top-link" href="/course/real-chats">Chats</a>
           <a className="top-link" href="/course/notes">Notes</a>
+          <a className="top-link" href="/course/submit">Submit</a>
           <button className="glossary-btn" onClick={() => setGlossaryOpen(true)}>Glossary</button>
         </div>
       </nav>
@@ -873,24 +2354,31 @@ export default function CourseDashboard() {
           <div className="left-inner">
             <div className="l-tag">{l.tag}</div>
             <div className="l-title">{l.leftTitle}</div>
+            {l.num && <div className="l-num-bg">{l.num}</div>}
             <div className="vid-wrap">
               <div className="vid-box">
-                <div className="vid-icon">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                </div>
-                <div className="vid-label">{l.vid}</div>
+                <VideoPlayer
+                  src={`/videos/lesson-${String(cur).padStart(2, '0')}.mp4`}
+                  fallback={
+                    <div className="vid-fallback">
+                      <div className="vid-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                      </div>
+                      <div className="vid-label">{l.vid}</div>
+                    </div>
+                  }
+                />
               </div>
             </div>
           </div>
-          <div className="l-num-bg">{l.num}</div>
         </div>
         <div className="right" ref={rightRef}>
           <div className="lesson-toolbar">
             <button
-              className={`toolbar-btn ${isBookmarked ? 'on' : ''}`}
+              className={`toolbar-btn toolbar-btn-icon ${isBookmarked ? 'on' : ''}`}
               onClick={toggleBookmark}
-              title={isBookmarked ? 'Bookmarked, click to remove' : 'Bookmark this lesson'}
-              aria-label="Bookmark"
+              title={isBookmarked ? 'Saved, click to remove' : 'Save this lesson'}
+              aria-label="Save lesson"
             >
               <svg viewBox="0 0 24 24" width="16" height="16">
                 <path
@@ -901,38 +2389,88 @@ export default function CourseDashboard() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span>{isBookmarked ? 'Saved' : 'Save'}</span>
             </button>
             <button
-              className={`toolbar-btn ${isConfused ? 'on' : ''}`}
+              className={`toolbar-btn toolbar-btn-icon ${isConfused ? 'on' : ''}`}
               onClick={toggleConfused}
               title={isConfused ? "Flagged as confusing, click to un-flag" : "This part's confusing? Flag it for Ayla"}
-              aria-label="Confused"
+              aria-label="Flag as confusing"
             >
               <svg viewBox="0 0 24 24" width="16" height="16">
                 <circle cx="12" cy="12" r="9.5" fill={isConfused ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" />
                 <path d="M9 9.5a3 3 0 1 1 4.5 2.6c-1 .5-1.5 1-1.5 2V15" stroke={isConfused ? 'white' : 'currentColor'} strokeWidth="1.8" fill="none" strokeLinecap="round" />
                 <circle cx="12" cy="17.5" r="1" fill={isConfused ? 'white' : 'currentColor'} />
               </svg>
-              <span>{isConfused ? 'Flagged' : 'Confusing?'}</span>
+            </button>
+            <button
+              className={`toolbar-btn toolbar-btn-icon ${noteDraft.trim() ? 'on' : ''}`}
+              onClick={() => setNotesOpen((v) => !v)}
+              title={noteDraft.trim() ? 'You have a note on this lesson' : 'Add a note on this lesson'}
+              aria-label="Notes"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill={noteDraft.trim() ? 'currentColor' : 'none'} />
+                <polyline points="14 2 14 8 20 8" stroke={noteDraft.trim() ? 'white' : 'currentColor'} />
+                <line x1="8" y1="13" x2="16" y2="13" stroke={noteDraft.trim() ? 'white' : 'currentColor'} />
+                <line x1="8" y1="17" x2="13" y2="17" stroke={noteDraft.trim() ? 'white' : 'currentColor'} />
+              </svg>
             </button>
           </div>
-          <div className="lesson-wrap" key={cur} dangerouslySetInnerHTML={{ __html: l.html }} />
-          <div className="notes-pane">
-            <div className="notes-head">
-              <span className="notes-label">Your notes on this lesson</span>
-              <span className={`notes-status s-${noteSaved}`}>
-                {noteSaved === 'saving' ? 'saving…' : noteSaved === 'saved' ? 'saved' : ''}
-              </span>
+
+          {notesOpen && (
+            <div className="notes-popover">
+              <div className="notes-head">
+                <span className="notes-label">Your note on this lesson</span>
+                <div className="flex items-center gap-2" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span className={`notes-status s-${noteSaved}`}>
+                    {noteSaved === 'saving' ? 'saving…' : noteSaved === 'saved' ? 'saved' : ''}
+                  </span>
+                  <button
+                    onClick={() => setNotesOpen(false)}
+                    aria-label="Close notes"
+                    style={{ background: 'transparent', border: 'none', color: 'var(--mid)', cursor: 'pointer', fontSize: 16, lineHeight: 1, padding: 0 }}
+                  >×</button>
+                </div>
+              </div>
+              <textarea
+                className="notes-input"
+                placeholder="Jot something down, ideas, questions, things you want to try..."
+                value={noteDraft}
+                onChange={(e) => setNoteDraft(e.target.value)}
+                rows={5}
+                autoFocus
+              />
+              <a className="notes-all-link" href="/course/notes">
+                See all my notes &amp; saves &rarr;
+              </a>
             </div>
-            <textarea
-              className="notes-input"
-              placeholder="Jot something down, ideas, questions, things you want to try..."
-              value={noteDraft}
-              onChange={(e) => setNoteDraft(e.target.value)}
-              rows={4}
-            />
-          </div>
+          )}
+          <div
+            className="lesson-wrap"
+            key={cur}
+            dangerouslySetInnerHTML={{ __html: l.html }}
+            onClick={(e) => {
+              // Click an existing highlight to remove it
+              const t = e.target as HTMLElement
+              if (t?.tagName === 'MARK' && t.classList.contains('au-hl')) {
+                const text = t.textContent || ''
+                if (confirm('Remove this highlight?')) removeHighlight(text)
+              }
+            }}
+          />
+          {highlightPopup && (
+            <button
+              className="hl-popup"
+              style={{ left: highlightPopup.x, top: highlightPopup.y }}
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => addHighlight(highlightPopup.text)}
+            >
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                <path d="M9 11L7 9l-4 4v4h4l4-4-2-2zm9.7-7.3l-1.4-1.4a1 1 0 0 0-1.4 0L8 10.2l3.8 3.8 7.9-7.9a1 1 0 0 0 0-1.4z"/>
+              </svg>
+              Highlight
+            </button>
+          )}
         </div>
       </div>
 
@@ -1006,6 +2544,31 @@ export default function CourseDashboard() {
           )}
         </div>
       </div>
+
+      {/* TIKTOK NUDGE — lesson 4 / 8 / 13 */}
+      {showNotif && activeNotif && (
+        <div className="tk-overlay" onClick={(e) => { if (e.target === e.currentTarget) dismissNotif() }}>
+          <div className="tk-card">
+            <button className="tk-close" onClick={dismissNotif} aria-label="Close">&times;</button>
+            <div className="tk-eyebrow">From Ayla</div>
+            <div className="tk-title">{activeNotif.title}</div>
+            <p className="tk-body">{activeNotif.body}</p>
+            <div className="tk-handle">@aylablumberg.ai</div>
+            <div className="tk-actions">
+              <a
+                className="tk-primary"
+                href="https://www.tiktok.com/@aylablumberg.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={dismissNotif}
+              >
+                {activeNotif.cta}
+              </a>
+              <button className="tk-secondary" onClick={dismissNotif}>Later</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* COMPLETION */}
       <div className={`comp${completion ? ' open' : ''}`}>

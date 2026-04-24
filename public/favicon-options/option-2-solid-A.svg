@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Option 2: Solid pink background, italic cream "A". Bold, high contrast, pops on any browser tab. -->
+  <rect width="256" height="256" rx="56" fill="#E8295C"/>
+  <text x="128" y="196" text-anchor="middle"
+        font-family="'Cormorant Garamond', Georgia, serif"
+        font-style="italic" font-size="240" font-weight="500"
+        fill="#FDF6F0"
+        letter-spacing="-6">A</text>
+</svg>

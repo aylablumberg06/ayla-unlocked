@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Ayla Unlocked — Pricing analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root { --cream:#FDF6F0; --pink:#E8295C; --dark:#1A1A1A; --mid:#555; --border:#EAD8CF; --pink-pale:#FFE4ED; --pink-light:#FFCFDC; }
+  body { background:var(--cream); color:var(--dark); font-family:'DM Sans',sans-serif; margin:0; padding:48px 32px 120px; max-width:980px; margin:0 auto; }
+  h1 { font-family:'Cormorant Garamond', serif; font-weight:500; font-size:56px; margin:0 0 12px; letter-spacing:-1px; }
+  h1 em { color:var(--pink); font-style:italic; }
+  h2 { font-family:'Cormorant Garamond', serif; font-weight:500; font-size:32px; margin:40px 0 12px; }
+  p.lede { color:var(--mid); font-weight:300; font-size:17px; line-height:1.55; max-width:700px; }
+  .scenarios { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
+  .price-col { background:white; border:1px solid var(--border); border-radius:20px; padding:24px; }
+  .price-col.mine { border:2px solid var(--pink); background:var(--pink-pale); }
+  .tag { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--pink); font-weight:600; margin-bottom:8px; }
+  .price { font-family:'Cormorant Garamond', serif; font-size:56px; color:var(--pink); font-style:italic; line-height:1; margin-bottom:4px; }
+  .sub { font-size:12px; color:var(--mid); font-weight:300; min-height:36px; margin-bottom:18px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  td, th { padding:8px 2px; border-bottom:1px solid var(--border); text-align:right; }
+  td.label, th.label { text-align:left; font-weight:500; }
+  tr:last-child td { border-bottom:none; font-weight:600; color:var(--pink); font-size:16px; }
+  .chart { background:white; border:1px solid var(--border); border-radius:16px; padding:24px; margin-top:24px; }
+  .recommendation { background:var(--pink); color:white; border-radius:20px; padding:28px 32px; margin-top:32px; }
+  .recommendation h3 { margin:0 0 10px; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:30px; font-weight:500; }
+  .recommendation p { margin:0 0 10px; font-size:15px; line-height:1.55; font-weight:300; }
+  .footnote { color:var(--mid); font-size:12px; font-weight:300; margin-top:10px; font-style:italic; }
+</style>
+</head>
+<body>
+
+<div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--pink); font-weight:600; margin-bottom:12px;">For Ayla &middot; Pricing analysis</div>
+<h1>What this course is actually <em>worth</em>.</h1>
+<p class="lede">Below is my honest take on pricing based on comps, course length (29 lessons &middot; ~2 hrs &middot; 14 exercises &middot; prompt library &middot; real chats archive &middot; certificate &middot; Ask-Ayla widget), your positioning, and the math at each tier.</p>
+
+<h2>Three scenarios</h2>
+<div class="scenarios">
+  <div class="price-col">
+    <div class="tag">Current</div>
+    <div class="price">$39</div>
+    <div class="sub">What you're charging today. Low friction, mass-market, impulse-purchase territory.</div>
+    <table>
+      <tr><td class="label">Price</td><td>$39</td></tr>
+      <tr><td class="label">Stripe fee</td><td>&minus;$1.43</td></tr>
+      <tr><td class="label">Net per sale</td><td>$37.57</td></tr>
+      <tr><td class="label">100 sales</td><td>$3,757</td></tr>
+      <tr><td class="label">500 sales</td><td>$18,785</td></tr>
+      <tr><td class="label">1,000 sales</td><td>$37,570</td></tr>
+      <tr><td class="label">5,000 sales</td><td>$187,850</td></tr>
+    </table>
+  </div>
+
+  <div class="price-col mine">
+    <div class="tag">My recommendation</div>
+    <div class="price">$79</div>
+    <div class="sub">Sweet spot. Still impulse-range for anyone serious about learning AI. Doubles revenue at the same conversion rate.</div>
+    <table>
+      <tr><td class="label">Price</td><td>$79</td></tr>
+      <tr><td class="label">Stripe fee</td><td>&minus;$2.59</td></tr>
+      <tr><td class="label">Net per sale</td><td>$76.41</td></tr>
+      <tr><td class="label">100 sales</td><td>$7,641</td></tr>
+      <tr><td class="label">500 sales</td><td>$38,205</td></tr>
+      <tr><td class="label">1,000 sales</td><td>$76,410</td></tr>
+      <tr><td class="label">5,000 sales</td><td>$382,050</td></tr>
+    </table>
+  </div>
+
+  <div class="price-col">
+    <div class="tag">Ambitious</div>
+    <div class="price">$149</div>
+    <div class="sub">Priced like a real micro-course. Lower conversion, higher margin, more "students" less "subscribers."</div>
+    <table>
+      <tr><td class="label">Price</td><td>$149</td></tr>
+      <tr><td class="label">Stripe fee</td><td>&minus;$4.62</td></tr>
+      <tr><td class="label">Net per sale</td><td>$144.38</td></tr>
+      <tr><td class="label">100 sales</td><td>$14,438</td></tr>
+      <tr><td class="label">500 sales</td><td>$72,190</td></tr>
+      <tr><td class="label">1,000 sales</td><td>$144,380</td></tr>
+      <tr><td class="label">5,000 sales</td><td>$721,900</td></tr>
+    </table>
+  </div>
+</div>
+
+<h2>Side-by-side: revenue at each volume</h2>
+<div class="chart">
+  <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+    <defs>
+      <linearGradient id="g79" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8295C"/><stop offset="100%" stop-color="#C51F4E"/></linearGradient>
+    </defs>
+    <!-- axis -->
+    <line x1="80" y1="320" x2="880" y2="320" stroke="#EAD8CF" stroke-width="1.5"/>
+    <line x1="80" y1="30" x2="80" y2="320" stroke="#EAD8CF" stroke-width="1.5"/>
+
+    <!-- y-axis labels -->
+    <text x="70" y="320" text-anchor="end" font-size="11" fill="#888" font-family="DM Sans">$0</text>
+    <text x="70" y="240" text-anchor="end" font-size="11" fill="#888" font-family="DM Sans">$200k</text>
+    <text x="70" y="160" text-anchor="end" font-size="11" fill="#888" font-family="DM Sans">$400k</text>
+    <text x="70" y="80" text-anchor="end" font-size="11" fill="#888" font-family="DM Sans">$600k</text>
+
+    <!-- group bars. 5 volume groups: 100, 500, 1000, 2500, 5000 -->
+    <!-- positions -->
+    <!-- each group width ~ 140, bars ~30 wide -->
+    <!-- scale: $720k = top (y=30), $0 = y=320, range 290 px / $720,000 per pixel -->
+    <!-- helper: y = 320 - (dollars / 720000) * 290 -->
+
+    <!-- Group 1: 100 sales -->
+    <g transform="translate(100,0)">
+      <rect x="0" y="319" width="24" height="1.5" fill="#EAD8CF"/>
+      <rect x="0" y="318.49" width="24" height="1.51" fill="#FFCFDC"/>
+      <rect x="30" y="317.92" width="24" height="3.08" fill="url(#g79)"/>
+      <rect x="60" y="314.19" width="24" height="5.81" fill="#C51F4E"/>
+      <text x="42" y="340" text-anchor="middle" font-size="11" fill="#555" font-family="DM Sans">100 sales</text>
+    </g>
+
+    <!-- Group 2: 500 -->
+    <g transform="translate(250,0)">
+      <rect x="0" y="312.43" width="24" height="7.57" fill="#FFCFDC"/>
+      <rect x="30" y="304.61" width="24" height="15.39" fill="url(#g79)"/>
+      <rect x="60" y="290.92" width="24" height="29.08" fill="#C51F4E"/>
+      <text x="42" y="340" text-anchor="middle" font-size="11" fill="#555" font-family="DM Sans">500 sales</text>
+    </g>
+
+    <!-- Group 3: 1000 -->
+    <g transform="translate(400,0)">
+      <rect x="0" y="304.86" width="24" height="15.14" fill="#FFCFDC"/>
+      <rect x="30" y="289.22" width="24" height="30.78" fill="url(#g79)"/>
+      <rect x="60" y="261.84" width="24" height="58.16" fill="#C51F4E"/>
+      <text x="42" y="340" text-anchor="middle" font-size="11" fill="#555" font-family="DM Sans">1,000 sales</text>
+    </g>
+
+    <!-- Group 4: 2500 -->
+    <g transform="translate(550,0)">
+      <rect x="0" y="282.16" width="24" height="37.84" fill="#FFCFDC"/>
+      <rect x="30" y="243.05" width="24" height="76.95" fill="url(#g79)"/>
+      <rect x="60" y="174.60" width="24" height="145.40" fill="#C51F4E"/>
+      <text x="42" y="340" text-anchor="middle" font-size="11" fill="#555" font-family="DM Sans">2,500 sales</text>
+    </g>
+
+    <!-- Group 5: 5000 -->
+    <g transform="translate(700,0)">
+      <rect x="0" y="244.32" width="24" height="75.68" fill="#FFCFDC"/>
+      <rect x="30" y="166.10" width="24" height="153.90" fill="url(#g79)"/>
+      <rect x="60" y="29.21" width="24" height="290.79" fill="#C51F4E"/>
+      <text x="42" y="340" text-anchor="middle" font-size="11" fill="#555" font-family="DM Sans">5,000 sales</text>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(830,40)">
+      <rect x="0" y="0" width="12" height="12" fill="#FFCFDC"/>
+      <text x="18" y="10" font-size="11" fill="#555" font-family="DM Sans">$39</text>
+      <rect x="0" y="20" width="12" height="12" fill="#E8295C"/>
+      <text x="18" y="30" font-size="11" fill="#555" font-family="DM Sans">$79</text>
+      <rect x="0" y="40" width="12" height="12" fill="#C51F4E"/>
+      <text x="18" y="50" font-size="11" fill="#555" font-family="DM Sans">$149</text>
+    </g>
+  </svg>
+</div>
+
+<div class="recommendation">
+  <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; opacity:0.8; margin-bottom:8px;">The call</div>
+  <h3>Move it to $79. Today.</h3>
+  <p><strong>Your course is worth a lot more than $39.</strong> Here's why $79 is the right number:</p>
+  <p>&middot; <strong>Market comps:</strong> Similar AI-for-beginners courses from Dickie Bush, Justin Welsh, Ali Abdaal, and Jay Clouse all sit $99–$297. The only ones cheaper than $50 are throwaways.</p>
+  <p>&middot; <strong>Content density:</strong> 29 lessons + 14 exercises + 40 prompts + a real-chats archive + a live Ask-Ayla widget + a personalized certificate. You're well into "real course" territory.</p>
+  <p>&middot; <strong>Who buys at $39 vs $79:</strong> $39 attracts casual "cool I'll check it out" buyers. $79 attracts people who will actually do the course and post about it. That second group becomes your marketing. The first group lurks.</p>
+  <p>&middot; <strong>The math:</strong> even if raising to $79 drops conversion by 40%, you still net 22% more revenue per visitor. Pricing almost always wins this tradeoff.</p>
+  <p>&middot; <strong>Your story premium:</strong> 19, self-taught, one month in, building agent teams for companies. That narrative is worth $40 alone. Don't underprice yourself for people who want to dismiss you.</p>
+  <p style="margin-top:18px; font-style:italic; font-family:'Cormorant Garamond', serif; font-size:20px;">Ship it at $79. Run a limited &ldquo;founder's price&rdquo; at $39 for the first 50 buyers as social proof, then flip it.</p>
+</div>
+
+<p class="footnote">Stripe fee assumed at 2.9% + $0.30 per transaction, standard US. Doesn't factor in refunds, taxes, or marketing cost. Numbers are pre-tax gross.</p>
+
+</body>
+</html>

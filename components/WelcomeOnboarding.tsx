@@ -53,6 +53,38 @@ export default function WelcomeOnboarding() {
       <section className="px-6 md:px-10 max-w-3xl mx-auto pb-12">
         <div className="grid md:grid-cols-2 gap-5">
           <Feature
+            tag="Watch or read"
+            title="Every lesson has a video + text"
+            body="Press play if you want me explaining it to you. Prefer to skim? The text is right there. Both are the same thing. Pick whichever way your brain is working that day."
+            icon={
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />
+              </svg>
+            }
+          />
+          <Feature
+            tag="Highlight to save"
+            title="Drag across any sentence"
+            body="See a line that hits? Drag to select it. A pink pill pops up, hit it, and that quote lives in your Notes tab forever. Like highlighting a book, but it remembers for you."
+            icon={
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="currentColor" opacity="0.25" />
+              </svg>
+            }
+          />
+          <Feature
+            tag="Search anything"
+            title={<>Hit <kbd>⌘K</kbd> to jump</>}
+            body="Cmd+K (or Ctrl+K on Windows) opens a fast search bar. Type any word and it jumps straight to the lesson, prompt, or chat it lives in. Use this. It will save you SO much scrolling."
+            icon={
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            }
+          />
+          <Feature
             tag="Save"
             title="Bookmark any lesson"
             body="See a star button on each lesson? Hit it to save it for later. Useful when you know you&apos;re going to need it again at 2am."
@@ -118,6 +150,17 @@ export default function WelcomeOnboarding() {
               </svg>
             }
           />
+          <Feature
+            tag="Finish it"
+            title="Get your certificate at the end"
+            body="Get through all 29 lessons and I make you a real, personalized Ayla Unlocked certificate. It&rsquo;s dumb in the best way. Frame it. Post it. Put it on LinkedIn. You earned it."
+            icon={
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="8" r="6" />
+                <path d="M15.5 12.8 17 22l-5-3-5 3 1.5-9.2" />
+              </svg>
+            }
+          />
         </div>
       </section>
 
@@ -133,6 +176,50 @@ export default function WelcomeOnboarding() {
             rewrite the lessons that most people flag. You&apos;re not just taking the course,
             you&apos;re making it better for everyone after you.
           </p>
+        </div>
+      </section>
+
+      {/* BOOKMARK / INSTALL */}
+      <section className="px-6 md:px-10 max-w-2xl mx-auto pb-12">
+        <div className="rounded-2xl bg-white border border-[color:var(--border)] p-6 md:p-7">
+          <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">
+            Save this so you can come back
+          </div>
+          <p className="text-dark text-[15px] leading-relaxed font-light mb-4">
+            You&rsquo;re going to want this open a lot. Two easy ways to come back fast:
+          </p>
+          <ul className="space-y-3 text-[14.5px] text-dark font-light">
+            <li className="flex gap-3">
+              <span className="text-pink shrink-0 mt-0.5">→</span>
+              <span><strong>Bookmark this page.</strong> Press <code className="bg-[color:var(--pink-pale)] text-pink px-1.5 py-0.5 rounded font-mono text-[12px]">⌘D</code> on Mac or <code className="bg-[color:var(--pink-pale)] text-pink px-1.5 py-0.5 rounded font-mono text-[12px]">Ctrl+D</code> on Windows. Done.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-pink shrink-0 mt-0.5">→</span>
+              <span><strong>Install it like an app.</strong> On your phone, open Safari/Chrome, tap share, pick <em>Add to Home Screen</em>. On desktop Chrome, click the little install icon in the URL bar. Now it opens without a browser bar, like a real app.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* ADDICTION WARNING */}
+      <section className="px-6 md:px-10 max-w-2xl mx-auto pb-12">
+        <div className="rounded-2xl border-2 border-pink bg-white p-6 md:p-7 relative overflow-hidden">
+          <div className="absolute -top-3 left-6 bg-pink text-white text-[10px] tracking-[2.5px] uppercase font-semibold px-3 py-1 rounded-full">
+            ⚠ Fair warning
+          </div>
+          <div className="pt-3">
+            <h3 className="font-serif italic text-2xl md:text-3xl mb-3 text-dark leading-tight">
+              This stuff gets weirdly addicting.
+            </h3>
+            <p className="text-dark text-[15px] leading-relaxed font-light mb-3">
+              I&apos;ve stayed up until 2 AM more nights than I can count. I&apos;ve left my laptop
+              open on the passenger seat of my car, running agents off a hotspot, because I didn&apos;t
+              want to wait until I got home.
+            </p>
+            <p className="text-mid text-[14px] leading-relaxed font-light italic">
+              Pace yourself. Drink water. Go to bed. You won&apos;t, but I&apos;m telling you anyway.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -155,7 +242,7 @@ export default function WelcomeOnboarding() {
 
 function Feature({
   tag, title, body, icon,
-}: { tag: string; title: string; body: string; icon: React.ReactNode }) {
+}: { tag: string; title: React.ReactNode; body: string; icon: React.ReactNode }) {
   return (
     <div className="bg-white rounded-2xl border border-[color:var(--border)] p-5 md:p-6 relative overflow-hidden">
       <div className="flex items-start gap-4">

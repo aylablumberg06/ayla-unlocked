@@ -133,6 +133,19 @@ export const REAL_CHATS: ChatExchange[] = [
   },
 
   {
+    id: 'rc-9',
+    title: "The \"stop telling me to do it myself\" rule",
+    context:
+      "Claude kept giving me step-by-step instructions for stuff it could have just done directly. I set the rule once and never looked back.",
+    messages: [
+      { role: 'user', text: "never tell me to do something you can do. do everything yourself. if you actually can't, explain why in one sentence." },
+      { role: 'claude', text: "Understood. I'll execute directly and only ask you for things I genuinely cannot do (accounts, passwords, clicks in a browser)." },
+    ],
+    lesson:
+      "This is my single most important rule. Claude defaults to giving you instructions. You want a doer, not a tutor. Paste this at the top of any project chat and everything downstream gets faster.",
+  },
+
+  {
     id: 'rc-8',
     title: "Password-gating instead of full auth",
     context:

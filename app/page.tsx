@@ -2,6 +2,8 @@ import Link from 'next/link'
 import ContactForm from '@/components/ContactForm'
 import HeroCover from '@/components/HeroCover'
 import ScrollReveal, { ScrollProgressBar } from '@/components/ScrollReveal'
+import ThemeToggle from '@/components/ThemeToggle'
+import { TOTAL_COMBINED_SEC, TOTAL_READ_SEC, formatMinutes } from '@/lib/estimates'
 
 export default function LandingPage() {
   return (
@@ -14,6 +16,7 @@ export default function LandingPage() {
             Ayla <span className="text-pink italic">Unlocked</span>
           </div>
           <div className="flex items-center gap-2 md:gap-3">
+            <ThemeToggle />
             <Link
               href="/login"
               className="link-underline text-[11px] tracking-[1.5px] uppercase text-mid hover:text-pink px-3 py-2.5 transition"
@@ -79,9 +82,16 @@ export default function LandingPage() {
       {/* WHAT'S INSIDE */}
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
         <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">03 · What&apos;s inside</div>
-        <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-10">
-          Four sections. Twenty lessons. Zero gatekeeping.
+        <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-4">
+          Five sections. Twenty-eight lessons. Zero gatekeeping.
         </h2>
+        <p className="text-mid font-light mb-6 text-[15px]">
+          About <span className="text-pink font-medium">{formatMinutes(TOTAL_COMBINED_SEC)} total</span> if you actually do the hands-on exercises &mdash; and you should. Break it up however you want.
+          Speed the videos to 2x and cut through faster. Read-only mode? <span className="text-pink font-medium">{formatMinutes(TOTAL_READ_SEC)}</span>.
+        </p>
+        <p className="text-[13px] text-muted-light italic mb-10">
+          Take it in chunks. A lesson + its &ldquo;try this now&rdquo; challenge is usually 10&ndash;20 minutes. You can do the whole thing in an afternoon or spread it over a week.
+        </p>
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Part 1 &middot; What this is</div>
@@ -90,36 +100,50 @@ export default function LandingPage() {
               <li>02 &middot; What Claude can do</li>
               <li>03 &middot; The mindset shift</li>
               <li>04 &middot; The big divide</li>
+              <li>05 &middot; Imposter syndrome, real talk</li>
             </ul>
           </div>
           <div>
-            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Part 2 &middot; How to use it</div>
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Part 2 &middot; How to talk to it</div>
             <ul className="space-y-2 text-dark font-light text-[15px]">
-              <li>05 &middot; Getting set up</li>
-              <li>06 &middot; Grammar? Never.</li>
-              <li>07 &middot; Finding your first idea</li>
-              <li>08 &middot; Just yap to it</li>
+              <li>06 &middot; Getting set up</li>
+              <li>07 &middot; Free vs. Pro vs. Max</li>
+              <li>08 &middot; Grammar? Never.</li>
+              <li>09 &middot; Just yap to it</li>
+              <li>10 &middot; When Claude gets it wrong</li>
+              <li>11 &middot; Staying organized</li>
             </ul>
           </div>
           <div>
-            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Part 3 &middot; Building for real</div>
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Part 3 &middot; What to build</div>
             <ul className="space-y-2 text-dark font-light text-[15px]">
-              <li>09 &middot; Chat vs. Code vs. Cowork</li>
-              <li>10 &middot; HTML files, explained</li>
-              <li>11 &middot; Deploying to the internet</li>
-              <li>12 &middot; Terminal, demystified</li>
-              <li>13 &middot; API keys</li>
-              <li>14 &middot; Real APIs you&apos;ll use</li>
+              <li>12 &middot; Finding your first idea</li>
+              <li>13 &middot; When NOT to use AI</li>
+              <li>14 &middot; The four modes (Chat, Code, Cowork, Chrome)</li>
+              <li>15 &middot; HTML files, explained</li>
+              <li>16 &middot; Deploying to the internet</li>
+              <li>17 &middot; Terminal, demystified</li>
             </ul>
           </div>
           <div>
             <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Part 4 &middot; Selling &amp; scaling</div>
             <ul className="space-y-2 text-dark font-light text-[15px]">
-              <li>15 &middot; Selling online (Stripe explained)</li>
-              <li>16 &middot; Stripe step-by-step</li>
-              <li>17 &middot; When Claude gets it wrong</li>
-              <li>18 &middot; Staying organized</li>
-              <li>19 &middot; Agents, the next level</li>
+              <li>18 &middot; API keys</li>
+              <li>19 &middot; Real APIs you&apos;ll use</li>
+              <li>20 &middot; Selling online (Stripe explained)</li>
+              <li>21 &middot; Stripe step-by-step</li>
+              <li>22 &middot; Your first paying client</li>
+              <li>23 &middot; Proposal vs. contract</li>
+              <li>24 &middot; Agents, the next level</li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Part 5 &middot; The real stuff</div>
+            <ul className="space-y-2 text-dark font-light text-[15px]">
+              <li>25 &middot; Claude on my phone</li>
+              <li>26 &middot; A day in my chaotic AI life</li>
+              <li>27 &middot; My 5 favorite mistakes</li>
+              <li>28 &middot; My top 10 daily prompts</li>
             </ul>
           </div>
         </div>

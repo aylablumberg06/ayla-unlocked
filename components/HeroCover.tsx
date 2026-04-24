@@ -1,7 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
+import VideoPlayer from '@/components/VideoPlayer'
+import { TOTAL_COMBINED_SEC, formatMinutes } from '@/lib/estimates'
 
 /**
  * HERO COVER, full-height, cinematic, video-ready.
@@ -10,12 +12,6 @@ import { useEffect, useRef, useState } from 'react'
  */
 export default function HeroCover() {
   const [videoOpen, setVideoOpen] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    if (videoOpen) videoRef.current?.play().catch(() => {})
-    else videoRef.current?.pause()
-  }, [videoOpen])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 md:px-10 pt-20 pb-16 overflow-hidden">
@@ -80,8 +76,12 @@ export default function HeroCover() {
                 <span>&middot; lifetime access</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-pink font-semibold">20</span>
+                <span className="text-pink font-semibold">28</span>
                 <span>&middot; lessons</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-pink font-semibold">~{formatMinutes(TOTAL_COMBINED_SEC)}</span>
+                <span>&middot; start to finish</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-pink font-semibold">0</span>
@@ -108,6 +108,20 @@ export default function HeroCover() {
                 <p className="text-[13px] text-mid font-light leading-relaxed">
                   Interactive idea generator &middot; plain-English glossary &middot; video walkthroughs (coming)
                 </p>
+              </div>
+              <div className="mt-5 pt-5 border-t border-[color:var(--border)] flex items-start gap-3">
+                <div className="shrink-0 w-9 h-9 rounded-full bg-pink-light text-pink flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="8" r="6" />
+                    <path d="M15.5 12.8 17 22l-5-3-5 3 1.5-9.2" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-1">Finish &amp; get a certificate</div>
+                  <p className="text-[13px] text-mid font-light leading-relaxed">
+                    Get through all 29 lessons and I&rsquo;ll make you a real Ayla Unlocked certificate, with your name on it. Frame it. LinkedIn it. Whatever.
+                  </p>
+                </div>
               </div>
               {/* floating sticker */}
               <div className="absolute -top-5 -right-5 rotate-12 bg-pink text-white px-4 py-2 rounded-full text-[10px] tracking-[2px] uppercase font-semibold shadow-lg">
@@ -138,34 +152,27 @@ export default function HeroCover() {
             className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/*
-              Drop your welcome video into public/hero-video.mp4.
-              Until then, this placeholder shows a pretty fallback screen.
-            */}
-            <video
-              ref={videoRef}
+            <VideoPlayer
               src="/hero-video.mp4"
-              controls
-              playsInline
-              className="w-full h-full object-cover relative z-10"
-              onError={(e) => { (e.currentTarget as HTMLVideoElement).style.display = 'none' }}
-            />
-            {/* Ambient fallback — shows only if no video file */}
-            <div className="absolute inset-0 z-0 pointer-events-none"
-                 style={{
-                   background:
-                     'radial-gradient(circle at 30% 30%, #FFB3C6 0%, transparent 60%),' +
-                     'radial-gradient(circle at 70% 70%, #E8295C 0%, transparent 50%),' +
-                     'linear-gradient(135deg, #1A1A1A 0%, #3B1020 60%, #1A1A1A 100%)',
-                 }}>
-              <div className="absolute inset-0 flex items-center justify-center text-center p-8">
-                <div>
-                  <div className="text-[10px] tracking-[4px] uppercase text-pink-light mb-5 font-semibold opacity-80">Intro film</div>
-                  <div className="font-serif italic text-white text-4xl md:text-6xl leading-[1] tracking-tight">Coming soon.</div>
-                  <div className="mt-5 text-white/60 text-sm font-light">A real one. From me, on camera.</div>
+              autoPlay
+              fallback={
+                <div
+                  className="w-full h-full flex items-center justify-center text-center p-8"
+                  style={{
+                    background:
+                      'radial-gradient(circle at 30% 30%, #FFB3C6 0%, transparent 60%),' +
+                      'radial-gradient(circle at 70% 70%, #E8295C 0%, transparent 50%),' +
+                      'linear-gradient(135deg, #1A1A1A 0%, #3B1020 60%, #1A1A1A 100%)',
+                  }}
+                >
+                  <div>
+                    <div className="text-[10px] tracking-[4px] uppercase text-pink-light mb-5 font-semibold opacity-80">Intro film</div>
+                    <div className="font-serif italic text-white text-4xl md:text-6xl leading-[1] tracking-tight">Coming soon.</div>
+                    <div className="mt-5 text-white/60 text-sm font-light">A real one. From me, on camera.</div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              }
+            />
           </div>
         </div>
       )}

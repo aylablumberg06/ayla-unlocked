@@ -18,12 +18,18 @@ export type VideoScript = {
 export const VIDEO_SCRIPTS: VideoScript[] = [
   {
     lessonIndex: 0, lessonTag: 'Welcome', title: "Hi. I'm Ayla.",
-    estLength: '60-90 sec',
+    estLength: '3-4 min',
     blocks: [
-      { label: 'HOOK', text: "Hi, I'm Ayla. I'm 19. I've never taken a coding class. I've never watched a single YouTube tutorial on how to build anything. Four months ago I didn't know what Claude was." },
-      { label: 'TEACH', text: "I learned Claude in March. By April I was getting hired to build AI agent teams for companies. I wrote this course based on what I learned in a month, so I could hand you the exact shortcut I wish someone had handed me." },
-      { label: 'STAGE', text: "[Cut to: a clip of one of your builds, or a phone recording of you opening the Claude app]" },
-      { label: 'CLOSER', text: "If you've ever thought, I see all this AI stuff and I have no idea where to start, this is that starting line. Let's go." },
+      { label: 'STAGE', text: "[Shoot this one looking directly into the phone camera, natural light, no tripod vibes. Like you literally FaceTimed a friend. Messy hair, coffee in hand, allowed.]" },
+      { label: 'HOOK', text: "Welcome to Ayla Unlocked. Hi. Okay first of all — you just made such a good investment. You're investing in your future, and genuinely, this is the time to get into this. It's taking off right now. Like, right now. You're not late. You're early. Okay. Let me tell you why I made this." },
+      { label: 'HOOK', text: "So every tech tutorial I've ever opened starts the same way. Some guy in a headset, a whiteboard behind him, saying, welcome back to the channel, today we're going to learn about large language models and the transformer architecture. And I'm like, I'm closing this. I don't want a lecture. I want somebody to just tell me what to do." },
+      { label: 'TEACH', text: "So that's what I'm doing here. This whole course, I want it to feel like I FaceTimed you, propped my phone up against a candle, and I'm just, like, walking you through this. That's it. No whiteboard. No jargon. No, quote, let's dive in. If at any point I sound like a tech bro, yell at your screen, because something's gone very wrong." },
+      { label: 'TEACH', text: "Real quick. I'm Ayla. I'm 19. I've never taken a coding class. I've never watched a single YouTube tutorial on how to build anything. Four months ago I genuinely did not know what Claude was. Like, I thought it was a guy." },
+      { label: 'TEACH', text: "Here's the thing about me that matters for this. I have always loved making things. Like, since I was tiny. Little businesses, little websites, little design projects. I'd get an idea and want it to exist NOW. And I'd sit down to make it and hit some stupid technical wall, like, I don't know how to set up a domain, or, why is this button not working, and I would literally cry. Fully lose my mind. Quit. Come back a week later, same wall, same meltdown. That was my whole life up until this year." },
+      { label: 'TEACH', text: "Then I found Claude. And the thing that changed everything for me, the whole reason I'm even making this course, is this one idea. With AI, you can figure out ANYTHING. Like, anything. Even if it takes a while. Even if it's frustrating in the moment. Even if you have no clue what you're doing. You just keep talking to it, you keep saying, that didn't work, try it a different way. And eventually, I swear, it figures itself out. You figure it out together. Nothing is actually stuck anymore. That's the part nobody tells you." },
+      { label: 'TEACH', text: "So that's why we're here. I learned Claude in March. By April, I was getting hired to build actual AI agent teams for companies. Not because I'm smart. I'm really not. I'm just patient, and I got obsessed. And I wrote this whole course based on what I learned in that one month, so I could just hand you the shortcut instead of making you go find it." },
+      { label: 'STAGE', text: "[Cut here to a quick phone recording of you opening the Claude app, or a little montage of something you built, maybe Elle messaging you in Telegram]" },
+      { label: 'CLOSER', text: "If you've ever thought, I keep seeing all this AI stuff online and I have no idea where to start, this is that. This is your starting line. Grab a coffee, open the app on your phone if you want, and let's just do this together. Okay. Let's go." },
     ],
   },
   {
@@ -66,7 +72,16 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 5, lessonTag: '05, Setup', title: 'Getting set up takes 5 minutes.',
+    lessonIndex: 5, lessonTag: '05, Imposter Syndrome', title: "You're not behind. Nobody is.",
+    estLength: '60-90 sec',
+    blocks: [
+      { label: 'HOOK', text: "I need to say this. I see a lot of women hang back in AI because of it." },
+      { label: 'TEACH', text: "You are not behind. Everybody in AI is lost right now. The tools change every month. The people calling themselves experts on Twitter are just louder, not smarter. I'm nineteen. I had zero background. I just had a willingness to look stupid in public for long enough to stop being stupid. That's the whole skill. If you feel imposter-y, that's a signal you're in new territory, which means you're learning. It's not a sign to stop. Ask the dumb question, use different words than the jargon, compare yourself to you from a month ago, not to Twitter." },
+      { label: 'CLOSER', text: "The people who make it just keep building through the feeling. You're not behind. Go build the thing." },
+    ],
+  },
+  {
+    lessonIndex: 6, lessonTag: '06, Setup', title: 'Getting set up takes 5 minutes.',
     estLength: '60 sec',
     blocks: [
       { label: 'HOOK', text: "Three steps. That's all to get started." },
@@ -76,7 +91,17 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 6, lessonTag: '06, Grammar? Never.', title: "Claude does not care about your grammar.",
+    lessonIndex: 7, lessonTag: '07, Pricing Tiers', title: 'Free vs. Pro vs. Max.',
+    estLength: '60-90 sec',
+    blocks: [
+      { label: 'HOOK', text: "Claude has three tiers. Free, Pro, and Max. Picking the right one matters. Because the price jumps are real." },
+      { label: 'TEACH', text: "Free is zero dollars. Fine for learning, writing, brainstorming. Solid daily limit. When you hit it, Claude tells you and waits a few hours. Perfect for everything in this course. Pro is 20 a month. About 5x the messages, newest model first. What I personally pay for. The second you're building something real and getting cut off, it's worth the 20. Max is a hundred to two hundred a month. Effectively unlimited. For people running Claude like a job." },
+      { label: 'STAGE', text: "[Screen recording: claude.ai/pricing showing the 3 cards side by side]" },
+      { label: 'CLOSER', text: "Rule of thumb. Start free. Upgrade the moment Claude cuts you off mid-project more than twice a week. Don't pre-pay for a tier you're not using yet." },
+    ],
+  },
+  {
+    lessonIndex: 8, lessonTag: '08, Grammar? Never.', title: "Claude does not care about your grammar.",
     estLength: '60-90 sec',
     blocks: [
       { label: 'HOOK', text: "This is not your English teacher. Type however you want. Seriously." },
@@ -86,7 +111,35 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 7, lessonTag: '07, Get an Idea', title: 'First you need an idea.',
+    lessonIndex: 9, lessonTag: '09, Just Yap', title: 'You talk. Claude builds.',
+    estLength: '90 sec',
+    blocks: [
+      { label: 'HOOK', text: "Talking to Claude is shockingly casual. Like texting a friend who's also a genius." },
+      { label: 'TEACH', text: "You don't need to know how to do the thing. You don't need to know if it's possible. Just describe it. The one sentence that changes everything: at the end of anything important, add, ask me any clarifying questions before you start. This stops Claude from running off and building the wrong thing. Also, there's a microphone button. Tap it, talk. I have a keyboard shortcut so double tapping Control starts the mic anywhere on my Mac." },
+      { label: 'STAGE', text: "[AYLA READS HER REAL MAD-MODE MESSAGES ON CAMERA. BEEP OUT THE CURSES IN POST. Examples to read: \"oh my god you're terrible at this. what the [BEEP] am i paying 100 a month for. JUST COPY THE PINTEREST INSPO PICS OMG.\" / \"[BEEP]ING WORK.\" / \"so i pay $100 a month and you can't do a simple task but make me wait 2 hours to figure that out. [BEEP] this.\" Keep tone playful. Laugh at yourself a little.]" },
+      { label: 'CLOSER', text: "If you forget everything else from this video, remember: ask me any clarifying questions before you start. That one phrase." },
+    ],
+  },
+  {
+    lessonIndex: 10, lessonTag: "10, When It's Wrong", title: "Claude will get it wrong sometimes.",
+    estLength: '60 sec',
+    blocks: [
+      { label: 'HOOK', text: "Claude is going to misunderstand you, build the wrong thing, go off on a tangent. This is normal. It happens to me every day." },
+      { label: 'TEACH', text: "What actually helps. Be specific. Not, this is bad, but, the colors are wrong, I wanted pink not purple. Send a screenshot. If something doesn't make sense, paste a screenshot and say, what is this. Ask for simpler instructions. If it's too technical, say, explain this like I'm in 8th grade. Start fresh if needed. Sometimes opening a new chat and being more specific is faster than untangling." },
+      { label: 'CLOSER', text: "You're the director. Claude is the production team. When the scene's not right, give specific notes." },
+    ],
+  },
+  {
+    lessonIndex: 11, lessonTag: '11, Stay Organized', title: "Organization actually matters here.",
+    estLength: '60-90 sec',
+    blocks: [
+      { label: 'HOOK', text: "Claude doesn't carry anything between chats. Starting a new conversation, it has no idea who you are. Every chat is a blank slate." },
+      { label: 'TEACH', text: "Rule one. Stay in the same chat while you're building. Don't start a new one mid project. Rule two. Use Projects. Claude has a feature called Projects that groups related chats and lets you add a permanent briefing Claude always sees. Set up a Project for anything ongoing. Rule three. Always check which chat you're in before typing. I've made this mistake more than once." },
+      { label: 'CLOSER', text: "Projects are the closest thing Claude has to actually remembering you." },
+    ],
+  },
+  {
+    lessonIndex: 12, lessonTag: '12, Get an Idea', title: 'First you need an idea.',
     estLength: '60-90 sec',
     blocks: [
       { label: 'HOOK', text: "Claude can't do anything if you don't have a direction. That part is on you." },
@@ -95,16 +148,16 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 8, lessonTag: '08, Just Yap', title: 'You talk. Claude builds.',
-    estLength: '60 sec',
+    lessonIndex: 13, lessonTag: '13, When Not to AI', title: 'The counter-intuitive lesson.',
+    estLength: '60-90 sec',
     blocks: [
-      { label: 'HOOK', text: "Talking to Claude is shockingly casual. Like texting a friend who's also a genius." },
-      { label: 'TEACH', text: "You don't need to know how to do the thing. You don't need to know if it's possible. Just describe it. The one sentence that changes everything: at the end of anything important, add, ask me any clarifying questions before you start. This stops Claude from running off and building the wrong thing. Also, there's a microphone button. Tap it, talk. I have a keyboard shortcut so double tapping Control starts the mic anywhere on my Mac." },
-      { label: 'CLOSER', text: "If you forget everything else from this video, remember: ask me any clarifying questions before you start. That one phrase." },
+      { label: 'HOOK', text: "Being good at this means knowing when to not use Claude." },
+      { label: 'TEACH', text: "Don't use it for personal writing where vulnerability matters, birthday notes, eulogies. Don't use it when being wrong is dangerous, medical, legal, money. Don't use it when a task is actually faster manually. Don't use it for creative work where you want YOUR style to come through. Don't use it to skip a skill you actually want to learn. The people who go the furthest with AI are the ones intentional about when they put it down." },
+      { label: 'CLOSER', text: "Using AI for everything is a sign you haven't figured out what it's actually for." },
     ],
   },
   {
-    lessonIndex: 9, lessonTag: '09, The Three Modes', title: 'Chat, Claude Code, and Cowork.',
+    lessonIndex: 14, lessonTag: '14, The Four Modes', title: 'Chat, Claude Code, Cowork, and the Chrome extension.',
     estLength: '90 sec',
     blocks: [
       { label: 'HOOK', text: "Claude has three different modes. They do different things. It matters which one you use." },
@@ -113,7 +166,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 10, lessonTag: '10, HTML Files', title: 'When Claude makes you something in Chat, here is what it is.',
+    lessonIndex: 15, lessonTag: '15, HTML Files', title: 'When Claude makes you something in Chat, here is what it is.',
     estLength: '60 sec',
     blocks: [
       { label: 'HOOK', text: "When Claude builds you a website in Chat, the file it gives you is called an HTML file. Less scary than it sounds." },
@@ -122,7 +175,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 11, lessonTag: '11, Deploying', title: 'Homebrew. GitHub. Vercel.',
+    lessonIndex: 16, lessonTag: '16, Deploying', title: 'Homebrew. GitHub. Vercel.',
     estLength: '90 sec',
     blocks: [
       { label: 'HOOK', text: "Three tools get your website live. Here's what each one does." },
@@ -132,7 +185,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 12, lessonTag: '12, Terminal', title: 'Terminal looks scary. It is not.',
+    lessonIndex: 17, lessonTag: '17, Terminal', title: 'Terminal looks scary. It is not.',
     estLength: '60 sec',
     blocks: [
       { label: 'HOOK', text: "Terminal is a black text window on your Mac. It looks scary. It is not dangerous. You're not going to break anything." },
@@ -141,7 +194,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 13, lessonTag: '13, API Keys', title: 'API keys are how Claude connects to other apps.',
+    lessonIndex: 18, lessonTag: '18, API Keys', title: 'API keys are how Claude connects to other apps.',
     estLength: '90 sec',
     blocks: [
       { label: 'HOOK', text: "The moment you want Claude to touch Gmail, Instagram, Canva, anything else, you need an API key." },
@@ -150,7 +203,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 14, lessonTag: '14, Real APIs', title: "The APIs you'll actually care about.",
+    lessonIndex: 19, lessonTag: '19, Real APIs', title: "The APIs you'll actually care about.",
     estLength: '90 sec',
     blocks: [
       { label: 'HOOK', text: "Some APIs come up over and over. Here are the main ones." },
@@ -159,7 +212,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 15, lessonTag: '15, Selling Online', title: 'So how do people actually buy things from you.',
+    lessonIndex: 20, lessonTag: '20, Selling Online', title: 'So how do people actually buy things from you.',
     estLength: '90 sec',
     blocks: [
       { label: 'HOOK', text: "If you're building anything to sell, you need a way to charge people. That's Stripe." },
@@ -168,7 +221,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 16, lessonTag: '16, Stripe Walkthrough', title: 'Let us actually wire up Stripe.',
+    lessonIndex: 21, lessonTag: '21, Stripe Walkthrough', title: 'Let us actually wire up Stripe.',
     estLength: '120 sec',
     blocks: [
       { label: 'HOOK', text: "This is the exact same flow I used to set up payments for this course. Step by step." },
@@ -178,31 +231,69 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     ],
   },
   {
-    lessonIndex: 17, lessonTag: '17, When It Goes Wrong', title: "Claude will get it wrong sometimes.",
-    estLength: '60 sec',
+    lessonIndex: 22, lessonTag: '22, Your First Client', title: 'How to find your first paying client.',
+    estLength: '90-120 sec',
     blocks: [
-      { label: 'HOOK', text: "Claude is going to misunderstand you, build the wrong thing, go off on a tangent. This is normal. It happens to me every day." },
-      { label: 'TEACH', text: "What actually helps. Be specific. Not, this is bad, but, the colors are wrong, I wanted pink not purple. Send a screenshot. If something doesn't make sense, paste a screenshot and say, what is this. Ask for simpler instructions. If it's too technical, say, explain this like I'm in 8th grade. Start fresh if needed. Sometimes opening a new chat and being more specific is faster than untangling." },
-      { label: 'CLOSER', text: "You're the director. Claude is the production team. When the scene's not right, give specific notes." },
+      { label: 'HOOK', text: "Tutorials are always vague on this. I'm going to be specific." },
+      { label: 'TEACH', text: "Know what you're selling. Not AI consulting. One specific thing. A local business website. A cold outreach system. A content generator. A proposal factory. Pick one. Three places I actually get clients. One, local businesses without websites, I Google Maps them and walk in. Two, Instagram DMs to creators whose vibe I like, specific not generic. Three, my own network, I just post once that I'm taking three clients and someone in my circle bites." },
+      { label: 'STAGE', text: "[On screen: screenshot of my first client DM + the $400 invoice that started everything]" },
+      { label: 'CLOSER', text: "Don't undersell. Your first number becomes your anchor. Pick a price that feels slightly uncomfortable. That's the right one." },
     ],
   },
   {
-    lessonIndex: 18, lessonTag: '18, Stay Organized', title: "Organization actually matters here.",
+    lessonIndex: 23, lessonTag: '23, Proposal vs Contract', title: 'Two different documents, both matter.',
     estLength: '60-90 sec',
     blocks: [
-      { label: 'HOOK', text: "Claude doesn't carry anything between chats. Starting a new conversation, it has no idea who you are. Every chat is a blank slate." },
-      { label: 'TEACH', text: "Rule one. Stay in the same chat while you're building. Don't start a new one mid project. Rule two. Use Projects. Claude has a feature called Projects that groups related chats and lets you add a permanent briefing Claude always sees. Set up a Project for anything ongoing. Rule three. Always check which chat you're in before typing. I've made this mistake more than once." },
-      { label: 'CLOSER', text: "Projects are the closest thing Claude has to actually remembering you." },
+      { label: 'HOOK', text: "People confuse these constantly. They do completely different things." },
+      { label: 'TEACH', text: "A proposal is a sales doc. Pretty, persuasive, explains what you'll do and why you're the right person. Not legally binding. A contract is a legal doc. Boring by design. Payment terms, cancellation, who owns the work. Both are necessary. Order, proposal closes the deal, contract protects it. The easy way, tell Claude, write me a freelance proposal and a matching contract for this project, warm on the proposal, clear on the contract. Two docs in a minute." },
+      { label: 'CLOSER', text: "One tip, put the price in the proposal, not buried in the contract. Surprising number of deals die because the client never saw what it would cost on page one." },
     ],
   },
   {
-    lessonIndex: 19, lessonTag: '19, What Next', title: "Agents. Claude doing things on its own.",
+    lessonIndex: 24, lessonTag: '24, Agents', title: "Agents. Claude doing things on its own.",
     estLength: '90-120 sec',
     blocks: [
       { label: 'HOOK', text: "Everything in this course was the foundation. Here's where it gets actually wild. Agents." },
       { label: 'TEACH', text: "An agent is a version of Claude that has a specific job. Find leads, write emails, track data, post content, follow up with clients. It's connected to the apps it needs via API keys. It runs on a schedule, every morning at 8am. And it reports back when something needs your attention. My outreach system finds businesses without websites, builds them a site, and sends them a cold email every single morning. I didn't write any code. I just explained what I wanted." },
       { label: 'STAGE', text: "[End card: Now go build something. Open Claude and type: I want to build [your idea]. Ask me any clarifying questions.]" },
       { label: 'CLOSER', text: "That's the whole thing. Go." },
+    ],
+  },
+  {
+    lessonIndex: 25, lessonTag: '25, Claude on Phone', title: 'The mobile workflow almost nobody uses.',
+    estLength: '60-90 sec',
+    blocks: [
+      { label: 'HOOK', text: "Half my best work happens when I'm not at my desk." },
+      { label: 'TEACH', text: "Download the Claude mobile app, same chats sync. Voice dictation is the superpower, I talk to Claude way more than I type, the mic button is a better brain-dumper than the keyboard. iPhone Shortcuts, I built one that opens Claude with a specific prompt ready on a lock screen tap. Photograph anything and ask, receipt you don't get, error you don't understand, sign in another language, plant you're not sure how to water, picture to Claude, done. Text your Telegram agents from anywhere, from bed, from the Uber, from the bathroom, they reply in seconds." },
+      { label: 'CLOSER', text: "If you only use Claude on a laptop, you're missing half of what it can do for you." },
+    ],
+  },
+  {
+    lessonIndex: 26, lessonTag: '26, A Day in My Life', title: 'What a chaotic AI life looks like.',
+    estLength: '120 sec',
+    blocks: [
+      { label: 'HOOK', text: "People always ask what my day looks like. I live a chaotic life, I'm not gonna pretend otherwise." },
+      { label: 'TEACH', text: "7 AM, check Telegram for overnight agent reports before I'm even out of bed. 8 AM, coffee and Claude chat to structure the day. 9:30, deep build block, one site or one agent at a time. 11, client or prospect call, taking notes into Claude on my phone. Lunch, inbox that Claude already filtered. 2 PM, chaos block, where half the day pivots, I answer everything from my phone. 5, review what my agents did today. 7, actual life, dinner, friends, phone down. 10 PM, I'll just tweak one thing, and now it's 2 AM. The shape of the day is chaotic human, steady agents. Together we ship." },
+      { label: 'CLOSER', text: "I'm messy. My agents are not. That's the system." },
+    ],
+  },
+  {
+    lessonIndex: 27, lessonTag: '27, Favorite Mistakes', title: "Things I screwed up so you don't have to.",
+    estLength: '120 sec',
+    blocks: [
+      { label: 'HOOK', text: "None of these broke me. All of them taught me more than a tutorial could." },
+      { label: 'TEACH', text: "One, the morning my iMac container deleted everything, I cried, then scrolled Claude chat history and rebuilt the whole system in three hours because every decision was in the conversation. Lesson, Claude chats are backup, but actually back up code too. Two, sent a proposal with the wrong price, missed a zero. Lesson, Claude is great at words, always double check numbers yourself. Three, tried to build a whole agent team on day one, crashed constantly. Lesson, build one thing, get it working, add the next. Four, pasted an API key in a group chat. Lesson, keep keys in a password manager, rotate the second you think they leaked. Five, spent two months doing free work because I thought I wasn't ready. Lesson, if it's worth doing it's worth charging." },
+      { label: 'STAGE', text: "[Show a real Finder screenshot of the deleted container folder + Claude chat scrolling back to reconstruct]" },
+      { label: 'CLOSER', text: "Every mistake became the story. Yours will too." },
+    ],
+  },
+  {
+    lessonIndex: 28, lessonTag: '28, My Top Prompts', title: 'The 10 prompts I paste every single day.',
+    estLength: '120 sec',
+    blocks: [
+      { label: 'HOOK', text: "If the prompt library is the menu, these are what I actually order." },
+      { label: 'TEACH', text: "Number one, ask me any clarifying questions before you start. Forever. Every project. Number two, explain this like I'm in 8th grade when something sounds smart and I'm quietly lost. Three, here are ten real samples of my voice, match me. Four, stop, re-read what I asked, do only that. Five, interview me one question at a time. Six, make this feel expensive. Seven, add this feature but don't rewrite the whole site. Eight, pretend you're my target audience, what's confusing. Nine, write this cold email, don't use these specific banned words. Ten, stop telling me to do it myself, you have the tools, do it." },
+      { label: 'CLOSER', text: "You don't need 500 prompts. You need 10 you actually use." },
     ],
   },
 ]

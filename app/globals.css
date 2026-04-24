@@ -14,6 +14,28 @@
   --border: rgba(232, 41, 92, 0.13);
 }
 
+html.dark {
+  --cream: #131013;
+  --pink: #FF4E7E;
+  --pink-light: #3A1528;
+  --pink-pale: #241018;
+  --left-bg: #1A1418;
+  --dark: #F5EEE8;
+  --mid: #B8B0AA;
+  --light: #6C6661;
+  --border: rgba(255, 78, 126, 0.2);
+}
+html.dark body { background: #131013; color: #F5EEE8; }
+
+.theme-toggle {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--pink-light); color: var(--pink);
+  border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.theme-toggle:hover { background: var(--pink); color: white; transform: rotate(18deg); }
+
 * { box-sizing: border-box; }
 
 html, body {
@@ -127,6 +149,15 @@ html {
 .link-underline:hover::after {
   transform-origin: left center;
   transform: scaleX(1);
+}
+
+/* Profanity auto-censor (global) */
+.au-censor {
+  text-decoration: line-through;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1.5px;
+  text-decoration-skip-ink: none;
+  opacity: 0.85;
 }
 
 /* Top-of-page scroll progress bar */

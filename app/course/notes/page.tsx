@@ -3,32 +3,42 @@ import { redirect } from 'next/navigation'
 import { createSupabaseServerClient, createSupabaseAdminClient } from '@/lib/supabase'
 
 export const metadata = {
-  title: 'Ayla Unlocked, My Notes',
+  title: 'Ayla Unlocked, Saved & Noted',
 }
 export const dynamic = 'force-dynamic'
 
-// Lesson index → human label (mirrors CourseDashboard tag strings)
+// Lesson index → human label (mirrors CourseDashboard tag strings after the
+// Pricing Tiers insertion)
 const LESSON_LABELS: Record<number, string> = {
   0: 'Welcome',
   1: '01, What Claude Is',
   2: '02, What Claude Can Do',
   3: '03, The Mindset',
   4: '04, The Big Divide',
-  5: '05, Setup',
-  6: '06, Grammar? Never.',
-  7: '07, Get an Idea',
-  8: '08, Just Yap',
-  9: '09, The Three Modes',
-  10: '10, HTML Files',
-  11: '11, Deploying',
-  12: '12, Terminal',
-  13: '13, API Keys',
-  14: '14, Real APIs',
-  15: '15, Selling Online',
-  16: '16, Stripe Walkthrough',
-  17: "17, When It's Wrong",
-  18: '18, Stay Organized',
-  19: "19, What's Next",
+  5: '05, Imposter Syndrome',
+  6: '06, Setup',
+  7: '07, Pricing Tiers',
+  8: '08, Grammar? Never.',
+  9: '09, Just Yap',
+  10: "10, When It's Wrong",
+  11: '11, Stay Organized',
+  12: '12, Get an Idea',
+  13: '13, When Not to AI',
+  14: '14, The Four Modes',
+  15: '15, HTML Files',
+  16: '16, Deploying',
+  17: '17, Terminal',
+  18: '18, API Keys',
+  19: '19, Real APIs',
+  20: '20, Selling Online',
+  21: '21, Stripe Walkthrough',
+  22: '22, Your First Client',
+  23: '23, Proposal vs Contract',
+  24: '24, Agents',
+  25: '25, Claude on My Phone',
+  26: '26, A Day in My Life',
+  27: '27, Favorite Mistakes',
+  28: '28, My Top Prompts',
 }
 
 const RESERVED_KEYS = new Set(['_cert_id', '_cert_name'])
@@ -41,20 +51,44 @@ export default async function NotesPage() {
   const admin = createSupabaseAdminClient()
   const { data } = await admin
     .from('user_progress')
-    .select('notes, bookmarks, confused, last_lesson, updated_at')
+    .select('notes, bookmarks, confused, highlights, last_lesson, updated_at')
     .eq('email', user.email.toLowerCase())
     .maybeSingle()
 
   const notesRaw = (data?.notes ?? {}) as Record<string, string>
-  const bookmarks = new Set<number>(data?.bookmarks ?? [])
+  const bookmarks: number[] = Array.from(new Set<number>(data?.bookmarks ?? []))
   const confused = new Set<number>(data?.confused ?? [])
+  const highlightsRaw = (data?.highlights ?? {}) as Record<string, string[]>
+  const highlightMap = new Map<number, string[]>()
+  let totalHighlights = 0
+  for (const [k, arr] of Object.entries(highlightsRaw)) {
+    const idx = Number(k)
+    if (Number.isNaN(idx)) continue
+    const cleaned = Array.isArray(arr) ? arr.filter((s) => typeof s === 'string' && s.trim().length > 0) : []
+    if (cleaned.length) {
+      highlightMap.set(idx, cleaned)
+      totalHighlights += cleaned.length
+    }
+  }
 
-  // Build sorted list of real notes (skip reserved keys like _cert_id)
-  const entries = Object.entries(notesRaw)
-    .filter(([k, v]) => !RESERVED_KEYS.has(k) && typeof v === 'string' && v.trim().length > 0)
-    .map(([k, v]) => ({ index: Number(k), text: String(v) }))
-    .filter((e) => !Number.isNaN(e.index))
-    .sort((a, b) => a.index - b.index)
+  // Real notes (skip reserved keys)
+  const noteMap = new Map<number, string>()
+  for (const [k, v] of Object.entries(notesRaw)) {
+    if (RESERVED_KEYS.has(k)) continue
+    const idx = Number(k)
+    if (Number.isNaN(idx)) continue
+    const text = typeof v === 'string' ? v.trim() : ''
+    if (text) noteMap.set(idx, text)
+  }
+
+  // Union of all lesson indexes that have EITHER a note, a bookmark, or a highlight
+  const allIndexes = Array.from(
+    new Set<number>([
+      ...Array.from(noteMap.keys()),
+      ...bookmarks,
+      ...Array.from(highlightMap.keys()),
+    ])
+  ).sort((a, b) => a - b)
 
   return (
     <main className="min-h-screen bg-cream text-dark">
@@ -72,25 +106,27 @@ export default async function NotesPage() {
       </nav>
 
       <section className="max-w-3xl mx-auto px-6 md:px-10 pt-24 pb-20">
-        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-3">Your notes</div>
-        <h1 className="font-serif text-5xl md:text-7xl italic leading-[1.05] mb-4">Everything you&apos;ve written.</h1>
+        <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-3">Saved &amp; noted</div>
+        <h1 className="font-serif text-5xl md:text-7xl italic leading-[1.05] mb-4">Your library.</h1>
         <p className="text-mid text-lg font-light mb-10 max-w-xl">
-          All the thoughts, questions, and ideas you dropped into each lesson. In one place,
-          so you never lose them.
+          Every lesson you&rsquo;ve starred, every note you&rsquo;ve written, every flag you&rsquo;ve
+          raised. All in one place so nothing you wanted to remember gets lost.
         </p>
 
         {/* stats */}
-        <div className="grid grid-cols-3 gap-3 mb-12">
-          <StatBox num={entries.length} label={`note${entries.length === 1 ? '' : 's'}`} />
-          <StatBox num={bookmarks.size} label={`bookmark${bookmarks.size === 1 ? '' : 's'}`} />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+          <StatBox num={bookmarks.length} label={`bookmark${bookmarks.length === 1 ? '' : 's'}`} />
+          <StatBox num={totalHighlights} label={`highlight${totalHighlights === 1 ? '' : 's'}`} />
+          <StatBox num={noteMap.size} label={`note${noteMap.size === 1 ? '' : 's'}`} />
           <StatBox num={confused.size} label={`flag${confused.size === 1 ? '' : 's'}`} />
         </div>
 
-        {entries.length === 0 ? (
+        {allIndexes.length === 0 ? (
           <div className="bg-white rounded-2xl border border-[color:var(--border)] p-10 text-center">
-            <p className="font-serif italic text-2xl mb-2">No notes yet.</p>
+            <p className="font-serif italic text-2xl mb-2">Nothing saved yet.</p>
             <p className="text-mid font-light mb-6 max-w-md mx-auto text-[14.5px]">
-              Scroll to the bottom of any lesson and start writing. It auto-saves and lives forever.
+              Star lessons you want to come back to, or type a note at the bottom of any lesson. Anything
+              you save shows up here.
             </p>
             <Link
               href="/course"
@@ -101,35 +137,45 @@ export default async function NotesPage() {
           </div>
         ) : (
           <div className="space-y-4">
-            {entries.map((e) => {
-              const label = LESSON_LABELS[e.index] ?? `Lesson ${e.index}`
-              const isBm = bookmarks.has(e.index)
-              const isConf = confused.has(e.index)
+            {allIndexes.map((idx) => {
+              const label = LESSON_LABELS[idx] ?? `Lesson ${idx}`
+              const isBm = bookmarks.includes(idx)
+              const isConf = confused.has(idx)
+              const noteText = noteMap.get(idx)
+              const highlights = highlightMap.get(idx) ?? []
               return (
                 <Link
-                  key={e.index}
-                  href={`/course?lesson=${e.index}`}
+                  key={idx}
+                  href={`/course?lesson=${idx}`}
                   className="card-hover block bg-white rounded-2xl border border-[color:var(--border)] p-5 md:p-6"
                 >
-                  <div className="flex items-center justify-between gap-3 mb-3">
+                  <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
                     <div className="text-[10px] font-semibold tracking-[2.5px] uppercase text-pink">{label}</div>
-                    <div className="flex items-center gap-2">
-                      {isBm && (
-                        <span className="inline-flex items-center gap-1 text-[10px] tracking-[1.5px] uppercase text-pink bg-pink-light px-2.5 py-1 rounded-full">
-                          <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
-                            <path d="M12 17.3L5.8 21l1.6-7.3L2 8.8l7.4-.6L12 1.5l2.6 6.7 7.4.6-5.4 4.9L18.2 21 12 17.3z" />
-                          </svg>
-                          saved
-                        </span>
-                      )}
-                      {isConf && (
-                        <span className="inline-flex items-center gap-1 text-[10px] tracking-[1.5px] uppercase text-pink bg-pink-light px-2.5 py-1 rounded-full">
-                          ?  flagged
-                        </span>
-                      )}
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {isBm && <Tag>★ saved</Tag>}
+                      {highlights.length > 0 && <Tag>{highlights.length} highlight{highlights.length === 1 ? '' : 's'}</Tag>}
+                      {isConf && <Tag>? flagged</Tag>}
+                      {noteText && <Tag>noted</Tag>}
                     </div>
                   </div>
-                  <p className="text-[14.5px] text-dark leading-relaxed whitespace-pre-wrap font-light">{e.text}</p>
+
+                  {highlights.length > 0 && (
+                    <div className="space-y-2 mb-3">
+                      {highlights.map((h, i) => (
+                        <div key={i} className="bg-[color:var(--pink-light)] border-l-2 border-pink pl-3 pr-2 py-1.5 rounded-r text-[14px] text-dark leading-relaxed">
+                          &ldquo;{h}&rdquo;
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {noteText ? (
+                    <p className="text-[14.5px] text-dark leading-relaxed whitespace-pre-wrap font-light">{noteText}</p>
+                  ) : highlights.length === 0 ? (
+                    <p className="text-[13.5px] italic text-muted-light font-light">
+                      Bookmarked for later. No note or highlights yet.
+                    </p>
+                  ) : null}
                   <div className="text-[11px] text-muted-light tracking-[1px] mt-4 uppercase">
                     Open lesson &rarr;
                   </div>
@@ -140,6 +186,14 @@ export default async function NotesPage() {
         )}
       </section>
     </main>
+  )
+}
+
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-1 text-[10px] tracking-[1.5px] uppercase text-pink bg-pink-light px-2.5 py-1 rounded-full">
+      {children}
+    </span>
   )
 }
 

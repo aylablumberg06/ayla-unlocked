@@ -18,6 +18,7 @@ export default async function AdminDashboard() {
     chatRes,
     contactRes,
     visitRes,
+    submissionsRes,
   ] = await Promise.all([
     admin.from('users').select('*').order('created_at', { ascending: false }),
     admin.from('user_progress').select('*').order('updated_at', { ascending: false }),
@@ -25,6 +26,7 @@ export default async function AdminDashboard() {
     admin.from('chat_logs').select('*').order('created_at', { ascending: false }).limit(200),
     admin.from('contact_submissions').select('*').order('created_at', { ascending: false }).limit(200),
     admin.from('visits').select('*').order('created_at', { ascending: false }).limit(500),
+    admin.from('submissions').select('*').order('created_at', { ascending: false }).limit(100),
   ])
 
   const users = usersRes.data ?? []
@@ -33,6 +35,7 @@ export default async function AdminDashboard() {
   const chatLogs = chatRes.data ?? []
   const contacts = contactRes.data ?? []
   const visits = visitRes.data ?? []
+  const submissions = submissionsRes.data ?? []
 
   const paidCount = users.filter((u: any) => u.paid).length
   const completedCount = progress.filter((p: any) => p.completed_at).length
@@ -72,6 +75,7 @@ export default async function AdminDashboard() {
             <a href="#chats" className="text-mid hover:text-pink">Chats</a>
             <a href="#contacts" className="text-mid hover:text-pink">Contacts</a>
             <a href="#visits" className="text-mid hover:text-pink">Visits</a>
+            <a href="#submissions" className="text-mid hover:text-pink">Builds</a>
             <a href="#scripts" className="text-mid hover:text-pink">Scripts</a>
           </div>
         </div>
@@ -223,6 +227,44 @@ export default async function AdminDashboard() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          )}
+        </section>
+
+        {/* SUBMISSIONS */}
+        <section id="submissions">
+          <h2 className="font-serif italic text-4xl mb-2">Student builds.</h2>
+          <p className="text-mid mb-6 text-[15px]">
+            Submitted at /course/submit. Manually mark approved / featured in Supabase table
+            <code className="mx-1 text-pink bg-[color:var(--pink-pale)] px-1.5 py-0.5 rounded">submissions</code>
+            to show them on <a href="/built" className="text-pink underline">/built</a>.
+          </p>
+          {submissions.length === 0 ? (
+            <EmptyBox text="No submissions yet." />
+          ) : (
+            <div className="space-y-4">
+              {submissions.map((s: any) => (
+                <div key={s.id} className="bg-white rounded-2xl border border-[color:var(--border)] p-5 md:p-6">
+                  <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+                    <div>
+                      <div className="text-[10px] tracking-[2px] uppercase text-pink font-semibold mb-1">
+                        {s.student_name || '(no name)'} · {s.email}
+                      </div>
+                      <h3 className="font-serif text-xl leading-tight">{s.project_name}</h3>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {s.approved ? <Pill>approved</Pill> : <span className="text-[11px] text-muted-light tracking-[1px] uppercase">pending</span>}
+                      {s.featured && <Pill>★ featured</Pill>}
+                      <span className="text-[11px] text-muted-light">{timeAgo(s.created_at)}</span>
+                    </div>
+                  </div>
+                  <p className="text-[14px] text-dark whitespace-pre-wrap leading-relaxed mb-3 font-light">{s.description}</p>
+                  <div className="flex gap-4 flex-wrap text-[12px]">
+                    {s.project_url && <a href={s.project_url} target="_blank" rel="noopener noreferrer" className="text-pink underline">Live URL</a>}
+                    {s.screenshot_url && <a href={s.screenshot_url} target="_blank" rel="noopener noreferrer" className="text-pink underline">Screenshot</a>}
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </section>

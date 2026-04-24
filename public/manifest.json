@@ -1,0 +1,24 @@
+{
+  "name": "Ayla Unlocked",
+  "short_name": "Ayla Unlocked",
+  "description": "Learn to build with AI. A course by Ayla Blumberg.",
+  "start_url": "/course",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FDF6F0",
+  "theme_color": "#E8295C",
+  "icons": [
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

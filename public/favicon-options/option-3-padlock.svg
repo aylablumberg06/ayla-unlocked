@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Option 3: Open padlock — literal "Unlocked" metaphor. Pink bg, cream lock icon. -->
+  <rect width="256" height="256" rx="56" fill="#E8295C"/>
+  <!-- Body of padlock -->
+  <rect x="72" y="120" width="112" height="92" rx="14" fill="#FDF6F0"/>
+  <!-- Open shackle (curves up and to the right, detached on right side) -->
+  <path d="M92 120 V 90 a36 36 0 0 1 72 0 V 100"
+        fill="none" stroke="#FDF6F0" stroke-width="16" stroke-linecap="round"/>
+  <!-- Keyhole -->
+  <circle cx="128" cy="158" r="10" fill="#E8295C"/>
+  <rect x="123" y="158" width="10" height="24" fill="#E8295C"/>
+</svg>

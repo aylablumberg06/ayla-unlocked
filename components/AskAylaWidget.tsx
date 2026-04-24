@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 type Msg = { role: 'user' | 'assistant'; content: string }
@@ -7,10 +8,11 @@ type Msg = { role: 'user' | 'assistant'; content: string }
 const INITIAL_BOT_MSG: Msg = {
   role: 'assistant',
   content:
-    "hi! i'm Ayla's little assistant. ask me anything about the course, Claude, pricing, setup, whatever. if i can't answer it, i'll get Ayla for you.",
+    "Hi! I'm Ayla's little assistant. Ask me anything about the course, Claude, pricing, setup, whatever. If I can't answer it, I'll get Ayla for you.",
 }
 
 export default function AskAylaWidget() {
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState<Msg[]>([INITIAL_BOT_MSG])
   const [input, setInput] = useState('')
@@ -20,6 +22,12 @@ export default function AskAylaWidget() {
   const [email, setEmail] = useState('')
   const [forwardStatus, setForwardStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const logRef = useRef<HTMLDivElement>(null)
+
+  // The /course dashboard has a fixed bottom Prev/Next nav (68px tall) —
+  // push the bubble above it so they don't overlap.
+  const isCoursePage = pathname === '/course'
+  const buttonBottom = isCoursePage ? 'bottom-[90px] md:bottom-24' : 'bottom-5'
+  const panelBottom = isCoursePage ? 'bottom-[158px] md:bottom-[168px]' : 'bottom-24'
 
   useEffect(() => {
     logRef.current?.scrollTo({ top: logRef.current.scrollHeight, behavior: 'smooth' })
@@ -40,14 +48,14 @@ export default function AskAylaWidget() {
       })
       const { reply, error } = await r.json()
       if (error) throw new Error(error)
-      setMessages([...next, { role: 'assistant', content: reply || 'hmm, not sure. try asking ayla directly.' }])
+      setMessages([...next, { role: 'assistant', content: reply || "Hmm, not sure. Try asking Ayla directly." }])
     } catch {
       setMessages([
         ...next,
         {
           role: 'assistant',
           content:
-            "hmm, i'm having trouble right now. tap 'ask ayla' below and she'll get back to you directly.",
+            "Hmm, I'm having trouble right now. Tap \"Ask Ayla directly\" below and she'll get back to you.",
         },
       ])
     } finally {
@@ -81,7 +89,7 @@ export default function AskAylaWidget() {
       <button
         aria-label="Ask Ayla"
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-5 right-5 z-[70] group"
+        className={`fixed ${buttonBottom} right-5 z-[70] group transition-all`}
       >
         <span className="block relative w-16 h-16 rounded-full bg-pink text-white shadow-xl shadow-pink/25 hover:shadow-pink/40 transition-all overflow-hidden border-2 border-white">
           {/* Ayla avatar, thinking face SVG placeholder. Swap /public/ayla-thinking.png in when you have a real photo. */}
@@ -97,15 +105,15 @@ export default function AskAylaWidget() {
 
       {/* CHAT PANEL */}
       {open && (
-        <div className="fixed bottom-24 right-5 z-[70] w-[92vw] max-w-[380px] h-[560px] max-h-[78vh] rounded-3xl bg-cream border border-[color:var(--border)] shadow-2xl shadow-pink/10 flex flex-col overflow-hidden">
+        <div className={`fixed ${panelBottom} right-5 z-[70] w-[92vw] max-w-[380px] h-[560px] max-h-[70vh] rounded-3xl bg-cream border border-[color:var(--border)] shadow-2xl shadow-pink/10 flex flex-col overflow-hidden`}>
           {/* Header */}
           <div className="px-5 py-4 border-b border-[color:var(--border)] flex items-center gap-3 bg-white/60">
             <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-pink bg-pink-light">
               <AylaThinkingAvatar />
             </div>
             <div className="flex-1">
-              <div className="font-serif italic text-lg leading-tight">ask ayla</div>
-              <div className="text-[10px] uppercase tracking-[1.5px] text-pink">powered by claude</div>
+              <div className="font-serif italic text-lg leading-tight">Ask Ayla</div>
+              <div className="text-[10px] uppercase tracking-[1.5px] text-pink">Powered by Claude</div>
             </div>
             <button
               onClick={() => setOpen(false)}
@@ -158,7 +166,7 @@ export default function AskAylaWidget() {
                         send()
                       }
                     }}
-                    placeholder="ask anything..."
+                    placeholder="Ask anything..."
                     rows={1}
                     className="flex-1 resize-none px-3 py-2.5 rounded-2xl border border-[color:var(--border)] bg-white focus:border-pink focus:outline-none text-[14px] max-h-24"
                   />
@@ -175,9 +183,9 @@ export default function AskAylaWidget() {
                 </div>
                 <button
                   onClick={() => setHandoff(true)}
-                  className="mt-2 text-[11px] tracking-[1px] uppercase text-pink hover:underline w-full text-center py-1"
+                  className="mt-2 text-[11px] tracking-[1.5px] uppercase text-pink hover:underline w-full text-center py-1"
                 >
-                  ask ayla directly &rarr;
+                  Ask Ayla directly &rarr;
                 </button>
               </div>
             </>

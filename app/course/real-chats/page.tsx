@@ -1,5 +1,15 @@
 import Link from 'next/link'
 import { REAL_CHATS } from '@/lib/real-chats'
+import { censorHtml } from '@/lib/censor'
+
+function escapeHtml(s: string) {
+  return s
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+}
 
 export const metadata = {
   title: 'Ayla Unlocked, Real Chats',
@@ -53,9 +63,8 @@ export default function RealChatsPage() {
                             : 'bg-pink text-white rounded-br-md'
                           : 'bg-[#EFEFEF] text-dark rounded-bl-md'
                       }`}
-                    >
-                      {m.text}
-                    </div>
+                      dangerouslySetInnerHTML={{ __html: censorHtml(escapeHtml(m.text)) }}
+                    />
                   </div>
                 ))}
               </div>
