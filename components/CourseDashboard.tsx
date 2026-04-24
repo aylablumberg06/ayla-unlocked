@@ -1937,6 +1937,62 @@ export default function CourseDashboard() {
     })
   }, [cur, progress.exercises_done])
 
+  // Inject "copy" buttons on every prompt block (.bubble.u, .q)
+  // so the user can paste straight into Claude.
+  useEffect(() => {
+    const wrap = rightRef.current?.querySelector('.lesson-wrap') as HTMLElement | null
+    if (!wrap) return
+    const targets = wrap.querySelectorAll<HTMLElement>('.bubble.u, .q')
+    targets.forEach((el) => {
+      // Avoid double-decorating
+      if (el.querySelector(':scope > .copy-btn')) return
+      // Make sure the element can host an absolutely-positioned button
+      const cs = window.getComputedStyle(el)
+      if (cs.position === 'static') el.style.position = 'relative'
+
+      const btn = document.createElement('button')
+      btn.className = 'copy-btn'
+      btn.type = 'button'
+      btn.setAttribute('aria-label', 'Copy this prompt')
+      btn.innerHTML = `
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" />
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </svg>
+        <span class="copy-btn-label">Copy</span>
+      `
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        // Pull text from element WITHOUT the copy button itself
+        const clone = el.cloneNode(true) as HTMLElement
+        clone.querySelectorAll('.copy-btn').forEach((b) => b.remove())
+        const text = (clone.innerText || clone.textContent || '').trim()
+        try {
+          await navigator.clipboard.writeText(text)
+        } catch {
+          // Fallback for older browsers / iframes
+          const ta = document.createElement('textarea')
+          ta.value = text
+          ta.style.position = 'fixed'
+          ta.style.opacity = '0'
+          document.body.appendChild(ta)
+          ta.select()
+          try { document.execCommand('copy') } catch { /* noop */ }
+          document.body.removeChild(ta)
+        }
+        btn.classList.add('copied')
+        const label = btn.querySelector('.copy-btn-label') as HTMLElement | null
+        if (label) label.textContent = 'Copied!'
+        setTimeout(() => {
+          btn.classList.remove('copied')
+          if (label) label.textContent = 'Copy'
+        }, 1500)
+      })
+      el.appendChild(btn)
+    })
+  }, [cur])
+
   // Confetti on completion
   const confettiRef = useRef<HTMLCanvasElement>(null)
   useEffect(() => {
@@ -2242,9 +2298,37 @@ export default function CourseDashboard() {
         .copy-btn:hover { background: rgba(255,255,255,0.22); color: white; }
         .chat-ex { margin: 20px 0; }
         .bubble { display: table; padding: 11px 16px; border-radius: 18px; font-size: 13.5px; line-height: 1.5; max-width: 82%; margin-bottom: 6px; word-break: break-word; }
+        .bubble.u { padding-right: 72px; padding-bottom: 14px; }
         .bubble.u { background: var(--pink); color: white; border-bottom-right-radius: 4px; margin-left: auto; }
         .bubble.u.mad { background: #C0001F; font-weight: 500; }
         .bubble.c { background: #EFEFEF; color: var(--dark); border-bottom-left-radius: 4px; }
+
+        /* Copy button injected next to every prompt block (.bubble.u, .q) */
+        .copy-btn {
+          position: absolute; top: 6px; right: 6px;
+          display: inline-flex; align-items: center; gap: 4px;
+          background: rgba(255,255,255,0.18);
+          color: inherit;
+          border: 1px solid rgba(255,255,255,0.32);
+          font-family: 'DM Sans', sans-serif;
+          font-size: 9.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+          padding: 4px 8px 4px 7px; border-radius: 999px;
+          cursor: pointer; line-height: 1;
+          transition: background 0.15s, transform 0.15s, opacity 0.15s;
+          opacity: 0.7;
+          backdrop-filter: blur(4px);
+        }
+        .copy-btn:hover { opacity: 1; background: rgba(255,255,255,0.32); transform: translateY(-1px); }
+        .copy-btn svg { flex-shrink: 0; }
+        .copy-btn.copied { background: white; color: var(--pink); border-color: white; opacity: 1; }
+        /* Light variant on the dashed-bordered .q boxes (white bg) */
+        .q .copy-btn, .exercise-body .q .copy-btn {
+          background: var(--pink-pale); border-color: rgba(232,41,92,0.35); color: var(--pink);
+        }
+        .q .copy-btn:hover, .exercise-body .q .copy-btn:hover { background: var(--pink); color: white; border-color: var(--pink); }
+        .q .copy-btn.copied, .exercise-body .q .copy-btn.copied { background: var(--pink); color: white; border-color: var(--pink); }
+        /* Make .q boxes have room for the button */
+        .q, .exercise-body .q { padding-right: 70px !important; position: relative; }
         .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
         .stat-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: center; }
         .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 600; color: var(--pink); line-height: 1; margin-bottom: 6px; }
