@@ -203,8 +203,8 @@ export default function WelcomeOnboarding() {
 
       {/* ADDICTION WARNING */}
       <section className="px-6 md:px-10 max-w-2xl mx-auto pb-12">
-        <div className="rounded-2xl border-2 border-pink bg-white p-6 md:p-7 relative overflow-hidden">
-          <div className="absolute -top-3 left-6 bg-pink text-white text-[10px] tracking-[2.5px] uppercase font-semibold px-3 py-1 rounded-full">
+        <div className="rounded-2xl border-2 border-pink bg-white p-6 md:p-7 relative">
+          <div className="absolute -top-3 left-6 bg-pink text-white text-[10px] tracking-[2.5px] uppercase font-semibold px-3 py-1 rounded-full shadow-md">
             ⚠ Fair warning
           </div>
           <div className="pt-3">
