@@ -1246,14 +1246,19 @@ const lessons: Lesson[] = [
 
       <div class="a-quote">"The stuff I posted at the ugliest stage &mdash; when I had no idea what I was doing &mdash; is what got me my first three clients."</div>
 
-      <h2 class="l-sub-head">Why posting changes everything.</h2>
+      <h2 class="l-sub-head">Why posting changes everything (real talk).</h2>
+      <p>I cannot overstate this. <strong>Posting about what I was building is the single biggest reason I got hired.</strong> Not my resume. Not my portfolio site. Not cold outreach. The TikToks I made at 11pm of me losing my mind at Claude.</p>
+
+      <div class="callout"><div class="callout-tag">What actually happened to me</div>Within the first month of posting, I got: <strong>inbound DMs from real companies asking if I could build them agents.</strong> A group chat invite from other girls learning to build. A podcast invite. Two unpaid-but-fun collabs that turned into paid work. An email from a founder who ended up becoming a mentor.<br><br>Every single one of those came from a post that took me 10 minutes to make. The ROI on posting is insane, and nobody talks about it enough.</div>
+
       <p>When you post what you&rsquo;re working on, a bunch of things happen at once:</p>
       <ul>
-        <li><strong>You attract the right people.</strong> Other builders. People curious about AI. Potential clients. They find you <em>because</em> you\u2019re the person making stuff.</li>
-        <li><strong>You get feedback.</strong> Somebody in the comments will tell you about a tool you didn\u2019t know existed. Or a bug in your demo. Or a use case you hadn\u2019t thought of.</li>
-        <li><strong>You start a community.</strong> The DMs start coming. &ldquo;Hey, I\u2019m trying to do this too, can we talk.&rdquo; Some of those people will become friends. Some of them will become collaborators. Some will pay you.</li>
-        <li><strong>You build a portfolio in public.</strong> Instead of a fake case study deck, you have 40 TikToks of you actually doing the thing. That\u2019s a thousand times more credible.</li>
-        <li><strong>It forces you to learn out loud.</strong> Explaining a thing on camera makes you understand it. That\u2019s just how the brain works.</li>
+        <li><strong>Opportunities land in your DMs.</strong> Real ones. Paid work. Collabs. People asking you to build things for them. Post consistently for 30 days and something will land. I&rsquo;d bet money on it.</li>
+        <li><strong>You find your people.</strong> The comments and DMs are other people learning this stuff at the same time as you. Girls who code, builders, agent nerds, designers getting into AI. The group chats I&rsquo;m in now didn&rsquo;t exist until I posted and someone pulled me in. <strong>Posting is how you find a community of like-minded people who actually get what you&rsquo;re doing.</strong> Way better than trying to explain it to friends who don&rsquo;t.</li>
+        <li><strong>You attract the right people.</strong> Builders. Potential clients. Mentors. They find you <em>because</em> you&rsquo;re visibly the person making stuff. The algorithm does the matchmaking.</li>
+        <li><strong>You get free feedback.</strong> Someone in the comments will tell you about a tool you didn&rsquo;t know existed. A bug in your demo. A use case you hadn&rsquo;t thought of. Basically free consulting.</li>
+        <li><strong>You build a portfolio in public.</strong> Instead of a fake case-study deck, you have 40 TikToks of you actually doing the thing. A thousand times more credible than a resume.</li>
+        <li><strong>It forces you to learn out loud.</strong> Explaining a thing on camera makes you understand it way better. The brain just works that way.</li>
       </ul>
 
       <h2 class="l-sub-head">The honest thing about the gap.</h2>

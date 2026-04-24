@@ -296,4 +296,17 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
       { label: 'CLOSER', text: "You don't need 500 prompts. You need 10 you actually use." },
     ],
   },
+  {
+    lessonIndex: 29, lessonTag: '29, Post While You Build', title: 'Post while you\u2019re building. Not after.',
+    estLength: '2-3 min',
+    blocks: [
+      { label: 'HOOK', text: "Okay, final lesson. This is the one I wish someone had yelled at me about sooner. You need to post about what you're building. Like, publicly. While you're building it. Not when it's done, not when it's pretty, not when you finally feel ready. Now." },
+      { label: 'TEACH', text: "I'm going to be honest with you. Posting on TikTok and Instagram about what I was making with Claude is the single biggest reason I got hired. Not my portfolio. Not cold outreach. Not a resume. The messy screen recordings of me figuring it out at 11 at night. Those got me paid." },
+      { label: 'TEACH', text: "Within one month of starting to post, I had: inbound DMs from actual companies asking if I could build them agents. A group chat invite from other girls who code, which by the way is now one of my favorite things in my phone. A podcast invite. Two free collabs that turned into paid work. And an email from a founder who's now kind of a mentor to me. Every single one of those came from a post that took me ten minutes to make. I'm not exaggerating." },
+      { label: 'TEACH', text: "And here's the part nobody says out loud. Posting is how you find your people. I didn't know other girls my age doing this existed until I started posting and they started finding me. The DMs coming in aren't just clients. They're other builders. Other nerds. Other people who get it. You can't explain what you're doing to your friends who aren't in this, they don't care, they're not going to care, and that's fine. The internet has your people. You just have to show up so they can find you." },
+      { label: 'TEACH', text: "What to post? Four formats that work every single time. One, the I-don't-know-what-I'm-doing post. Screen record Claude making something for you, voiceover something like, I'm trying to build X, here's what's happening. That's a full post. Two, the before-slash-after. The prompt you gave, the thing Claude made. Fifteen seconds. Three, the problem-first post. Don't start with the AI, start with what was annoying you. I was spending two hours a day on X, so I built a thing. Four, the Sunday recap. Three things you learned this week. What surprised you, what broke, what clicked." },
+      { label: 'TEACH', text: "Pro move. After Claude builds something, literally ask it, now write me a TikTok script for this in 45 seconds, casual, first person, no hashtags. Claude writes it. You hit record. Same for captions. The thing you just built is the content. You are never going to run out of stuff to post because you're always building." },
+      { label: 'CLOSER', text: "The one rule: don't wait until you're ready. You won't be. Post this week. Tag me. At aylablumberg dot a-i, on TikTok and Instagram. I'll see it. I'll re-share you. Go." },
+    ],
+  },
 ]
