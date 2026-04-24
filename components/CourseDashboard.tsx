@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { PROFANITY_REGEX } from '@/lib/censor'
+import BrandLogo from '@/components/BrandLogo'
 import VideoPlayer from '@/components/VideoPlayer'
 
 // ──────────────────────────────────────────────────────────
@@ -2094,7 +2095,7 @@ export default function CourseDashboard() {
         .course-root { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); min-height: 100vh; overflow: hidden; }
         .progress-line { position: fixed; top: 0; left: 0; height: 2px; background: var(--pink); z-index: 101; transition: width 0.5s cubic-bezier(.4,0.2,1); }
         .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: rgba(253,246,240,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 100; }
-        .course-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.3px; color: var(--dark); text-decoration: none; cursor: pointer; transition: opacity 0.15s; }
+        .course-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.3px; color: var(--dark); text-decoration: none; cursor: pointer; transition: opacity 0.15s; display: inline-flex; align-items: center; }
         .course-brand:hover { opacity: 0.7; }
         .course-brand span { color: var(--pink); font-style: italic; }
         .progress-dots { display: flex; gap: 5px; align-items: center; }
@@ -2413,7 +2414,7 @@ export default function CourseDashboard() {
       <div className="progress-line" style={{ width: `${progressPct}%` }} />
 
       <nav className="top-nav">
-        <a href="/" className="course-brand" aria-label="Back to Ayla Unlocked home">Ayla <span>Unlocked</span></a>
+        <a href="/" className="course-brand" aria-label="Back to Ayla Unlocked home"><BrandLogo size={20} className="mr-2" />Ayla <span>Unlocked</span></a>
         <div className="progress-dots">
           {lessons.map((les, i) => {
             const isDone = progress.completed_lessons.includes(i)

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import BrandLogo from '@/components/BrandLogo'
 import { createSupabaseAdminClient } from '@/lib/supabase'
 import { VIDEO_SCRIPTS } from '@/lib/video-scripts'
 import AdminScripts from '@/components/AdminScripts'
@@ -65,7 +66,7 @@ export default async function AdminDashboard() {
       <nav className="sticky top-0 z-40 backdrop-blur-md bg-[rgba(253,246,240,0.95)] border-b border-[color:var(--border)]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
           <Link href="/" className="font-serif text-lg tracking-wide">
-            Ayla <span className="text-pink italic">Unlocked</span>
+            <BrandLogo size={22} className="mr-2" />Ayla <span className="text-pink italic">Unlocked</span>
             <span className="text-xs text-muted-light tracking-[2px] uppercase ml-3">Admin</span>
           </Link>
           <div className="flex gap-4 text-[11px] tracking-[1.5px] uppercase">

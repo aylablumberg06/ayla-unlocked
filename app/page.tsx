@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import BrandLogo from '@/components/BrandLogo'
 import ContactForm from '@/components/ContactForm'
 import HeroCover from '@/components/HeroCover'
 import ScrollReveal, { ScrollProgressBar } from '@/components/ScrollReveal'
@@ -12,9 +13,10 @@ export default function LandingPage() {
       {/* sticky nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[rgba(253,246,240,0.88)] border-b border-[color:var(--border)]">
         <div className="max-w-6xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
-          <div className="font-serif text-lg tracking-wide">
-            Ayla <span className="text-pink italic">Unlocked</span>
-          </div>
+          <Link href="/" className="font-serif text-lg tracking-wide flex items-center gap-2 hover:opacity-80 transition">
+            <BrandLogo size={26} />
+            <span>Ayla <span className="text-pink italic">Unlocked</span></span>
+          </Link>
           <div className="flex items-center gap-2 md:gap-3">
             <ThemeToggle />
             <Link
@@ -236,7 +238,11 @@ export default function LandingPage() {
       </section>
 
       <footer className="border-t border-[color:var(--border)] py-10 px-6 md:px-10 text-center text-xs text-muted-light tracking-[1px]">
-        &copy; {new Date().getFullYear()} Ayla Blumberg &middot; Ayla Unlocked
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <BrandLogo size={20} />
+          <span>Ayla <span className="text-pink italic">Unlocked</span></span>
+        </div>
+        &copy; {new Date().getFullYear()} Ayla Blumberg
       </footer>
     </main>
   )

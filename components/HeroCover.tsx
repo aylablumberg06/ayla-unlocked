@@ -2,17 +2,14 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import VideoPlayer from '@/components/VideoPlayer'
 import { TOTAL_COMBINED_SEC, formatMinutes } from '@/lib/estimates'
 
 /**
  * HERO COVER, full-height, cinematic.
- * Now with autoplay-muted inline video of Ayla's intro.
+ * Autoplay-muted inline video of Ayla's intro. Tap to unmute.
  * Source: /public/hero-video.mp4
- * Click the video to unmute / expand to fullscreen modal.
  */
 export default function HeroCover() {
-  const [videoOpen, setVideoOpen] = useState(false)
   const [muted, setMuted] = useState(true)
   const [hasInteracted, setHasInteracted] = useState(false)
   const inlineRef = useRef<HTMLVideoElement>(null)
@@ -31,11 +28,6 @@ export default function HeroCover() {
     const t = setTimeout(() => setHasInteracted(true), 6000)
     return () => clearTimeout(t)
   }, [])
-
-  // Pause inline when modal opens so they don't double-play
-  useEffect(() => {
-    if (videoOpen) inlineRef.current?.pause()
-  }, [videoOpen])
 
   function toggleMute() {
     const v = inlineRef.current
@@ -80,7 +72,6 @@ export default function HeroCover() {
                 muted={muted}
                 showBigUnmute={!hasInteracted && muted}
                 onUnmuteClick={toggleMute}
-                onExpandClick={() => setVideoOpen(true)}
               />
             </div>
 
@@ -101,17 +92,12 @@ export default function HeroCover() {
               >
                 Get Access · $39
               </Link>
-              <button
-                onClick={() => setVideoOpen(true)}
-                className="inline-flex items-center gap-3 text-[11px] tracking-[1.5px] uppercase text-dark hover:text-pink transition"
+              <Link
+                href="/login"
+                className="inline-flex items-center text-[11px] tracking-[1.5px] uppercase text-mid hover:text-pink transition px-2 py-3"
               >
-                <span className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-white border border-[color:var(--border)] hover:border-pink transition group">
-                  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-pink ml-0.5">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </span>
-                <span>Watch full-screen</span>
-              </button>
+                Already in? Log in →
+              </Link>
             </div>
 
             {/* social proof row */}
@@ -142,7 +128,6 @@ export default function HeroCover() {
               muted={muted}
               showBigUnmute={!hasInteracted && muted}
               onUnmuteClick={toggleMute}
-              onExpandClick={() => setVideoOpen(true)}
             />
           </div>
         </div>
@@ -150,35 +135,13 @@ export default function HeroCover() {
         {/* scroll hint */}
         <div className="mt-16 text-[10px] tracking-[2px] uppercase text-muted-light animate-pulse">&darr; Keep scrolling</div>
       </div>
-
-      {/* FULL-SCREEN VIDEO MODAL (click video to expand) */}
-      {videoOpen && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/85 backdrop-blur-sm flex items-center justify-center p-6"
-          onClick={() => setVideoOpen(false)}
-        >
-          <button
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl z-10"
-            onClick={() => setVideoOpen(false)}
-            aria-label="Close video"
-          >
-            &times;
-          </button>
-          <div
-            className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <VideoPlayer src="/hero-video.mp4" autoPlay />
-          </div>
-        </div>
-      )}
     </section>
   )
 }
 
 /**
  * Inline autoplay-muted video card with a pink "$39 forever" sticker
- * and an unmute pill. Click the video itself to open the fullscreen modal.
+ * and an unmute pill. Tapping the video itself just toggles unmute.
  *
  * When `showBigUnmute` is true, shows a prominent centered "tap to unmute"
  * CTA with a pulsing ring and animated waveform. Fades to a small corner
@@ -189,16 +152,16 @@ function HeroVideo({
   muted,
   showBigUnmute,
   onUnmuteClick,
-  onExpandClick,
 }: {
   videoRef: React.RefObject<HTMLVideoElement>
   muted: boolean
   showBigUnmute: boolean
   onUnmuteClick: () => void
-  onExpandClick: () => void
 }) {
   return (
-    <div className="relative rounded-3xl overflow-hidden border border-[color:var(--border)] shadow-xl shadow-pink/10 bg-black aspect-[9/16] max-h-[560px] mx-auto">
+    <div className="relative aspect-[9/16] max-h-[560px] w-full max-w-[360px] mx-auto">
+      {/* Inner clipping container for the video — only this gets overflow-hidden so corner stickers can poke past the rounded edge */}
+      <div className="absolute inset-0 rounded-3xl overflow-hidden border border-[color:var(--border)] shadow-xl shadow-pink/10 bg-black">
       <video
         ref={videoRef}
         src="/hero-video.mp4"
@@ -207,7 +170,7 @@ function HeroVideo({
         muted
         playsInline
         preload="auto"
-        onClick={onExpandClick}
+        onClick={onUnmuteClick}
       />
 
       {/* Big centered unmute CTA (shown when muted + before interaction) */}
@@ -278,23 +241,10 @@ function HeroVideo({
         )}
       </button>
 
-      {/* Expand pill (top-right) */}
-      <button
-        onClick={(e) => { e.stopPropagation(); onExpandClick() }}
-        className="absolute top-4 right-4 z-30 inline-flex items-center gap-2 bg-black/60 backdrop-blur-sm text-white text-[10px] tracking-[1.5px] uppercase font-semibold px-3 py-2 rounded-full hover:bg-black/80 transition"
-        aria-label="Watch fullscreen"
-      >
-        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2">
-          <polyline points="15 3 21 3 21 9" />
-          <polyline points="9 21 3 21 3 15" />
-          <line x1="21" y1="3" x2="14" y2="10" />
-          <line x1="3" y1="21" x2="10" y2="14" />
-        </svg>
-        Fullscreen
-      </button>
+      </div>{/* end inner clipping container */}
 
-      {/* $39 forever floating sticker */}
-      <div className="absolute -top-3 -right-3 rotate-12 bg-pink text-white px-4 py-2 rounded-full text-[10px] tracking-[2px] uppercase font-semibold shadow-lg z-30">
+      {/* $39 forever floating sticker — outside the clip so it can poke out */}
+      <div className="absolute -top-3 -right-3 rotate-12 bg-pink text-white px-4 py-2 rounded-full text-[10px] tracking-[2px] uppercase font-semibold shadow-lg z-30 whitespace-nowrap">
         $39 forever
       </div>
 
