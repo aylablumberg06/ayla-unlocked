@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Option 6: Large italic "AU" with an open padlock overlapping from the top-right. -->
+  <rect width="256" height="256" rx="56" fill="#FDF6F0"/>
+  <text x="122" y="176" text-anchor="middle"
+        font-family="'Cormorant Garamond', Georgia, serif"
+        font-style="italic" font-size="156" font-weight="500"
+        fill="#E8295C"
+        letter-spacing="-4">AU</text>
+  <!-- Open padlock overlapping upper-right -->
+  <g transform="translate(150,40)">
+    <rect x="6" y="38" width="58" height="46" rx="8" fill="#E8295C" stroke="#FDF6F0" stroke-width="4"/>
+    <path d="M16 38 V 22 a19 19 0 0 1 38 0 V 28" fill="none" stroke="#E8295C" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="35" cy="58" r="5" fill="#FDF6F0"/>
+    <rect x="32.5" y="58" width="5" height="14" fill="#FDF6F0"/>
+  </g>
+</svg>

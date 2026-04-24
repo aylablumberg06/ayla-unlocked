@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Option 7: Padlock body with "AU" inside it. Open shackle suggests "Unlocked." -->
+  <rect width="256" height="256" rx="56" fill="#FDF6F0"/>
+  <!-- Open shackle (curves up and right, detached on right) -->
+  <path d="M82 124 V 80 a44 44 0 0 1 88 0 V 96"
+        fill="none" stroke="#E8295C" stroke-width="18" stroke-linecap="round"/>
+  <!-- Padlock body containing AU -->
+  <rect x="56" y="120" width="144" height="100" rx="16" fill="#E8295C"/>
+  <text x="128" y="195" text-anchor="middle"
+        font-family="'Cormorant Garamond', Georgia, serif"
+        font-style="italic" font-size="86" font-weight="500"
+        fill="#FDF6F0"
+        letter-spacing="-2">AU</text>
+</svg>

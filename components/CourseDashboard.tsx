@@ -2193,18 +2193,18 @@ export default function CourseDashboard() {
         .notes-all-link { display: inline-block; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); font-weight: 500; text-decoration: none; width: 100%; transition: color 0.15s; }
         .notes-all-link:hover { color: #C51F4E; }
         .layout { display: flex; height: 100vh; padding-top: 56px; }
-        .left { width: 37%; min-width: 300px; background: var(--left-bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; position: relative; overflow: hidden; }
-        .left-inner { padding: 44px 36px; display: flex; flex-direction: column; height: 100%; }
-        .l-tag { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 14px; }
-        .l-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; line-height: 1.3; color: var(--dark); font-style: italic; }
-        .l-num-bg { font-family: 'Cormorant Garamond', serif; font-size: 140px; font-weight: 300; color: rgba(232,41,92,0.12); line-height: 0.9; margin: 24px 0 20px; text-align: right; user-select: none; pointer-events: none; font-style: italic; letter-spacing: -2px; }
-        .vid-wrap { margin-top: 8px; }
-        .vid-box { background: rgba(232,41,92,0.05); border: 1.5px dashed rgba(232,41,92,0.22); border-radius: 14px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; overflow: hidden; position: relative; }
+        .left { width: 38%; min-width: 320px; max-width: 480px; background: var(--left-bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+        .left-inner { padding: 28px 28px 28px; display: flex; flex-direction: column; height: 100%; min-height: 0; }
+        .l-tag { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 8px; }
+        .l-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; line-height: 1.3; color: var(--dark); font-style: italic; }
+        .l-num-bg { font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 300; color: rgba(232,41,92,0.14); line-height: 0.9; position: absolute; right: 22px; bottom: 18px; user-select: none; pointer-events: none; font-style: italic; letter-spacing: -2px; z-index: 0; }
+        .vid-wrap { margin-top: 16px; flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; position: relative; z-index: 1; }
+        .vid-box { background: #000; border: 1px solid var(--border); border-radius: 18px; aspect-ratio: 9/16; height: 100%; max-height: 100%; width: auto; max-width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; position: relative; box-shadow: 0 18px 50px rgba(0,0,0,0.10), 0 4px 12px rgba(232,41,92,0.08); }
         .vid-box video { width: 100%; height: 100%; object-fit: cover; }
-        .vid-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 100%; }
-        .vid-icon { width: 44px; height: 44px; background: var(--pink-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .vid-icon svg { width: 16px; height: 16px; fill: var(--pink); margin-left: 3px; }
-        .vid-label { font-size: 11px; color: var(--light); text-align: center; padding: 0 16px; line-height: 1.4; }
+        .vid-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; width: 100%; height: 100%; background: linear-gradient(155deg, #FFE4ED 0%, #FFF7FA 50%, #FFE4ED 100%); padding: 24px; }
+        .vid-icon { width: 56px; height: 56px; background: var(--pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(232,41,92,0.25); }
+        .vid-icon svg { width: 20px; height: 20px; fill: white; margin-left: 3px; }
+        .vid-label { font-size: 11px; color: var(--pink); text-align: center; padding: 0 12px; line-height: 1.5; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
         .right { flex: 1; overflow-y: auto; padding: 52px 60px 110px; }
         .right::-webkit-scrollbar { width: 3px; }
         .right::-webkit-scrollbar-thumb { background: rgba(232,41,92,0.2); border-radius: 2px; }
@@ -2309,10 +2309,12 @@ export default function CourseDashboard() {
         .comp-btn:hover { background: #C51F4E; }
         #cc { position: fixed; inset: 0; pointer-events: none; z-index: 399; }
         @media (max-width: 800px) {
-          .layout { flex-direction: column; }
-          .left { width: 100%; min-width: unset; height: auto; }
-          .left-inner { padding: 20px 22px; flex-direction: row; align-items: center; gap: 14px; }
-          .l-num-bg, .vid-wrap { display: none; }
+          .layout { flex-direction: column; height: auto; }
+          .left { width: 100%; min-width: unset; max-width: unset; height: auto; padding-bottom: 0; }
+          .left-inner { padding: 18px 22px 8px; flex-direction: column; align-items: stretch; gap: 0; height: auto; }
+          .l-num-bg { display: none; }
+          .vid-wrap { margin-top: 14px; flex: unset; }
+          .vid-box { aspect-ratio: 9/16; height: auto; max-height: 70vh; width: 75vw; max-width: 280px; margin: 0 auto; border-radius: 16px; }
           .l-title { font-size: 17px; margin-bottom: 0; }
           .l-tag { margin-bottom: 4px; }
           .right { padding: 28px 22px 100px; }
