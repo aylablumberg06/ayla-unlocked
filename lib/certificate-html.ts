@@ -102,12 +102,12 @@ export function renderCertificateHtml({
       <div class="name">${escapeHtml(displayName)}</div>
       <div class="name-line"></div>
       <div class="desc">
-        for completing all <strong>28 lessons</strong> of Ayla Unlocked, the course that teaches you
+        for completing all <strong>29 lessons</strong> of Ayla Unlocked, the course that teaches you
         how to build with AI, no coding background required, no gatekeeping. You showed up.
         You paid attention. You probably yelled at Claude at least once. <strong>Certified legendary.</strong>
       </div>
       <div class="stats">
-        <span><strong>28</strong> lessons</span>
+        <span><strong>29</strong> lessons</span>
         <span><strong>0</strong> lines of code written</span>
         <span><strong>&infin;</strong> things you can now build</span>
       </div>

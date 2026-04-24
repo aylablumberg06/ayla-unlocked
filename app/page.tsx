@@ -83,7 +83,7 @@ export default function LandingPage() {
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
         <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">03 · What&apos;s inside</div>
         <h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-4">
-          Five sections. Twenty-eight lessons. Zero gatekeeping.
+          Five sections. Twenty-nine lessons. Zero gatekeeping.
         </h2>
         <p className="text-mid font-light mb-6 text-[15px]">
           About <span className="text-pink font-medium">{formatMinutes(TOTAL_COMBINED_SEC)} total</span> if you actually do the hands-on exercises &mdash; and you should. Break it up however you want.

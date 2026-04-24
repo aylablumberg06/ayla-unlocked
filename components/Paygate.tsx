@@ -136,7 +136,7 @@ function CheckoutCard() {
         <span className="text-sm text-muted-light tracking-[1px] uppercase">one-time</span>
       </div>
       <ul className="space-y-3 mb-8 text-dark">
-        <li className="flex gap-3"><span className="text-pink">&#10003;</span>28 lessons, no fluff</li>
+        <li className="flex gap-3"><span className="text-pink">&#10003;</span>29 lessons, no fluff</li>
         <li className="flex gap-3"><span className="text-pink">&#10003;</span>Interactive idea generator quiz</li>
         <li className="flex gap-3"><span className="text-pink">&#10003;</span>Full glossary in plain English</li>
         <li className="flex gap-3"><span className="text-pink">&#10003;</span>Video walkthroughs (coming soon)</li>

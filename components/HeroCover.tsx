@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import VideoPlayer from '@/components/VideoPlayer'
 import { TOTAL_COMBINED_SEC, formatMinutes } from '@/lib/estimates'
 
 /**
@@ -15,7 +16,6 @@ export default function HeroCover() {
   const [muted, setMuted] = useState(true)
   const [hasInteracted, setHasInteracted] = useState(false)
   const inlineRef = useRef<HTMLVideoElement>(null)
-  const modalRef = useRef<HTMLVideoElement>(null)
 
   // Kick autoplay on mount. Browsers universally allow muted autoplay.
   useEffect(() => {
@@ -32,25 +32,9 @@ export default function HeroCover() {
     return () => clearTimeout(t)
   }, [])
 
-  // When the modal opens, sync playback position from the inline video and unmute
+  // Pause inline when modal opens so they don't double-play
   useEffect(() => {
-    if (!videoOpen) return
-    const inline = inlineRef.current
-    const m = modalRef.current
-    if (!m) return
-    if (inline) {
-      try { m.currentTime = inline.currentTime } catch { /* noop */ }
-      inline.pause()
-    }
-    m.muted = false
-    m.play().catch(() => {/* user gesture required sometimes */})
-    return () => {
-      // When closing: resume the inline video muted
-      if (inline) {
-        inline.muted = true
-        inline.play().catch(() => {})
-      }
-    }
+    if (videoOpen) inlineRef.current?.pause()
   }, [videoOpen])
 
   function toggleMute() {
@@ -184,14 +168,7 @@ export default function HeroCover() {
             className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <video
-              ref={modalRef}
-              src="/hero-video.mp4"
-              className="w-full h-full object-contain bg-black"
-              controls
-              autoPlay
-              playsInline
-            />
+            <VideoPlayer src="/hero-video.mp4" autoPlay />
           </div>
         </div>
       )}
@@ -228,7 +205,6 @@ function HeroVideo({
         className="absolute inset-0 w-full h-full object-cover cursor-pointer"
         autoPlay
         muted
-        loop
         playsInline
         preload="auto"
         onClick={onExpandClick}
