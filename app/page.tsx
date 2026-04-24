@@ -144,6 +144,7 @@ export default function LandingPage() {
               <li>26 &middot; A day in my chaotic AI life</li>
               <li>27 &middot; My 5 favorite mistakes</li>
               <li>28 &middot; My top 10 daily prompts</li>
+              <li>29 &middot; Post while you build</li>
             </ul>
           </div>
         </div>
@@ -181,43 +182,11 @@ export default function LandingPage() {
             </span>
           </a>
 
-          <a
-            href="/showcase.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card-hover group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7"
-          >
-            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">AI services</div>
-            <h3 className="font-serif text-2xl mb-2 leading-tight">The Ayla Edit</h3>
-            <p className="text-[14px] text-mid font-light leading-relaxed mb-4">
-              Automated web-design pipeline for small businesses. Finds leads, builds them a site, cold-emails them. Runs while I sleep.
-            </p>
-            <span className="inline-flex items-center gap-2 text-[11px] tracking-[1.5px] uppercase text-pink group-hover:gap-3 transition-all">
-              See what I built →
-            </span>
-          </a>
-
-          <a
-            href="/showcase.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card-hover group bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7"
-          >
-            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">Agent team</div>
-            <h3 className="font-serif text-2xl mb-2 leading-tight">Ayla Sites</h3>
-            <p className="text-[14px] text-mid font-light leading-relaxed mb-4">
-              A dashboard that tracks every prospect, proposal, and site my agents generate. One pane of glass for an entire ops team.
-            </p>
-            <span className="inline-flex items-center gap-2 text-[11px] tracking-[1.5px] uppercase text-pink group-hover:gap-3 transition-all">
-              Peek inside →
-            </span>
-          </a>
-
           <div className="bg-gradient-to-br from-[color:var(--pink-pale)] to-white rounded-2xl border-2 border-dashed border-pink/30 p-6 md:p-7 flex flex-col justify-center text-center">
-            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">And 10+ others</div>
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">And a dozen more</div>
             <h3 className="font-serif italic text-2xl mb-2 leading-tight">Cold outreach systems. Agent teams. Dashboards.</h3>
             <p className="text-[14px] text-mid font-light leading-relaxed">
-              Proposal factories, lead trackers, content agents. Built in months, not years. Every single one learnable in this course.
+              Proposal factories, lead trackers, content agents, full businesses running on Claude. Built in months, not years. Every single one is the kind of thing this course teaches you to make.
             </p>
           </div>
         </div>
