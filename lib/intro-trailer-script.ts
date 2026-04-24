@@ -3,6 +3,63 @@
 // This is the 60–90 second clip that plays when someone hits
 // "Play intro" on the landing page (HeroCover.tsx → /hero-video.mp4).
 // Record once, export as /public/hero-video.mp4.
+//
+// Also in this file: HOW_TO_USE_SCRIPT — the ~90-second "course tour"
+// video that plays on the onboarding screen right after paying.
+// Save it to /public/how-to-use-video.mp4.
+// ──────────────────────────────────────────────────────────
+
+export const HOW_TO_USE_SCRIPT = {
+  title: "Ayla Unlocked — How to Use This Course",
+  estLength: "90–120 sec",
+  stageNote:
+    "Shoot right after the Welcome video, same outfit/look if you can. Sit at the laptop so you can gesture at the screen as you explain. You can even screen-record the course and voice over it, but a face cam feels warmer. Whichever's easier.",
+  blocks: [
+    {
+      label: "HOOK",
+      text:
+        "Okay, before we dive into anything, let me show you how this course actually works. Because I built it in a very specific way and if you don't know about the buttons, you're going to miss half of it.",
+    },
+    {
+      label: "TEACH",
+      text:
+        "So. Every single lesson has a video and text. The video is me, talking at you the way I'd talk at a friend. If I'm yapping too slow, put me on 1.5x, I won't cry. If you don't feel like watching, scroll past the player and read the text. Same thing, just written. Pick whichever your brain is feeling that day.",
+    },
+    {
+      label: "TEACH",
+      text:
+        "You can also highlight things. Literally drag your finger or cursor across any sentence that hits you. A pink pill pops up, hit it, and that quote lives in your Notes tab forever. It's like highlighting a Kindle book, but it actually remembers for you.",
+    },
+    {
+      label: "TEACH",
+      text:
+        "And — big one — you can search anything with Command-K. Or Control-K on Windows. Hit that anywhere on the site, type whatever you're looking for, and it jumps straight to the lesson, prompt, or chat it's in. I use this constantly. Use it.",
+    },
+    {
+      label: "TEACH",
+      text:
+        "At the top of the page there are three tabs you'll actually use. Prompts — that's my library of the prompts I paste into Claude every single day, copy them, steal them, don't ask. My Chats — real screenshots of conversations I've actually had with Claude while building, nothing edited for the camera. And Ask Ayla — a little chat button in the corner if you get stuck on anything, it's basically me.",
+    },
+    {
+      label: "TEACH",
+      text:
+        "Every lesson also has a star, a question mark, and a note box at the bottom. Star it if you want to save it. Hit the question mark if the lesson loses you, that tells me directly, and I'll rewrite it. Type whatever you want in the note box, it auto-saves, and all your notes live under the Notes tab.",
+    },
+    {
+      label: "TEACH",
+      text:
+        "And then — finish all 29 lessons and I make you a certificate with your name on it. Like, a real one. Post it. Screenshot it. Put it on LinkedIn. You earned it.",
+    },
+    {
+      label: "CLOSER",
+      text:
+        "That's the whole tour. Take breaks whenever you want, we'll drop you right back where you left off. Okay. Now let's actually start.",
+    },
+  ],
+};
+
+// ──────────────────────────────────────────────────────────
+// Pre-paid intro / trailer video script.
 // ──────────────────────────────────────────────────────────
 
 export const INTRO_TRAILER_SCRIPT = {
