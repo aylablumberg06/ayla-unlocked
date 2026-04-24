@@ -13,6 +13,7 @@ import { TOTAL_COMBINED_SEC, formatMinutes } from '@/lib/estimates'
 export default function HeroCover() {
   const [videoOpen, setVideoOpen] = useState(false)
   const [muted, setMuted] = useState(true)
+  const [hasInteracted, setHasInteracted] = useState(false)
   const inlineRef = useRef<HTMLVideoElement>(null)
   const modalRef = useRef<HTMLVideoElement>(null)
 
@@ -23,6 +24,12 @@ export default function HeroCover() {
     v.muted = true
     const tryPlay = () => v.play().catch(() => {/* ignore autoplay blockers */})
     tryPlay()
+  }, [])
+
+  // After 6 seconds, auto-fade the big unmute CTA (user's had their chance)
+  useEffect(() => {
+    const t = setTimeout(() => setHasInteracted(true), 6000)
+    return () => clearTimeout(t)
   }, [])
 
   // When the modal opens, sync playback position from the inline video and unmute
@@ -52,6 +59,7 @@ export default function HeroCover() {
     const newMuted = !muted
     v.muted = newMuted
     setMuted(newMuted)
+    setHasInteracted(true)
     if (!newMuted) v.play().catch(() => {})
   }
 
@@ -86,6 +94,7 @@ export default function HeroCover() {
               <HeroVideo
                 videoRef={inlineRef}
                 muted={muted}
+                showBigUnmute={!hasInteracted && muted}
                 onUnmuteClick={toggleMute}
                 onExpandClick={() => setVideoOpen(true)}
               />
@@ -147,6 +156,7 @@ export default function HeroCover() {
             <HeroVideo
               videoRef={inlineRef}
               muted={muted}
+              showBigUnmute={!hasInteracted && muted}
               onUnmuteClick={toggleMute}
               onExpandClick={() => setVideoOpen(true)}
             />
@@ -192,15 +202,21 @@ export default function HeroCover() {
 /**
  * Inline autoplay-muted video card with a pink "$39 forever" sticker
  * and an unmute pill. Click the video itself to open the fullscreen modal.
+ *
+ * When `showBigUnmute` is true, shows a prominent centered "tap to unmute"
+ * CTA with a pulsing ring and animated waveform. Fades to a small corner
+ * pill once the user clicks or after ~6 seconds.
  */
 function HeroVideo({
   videoRef,
   muted,
+  showBigUnmute,
   onUnmuteClick,
   onExpandClick,
 }: {
   videoRef: React.RefObject<HTMLVideoElement>
   muted: boolean
+  showBigUnmute: boolean
   onUnmuteClick: () => void
   onExpandClick: () => void
 }) {
@@ -218,11 +234,52 @@ function HeroVideo({
         onClick={onExpandClick}
       />
 
-      {/* Unmute pill (top-left) */}
+      {/* Big centered unmute CTA (shown when muted + before interaction) */}
+      {showBigUnmute && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onUnmuteClick() }}
+          className="hero-unmute-big absolute inset-0 z-20 flex items-center justify-center bg-gradient-to-t from-black/55 via-black/20 to-transparent cursor-pointer"
+          aria-label="Tap to unmute"
+        >
+          <div className="flex flex-col items-center gap-5">
+            <span className="relative inline-flex items-center justify-center">
+              {/* outer pulsing rings */}
+              <span className="absolute inset-0 -m-3 rounded-full bg-pink/40 animate-ping" />
+              <span className="absolute inset-0 -m-6 rounded-full bg-pink/25 hero-unmute-ring" />
+              {/* inner circle */}
+              <span className="relative inline-flex items-center justify-center w-20 h-20 rounded-full bg-pink text-white shadow-2xl shadow-pink/40">
+                <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                </svg>
+              </span>
+            </span>
+
+            {/* animated waveform */}
+            <span className="flex items-end gap-1.5 h-7">
+              {[0,1,2,3,4].map((i) => (
+                <span
+                  key={i}
+                  className="w-1.5 rounded-full bg-white hero-wave-bar"
+                  style={{ animationDelay: `${i * 120}ms` }}
+                />
+              ))}
+            </span>
+
+            <span className="text-white text-[11px] tracking-[3px] uppercase font-semibold drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+              Tap to hear me
+            </span>
+          </div>
+        </button>
+      )}
+
+      {/* Small corner unmute/mute pill (always present, less noisy) */}
       <button
         onClick={(e) => { e.stopPropagation(); onUnmuteClick() }}
-        className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 bg-black/60 backdrop-blur-sm text-white text-[10px] tracking-[1.5px] uppercase font-semibold px-3 py-2 rounded-full hover:bg-black/80 transition"
+        className={`absolute top-4 left-4 z-30 inline-flex items-center gap-2 backdrop-blur-sm text-white text-[10px] tracking-[1.5px] uppercase font-semibold px-3 py-2 rounded-full transition ${showBigUnmute ? 'bg-black/0 opacity-0' : 'bg-black/60 hover:bg-black/80 opacity-100'}`}
         aria-label={muted ? 'Unmute video' : 'Mute video'}
+        tabIndex={showBigUnmute ? -1 : 0}
       >
         {muted ? (
           <>
@@ -231,7 +288,7 @@ function HeroVideo({
               <line x1="23" y1="9" x2="17" y2="15" />
               <line x1="17" y1="9" x2="23" y2="15" />
             </svg>
-            Tap to unmute
+            Unmute
           </>
         ) : (
           <>
@@ -248,7 +305,7 @@ function HeroVideo({
       {/* Expand pill (top-right) */}
       <button
         onClick={(e) => { e.stopPropagation(); onExpandClick() }}
-        className="absolute top-4 right-4 z-10 inline-flex items-center gap-2 bg-black/60 backdrop-blur-sm text-white text-[10px] tracking-[1.5px] uppercase font-semibold px-3 py-2 rounded-full hover:bg-black/80 transition"
+        className="absolute top-4 right-4 z-30 inline-flex items-center gap-2 bg-black/60 backdrop-blur-sm text-white text-[10px] tracking-[1.5px] uppercase font-semibold px-3 py-2 rounded-full hover:bg-black/80 transition"
         aria-label="Watch fullscreen"
       >
         <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -261,9 +318,32 @@ function HeroVideo({
       </button>
 
       {/* $39 forever floating sticker */}
-      <div className="absolute -top-3 -right-3 rotate-12 bg-pink text-white px-4 py-2 rounded-full text-[10px] tracking-[2px] uppercase font-semibold shadow-lg z-20">
+      <div className="absolute -top-3 -right-3 rotate-12 bg-pink text-white px-4 py-2 rounded-full text-[10px] tracking-[2px] uppercase font-semibold shadow-lg z-30">
         $39 forever
       </div>
+
+      {/* scoped animations */}
+      <style jsx>{`
+        .hero-unmute-big { animation: heroUnmuteIn 0.4s ease-out; }
+        .hero-unmute-ring { animation: heroUnmuteRing 2s ease-out infinite; }
+        .hero-wave-bar {
+          height: 28%;
+          animation: heroWave 1.1s ease-in-out infinite;
+          transform-origin: bottom center;
+        }
+        @keyframes heroUnmuteIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes heroUnmuteRing {
+          0%   { transform: scale(0.85); opacity: 0.6; }
+          70%  { transform: scale(1.4); opacity: 0; }
+          100% { transform: scale(1.4); opacity: 0; }
+        }
+        @keyframes heroWave {
+          0%, 100% { height: 28%; }
+          25%      { height: 100%; }
+          50%      { height: 45%; }
+          75%      { height: 80%; }
+        }
+      `}</style>
     </div>
   )
 }
