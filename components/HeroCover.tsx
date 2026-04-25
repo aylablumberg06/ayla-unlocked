@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { TOTAL_COMBINED_SEC, formatMinutes } from '@/lib/estimates'
 
 /**
  * HERO COVER, full-height, cinematic.
@@ -144,7 +143,7 @@ export default function HeroCover() {
                 <span>&middot; lessons</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-pink font-semibold">~{formatMinutes(TOTAL_COMBINED_SEC)}</span>
+                <span className="text-pink font-semibold">3 hours</span>
                 <span>&middot; start to finish</span>
               </div>
               <div className="flex items-center gap-2">

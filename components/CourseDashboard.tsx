@@ -179,8 +179,8 @@ const lessons: Lesson[] = [
         <div class="stat-card"><div class="stat-num">12%</div><div class="stat-lab">of machine learning researchers are women (MIT)</div></div>
         <div class="stat-card"><div class="stat-num">26%</div><div class="stat-lab">of the computing workforce is female, despite women being nearly half the overall workforce</div></div>
       </div>
-      <p>These numbers matter because the people who know how to build with AI are going to run things for the next decade. And right now that group is overwhelmingly male, overwhelmingly "tech guys," and overwhelmingly not representing anyone who looks like us.</p>
-      <p>Every woman who learns to build with AI closes that gap a little. This isn't about becoming a coder. It's about becoming the person who knows how to use the most powerful tool that exists right now, before everyone else figures it out.</p>
+      <p>These numbers matter because the people who know how to build with AI are going to run things for the next decade. And right now that group is small. Most of the loudest faces in this space already look the same. Anyone who shows up and starts building, regardless of background, gets to help shape what comes next.</p>
+      <p>This isn&rsquo;t about becoming a coder. It&rsquo;s about becoming the person who knows how to use the most powerful tool that exists right now, before everyone else figures it out. Every person who learns to build narrows the gap a little.</p>
       <div class="callout"><div class="callout-tag">Why now specifically</div>The job market is shifting fast. Marketing, PR, content, admin roles are being automated. But people who know how to direct AI and build with it? They're getting hired, starting businesses, and making real money. The window to get ahead is open right now. You're reading this course because you already sense that.</div>
     </div>`
   },
@@ -190,7 +190,7 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Nobody actually knows what they&rsquo;re doing.</h1>
     <p class="l-sub">Real talk from somebody who taught herself.</p>
     <div class="l-body">
-      <p>I need to say this because I think about it a lot. And I see a lot of women in the AI space hang back because of it.</p>
+      <p>I need to say this because I think about it a lot. And I see a lot of people, especially folks who weren&rsquo;t already &ldquo;in tech,&rdquo; hang back because of it.</p>
 
       <p><strong>You&rsquo;re not behind.</strong> Not on anything. The honest truth is that <em>everybody in AI is lost right now.</em> The tools change every month. What counted as expertise six months ago is outdated. The people on Twitter calling themselves &ldquo;AI experts&rdquo; are mostly just louder, not smarter.</p>
 
@@ -1322,9 +1322,9 @@ const lessons: Lesson[] = [
       </ul>
 
       <h2 class="l-sub-head">The honest thing about the gap.</h2>
-      <p>I\u2019m going to say this plainly. When I started posting about AI building on TikTok and Instagram, I noticed almost immediately: <strong>there are way fewer women doing this publicly.</strong> Most of the faces are guys in their 30s with headsets. Not all. But a lot.</p>
-      <p>That\u2019s an opportunity, not a grievance. If you&rsquo;re a girl watching this: the space is wide open. Post. Tag me. I will literally re-share you. I want more of us up here.</p>
-      <p>And if you\u2019re a guy taking this course: welcome. This isn&rsquo;t a course &ldquo;only for girls,&rdquo; it&rsquo;s a course for anyone who wants to actually build with AI. I\u2019m just pointing out where the gap is because it\u2019s the kind of thing nobody says out loud. The space gets better when all kinds of people show up in it.</p>
+      <p>When I started posting about AI building, I noticed almost immediately: <strong>most of the loud public faces in this space look pretty similar.</strong> Mostly the same vibe, mostly the same demographic. Not all, but a lot.</p>
+      <p>That&rsquo;s an opportunity, not a grievance. <strong>If you don&rsquo;t fit the standard tech-guy mold, the space is wide open for you.</strong> Whatever your background &mdash; if you&rsquo;re young, female, non-traditional, career-switching, whatever &mdash; post. Tag me. I&rsquo;ll re-share you. I want more variety up here.</p>
+      <p>And if you do already fit the standard mold and you&rsquo;re here too: welcome. The course is for anyone who wants to actually build. The space gets better when all kinds of people show up in it.</p>
 
       <h2 class="l-sub-head">What to actually post.</h2>
       <div class="how-it-works">

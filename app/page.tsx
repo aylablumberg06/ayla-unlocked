@@ -3,7 +3,7 @@ import BrandLogo from '@/components/BrandLogo'
 import ContactForm from '@/components/ContactForm'
 import HeroCover from '@/components/HeroCover'
 import ScrollReveal, { ScrollProgressBar } from '@/components/ScrollReveal'
-import { TOTAL_COMBINED_SEC, TOTAL_READ_SEC, formatMinutes } from '@/lib/estimates'
+import { TOTAL_READ_SEC, formatMinutes } from '@/lib/estimates'
 
 export default function LandingPage() {
   return (
@@ -40,7 +40,7 @@ export default function LandingPage() {
       <section className="px-6 md:px-10 py-24 max-w-4xl mx-auto">
         <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">01 · Who this is for</div>
         <ScrollReveal><h2 className="font-serif text-4xl md:text-5xl leading-[1.1] mb-6">
-          The girl who keeps seeing AI stuff online and doesn&apos;t know where to start.
+          For the person who keeps seeing AI stuff online and has no idea where to start.
         </h2></ScrollReveal>
         <p className="text-lg text-mid leading-relaxed font-light">
           Every explanation feels like it&apos;s made for someone who already knows what they&apos;re
@@ -86,7 +86,7 @@ export default function LandingPage() {
           Five sections. Twenty-nine lessons. Zero gatekeeping.
         </h2>
         <p className="text-mid font-light mb-6 text-[15px]">
-          About <span className="text-pink font-medium">{formatMinutes(TOTAL_COMBINED_SEC)} total</span> if you actually do the hands-on exercises &mdash; and you should. Break it up however you want.
+          About <span className="text-pink font-medium">3 hours total</span> if you actually do the hands-on exercises &mdash; and you should. Break it up however you want.
           Speed the videos to 2x and cut through faster. Read-only mode? <span className="text-pink font-medium">{formatMinutes(TOTAL_READ_SEC)}</span>.
         </p>
         <p className="text-[13px] text-muted-light italic mb-10">
@@ -240,7 +240,12 @@ export default function LandingPage() {
           <BrandLogo size={20} />
           <span>Ayla <span className="text-pink italic">Unlocked</span></span>
         </div>
-        &copy; {new Date().getFullYear()} Ayla Blumberg
+        <div className="mb-4">&copy; {new Date().getFullYear()} Ayla Blumberg</div>
+        <div className="max-w-2xl mx-auto text-[10px] tracking-[0.3px] leading-relaxed text-muted-light/80 normal-case font-light">
+          This course is for educational purposes only. It is not legal, financial, or career advice, and individual results vary &mdash; what worked for me won&rsquo;t necessarily work the same way for you.
+          Ayla Unlocked is not affiliated with, endorsed by, or sponsored by Anthropic, Stripe, GitHub, Vercel, Canva, Apify, Telegram, or any other company mentioned in the lessons.
+          External links are provided for convenience only; clicking them sends you to third-party sites we don&rsquo;t control. Use Claude and any AI tool at your own discretion &mdash; double-check anything important (legal, medical, financial, etc.) with a qualified professional.
+        </div>
       </footer>
     </main>
   )
