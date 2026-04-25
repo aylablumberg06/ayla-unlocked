@@ -2945,6 +2945,10 @@ function CompletionPanel({
       </div>
       {status !== 'done' ? (
         <>
+          {/* Completion video — Ayla on camera celebrating with the student */}
+          <div style={{ position: 'relative', width: '100%', maxWidth: 320, aspectRatio: '9 / 16', maxHeight: 480, margin: '0 auto 24px', borderRadius: 18, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 18px 50px rgba(232,41,92,0.18)', background: '#000' }}>
+            <VideoPlayer src="/videos/completion.mp4" />
+          </div>
           <div className="comp-title">What? Like it&apos;s hard?</div>
           <div className="comp-sub">
             Drop your name and we&apos;ll mint your certificate right now. You&apos;ll get it emailed,
