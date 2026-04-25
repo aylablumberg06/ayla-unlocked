@@ -2704,9 +2704,9 @@ export default function CourseDashboard() {
               aria-label="Flag as confusing"
             >
               <svg viewBox="0 0 24 24" width="16" height="16">
-                <circle cx="12" cy="12" r="9.5" fill={isConfused ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" />
-                <path d="M9 9.5a3 3 0 1 1 4.5 2.6c-1 .5-1.5 1-1.5 2V15" stroke={isConfused ? 'white' : 'currentColor'} strokeWidth="1.8" fill="none" strokeLinecap="round" />
-                <circle cx="12" cy="17.5" r="1" fill={isConfused ? 'white' : 'currentColor'} />
+                <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+                <path d="M9.2 9.5 a2.8 2.8 0 1 1 4.4 2.3 c-1 .55 -1.6 1.05 -1.6 2.3" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="12" cy="17.2" r="1.05" fill="currentColor" />
               </svg>
             </button>
             <button

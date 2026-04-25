@@ -56,6 +56,8 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
         autoPlay={autoPlay}
         controls
         playsInline
+        disablePictureInPicture
+        controlsList="nofullscreen nodownload noplaybackrate noremoteplayback"
         className="w-full h-full object-cover"
         onError={() => setFailed(true)}
       />

@@ -209,6 +209,8 @@ function HeroVideo({
         muted
         playsInline
         preload="auto"
+        disablePictureInPicture
+        controlsList="nofullscreen nodownload noplaybackrate noremoteplayback"
         onClick={onPauseClick}
       />
 
@@ -252,12 +254,12 @@ function HeroVideo({
         </button>
       )}
 
-      {/* Small corner unmute/mute pill (always present, less noisy) */}
+      {/* Small corner unmute/mute pill — only rendered after the big "Tap to hear me" CTA fades */}
+      {!showBigUnmute && (
       <button
         onClick={(e) => { e.stopPropagation(); onUnmuteClick() }}
-        className={`absolute top-4 left-4 z-30 inline-flex items-center gap-2 backdrop-blur-sm text-white text-[10px] tracking-[1.5px] uppercase font-semibold px-3 py-2 rounded-full transition ${showBigUnmute ? 'bg-black/0 opacity-0' : 'bg-black/60 hover:bg-black/80 opacity-100'}`}
+        className="absolute top-4 left-4 z-30 inline-flex items-center gap-2 bg-black/60 backdrop-blur-sm hover:bg-black/80 text-white text-[10px] tracking-[1.5px] uppercase font-semibold px-3 py-2 rounded-full transition"
         aria-label={muted ? 'Unmute video' : 'Mute video'}
-        tabIndex={showBigUnmute ? -1 : 0}
       >
         {muted ? (
           <>
