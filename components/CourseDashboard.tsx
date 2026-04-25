@@ -520,7 +520,7 @@ const lessons: Lesson[] = [
       <p style="margin-top:10px;">Rule of thumb: <strong>Chat</strong> while learning. <strong>Claude Code</strong> when you're launching real projects. <strong>Cowork</strong> for computer-wide automation. <strong>Chrome extension</strong> when the thing you want done lives in a browser tab.</p>
       <figure class="lesson-photo">
         <img src="/lesson-four-modes.jpg" alt="The Claude desktop app showing Chat, Cowork, and Code tabs at the top with an HTML preview on the side" />
-        <figcaption>That's the Claude desktop app. See the tabs at the top: Chat, Cowork, Code. That's you switching modes in one click. On the right is an HTML preview of something I was building.</figcaption>
+        <figcaption>The Claude desktop app while I was building something. On the right is an HTML preview of what was actually getting made.</figcaption>
       </figure>
 
       <div class="divider"><span>My favorite workflow: talk it out in Chat, then hand off to Code</span></div>
