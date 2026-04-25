@@ -2,397 +2,397 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Ayla Unlocked — Certificate</title>
+<title>Ayla Unlocked, Certificate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Pinyon+Script&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #FDF6F0;
-    --pink: #E8295C;
-    --pink-hot: #FF2E7E;
-    --pink-light: #FFE4ED;
-    --pink-pale: #FFF5F8;
-    --dark: #1A1A1A;
-    --mid: #5C5C5C;
-    --light: #ABABAB;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background:
-      radial-gradient(circle at 10% 10%, #FFD6E3 0%, transparent 50%),
-      radial-gradient(circle at 90% 90%, #FFE4ED 0%, transparent 45%),
-      linear-gradient(135deg, #FDF6F0 0%, #FFEAF2 100%);
-    min-height: 100vh;
-    padding: 40px 20px;
-    color: var(--dark);
-  }
+ :root {
+ --cream: #FDF6F0;
+ --pink: #E8295C;
+ --pink-hot: #FF2E7E;
+ --pink-light: #FFE4ED;
+ --pink-pale: #FFF5F8;
+ --dark: #1A1A1A;
+ --mid: #5C5C5C;
+ --light: #ABABAB;
+ }
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+ body {
+ font-family: 'DM Sans', sans-serif;
+ background:
+ radial-gradient(circle at 10% 10%, #FFD6E3 0%, transparent 50%),
+ radial-gradient(circle at 90% 90%, #FFE4ED 0%, transparent 45%),
+ linear-gradient(135deg, #FDF6F0 0%, #FFEAF2 100%);
+ min-height: 100vh;
+ padding: 40px 20px;
+ color: var(--dark);
+ }
 
-  /* Download toolbar */
-  .toolbar {
-    max-width: 1100px;
-    margin: 0 auto 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .toolbar .title {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 24px;
-  }
-  .toolbar .title em { color: var(--pink); }
-  .toolbar-actions { display: flex; gap: 10px; }
-  .btn {
-    background: var(--pink);
-    color: white;
-    border: none;
-    padding: 11px 22px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-family: inherit;
-    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 16px rgba(232,41,92,0.22);
-  }
-  .btn:hover { background: #C51F4E; transform: translateY(-1px); box-shadow: 0 6px 22px rgba(232,41,92,0.3); }
-  .btn.ghost { background: white; color: var(--pink); border: 1px solid rgba(232,41,92,0.3); box-shadow: none; }
-  .btn.ghost:hover { background: var(--pink-light); }
+ /* Download toolbar */
+ .toolbar {
+ max-width: 1100px;
+ margin: 0 auto 24px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 12px;
+ flex-wrap: wrap;
+ }
+ .toolbar .title {
+ font-family: 'Cormorant Garamond', serif;
+ font-style: italic;
+ font-size: 24px;
+ }
+ .toolbar .title em { color: var(--pink); }
+ .toolbar-actions { display: flex; gap: 10px; }
+ .btn {
+ background: var(--pink);
+ color: white;
+ border: none;
+ padding: 11px 22px;
+ border-radius: 999px;
+ font-size: 12px;
+ font-weight: 500;
+ letter-spacing: 1.5px;
+ text-transform: uppercase;
+ cursor: pointer;
+ font-family: inherit;
+ transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+ box-shadow: 0 4px 16px rgba(232,41,92,0.22);
+ }
+ .btn:hover { background: #C51F4E; transform: translateY(-1px); box-shadow: 0 6px 22px rgba(232,41,92,0.3); }
+ .btn.ghost { background: white; color: var(--pink); border: 1px solid rgba(232,41,92,0.3); box-shadow: none; }
+ .btn.ghost:hover { background: var(--pink-light); }
 
-  /* CERT PAGE — US Letter landscape (11" x 8.5") */
-  .cert-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .cert {
-    width: 100%;
-    aspect-ratio: 11 / 8.5;
-    background: linear-gradient(135deg, #FFFBFD 0%, #FFF0F5 100%);
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 40px 120px rgba(232,41,92,0.22);
-    border: 3px double rgba(232,41,92,0.35);
-    padding: 5% 6%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .cert::before {
-    content: '';
-    position: absolute;
-    inset: 18px;
-    border: 1px solid rgba(232,41,92,0.22);
-    border-radius: 6px;
-    pointer-events: none;
-  }
+ /* CERT PAGE, US Letter landscape (11" x 8.5") */
+ .cert-wrap {
+ max-width: 1100px;
+ margin: 0 auto;
+ }
+ .cert {
+ width: 100%;
+ aspect-ratio: 11 / 8.5;
+ background: linear-gradient(135deg, #FFFBFD 0%, #FFF0F5 100%);
+ border-radius: 12px;
+ position: relative;
+ overflow: hidden;
+ box-shadow: 0 40px 120px rgba(232,41,92,0.22);
+ border: 3px double rgba(232,41,92,0.35);
+ padding: 5% 6%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ }
+ .cert::before {
+ content: '';
+ position: absolute;
+ inset: 18px;
+ border: 1px solid rgba(232,41,92,0.22);
+ border-radius: 6px;
+ pointer-events: none;
+ }
 
-  /* corner ornaments */
-  .orn { position: absolute; width: 42px; height: 42px; opacity: 0.7; }
-  .orn.tl { top: 30px; left: 30px; }
-  .orn.tr { top: 30px; right: 30px; transform: scaleX(-1); }
-  .orn.bl { bottom: 30px; left: 30px; transform: scaleY(-1); }
-  .orn.br { bottom: 30px; right: 30px; transform: scale(-1, -1); }
+ /* corner ornaments */
+ .orn { position: absolute; width: 42px; height: 42px; opacity: 0.7; }
+ .orn.tl { top: 30px; left: 30px; }
+ .orn.tr { top: 30px; right: 30px; transform: scaleX(-1); }
+ .orn.bl { bottom: 30px; left: 30px; transform: scaleY(-1); }
+ .orn.br { bottom: 30px; right: 30px; transform: scale(-1, -1); }
 
-  .sparkle { position: absolute; color: var(--pink-hot); pointer-events: none; opacity: 0.5; }
-  .sparkle.a { top: 70px; right: 20%; font-size: 22px; transform: rotate(12deg); }
-  .sparkle.b { bottom: 80px; left: 15%; font-size: 18px; transform: rotate(-6deg); }
-  .sparkle.c { top: 30%; left: 60px; font-size: 16px; opacity: 0.35; }
+ .sparkle { position: absolute; color: var(--pink-hot); pointer-events: none; opacity: 0.5; }
+ .sparkle.a { top: 70px; right: 20%; font-size: 22px; transform: rotate(12deg); }
+ .sparkle.b { bottom: 80px; left: 15%; font-size: 18px; transform: rotate(-6deg); }
+ .sparkle.c { top: 30%; left: 60px; font-size: 16px; opacity: 0.35; }
 
-  .eyebrow {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: var(--pink);
-    margin-bottom: 14px;
-    position: relative; z-index: 2;
-  }
-  .brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    letter-spacing: 3px;
-    color: var(--dark);
-    margin-bottom: 20px;
-    position: relative; z-index: 2;
-  }
-  .brand em { color: var(--pink); font-style: italic; font-weight: 500; }
+ .eyebrow {
+ font-family: 'Cormorant Garamond', serif;
+ font-size: 10px;
+ font-weight: 500;
+ letter-spacing: 6px;
+ text-transform: uppercase;
+ color: var(--pink);
+ margin-bottom: 14px;
+ position: relative; z-index: 2;
+ }
+ .brand {
+ font-family: 'Cormorant Garamond', serif;
+ font-size: 22px;
+ letter-spacing: 3px;
+ color: var(--dark);
+ margin-bottom: 20px;
+ position: relative; z-index: 2;
+ }
+ .brand em { color: var(--pink); font-style: italic; font-weight: 500; }
 
-  .hero {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(58px, 7vw, 92px);
-    color: var(--pink);
-    line-height: 0.95;
-    margin-bottom: 18px;
-    text-shadow: 0 4px 30px rgba(232,41,92,0.15);
-    position: relative; z-index: 2;
-  }
+ .hero {
+ font-family: 'Great Vibes', cursive;
+ font-size: clamp(58px, 7vw, 92px);
+ color: var(--pink);
+ line-height: 0.95;
+ margin-bottom: 18px;
+ text-shadow: 0 4px 30px rgba(232,41,92,0.15);
+ position: relative; z-index: 2;
+ }
 
-  .big-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(34px, 4.6vw, 54px);
-    font-weight: 500;
-    color: var(--pink-hot);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-    position: relative; z-index: 2;
-    text-align: center;
-    line-height: 1;
-  }
+ .big-title {
+ font-family: 'Cormorant Garamond', serif;
+ font-size: clamp(34px, 4.6vw, 54px);
+ font-weight: 500;
+ color: var(--pink-hot);
+ letter-spacing: 2px;
+ text-transform: uppercase;
+ margin-bottom: 18px;
+ position: relative; z-index: 2;
+ text-align: center;
+ line-height: 1;
+ }
 
-  .presented {
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--light);
-    margin-bottom: 6px;
-    position: relative; z-index: 2;
-  }
+ .presented {
+ font-size: 10px;
+ letter-spacing: 4px;
+ text-transform: uppercase;
+ color: var(--light);
+ margin-bottom: 6px;
+ position: relative; z-index: 2;
+ }
 
-  .name {
-    font-family: 'Pinyon Script', cursive;
-    font-size: clamp(56px, 7.6vw, 92px);
-    color: var(--pink-hot);
-    line-height: 1;
-    padding: 4px 40px 16px;
-    position: relative; z-index: 2;
-    text-align: center;
-  }
+ .name {
+ font-family: 'Pinyon Script', cursive;
+ font-size: clamp(56px, 7.6vw, 92px);
+ color: var(--pink-hot);
+ line-height: 1;
+ padding: 4px 40px 16px;
+ position: relative; z-index: 2;
+ text-align: center;
+ }
 
-  .name-line {
-    width: min(60%, 460px);
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(232,41,92,0.35), transparent);
-    margin: 0 auto 20px;
-    position: relative; z-index: 2;
-  }
+ .name-line {
+ width: min(60%, 460px);
+ height: 1px;
+ background: linear-gradient(to right, transparent, rgba(232,41,92,0.35), transparent);
+ margin: 0 auto 20px;
+ position: relative; z-index: 2;
+ }
 
-  /* footer row with date + seal + id */
-  .foot {
-    position: absolute;
-    left: 6%;
-    right: 6%;
-    bottom: 5.5%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    z-index: 2;
-    gap: 24px;
-  }
-  .foot-col { flex: 1; text-align: center; min-width: 0; }
-  .foot-val {
-    display: inline-block;
-    padding-bottom: 4px;
-    border-bottom: 1px dashed rgba(232,41,92,0.35);
-    padding-left: 10px;
-    padding-right: 10px;
-    white-space: nowrap;
-  }
-  .foot-val.date {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(14px, 1.6vw, 20px);
-    color: var(--dark);
-  }
-  .foot-val.id {
-    font-family: 'Courier New', monospace;
-    font-size: clamp(10px, 1.1vw, 12px);
-    color: var(--light);
-    letter-spacing: 1.2px;
-  }
-  .foot-val.signature {
-    font-family: 'Pinyon Script', cursive;
-    font-size: clamp(32px, 3.6vw, 44px);
-    color: var(--pink);
-    line-height: 1;
-    border-bottom: 1px dashed rgba(232,41,92,0.35);
-  }
-  .foot-label {
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--light);
-    margin-top: 8px;
-  }
+ /* footer row with date + seal + id */
+ .foot {
+ position: absolute;
+ left: 6%;
+ right: 6%;
+ bottom: 5.5%;
+ display: flex;
+ align-items: flex-end;
+ justify-content: space-between;
+ z-index: 2;
+ gap: 24px;
+ }
+ .foot-col { flex: 1; text-align: center; min-width: 0; }
+ .foot-val {
+ display: inline-block;
+ padding-bottom: 4px;
+ border-bottom: 1px dashed rgba(232,41,92,0.35);
+ padding-left: 10px;
+ padding-right: 10px;
+ white-space: nowrap;
+ }
+ .foot-val.date {
+ font-family: 'Cormorant Garamond', serif;
+ font-style: italic;
+ font-size: clamp(14px, 1.6vw, 20px);
+ color: var(--dark);
+ }
+ .foot-val.id {
+ font-family: 'Courier New', monospace;
+ font-size: clamp(10px, 1.1vw, 12px);
+ color: var(--light);
+ letter-spacing: 1.2px;
+ }
+ .foot-val.signature {
+ font-family: 'Pinyon Script', cursive;
+ font-size: clamp(32px, 3.6vw, 44px);
+ color: var(--pink);
+ line-height: 1;
+ border-bottom: 1px dashed rgba(232,41,92,0.35);
+ }
+ .foot-label {
+ font-size: 9px;
+ letter-spacing: 2px;
+ text-transform: uppercase;
+ color: var(--light);
+ margin-top: 8px;
+ }
 
-  /* University mark (bottom center) */
-  .university {
-    position: absolute;
-    bottom: 22px;
-    left: 0; right: 0;
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(10px, 1.1vw, 12px);
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--pink);
-    opacity: 0.72;
-    z-index: 2;
-  }
-  .university::before, .university::after {
-    content: '✦';
-    margin: 0 10px;
-    color: var(--pink-hot);
-    opacity: 0.8;
-    font-size: 0.9em;
-  }
+ /* University mark (bottom center) */
+ .university {
+ position: absolute;
+ bottom: 22px;
+ left: 0; right: 0;
+ text-align: center;
+ font-family: 'Cormorant Garamond', serif;
+ font-style: italic;
+ font-size: clamp(10px, 1.1vw, 12px);
+ letter-spacing: 2.5px;
+ text-transform: uppercase;
+ color: var(--pink);
+ opacity: 0.72;
+ z-index: 2;
+ }
+ .university::before, .university::after {
+ content: '✦';
+ margin: 0 10px;
+ color: var(--pink-hot);
+ opacity: 0.8;
+ font-size: 0.9em;
+ }
 
-  /* seal in the middle of the footer row */
-  .seal {
-    width: clamp(60px, 7.5vw, 96px);
-    height: clamp(60px, 7.5vw, 96px);
-    border-radius: 50%;
-    background: conic-gradient(from 0deg, #E8295C, #FF6B9D, #FFB3C6, #FF6B9D, #E8295C);
-    padding: 3px;
-    margin: 0 auto 6px;
-  }
-  .seal-inner {
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #FFFBFD, #FFEAF2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(24px, 3.2vw, 36px);
-    color: var(--pink);
-    font-weight: 500;
-  }
+ /* seal in the middle of the footer row */
+ .seal {
+ width: clamp(60px, 7.5vw, 96px);
+ height: clamp(60px, 7.5vw, 96px);
+ border-radius: 50%;
+ background: conic-gradient(from 0deg, #E8295C, #FF6B9D, #FFB3C6, #FF6B9D, #E8295C);
+ padding: 3px;
+ margin: 0 auto 6px;
+ }
+ .seal-inner {
+ width: 100%; height: 100%;
+ border-radius: 50%;
+ background: linear-gradient(135deg, #FFFBFD, #FFEAF2);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-family: 'Cormorant Garamond', serif;
+ font-style: italic;
+ font-size: clamp(24px, 3.2vw, 36px);
+ color: var(--pink);
+ font-weight: 500;
+ }
 
-  /* info card below */
-  .info {
-    max-width: 1100px;
-    margin: 36px auto 0;
-    background: white;
-    border-radius: 14px;
-    padding: 20px 26px;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--mid);
-    border-left: 3px solid var(--pink);
-  }
-  .info strong { color: var(--dark); }
-  .info code { background: var(--pink-light); color: var(--pink); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+ /* info card below */
+ .info {
+ max-width: 1100px;
+ margin: 36px auto 0;
+ background: white;
+ border-radius: 14px;
+ padding: 20px 26px;
+ font-size: 13px;
+ line-height: 1.6;
+ color: var(--mid);
+ border-left: 3px solid var(--pink);
+ }
+ .info strong { color: var(--dark); }
+ .info code { background: var(--pink-light); color: var(--pink); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
 
-  /* PRINT — becomes a real US Letter landscape PDF */
-  @media print {
-    @page {
-      size: letter landscape;
-      margin: 0;
-    }
-    body {
-      background: white;
-      padding: 0;
-    }
-    .toolbar, .info { display: none !important; }
-    .cert-wrap { max-width: none; }
-    .cert {
-      border-radius: 0;
-      box-shadow: none;
-      width: 100vw;
-      height: 100vh;
-      aspect-ratio: auto;
-    }
-  }
+ /* PRINT, becomes a real US Letter landscape PDF */
+ @media print {
+ @page {
+ size: letter landscape;
+ margin: 0;
+ }
+ body {
+ background: white;
+ padding: 0;
+ }
+ .toolbar, .info { display: none !important; }
+ .cert-wrap { max-width: none; }
+ .cert {
+ border-radius: 0;
+ box-shadow: none;
+ width: 100vw;
+ height: 100vh;
+ aspect-ratio: auto;
+ }
+ }
 
-  @media (max-width: 780px) {
-    .toolbar { flex-direction: column; align-items: stretch; }
-    .foot { flex-direction: column; gap: 14px; }
-    .name { padding: 4px 10px 12px; }
-  }
+ @media (max-width: 780px) {
+ .toolbar { flex-direction: column; align-items: stretch; }
+ .foot { flex-direction: column; gap: 14px; }
+ .name { padding: 4px 10px 12px; }
+ }
 </style>
 </head>
 <body>
 
 <div class="toolbar">
-  <div class="title">ayla <em>unlocked</em> &mdash; certificate mockup</div>
-  <div class="toolbar-actions">
-    <button class="btn ghost" onclick="window.location.reload()">Reset</button>
-    <button class="btn" onclick="window.print()">⬇ Download as PDF</button>
-  </div>
+ <div class="title">ayla <em>unlocked</em> , certificate mockup</div>
+ <div class="toolbar-actions">
+ <button class="btn ghost" onclick="window.location.reload()">Reset</button>
+ <button class="btn" onclick="window.print()">⬇ Download as PDF</button>
+ </div>
 </div>
 
 <div class="cert-wrap">
-  <div class="cert">
-    <!-- corner ornaments -->
-    <svg class="orn tl" viewBox="0 0 60 60" fill="none">
-      <path d="M2 2 L2 30 M2 2 L30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
-      <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
-      <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
-    </svg>
-    <svg class="orn tr" viewBox="0 0 60 60" fill="none">
-      <path d="M2 2 L2 30 M2 2 L30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
-      <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
-      <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
-    </svg>
-    <svg class="orn bl" viewBox="0 0 60 60" fill="none">
-      <path d="M2 2 L2 30 M2 2 L30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
-      <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
-      <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
-    </svg>
-    <svg class="orn br" viewBox="0 0 60 60" fill="none">
-      <path d="M2 2 L2 30 M2 2 L30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
-      <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
-      <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
-    </svg>
+ <div class="cert">
+ <!-- corner ornaments -->
+ <svg class="orn tl" viewBox="0 0 60 60" fill="none">
+ <path d="M2 2 L2 30 M2 2 L30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
+ <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
+ <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
+ </svg>
+ <svg class="orn tr" viewBox="0 0 60 60" fill="none">
+ <path d="M2 2 L2 30 M2 2 L30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
+ <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
+ <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
+ </svg>
+ <svg class="orn bl" viewBox="0 0 60 60" fill="none">
+ <path d="M2 2 L2 30 M2 2 L30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
+ <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
+ <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
+ </svg>
+ <svg class="orn br" viewBox="0 0 60 60" fill="none">
+ <path d="M2 2 L2 30 M2 2 L30 2" stroke="#E8295C" stroke-width="1.2" opacity="0.5"/>
+ <circle cx="2" cy="2" r="3" fill="#E8295C" opacity="0.6"/>
+ <path d="M10 10 C 18 18, 20 24, 22 30" stroke="#E8295C" stroke-width="0.8" fill="none" opacity="0.4"/>
+ </svg>
 
-    <div class="sparkle a">✦</div>
-    <div class="sparkle b">✦</div>
-    <div class="sparkle c">✧</div>
+ <div class="sparkle a">✦</div>
+ <div class="sparkle b">✦</div>
+ <div class="sparkle c">✧</div>
 
-    <!-- TEXT ORDER (exactly as requested) -->
-    <!-- 1. Certificate of completion (small eyebrow) -->
-    <div class="eyebrow">Certificate of Completion</div>
+ <!-- TEXT ORDER (exactly as requested) -->
+ <!-- 1. Certificate of completion (small eyebrow) -->
+ <div class="eyebrow">Certificate of Completion</div>
 
-    <!-- 2. Ayla Unlocked -->
-    <div class="brand">Ayla <em>Unlocked</em></div>
+ <!-- 2. Ayla Unlocked -->
+ <div class="brand">Ayla <em>Unlocked</em></div>
 
-    <!-- 3. What? Like it's hard. -->
-    <div class="hero">What? Like it's hard?</div>
+ <!-- 3. What? Like it's hard. -->
+ <div class="hero">What? Like it's hard?</div>
 
-    <!-- 4. Big pink CERTIFICATE OF COMPLETION -->
-    <div class="big-title">Certificate of Completion</div>
+ <!-- 4. Big pink CERTIFICATE OF COMPLETION -->
+ <div class="big-title">Certificate of Completion</div>
 
-    <!-- 5. This is officially presented to -->
-    <div class="presented">This is officially presented to</div>
+ <!-- 5. This is officially presented to -->
+ <div class="presented">This is officially presented to</div>
 
-    <!-- 6. Name (kept the same script + pink) -->
-    <div class="name">[Your Name Here]</div>
-    <div class="name-line"></div>
+ <!-- 6. Name (kept the same script + pink) -->
+ <div class="name">[Your Name Here]</div>
+ <div class="name-line"></div>
 
-    <!-- Footer row: date · seal · signature -->
-    <div class="foot">
-      <div class="foot-col">
-        <span class="foot-val date">April 23, 2026</span>
-        <div class="foot-label">Conferred on</div>
-      </div>
-      <div class="foot-col">
-        <div class="seal"><div class="seal-inner">AU</div></div>
-        <div class="foot-label">Ayla Unlocked</div>
-      </div>
-      <div class="foot-col">
-        <span class="foot-val signature">Ayla Blumberg</span>
-        <div class="foot-label">Founder</div>
-      </div>
-    </div>
+ <!-- Footer row: date · seal · signature -->
+ <div class="foot">
+ <div class="foot-col">
+ <span class="foot-val date">April 23, 2026</span>
+ <div class="foot-label">Conferred on</div>
+ </div>
+ <div class="foot-col">
+ <div class="seal"><div class="seal-inner">AU</div></div>
+ <div class="foot-label">Ayla Unlocked</div>
+ </div>
+ <div class="foot-col">
+ <span class="foot-val signature">Ayla Blumberg</span>
+ <div class="foot-label">Founder</div>
+ </div>
+ </div>
 
-    <!-- University tagline anchored to bottom center -->
-    <div class="university">Ayla Unlocked University</div>
-  </div>
+ <!-- University tagline anchored to bottom center -->
+ <div class="university">Ayla Unlocked University</div>
+ </div>
 </div>
 
 <div class="info">
-  <strong>Mockup.</strong> Click <strong>Download as PDF</strong> (top right) to save. Print dialog is set to US Letter landscape so the file comes out the right shape. In the live course, the student&rsquo;s real name, completion date, and unique certificate ID auto-fill from their account when they click <code>Complete Course</code>.
+ <strong>Mockup.</strong> Click <strong>Download as PDF</strong> (top right) to save. Print dialog is set to US Letter landscape so the file comes out the right shape. In the live course, the student&rsquo;s real name, completion date, and unique certificate ID auto-fill from their account when they click <code>Complete Course</code>.
 </div>
 
 </body>

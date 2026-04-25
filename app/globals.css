@@ -3,92 +3,92 @@
 @tailwind utilities;
 
 :root {
-  --cream: #FDF6F0;
-  --pink: #E8295C;
-  --pink-light: #FFE4ED;
-  --pink-pale: #FFF5F8;
-  --left-bg: #F7EEE7;
-  --dark: #1A1A1A;
-  --mid: #5C5C5C;
-  --light: #ABABAB;
-  --border: rgba(232, 41, 92, 0.13);
+ --cream: #FDF6F0;
+ --pink: #E8295C;
+ --pink-light: #FFE4ED;
+ --pink-pale: #FFF5F8;
+ --left-bg: #F7EEE7;
+ --dark: #1A1A1A;
+ --mid: #5C5C5C;
+ --light: #ABABAB;
+ --border: rgba(232, 41, 92, 0.13);
 }
 
 html.dark {
-  --cream: #131013;
-  --pink: #FF4E7E;
-  --pink-light: #3A1528;
-  --pink-pale: #241018;
-  --left-bg: #1A1418;
-  --dark: #F5EEE8;
-  --mid: #B8B0AA;
-  --light: #6C6661;
-  --border: rgba(255, 78, 126, 0.2);
+ --cream: #131013;
+ --pink: #FF4E7E;
+ --pink-light: #3A1528;
+ --pink-pale: #241018;
+ --left-bg: #1A1418;
+ --dark: #F5EEE8;
+ --mid: #B8B0AA;
+ --light: #6C6661;
+ --border: rgba(255, 78, 126, 0.2);
 }
 html.dark body { background: #131013; color: #F5EEE8; }
 
 .theme-toggle {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: var(--pink-light); color: var(--pink);
-  border: none; cursor: pointer;
-  display: inline-flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
+ width: 32px; height: 32px; border-radius: 50%;
+ background: var(--pink-light); color: var(--pink);
+ border: none; cursor: pointer;
+ display: inline-flex; align-items: center; justify-content: center;
+ transition: all 0.2s;
 }
 .theme-toggle:hover { background: var(--pink); color: white; transform: rotate(18deg); }
 
 * { box-sizing: border-box; }
 
 html, body {
-  background: var(--cream);
-  color: var(--dark);
-  font-family: 'DM Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ background: var(--cream);
+ color: var(--dark);
+ font-family: 'DM Sans', sans-serif;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
 }
 
 .font-serif {
-  font-family: 'Cormorant Garamond', serif;
+ font-family: 'Cormorant Garamond', serif;
 }
 
 .font-sans {
-  font-family: 'DM Sans', sans-serif;
+ font-family: 'DM Sans', sans-serif;
 }
 
 /* grainy noise overlay */
 .grain::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
-  pointer-events: none;
-  z-index: 9998;
+ content: '';
+ position: fixed;
+ inset: 0;
+ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+ opacity: 0.025;
+ pointer-events: none;
+ z-index: 9998;
 }
 
 @layer utilities {
-  .text-balance { text-wrap: balance; }
+ .text-balance { text-wrap: balance; }
 }
 
 /* smooth scroll for anchor jumps + general feel */
 html {
-  scroll-behavior: smooth;
+ scroll-behavior: smooth;
 }
 
 /* ────────────────────────────────────────────────────────
-   Scroll-reveal: sections fade + rise into view as you scroll.
-   Applied via the <ScrollReveal> component which toggles
-   .reveal-visible when the element enters the viewport.
-   ──────────────────────────────────────────────────────── */
+ Scroll-reveal: sections fade + rise into view as you scroll.
+ Applied via the <ScrollReveal> component which toggles
+ .reveal-visible when the element enters the viewport.
+ ──────────────────────────────────────────────────────── */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s cubic-bezier(0.22, 0.61, 0.36, 1),
-              transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
+ opacity: 0;
+ transform: translateY(30px);
+ transition: opacity 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+ transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+ will-change: opacity, transform;
 }
 .reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
+ opacity: 1;
+ transform: translateY(0);
 }
 .reveal-delay-1 { transition-delay: 120ms; }
 .reveal-delay-2 { transition-delay: 240ms; }
@@ -96,87 +96,87 @@ html {
 
 /* Respect motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+ html { scroll-behavior: auto; }
+ .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* ────────────────────────────────────────────────────────
-   Card + button hover polish
-   ──────────────────────────────────────────────────────── */
+ Card + button hover polish
+ ──────────────────────────────────────────────────────── */
 .card-hover {
-  transition:
-    transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
-    border-color 0.3s ease,
-    box-shadow 0.4s ease;
-  will-change: transform;
+ transition:
+ transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+ border-color 0.3s ease,
+ box-shadow 0.4s ease;
+ will-change: transform;
 }
 .card-hover:hover {
-  transform: translateY(-4px);
-  border-color: rgba(232, 41, 92, 0.45);
-  box-shadow: 0 18px 40px -12px rgba(232, 41, 92, 0.18);
+ transform: translateY(-4px);
+ border-color: rgba(232, 41, 92, 0.45);
+ box-shadow: 0 18px 40px -12px rgba(232, 41, 92, 0.18);
 }
 
 .magnetic {
-  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
-              box-shadow 0.3s ease,
-              background-color 0.2s ease;
+ transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+ box-shadow 0.3s ease,
+ background-color 0.2s ease;
 }
 .magnetic:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 34px -8px rgba(232, 41, 92, 0.35);
+ transform: translateY(-2px) scale(1.02);
+ box-shadow: 0 14px 34px -8px rgba(232, 41, 92, 0.35);
 }
 .magnetic:active {
-  transform: translateY(0) scale(0.98);
+ transform: translateY(0) scale(0.98);
 }
 
 /* Link hover: animated pink underline */
 .link-underline {
-  position: relative;
-  display: inline-block;
+ position: relative;
+ display: inline-block;
 }
 .link-underline::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 1.5px;
-  background: var(--pink);
-  transform-origin: right center;
-  transform: scaleX(0);
-  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+ content: '';
+ position: absolute;
+ left: 0;
+ bottom: -2px;
+ width: 100%;
+ height: 1.5px;
+ background: var(--pink);
+ transform-origin: right center;
+ transform: scaleX(0);
+ transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .link-underline:hover::after {
-  transform-origin: left center;
-  transform: scaleX(1);
+ transform-origin: left center;
+ transform: scaleX(1);
 }
 
-/* Profanity auto-censor (global) — used on prompts page, real-chats, lessons, anywhere */
+/* Profanity auto-censor (global), used on prompts page, real-chats, lessons, anywhere */
 s.au-censor,
 .au-censor {
-  text-decoration: line-through !important;
-  text-decoration-color: currentColor !important;
-  text-decoration-thickness: 2.5px !important;
-  text-decoration-skip-ink: none !important;
-  opacity: 0.78;
+ text-decoration: line-through !important;
+ text-decoration-color: currentColor !important;
+ text-decoration-thickness: 2.5px !important;
+ text-decoration-skip-ink: none !important;
+ opacity: 0.78;
 }
 /* Pink chat bubbles need a thicker line so the strike doesn't get lost on the saturated bg */
 .bubble.u s.au-censor,
 .bubble.u.mad s.au-censor {
-  text-decoration-thickness: 3px !important;
-  opacity: 0.9;
+ text-decoration-thickness: 3px !important;
+ opacity: 0.9;
 }
 
 /* Top-of-page scroll progress bar */
 .scroll-progress {
-  position: fixed;
-  top: 56px;
-  left: 0;
-  height: 2px;
-  background: var(--pink);
-  z-index: 60;
-  transform-origin: left;
-  transform: scaleX(var(--scroll-progress, 0));
-  transition: transform 0.1s linear;
-  pointer-events: none;
+ position: fixed;
+ top: 56px;
+ left: 0;
+ height: 2px;
+ background: var(--pink);
+ z-index: 60;
+ transform-origin: left;
+ transform: scaleX(var(--scroll-progress, 0));
+ transition: transform 0.1s linear;
+ pointer-events: none;
 }

@@ -11,18 +11,18 @@ import CmdKSearch from '@/components/CmdKSearch'
  * stays a pure server component.
  */
 export default function ConditionalChrome() {
-  const pathname = usePathname()
-  const hideWidget =
-    !!pathname && (
-      pathname.startsWith('/admin') ||
-      pathname.startsWith('/course/certificate')
-    )
+ const pathname = usePathname()
+ const hideWidget =
+ !!pathname && (
+ pathname.startsWith('/admin') ||
+ pathname.startsWith('/course/certificate')
+ )
 
-  return (
-    <>
-      <PageTracker />
-      <CmdKSearch />
-      {!hideWidget && <AskAylaWidget />}
-    </>
-  )
+ return (
+ <>
+ <PageTracker />
+ <CmdKSearch />
+ {!hideWidget && <AskAylaWidget />}
+ </>
+ )
 }

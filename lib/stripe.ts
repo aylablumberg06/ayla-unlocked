@@ -4,5 +4,5 @@ import Stripe from 'stripe'
 // We still get full types because the SDK's default generic matches the
 // TypeScript bindings shipped with this version of the package.
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  typescript: true,
+ typescript: true,
 })

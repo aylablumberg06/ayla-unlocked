@@ -2,416 +2,416 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>Ayla Unlocked — All Recording Scripts</title>
+<title>Ayla Unlocked, All Recording Scripts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-  :root { --cream:#FDF6F0; --pink:#E8295C; --dark:#1A1A1A; --mid:#555; --border:#EAD8CF; --pink-pale:#FFE4ED; --pink-light:#FFCFDC; }
-  * { box-sizing: border-box; }
-  body { background:var(--cream); color:var(--dark); font-family:'DM Sans',sans-serif; margin:0; padding:24px 16px 120px; max-width:780px; margin:0 auto; line-height:1.55; }
-  h1 { font-family:'Cormorant Garamond', serif; font-weight:500; font-size:42px; margin:0 0 8px; letter-spacing:-1px; }
-  h1 em { color:var(--pink); font-style:italic; }
-  h2 { font-family:'Cormorant Garamond', serif; font-weight:500; font-size:28px; margin:56px 0 4px; letter-spacing:-0.5px; scroll-margin-top:16px; }
-  .sub { color:var(--mid); font-weight:300; font-size:14px; margin:0 0 16px; }
-  .tag { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--pink); font-weight:600; margin-bottom:8px; }
-  .script-card { background:white; border:1px solid var(--border); border-radius:18px; padding:18px 18px 4px; margin-top:10px; }
-  .block { margin-bottom:14px; padding-bottom:12px; border-bottom:1px dashed var(--border); }
-  .block:last-child { border-bottom:none; margin-bottom:6px; }
-  .label { font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:6px; }
-  .label.hook, .label.teach, .label.closer { color:var(--pink); }
-  .label.example { color:#888; }
-  .label.stage { color:#888; font-style:italic; }
-  .text { font-size:16px; line-height:1.6; color:var(--dark); font-weight:400; }
-  .stage-text { font-size:14px; color:#888; font-style:italic; }
-  .meta { font-size:12px; color:var(--mid); font-weight:300; font-style:italic; background:var(--pink-pale); padding:10px 14px; border-radius:10px; margin:8px 0 14px; }
-  .toc { background:white; border:1px solid var(--border); border-radius:14px; padding:14px 16px; margin:16px 0 22px; font-size:13px; column-count:2; column-gap:14px; }
-  .toc a { color:var(--pink); text-decoration:none; display:block; padding:3px 0; font-weight:500; break-inside:avoid; }
-  .toc a:hover { text-decoration:underline; }
-  .toc .idx { color:#888; font-weight:400; margin-right:6px; font-variant-numeric:tabular-nums; }
-  .chip { display:inline-block; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; background:var(--pink-pale); color:var(--pink); padding:3px 8px; border-radius:99px; font-weight:600; margin-left:6px; }
-  @media (max-width: 640px) {
-    body { padding:20px 12px 120px; }
-    h1 { font-size:32px; }
-    h2 { font-size:22px; margin:44px 0 4px; }
-    .text { font-size:15px; }
-    .toc { column-count:1; }
-  }
+ :root { --cream:#FDF6F0; --pink:#E8295C; --dark:#1A1A1A; --mid:#555; --border:#EAD8CF; --pink-pale:#FFE4ED; --pink-light:#FFCFDC; }
+ * { box-sizing: border-box; }
+ body { background:var(--cream); color:var(--dark); font-family:'DM Sans',sans-serif; margin:0; padding:24px 16px 120px; max-width:780px; margin:0 auto; line-height:1.55; }
+ h1 { font-family:'Cormorant Garamond', serif; font-weight:500; font-size:42px; margin:0 0 8px; letter-spacing:-1px; }
+ h1 em { color:var(--pink); font-style:italic; }
+ h2 { font-family:'Cormorant Garamond', serif; font-weight:500; font-size:28px; margin:56px 0 4px; letter-spacing:-0.5px; scroll-margin-top:16px; }
+ .sub { color:var(--mid); font-weight:300; font-size:14px; margin:0 0 16px; }
+ .tag { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--pink); font-weight:600; margin-bottom:8px; }
+ .script-card { background:white; border:1px solid var(--border); border-radius:18px; padding:18px 18px 4px; margin-top:10px; }
+ .block { margin-bottom:14px; padding-bottom:12px; border-bottom:1px dashed var(--border); }
+ .block:last-child { border-bottom:none; margin-bottom:6px; }
+ .label { font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:6px; }
+ .label.hook, .label.teach, .label.closer { color:var(--pink); }
+ .label.example { color:#888; }
+ .label.stage { color:#888; font-style:italic; }
+ .text { font-size:16px; line-height:1.6; color:var(--dark); font-weight:400; }
+ .stage-text { font-size:14px; color:#888; font-style:italic; }
+ .meta { font-size:12px; color:var(--mid); font-weight:300; font-style:italic; background:var(--pink-pale); padding:10px 14px; border-radius:10px; margin:8px 0 14px; }
+ .toc { background:white; border:1px solid var(--border); border-radius:14px; padding:14px 16px; margin:16px 0 22px; font-size:13px; column-count:2; column-gap:14px; }
+ .toc a { color:var(--pink); text-decoration:none; display:block; padding:3px 0; font-weight:500; break-inside:avoid; }
+ .toc a:hover { text-decoration:underline; }
+ .toc .idx { color:#888; font-weight:400; margin-right:6px; font-variant-numeric:tabular-nums; }
+ .chip { display:inline-block; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; background:var(--pink-pale); color:var(--pink); padding:3px 8px; border-radius:99px; font-weight:600; margin-left:6px; }
+ @media (max-width: 640px) {
+ body { padding:20px 12px 120px; }
+ h1 { font-size:32px; }
+ h2 { font-size:22px; margin:44px 0 4px; }
+ .text { font-size:15px; }
+ .toc { column-count:1; }
+ }
 </style>
 </head>
 <body>
 
 <div class="tag">For Ayla · On-camera scripts · All 29 + trailer + tour</div>
 <h1>Your <em>recording</em> scripts.</h1>
-<p class="sub">Every script on one page, optimized for phone. Tap a lesson to jump. Don't memorize — read, then say it your way.</p>
+<p class="sub">Every script on one page, optimized for phone. Tap a lesson to jump. Don't memorize, read, then say it your way.</p>
 
 <div class="toc">
-  <a href="#trailer"><span class="idx">T</span>Pre-paid trailer</a>
-  <a href="#howto"><span class="idx">H</span>How to use this course</a>
-  <a href="#l00"><span class="idx">W</span>Welcome</a>
-  <a href="#l01"><span class="idx">01</span>What Claude Is</a>
-  <a href="#l02"><span class="idx">02</span>What Claude Can Do</a>
-  <a href="#l03"><span class="idx">03</span>The Mindset</a>
-  <a href="#l04"><span class="idx">04</span>The Big Divide</a>
-  <a href="#l05"><span class="idx">05</span>Imposter Syndrome</a>
-  <a href="#l06"><span class="idx">06</span>Setup</a>
-  <a href="#l07"><span class="idx">07</span>Pricing Tiers</a>
-  <a href="#l08"><span class="idx">08</span>Grammar? Never.</a>
-  <a href="#l09"><span class="idx">09</span>Just Yap</a>
-  <a href="#l10"><span class="idx">10</span>When It&#x27;s Wrong</a>
-  <a href="#l11"><span class="idx">11</span>Stay Organized</a>
-  <a href="#l12"><span class="idx">12</span>Get an Idea</a>
-  <a href="#l13"><span class="idx">13</span>When Not to AI</a>
-  <a href="#l14"><span class="idx">14</span>The Four Modes</a>
-  <a href="#l15"><span class="idx">15</span>HTML Files</a>
-  <a href="#l16"><span class="idx">16</span>Deploying</a>
-  <a href="#l17"><span class="idx">17</span>Terminal</a>
-  <a href="#l18"><span class="idx">18</span>API Keys</a>
-  <a href="#l19"><span class="idx">19</span>Real APIs</a>
-  <a href="#l20"><span class="idx">20</span>Selling Online</a>
-  <a href="#l21"><span class="idx">21</span>Stripe Walkthrough</a>
-  <a href="#l22"><span class="idx">22</span>Your First Client</a>
-  <a href="#l23"><span class="idx">23</span>Proposal vs Contract</a>
-  <a href="#l24"><span class="idx">24</span>Agents</a>
-  <a href="#l25"><span class="idx">25</span>Claude on Phone</a>
-  <a href="#l26"><span class="idx">26</span>A Day in My Life</a>
-  <a href="#l27"><span class="idx">27</span>Favorite Mistakes</a>
-  <a href="#l28"><span class="idx">28</span>My Top Prompts</a>
-  <a href="#l29"><span class="idx">29</span>Post While You Build</a>
+ <a href="#trailer"><span class="idx">T</span>Pre-paid trailer</a>
+ <a href="#howto"><span class="idx">H</span>How to use this course</a>
+ <a href="#l00"><span class="idx">W</span>Welcome</a>
+ <a href="#l01"><span class="idx">01</span>What Claude Is</a>
+ <a href="#l02"><span class="idx">02</span>What Claude Can Do</a>
+ <a href="#l03"><span class="idx">03</span>The Mindset</a>
+ <a href="#l04"><span class="idx">04</span>The Big Divide</a>
+ <a href="#l05"><span class="idx">05</span>Imposter Syndrome</a>
+ <a href="#l06"><span class="idx">06</span>Setup</a>
+ <a href="#l07"><span class="idx">07</span>Pricing Tiers</a>
+ <a href="#l08"><span class="idx">08</span>Grammar? Never.</a>
+ <a href="#l09"><span class="idx">09</span>Just Yap</a>
+ <a href="#l10"><span class="idx">10</span>When It&#x27;s Wrong</a>
+ <a href="#l11"><span class="idx">11</span>Stay Organized</a>
+ <a href="#l12"><span class="idx">12</span>Get an Idea</a>
+ <a href="#l13"><span class="idx">13</span>When Not to AI</a>
+ <a href="#l14"><span class="idx">14</span>The Four Modes</a>
+ <a href="#l15"><span class="idx">15</span>HTML Files</a>
+ <a href="#l16"><span class="idx">16</span>Deploying</a>
+ <a href="#l17"><span class="idx">17</span>Terminal</a>
+ <a href="#l18"><span class="idx">18</span>API Keys</a>
+ <a href="#l19"><span class="idx">19</span>Real APIs</a>
+ <a href="#l20"><span class="idx">20</span>Selling Online</a>
+ <a href="#l21"><span class="idx">21</span>Stripe Walkthrough</a>
+ <a href="#l22"><span class="idx">22</span>Your First Client</a>
+ <a href="#l23"><span class="idx">23</span>Proposal vs Contract</a>
+ <a href="#l24"><span class="idx">24</span>Agents</a>
+ <a href="#l25"><span class="idx">25</span>Claude on Phone</a>
+ <a href="#l26"><span class="idx">26</span>A Day in My Life</a>
+ <a href="#l27"><span class="idx">27</span>Favorite Mistakes</a>
+ <a href="#l28"><span class="idx">28</span>My Top Prompts</a>
+ <a href="#l29"><span class="idx">29</span>Post While You Build</a>
 </div>
 
 <h2 id="trailer">Pre-paid intro trailer <span class="chip">60–90 sec</span></h2>
 <p class="sub">Plays before paywall · /hero-video.mp4</p>
 <div class="script-card">
-  <div class="block"><div class="label stage">Stage direction</div><div class="stage-text">Same energy as the Welcome video — direct-to-camera, natural light, no tripod vibes. Record vertically or square so it crops nicely to whatever aspect the hero modal ends up at. Keep it tight.</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">Hi. I&#x27;m Ayla. This is Ayla Unlocked, and I&#x27;m the professor of this course. That&#x27;s a very aggressive word, I know. But hear me out.</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">I&#x27;m gonna teach you to follow exactly what I did to go, in one month, from zero, from not knowing what Claude was, to basically having a makeshift coding degree. Way more awesome than a real one honestly, because Claude can do the coding part now. So it&#x27;s really just about learning how to work with it.</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">Quick context. I&#x27;m 19. I&#x27;ve never taken a coding class in my life. Four months ago I didn&#x27;t know what Claude was, I literally thought it was a guy. Now I&#x27;m building AI agent teams for companies. Hired. Paid. This is real. And I put every single thing I learned to get here into this course.</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">Also — yes, everything is pink. Sorry boys. That&#x27;s just how it is. The code still works. The agents still run. You just have to look at a little pink while you learn. I&#x27;ll live.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">If you keep seeing people making insane stuff with AI and you have no clue where to start — this is your starting line. There&#x27;s no prerequisite. No coding. No computer-science background. Just you, a laptop, and like 10 minutes a day.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Also quick thing. Everyone says &quot;easier said than done.&quot; I actually think it&#x27;s the opposite — everything is easier DONE than said the first time. Like, stuff sounds really hard, and then you just do it, and you&#x27;re like, oh damn, that was easy, what&#x27;s next? This course is exactly that. It sounds intimidating and crazy at first. Twenty-nine lessons, API keys, agents, deploying to the internet — that reads scary. Then you start doing it and within like two hours you&#x27;re building stuff and going, wait, this is not hard at all. I promise.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Inside you get 29 lessons. Short videos. Every lesson you watch, read, highlight, try it, repeat. I show you my real chats with Claude — the exact way I talk to it when I&#x27;m building. My top prompts. How I get paid. How I set up agents that run my business while I&#x27;m at the gym.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">And listen — this is the moment. AI is taking off right now, faster than any tech thing I&#x27;ve ever seen. Six months from now, half the people you know will be using this stuff every day. You want to be the one showing them how, not the one catching up.</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">Real talk — if you&#x27;re still watching this and you haven&#x27;t hit unlock yet, you are genuinely missing out on the good stuff. Like, this trailer is the teaser. The actual course is where I give you the prompts that close clients. The agent setups that make money while I sleep. The real chats with Claude that nobody else is publishing. The embarrassing mistakes I&#x27;d never say on TikTok. That&#x27;s all behind the paywall on purpose — because it&#x27;s what makes this worth it. So. $39. One-time. Stop watching free trailers.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Click unlock. Let&#x27;s build something. I&#x27;ll see you inside.</div></div>
+ <div class="block"><div class="label stage">Stage direction</div><div class="stage-text">Same energy as the Welcome video, direct-to-camera, natural light, no tripod vibes. Record vertically or square so it crops nicely to whatever aspect the hero modal ends up at. Keep it tight.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Hi. I&#x27;m Ayla. This is Ayla Unlocked, and I&#x27;m the professor of this course. That&#x27;s a very aggressive word, I know. But hear me out.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">I&#x27;m gonna teach you to follow exactly what I did to go, in one month, from zero, from not knowing what Claude was, to basically having a makeshift coding degree. Way more awesome than a real one honestly, because Claude can do the coding part now. So it&#x27;s really just about learning how to work with it.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Quick context. I&#x27;m 19. I&#x27;ve never taken a coding class in my life. Four months ago I didn&#x27;t know what Claude was, I literally thought it was a guy. Now I&#x27;m building AI agent teams for companies. Hired. Paid. This is real. And I put every single thing I learned to get here into this course.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Also, yes, everything is pink. Sorry boys. That&#x27;s just how it is. The code still works. The agents still run. You just have to look at a little pink while you learn. I&#x27;ll live.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">If you keep seeing people making insane stuff with AI and you have no clue where to start, this is your starting line. There&#x27;s no prerequisite. No coding. No computer-science background. Just you, a laptop, and like 10 minutes a day.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Also quick thing. Everyone says &quot;easier said than done.&quot; I actually think it&#x27;s the opposite, everything is easier DONE than said the first time. Like, stuff sounds really hard, and then you just do it, and you&#x27;re like, oh damn, that was easy, what&#x27;s next? This course is exactly that. It sounds intimidating and crazy at first. Twenty-nine lessons, API keys, agents, deploying to the internet, that reads scary. Then you start doing it and within like two hours you&#x27;re building stuff and going, wait, this is not hard at all. I promise.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Inside you get 29 lessons. Short videos. Every lesson you watch, read, highlight, try it, repeat. I show you my real chats with Claude, the exact way I talk to it when I&#x27;m building. My top prompts. How I get paid. How I set up agents that run my business while I&#x27;m at the gym.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">And listen, this is the moment. AI is taking off right now, faster than any tech thing I&#x27;ve ever seen. Six months from now, half the people you know will be using this stuff every day. You want to be the one showing them how, not the one catching up.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Real talk, if you&#x27;re still watching this and you haven&#x27;t hit unlock yet, you are genuinely missing out on the good stuff. Like, this trailer is the teaser. The actual course is where I give you the prompts that close clients. The agent setups that make money while I sleep. The real chats with Claude that nobody else is publishing. The embarrassing mistakes I&#x27;d never say on TikTok. That&#x27;s all behind the paywall on purpose, because it&#x27;s what makes this worth it. So. $39. One-time. Stop watching free trailers.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Click unlock. Let&#x27;s build something. I&#x27;ll see you inside.</div></div>
 </div>
 
 <h2 id="howto">How to use this course <span class="chip">90–120 sec</span></h2>
 <p class="sub">Post-paywall tour · plays on onboarding · /how-to-use-video.mp4</p>
 <div class="script-card">
-  <div class="block"><div class="label stage">Stage direction</div><div class="stage-text">Shoot right after the Welcome video, same outfit/look if you can. Sit at the laptop so you can gesture at the screen as you explain. You can even screen-record the course and voice over it, but a face cam feels warmer. Whichever&#x27;s easier.</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">Okay, before we dive into anything, let me show you how this course actually works. Because I built it in a very specific way and if you don&#x27;t know about the buttons, you&#x27;re going to miss half of it.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">So. Every single lesson has a video and text. The video is me, talking at you the way I&#x27;d talk at a friend. If I&#x27;m yapping too slow, put me on 1.5x, I won&#x27;t cry. If you don&#x27;t feel like watching, scroll past the player and read the text. Same thing, just written. Pick whichever your brain is feeling that day.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">You can also highlight things. Literally drag your finger or cursor across any sentence that hits you. A pink pill pops up, hit it, and that quote lives in your Notes tab forever. It&#x27;s like highlighting a Kindle book, but it actually remembers for you.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">And — big one — you can search anything with Command-K. Or Control-K on Windows. Hit that anywhere on the site, type whatever you&#x27;re looking for, and it jumps straight to the lesson, prompt, or chat it&#x27;s in. I use this constantly. Use it.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">At the top of the page there are three tabs you&#x27;ll actually use. Prompts — that&#x27;s my library of the prompts I paste into Claude every single day, copy them, steal them, don&#x27;t ask. My Chats — real screenshots of conversations I&#x27;ve actually had with Claude while building, nothing edited for the camera. And Ask Ayla — a little chat button in the corner if you get stuck on anything, it&#x27;s basically me.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Every lesson also has a star, a question mark, and a note box at the bottom. Star it if you want to save it. Hit the question mark if the lesson loses you, that tells me directly, and I&#x27;ll rewrite it. Type whatever you want in the note box, it auto-saves, and all your notes live under the Notes tab.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">And then — finish all 29 lessons and I make you a certificate with your name on it. Like, a real one. Post it. Screenshot it. Put it on LinkedIn. You earned it.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">That&#x27;s the whole tour. Take breaks whenever you want, we&#x27;ll drop you right back where you left off. Okay. Now let&#x27;s actually start.</div></div>
+ <div class="block"><div class="label stage">Stage direction</div><div class="stage-text">Shoot right after the Welcome video, same outfit/look if you can. Sit at the laptop so you can gesture at the screen as you explain. You can even screen-record the course and voice over it, but a face cam feels warmer. Whichever&#x27;s easier.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Okay, before we dive into anything, let me show you how this course actually works. Because I built it in a very specific way and if you don&#x27;t know about the buttons, you&#x27;re going to miss half of it.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">So. Every single lesson has a video and text. The video is me, talking at you the way I&#x27;d talk at a friend. If I&#x27;m yapping too slow, put me on 1.5x, I won&#x27;t cry. If you don&#x27;t feel like watching, scroll past the player and read the text. Same thing, just written. Pick whichever your brain is feeling that day.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">You can also highlight things. Literally drag your finger or cursor across any sentence that hits you. A pink pill pops up, hit it, and that quote lives in your Notes tab forever. It&#x27;s like highlighting a Kindle book, but it actually remembers for you.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">And, big one, you can search anything with Command-K. Or Control-K on Windows. Hit that anywhere on the site, type whatever you&#x27;re looking for, and it jumps straight to the lesson, prompt, or chat it&#x27;s in. I use this constantly. Use it.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">At the top of the page there are three tabs you&#x27;ll actually use. Prompts, that&#x27;s my library of the prompts I paste into Claude every single day, copy them, steal them, don&#x27;t ask. My Chats, real screenshots of conversations I&#x27;ve actually had with Claude while building, nothing edited for the camera. And Ask Ayla, a little chat button in the corner if you get stuck on anything, it&#x27;s basically me.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Every lesson also has a star, a question mark, and a note box at the bottom. Star it if you want to save it. Hit the question mark if the lesson loses you, that tells me directly, and I&#x27;ll rewrite it. Type whatever you want in the note box, it auto-saves, and all your notes live under the Notes tab.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">And then, finish all 29 lessons and I make you a certificate with your name on it. Like, a real one. Post it. Screenshot it. Put it on LinkedIn. You earned it.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">That&#x27;s the whole tour. Take breaks whenever you want, we&#x27;ll drop you right back where you left off. Okay. Now let&#x27;s actually start.</div></div>
 </div>
 <h2 id="l00">Welcome · Welcome <span class="chip">3-4 min</span></h2>
 <p class="sub">Hi. I&#x27;m Ayla.</p>
 <div class="script-card">
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Shoot this one looking directly into the phone camera, natural light, no tripod vibes. Like you literally FaceTimed a friend. Messy hair, coffee in hand, allowed.]</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">Welcome to Ayla Unlocked. Hi. Okay first of all — you just made such a good investment. You&#x27;re investing in your future, and genuinely, this is the time to get into this. It&#x27;s taking off right now. Like, right now. You&#x27;re not late. You&#x27;re early. Okay. Let me tell you why I made this.</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">So every tech tutorial I&#x27;ve ever opened starts the same way. Some guy in a headset, a whiteboard behind him, saying, welcome back to the channel, today we&#x27;re going to learn about large language models and the transformer architecture. And I&#x27;m like, I&#x27;m closing this. I don&#x27;t want a lecture. I want somebody to just tell me what to do.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">So that&#x27;s what I&#x27;m doing here. This whole course, I want it to feel like I FaceTimed you, propped my phone up against a candle, and I&#x27;m just, like, walking you through this. That&#x27;s it. No whiteboard. No jargon. No, quote, let&#x27;s dive in. If at any point I sound like a tech bro, yell at your screen, because something&#x27;s gone very wrong.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Real quick. I&#x27;m Ayla. I&#x27;m 19. I&#x27;ve never taken a coding class. I&#x27;ve never watched a single YouTube tutorial on how to build anything. Four months ago I genuinely did not know what Claude was. Like, I thought it was a guy.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Here&#x27;s the thing about me that matters for this. I have always loved making things. Like, since I was tiny. Little businesses, little websites, little design projects. I&#x27;d get an idea and want it to exist NOW. And I&#x27;d sit down to make it and hit some stupid technical wall, like, I don&#x27;t know how to set up a domain, or, why is this button not working, and I would literally cry. Fully lose my mind. Quit. Come back a week later, same wall, same meltdown. That was my whole life up until this year.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Then I found Claude. And the thing that changed everything for me, the whole reason I&#x27;m even making this course, is this one idea. With AI, you can figure out ANYTHING. Like, anything. Even if it takes a while. Even if it&#x27;s frustrating in the moment. Even if you have no clue what you&#x27;re doing. You just keep talking to it, you keep saying, that didn&#x27;t work, try it a different way. And eventually, I swear, it figures itself out. You figure it out together. Nothing is actually stuck anymore. That&#x27;s the part nobody tells you.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">So that&#x27;s why we&#x27;re here. I learned Claude in March. By April, I was getting hired to build actual AI agent teams for companies. Not because I&#x27;m smart. I&#x27;m really not. I&#x27;m just patient, and I got obsessed. And I wrote this whole course based on what I learned in that one month, so I could just hand you the shortcut instead of making you go find it.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Cut here to a quick phone recording of you opening the Claude app, or a little montage of something you built, maybe Elle messaging you in Telegram]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">If you&#x27;ve ever thought, I keep seeing all this AI stuff online and I have no idea where to start, this is that. This is your starting line. Grab a coffee, open the app on your phone if you want, and let&#x27;s just do this together. Okay. Let&#x27;s go.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Shoot this one looking directly into the phone camera, natural light, no tripod vibes. Like you literally FaceTimed a friend. Messy hair, coffee in hand, allowed.]</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Welcome to Ayla Unlocked. Hi. Okay first of all, you just made such a good investment. You&#x27;re investing in your future, and genuinely, this is the time to get into this. It&#x27;s taking off right now. Like, right now. You&#x27;re not late. You&#x27;re early. Okay. Let me tell you why I made this.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">So every tech tutorial I&#x27;ve ever opened starts the same way. Some guy in a headset, a whiteboard behind him, saying, welcome back to the channel, today we&#x27;re going to learn about large language models and the transformer architecture. And I&#x27;m like, I&#x27;m closing this. I don&#x27;t want a lecture. I want somebody to just tell me what to do.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">So that&#x27;s what I&#x27;m doing here. This whole course, I want it to feel like I FaceTimed you, propped my phone up against a candle, and I&#x27;m just, like, walking you through this. That&#x27;s it. No whiteboard. No jargon. No, quote, let&#x27;s dive in. If at any point I sound like a tech bro, yell at your screen, because something&#x27;s gone very wrong.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Real quick. I&#x27;m Ayla. I&#x27;m 19. I&#x27;ve never taken a coding class. I&#x27;ve never watched a single YouTube tutorial on how to build anything. Four months ago I genuinely did not know what Claude was. Like, I thought it was a guy.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Here&#x27;s the thing about me that matters for this. I have always loved making things. Like, since I was tiny. Little businesses, little websites, little design projects. I&#x27;d get an idea and want it to exist NOW. And I&#x27;d sit down to make it and hit some stupid technical wall, like, I don&#x27;t know how to set up a domain, or, why is this button not working, and I would literally cry. Fully lose my mind. Quit. Come back a week later, same wall, same meltdown. That was my whole life up until this year.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Then I found Claude. And the thing that changed everything for me, the whole reason I&#x27;m even making this course, is this one idea. With AI, you can figure out ANYTHING. Like, anything. Even if it takes a while. Even if it&#x27;s frustrating in the moment. Even if you have no clue what you&#x27;re doing. You just keep talking to it, you keep saying, that didn&#x27;t work, try it a different way. And eventually, I swear, it figures itself out. You figure it out together. Nothing is actually stuck anymore. That&#x27;s the part nobody tells you.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">So that&#x27;s why we&#x27;re here. I learned Claude in March. By April, I was getting hired to build actual AI agent teams for companies. Not because I&#x27;m smart. I&#x27;m really not. I&#x27;m just patient, and I got obsessed. And I wrote this whole course based on what I learned in that one month, so I could just hand you the shortcut instead of making you go find it.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Cut here to a quick phone recording of you opening the Claude app, or a little montage of something you built, maybe Elle messaging you in Telegram]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">If you&#x27;ve ever thought, I keep seeing all this AI stuff online and I have no idea where to start, this is that. This is your starting line. Grab a coffee, open the app on your phone if you want, and let&#x27;s just do this together. Okay. Let&#x27;s go.</div></div>
 </div>
 <h2 id="l01">Lesson 01 · What Claude Is <span class="chip">90 sec</span></h2>
 <p class="sub">Before we start. What even is this thing.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Okay. So what even is Claude. If you&#x27;re going to use it for the next month, you should know what it actually is.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Claude is an AI made by a company called Anthropic. Anthropic was started by a group of people who used to work at OpenAI, the company that makes ChatGPT. Underneath, Claude is what&#x27;s called an LLM, a Large Language Model. Which sounds scary but just means: it&#x27;s a program that read almost the entire internet and now it can predict what words should come next in any conversation.</div></div>
-  <div class="block"><div class="label example">Example</div><div class="text">When you talk to Claude, you&#x27;re not Googling something. You&#x27;re talking to something that learned to think in language by reading millions of books, articles, and code files.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">One thing to know before we start: Claude doesn&#x27;t remember you between chats. Every new conversation is a blank slate. We&#x27;ll talk about how to work around that later.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Okay. So what even is Claude. If you&#x27;re going to use it for the next month, you should know what it actually is.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Claude is an AI made by a company called Anthropic. Anthropic was started by a group of people who used to work at OpenAI, the company that makes ChatGPT. Underneath, Claude is what&#x27;s called an LLM, a Large Language Model. Which sounds scary but just means: it&#x27;s a program that read almost the entire internet and now it can predict what words should come next in any conversation.</div></div>
+ <div class="block"><div class="label example">Example</div><div class="text">When you talk to Claude, you&#x27;re not Googling something. You&#x27;re talking to something that learned to think in language by reading millions of books, articles, and code files.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">One thing to know before we start: Claude doesn&#x27;t remember you between chats. Every new conversation is a blank slate. We&#x27;ll talk about how to work around that later.</div></div>
 </div>
 <h2 id="l02">Lesson 02 · What Claude Can Do <span class="chip">90-120 sec</span></h2>
 <p class="sub">The full list. Wider than you think.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Most people open Claude, ask it to summarize an email, and close the tab. They never figure out what else is in there. The list is absurdly wider than you think.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Claude can write anything. Emails, pitch decks, cover letters, scripts, blog posts. In your voice if you give it examples. It can code. Entire websites, automations, iPhone shortcuts. It can analyze. Upload a spreadsheet, it tells you what the data means. Upload a contract, it tells you what to negotiate. It can research. Compare products, break down industries, summarize 100 page PDFs in one paragraph. It can think. Career decisions, pricing your services, how to handle a hard conversation.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Show screen recording of you dragging a PDF into Claude and getting a summary]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">The pattern: anything that involves language, logic, or structured thinking, Claude can do with you. Or for you. That&#x27;s this whole course in one sentence.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Most people open Claude, ask it to summarize an email, and close the tab. They never figure out what else is in there. The list is absurdly wider than you think.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Claude can write anything. Emails, pitch decks, cover letters, scripts, blog posts. In your voice if you give it examples. It can code. Entire websites, automations, iPhone shortcuts. It can analyze. Upload a spreadsheet, it tells you what the data means. Upload a contract, it tells you what to negotiate. It can research. Compare products, break down industries, summarize 100 page PDFs in one paragraph. It can think. Career decisions, pricing your services, how to handle a hard conversation.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Show screen recording of you dragging a PDF into Claude and getting a summary]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">The pattern: anything that involves language, logic, or structured thinking, Claude can do with you. Or for you. That&#x27;s this whole course in one sentence.</div></div>
 </div>
 <h2 id="l03">Lesson 03 · The Mindset <span class="chip">60-90 sec</span></h2>
 <p class="sub">Claude is not Google.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">The biggest mistake people make when they first open Claude: they treat it like Google. Quick question, quick answer, close the tab. That&#x27;s maybe 5% of what it can do.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">The better way to think about it: you hired a really smart friend who&#x27;s good at literally everything. Coding, writing, designing, planning. You&#x27;re just explaining what you want done, and they go figure it out. They might not get it right the first try. You go back and forth. That&#x27;s normal. You&#x27;re the boss with the vision. Claude is the team.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Instead of Googling how to do something, you tell Claude to do it, and it does it. Instead of paying a developer thousands of dollars, you build it yourself, for free. That&#x27;s the shift.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">The biggest mistake people make when they first open Claude: they treat it like Google. Quick question, quick answer, close the tab. That&#x27;s maybe 5% of what it can do.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">The better way to think about it: you hired a really smart friend who&#x27;s good at literally everything. Coding, writing, designing, planning. You&#x27;re just explaining what you want done, and they go figure it out. They might not get it right the first try. You go back and forth. That&#x27;s normal. You&#x27;re the boss with the vision. Claude is the team.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Instead of Googling how to do something, you tell Claude to do it, and it does it. Instead of paying a developer thousands of dollars, you build it yourself, for free. That&#x27;s the shift.</div></div>
 </div>
 <h2 id="l04">Lesson 04 · The Big Divide <span class="chip">90-120 sec</span></h2>
 <p class="sub">Everyone thinks AI is just a chatbot. They are wrong.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Here&#x27;s the thing nobody talks about. Most people using AI are using it like a fancy Google. A completely different group is building with it. The gap is huge and it&#x27;s only getting wider.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Using Claude as a chatbot is like having a calculator. Building with it is like having an entire team you can direct from your phone while you&#x27;re getting your nails done. Building means you make real things. Websites. Agents that run on a schedule. Products you can sell. Tools companies pay you to create.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Show stat: 0.4% of Americans use AI at the capability of actually building.]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Every person who learns to build with AI closes that gap a little. You&#x27;re about to be one of them. Let&#x27;s go.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Here&#x27;s the thing nobody talks about. Most people using AI are using it like a fancy Google. A completely different group is building with it. The gap is huge and it&#x27;s only getting wider.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Using Claude as a chatbot is like having a calculator. Building with it is like having an entire team you can direct from your phone while you&#x27;re getting your nails done. Building means you make real things. Websites. Agents that run on a schedule. Products you can sell. Tools companies pay you to create.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Show stat: 0.4% of Americans use AI at the capability of actually building.]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Every person who learns to build with AI closes that gap a little. You&#x27;re about to be one of them. Let&#x27;s go.</div></div>
 </div>
 <h2 id="l05">Lesson 05 · Imposter Syndrome <span class="chip">60-90 sec</span></h2>
 <p class="sub">You&#x27;re not behind. Nobody is.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">I need to say this. I see a lot of people, especially folks who weren&#x27;t already &quot;in tech,&quot; hang back in AI because of it.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">You are not behind. Everybody in AI is lost right now. The tools change every month. The people calling themselves experts on Twitter are just louder, not smarter. I&#x27;m nineteen. I had zero background. I just had a willingness to look stupid in public for long enough to stop being stupid. That&#x27;s the whole skill. If you feel imposter-y, that&#x27;s a signal you&#x27;re in new territory, which means you&#x27;re learning. It&#x27;s not a sign to stop. Ask the dumb question, use different words than the jargon, compare yourself to you from a month ago, not to Twitter.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">The people who make it just keep building through the feeling. You&#x27;re not behind. Go build the thing.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">I need to say this. I see a lot of people, especially folks who weren&#x27;t already &quot;in tech,&quot; hang back in AI because of it.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">You are not behind. Everybody in AI is lost right now. The tools change every month. The people calling themselves experts on Twitter are just louder, not smarter. I&#x27;m nineteen. I had zero background. I just had a willingness to look stupid in public for long enough to stop being stupid. That&#x27;s the whole skill. If you feel imposter-y, that&#x27;s a signal you&#x27;re in new territory, which means you&#x27;re learning. It&#x27;s not a sign to stop. Ask the dumb question, use different words than the jargon, compare yourself to you from a month ago, not to Twitter.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">The people who make it just keep building through the feeling. You&#x27;re not behind. Go build the thing.</div></div>
 </div>
 <h2 id="l06">Lesson 06 · Setup <span class="chip">60 sec</span></h2>
 <p class="sub">Getting set up takes 5 minutes.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Three steps. That&#x27;s all to get started.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Screen recording: go to claude.ai in Chrome, show the Download desktop app button]</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">One. Go to claude dot ai in Chrome and download the desktop app. Drag the Claude icon into your Applications folder when it asks. Log in with Google. Two. Start on the free plan. It&#x27;s fine for learning. You&#x27;ll know when you hit your limit because Claude tells you. When you&#x27;re actually building for clients, the 20 dollar a month paid plan is worth it. Three. Know that Cowork exists, for later. Cowork is a separate tool where Claude controls your computer for you. We&#x27;ll get to it.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">That&#x27;s the whole setup. Five minutes. No credit card required to start.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Three steps. That&#x27;s all to get started.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Screen recording: go to claude.ai in Chrome, show the Download desktop app button]</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">One. Go to claude dot ai in Chrome and download the desktop app. Drag the Claude icon into your Applications folder when it asks. Log in with Google. Two. Start on the free plan. It&#x27;s fine for learning. You&#x27;ll know when you hit your limit because Claude tells you. When you&#x27;re actually building for clients, the 20 dollar a month paid plan is worth it. Three. Know that Cowork exists, for later. Cowork is a separate tool where Claude controls your computer for you. We&#x27;ll get to it.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">That&#x27;s the whole setup. Five minutes. No credit card required to start.</div></div>
 </div>
 <h2 id="l07">Lesson 07 · Pricing Tiers <span class="chip">60-90 sec</span></h2>
 <p class="sub">Free vs. Pro vs. Max.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Claude has three tiers. Free, Pro, and Max. Picking the right one matters. Because the price jumps are real.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Free is zero dollars. Fine for learning, writing, brainstorming. Solid daily limit. When you hit it, Claude tells you and waits a few hours. Perfect for everything in this course. Pro is 20 a month. About 5x the messages, newest model first. The second you&#x27;re building something real and getting cut off, it&#x27;s worth the 20. Max is a hundred to two hundred a month. Effectively unlimited. That&#x27;s what I&#x27;m on, the $100 tier — I run this stuff like a job, so it pays for itself.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Screen recording: claude.ai/pricing showing the 3 cards side by side]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Rule of thumb. Start free. Upgrade the moment Claude cuts you off mid-project more than twice a week. Don&#x27;t pre-pay for a tier you&#x27;re not using yet.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Claude has three tiers. Free, Pro, and Max. Picking the right one matters. Because the price jumps are real.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Free is zero dollars. Fine for learning, writing, brainstorming. Solid daily limit. When you hit it, Claude tells you and waits a few hours. Perfect for everything in this course. Pro is 20 a month. About 5x the messages, newest model first. The second you&#x27;re building something real and getting cut off, it&#x27;s worth the 20. Max is a hundred to two hundred a month. Effectively unlimited. That&#x27;s what I&#x27;m on, the $100 tier, I run this stuff like a job, so it pays for itself.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Screen recording: claude.ai/pricing showing the 3 cards side by side]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Rule of thumb. Start free. Upgrade the moment Claude cuts you off mid-project more than twice a week. Don&#x27;t pre-pay for a tier you&#x27;re not using yet.</div></div>
 </div>
 <h2 id="l08">Lesson 08 · Grammar? Never. <span class="chip">60-90 sec</span></h2>
 <p class="sub">Claude does not care about your grammar.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">This is not your English teacher. Type however you want. Seriously.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Fragments. Typos. Ramble. Change direction mid sentence. Claude figures it out. When Claude does something wrong or gets stuck in a loop, I respond in all caps. I&#x27;ve literally sent OH MY GOD YOU&#x27;RE TERRIBLE AT THIS before. Claude doesn&#x27;t have feelings. It doesn&#x27;t take anything personally. It just keeps going.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Show screenshot of your mad mode message to Claude on screen]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">That said, being specific about what went wrong gets a better fix than just yelling. But both technically work.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">This is not your English teacher. Type however you want. Seriously.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Fragments. Typos. Ramble. Change direction mid sentence. Claude figures it out. When Claude does something wrong or gets stuck in a loop, I respond in all caps. I&#x27;ve literally sent OH MY GOD YOU&#x27;RE TERRIBLE AT THIS before. Claude doesn&#x27;t have feelings. It doesn&#x27;t take anything personally. It just keeps going.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Show screenshot of your mad mode message to Claude on screen]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">That said, being specific about what went wrong gets a better fix than just yelling. But both technically work.</div></div>
 </div>
 <h2 id="l09">Lesson 09 · Just Yap <span class="chip">90 sec</span></h2>
 <p class="sub">You talk. Claude builds.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Talking to Claude is shockingly casual. Like texting a friend who&#x27;s also a genius.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">You don&#x27;t need to know how to do the thing. You don&#x27;t need to know if it&#x27;s possible. Just describe it. The one sentence that changes everything: at the end of anything important, add, ask me any clarifying questions before you start. This stops Claude from running off and building the wrong thing. Also, there&#x27;s a microphone button. Tap it, talk. I have a keyboard shortcut so double tapping Control starts the mic anywhere on my Mac.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[AYLA READS HER REAL MAD-MODE MESSAGES ON CAMERA. BEEP OUT THE CURSES IN POST. Examples to read: &quot;oh my god you&#x27;re terrible at this. what the [BEEP] am i paying 100 a month for. JUST COPY THE PINTEREST INSPO PICS OMG.&quot; / &quot;[BEEP]ING WORK.&quot; / &quot;so i pay $100 a month and you can&#x27;t do a simple task but make me wait 2 hours to figure that out. [BEEP] this.&quot; Keep tone playful. Laugh at yourself a little.]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">If you forget everything else from this video, remember: ask me any clarifying questions before you start. That one phrase.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Talking to Claude is shockingly casual. Like texting a friend who&#x27;s also a genius.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">You don&#x27;t need to know how to do the thing. You don&#x27;t need to know if it&#x27;s possible. Just describe it. The one sentence that changes everything: at the end of anything important, add, ask me any clarifying questions before you start. This stops Claude from running off and building the wrong thing. Also, there&#x27;s a microphone button. Tap it, talk. I have a keyboard shortcut so double tapping Control starts the mic anywhere on my Mac.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[AYLA READS HER REAL MAD-MODE MESSAGES ON CAMERA. BEEP OUT THE CURSES IN POST. Examples to read: &quot;oh my god you&#x27;re terrible at this. what the [BEEP] am i paying 100 a month for. JUST COPY THE PINTEREST INSPO PICS OMG.&quot; / &quot;[BEEP]ING WORK.&quot; / &quot;so i pay $100 a month and you can&#x27;t do a simple task but make me wait 2 hours to figure that out. [BEEP] this.&quot; Keep tone playful. Laugh at yourself a little.]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">If you forget everything else from this video, remember: ask me any clarifying questions before you start. That one phrase.</div></div>
 </div>
 <h2 id="l10">Lesson 10 · When It&#x27;s Wrong <span class="chip">60 sec</span></h2>
 <p class="sub">Claude will get it wrong sometimes.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Claude is going to misunderstand you, build the wrong thing, go off on a tangent. This is normal. It happens to me every day.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">What actually helps. Be specific. Not, this is bad, but, the colors are wrong, I wanted pink not purple. Send a screenshot. If something doesn&#x27;t make sense, paste a screenshot and say, what is this. Ask for simpler instructions. If it&#x27;s too technical, say, explain this like I&#x27;m in 8th grade. Start fresh if needed. Sometimes opening a new chat and being more specific is faster than untangling.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">You&#x27;re the director. Claude is the production team. When the scene&#x27;s not right, give specific notes.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Claude is going to misunderstand you, build the wrong thing, go off on a tangent. This is normal. It happens to me every day.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">What actually helps. Be specific. Not, this is bad, but, the colors are wrong, I wanted pink not purple. Send a screenshot. If something doesn&#x27;t make sense, paste a screenshot and say, what is this. Ask for simpler instructions. If it&#x27;s too technical, say, explain this like I&#x27;m in 8th grade. Start fresh if needed. Sometimes opening a new chat and being more specific is faster than untangling.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">You&#x27;re the director. Claude is the production team. When the scene&#x27;s not right, give specific notes.</div></div>
 </div>
 <h2 id="l11">Lesson 11 · Stay Organized <span class="chip">60-90 sec</span></h2>
 <p class="sub">Organization actually matters here.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Claude doesn&#x27;t carry anything between chats. Starting a new conversation, it has no idea who you are. Every chat is a blank slate.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Rule one. Stay in the same chat while you&#x27;re building. Don&#x27;t start a new one mid project. Rule two. Use Projects. Claude has a feature called Projects that groups related chats and lets you add a permanent briefing Claude always sees. Set up a Project for anything ongoing. Rule three. Always check which chat you&#x27;re in before typing. I&#x27;ve made this mistake more than once.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Projects are the closest thing Claude has to actually remembering you.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Claude doesn&#x27;t carry anything between chats. Starting a new conversation, it has no idea who you are. Every chat is a blank slate.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Rule one. Stay in the same chat while you&#x27;re building. Don&#x27;t start a new one mid project. Rule two. Use Projects. Claude has a feature called Projects that groups related chats and lets you add a permanent briefing Claude always sees. Set up a Project for anything ongoing. Rule three. Always check which chat you&#x27;re in before typing. I&#x27;ve made this mistake more than once.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Projects are the closest thing Claude has to actually remembering you.</div></div>
 </div>
 <h2 id="l12">Lesson 12 · Get an Idea <span class="chip">60-90 sec</span></h2>
 <p class="sub">First you need an idea.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Claude can&#x27;t do anything if you don&#x27;t have a direction. That part is on you.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Your idea doesn&#x27;t have to be huge. A tiny thing that saves you time. A website for yourself. A business plan you&#x27;ve been sitting on. The first thing I built was a personal website. Uploaded my resume, dropped three screenshots of sites I thought were pretty, described the vibe in one sentence. Claude built the whole site in one chat.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">If you&#x27;re still blank on an idea, there&#x27;s a quiz right under this lesson that&#x27;ll give you three personalized options in 30 seconds.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Claude can&#x27;t do anything if you don&#x27;t have a direction. That part is on you.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Your idea doesn&#x27;t have to be huge. A tiny thing that saves you time. A website for yourself. A business plan you&#x27;ve been sitting on. The first thing I built was a personal website. Uploaded my resume, dropped three screenshots of sites I thought were pretty, described the vibe in one sentence. Claude built the whole site in one chat.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">If you&#x27;re still blank on an idea, there&#x27;s a quiz right under this lesson that&#x27;ll give you three personalized options in 30 seconds.</div></div>
 </div>
 <h2 id="l13">Lesson 13 · When Not to AI <span class="chip">60-90 sec</span></h2>
 <p class="sub">The counter-intuitive lesson.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Being good at this means knowing when to not use Claude.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Don&#x27;t use it for personal writing where vulnerability matters, birthday notes, eulogies. Don&#x27;t use it when being wrong is dangerous, medical, legal, money. Don&#x27;t use it when a task is actually faster manually. Don&#x27;t use it for creative work where you want YOUR style to come through. Don&#x27;t use it to skip a skill you actually want to learn. The people who go the furthest with AI are the ones intentional about when they put it down.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Using AI for everything is a sign you haven&#x27;t figured out what it&#x27;s actually for.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Being good at this means knowing when to not use Claude.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Don&#x27;t use it for personal writing where vulnerability matters, birthday notes, eulogies. Don&#x27;t use it when being wrong is dangerous, medical, legal, money. Don&#x27;t use it when a task is actually faster manually. Don&#x27;t use it for creative work where you want YOUR style to come through. Don&#x27;t use it to skip a skill you actually want to learn. The people who go the furthest with AI are the ones intentional about when they put it down.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Using AI for everything is a sign you haven&#x27;t figured out what it&#x27;s actually for.</div></div>
 </div>
 <h2 id="l14">Lesson 14 · The Four Modes <span class="chip">90 sec</span></h2>
 <p class="sub">Chat, Claude Code, Cowork, and the Chrome extension.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Claude has three different modes. They do different things. It matters which one you use.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">One. Claude Chat, at claude dot ai. The one you&#x27;re using now. It makes things, but they live on your computer. Nobody else can access them. Great for learning, brainstorming, making stuff for yourself. Two. Claude Code. Installs inside a free app called VS Code. This is when you want something actually live. A real website, a system that runs automatically. Three. Cowork. Claude with hands. Controls your computer, clicks around apps, moves files. I don&#x27;t personally use it yet.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Rule of thumb. Chat while learning. Claude Code when launching something. Cowork for repetitive computer tasks.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Claude has three different modes. They do different things. It matters which one you use.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">One. Claude Chat, at claude dot ai. The one you&#x27;re using now. It makes things, but they live on your computer. Nobody else can access them. Great for learning, brainstorming, making stuff for yourself. Two. Claude Code. Installs inside a free app called VS Code. This is when you want something actually live. A real website, a system that runs automatically. Three. Cowork. Claude with hands. Controls your computer, clicks around apps, moves files. I don&#x27;t personally use it yet.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Rule of thumb. Chat while learning. Claude Code when launching something. Cowork for repetitive computer tasks.</div></div>
 </div>
 <h2 id="l15">Lesson 15 · HTML Files <span class="chip">60 sec</span></h2>
 <p class="sub">When Claude makes you something in Chat, here is what it is.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">When Claude builds you a website in Chat, the file it gives you is called an HTML file. Less scary than it sounds.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">An HTML file is just a file on your computer. Like a Word doc. Except when you double click it, your browser opens it and it looks like a real webpage. It&#x27;s not on the internet. Nobody can find it. It&#x27;s just sitting on your computer. Great for seeing what something will look like before launching.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">When you&#x27;re ready for it to actually be on the internet, that&#x27;s Claude Code. We cover that next.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">When Claude builds you a website in Chat, the file it gives you is called an HTML file. Less scary than it sounds.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">An HTML file is just a file on your computer. Like a Word doc. Except when you double click it, your browser opens it and it looks like a real webpage. It&#x27;s not on the internet. Nobody can find it. It&#x27;s just sitting on your computer. Great for seeing what something will look like before launching.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">When you&#x27;re ready for it to actually be on the internet, that&#x27;s Claude Code. We cover that next.</div></div>
 </div>
 <h2 id="l16">Lesson 16 · Deploying <span class="chip">90 sec</span></h2>
 <p class="sub">Homebrew. GitHub. Vercel.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Three tools get your website live. Here&#x27;s what each one does.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Homebrew is a tool on your Mac that lets you install other tools. Nobody can fully explain it. Just install it first. GitHub is cloud storage for code. Think Google Drive, but for your project. Vercel is what actually puts your site live on the internet. Free for personal projects. This is what aylablumberg dot com runs on.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Screen recording: paste the Homebrew install command in Terminal, show it running]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">If anything throws an error, paste the error directly into Claude. It&#x27;ll tell you exactly what to do next.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Three tools get your website live. Here&#x27;s what each one does.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Homebrew is a tool on your Mac that lets you install other tools. Nobody can fully explain it. Just install it first. GitHub is cloud storage for code. Think Google Drive, but for your project. Vercel is what actually puts your site live on the internet. Free for personal projects. This is what aylablumberg dot com runs on.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Screen recording: paste the Homebrew install command in Terminal, show it running]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">If anything throws an error, paste the error directly into Claude. It&#x27;ll tell you exactly what to do next.</div></div>
 </div>
 <h2 id="l17">Lesson 17 · Terminal <span class="chip">60 sec</span></h2>
 <p class="sub">Terminal looks scary. It is not.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Terminal is a black text window on your Mac. It looks scary. It is not dangerous. You&#x27;re not going to break anything.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">The workflow is simple. Claude tells you what to paste. You paste. Terminal does something. You copy what Terminal says, paste it back to Claude. You&#x27;ll know Terminal is done when the cursor comes back to a new line ending in a percent symbol.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">When you use Claude Code, you barely touch Terminal. Claude handles most of it.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Terminal is a black text window on your Mac. It looks scary. It is not dangerous. You&#x27;re not going to break anything.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">The workflow is simple. Claude tells you what to paste. You paste. Terminal does something. You copy what Terminal says, paste it back to Claude. You&#x27;ll know Terminal is done when the cursor comes back to a new line ending in a percent symbol.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">When you use Claude Code, you barely touch Terminal. Claude handles most of it.</div></div>
 </div>
 <h2 id="l18">Lesson 18 · API Keys <span class="chip">90 sec</span></h2>
 <p class="sub">API keys are how Claude connects to other apps.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">The moment you want Claude to touch Gmail, Instagram, Canva, anything else, you need an API key.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Technically, an API key is a long string of random letters and numbers that acts as a private password between two apps. Real life analogy: a hotel key card. The hotel gives you a card that only works for your room. You hand that card to Claude. Now Claude can walk in on your behalf. If someone else gets your key card they can charge things to your account. So API keys only go inside your private Claude setup. Nowhere else. Ever.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Claude will always tell you when you need a key and where to get it. Just follow its steps.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">The moment you want Claude to touch Gmail, Instagram, Canva, anything else, you need an API key.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Technically, an API key is a long string of random letters and numbers that acts as a private password between two apps. Real life analogy: a hotel key card. The hotel gives you a card that only works for your room. You hand that card to Claude. Now Claude can walk in on your behalf. If someone else gets your key card they can charge things to your account. So API keys only go inside your private Claude setup. Nowhere else. Ever.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Claude will always tell you when you need a key and where to get it. Just follow its steps.</div></div>
 </div>
 <h2 id="l19">Lesson 19 · Real APIs <span class="chip">90 sec</span></h2>
 <p class="sub">The APIs you&#x27;ll actually care about.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Some APIs come up over and over. Here are the main ones.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Gmail API. Lets Claude send emails from your Gmail, read your inbox, respond. If you&#x27;re building any outreach or follow up system, this is the one. Apify. Scrapes data from the internet. TikTok comments, Instagram followers, Google Maps listings. When you need a list of leads, Apify is how you get it. Canva API. Lets Claude generate designs automatically. Anthropic API. Claude&#x27;s own API. You use this when you start building agents, because it gives your agent access to Claude&#x27;s intelligence.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">The process is the same every time. Find the key. Paste it in. Claude handles the rest.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Some APIs come up over and over. Here are the main ones.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Gmail API. Lets Claude send emails from your Gmail, read your inbox, respond. If you&#x27;re building any outreach or follow up system, this is the one. Apify. Scrapes data from the internet. TikTok comments, Instagram followers, Google Maps listings. When you need a list of leads, Apify is how you get it. Canva API. Lets Claude generate designs automatically. Anthropic API. Claude&#x27;s own API. You use this when you start building agents, because it gives your agent access to Claude&#x27;s intelligence.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">The process is the same every time. Find the key. Paste it in. Claude handles the rest.</div></div>
 </div>
 <h2 id="l20">Lesson 20 · Selling Online <span class="chip">90 sec</span></h2>
 <p class="sub">So how do people actually buy things from you.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">If you&#x27;re building anything to sell, you need a way to charge people. That&#x27;s Stripe.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Stripe is the company that handles payments online. Almost every site you&#x27;ve bought from uses it. Shopify. Substack. This course. You sign up, plug it in, and now you can take money from anyone with a card. Fee is around 2.9% plus 30 cents per transaction. Money lands in your bank 2 to 3 days later. Three things to know. Products are what you sell. Prices attach to products. Checkout is the page the customer enters their card on, Stripe gives you a pre-built one.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Build the site. Claude wires up the checkout. Money comes in. That&#x27;s the whole model.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">If you&#x27;re building anything to sell, you need a way to charge people. That&#x27;s Stripe.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Stripe is the company that handles payments online. Almost every site you&#x27;ve bought from uses it. Shopify. Substack. This course. You sign up, plug it in, and now you can take money from anyone with a card. Fee is around 2.9% plus 30 cents per transaction. Money lands in your bank 2 to 3 days later. Three things to know. Products are what you sell. Prices attach to products. Checkout is the page the customer enters their card on, Stripe gives you a pre-built one.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Build the site. Claude wires up the checkout. Money comes in. That&#x27;s the whole model.</div></div>
 </div>
 <h2 id="l21">Lesson 21 · Stripe Walkthrough <span class="chip">120 sec</span></h2>
 <p class="sub">Let us actually wire up Stripe.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">This is the exact same flow I used to set up payments for this course. Step by step.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">One. Go to stripe dot com, sign up. Two. Turn on Test mode, top right. Test mode lets you fake payments. Three. Left sidebar, Product catalog, Add product. Set a name and price. Four. Click into the product, find the price, copy the price ID. It starts with price underscore. Five. Developers, API keys. Copy the publishable key and the secret key. Then say to Claude: Add Stripe checkout to my site, here&#x27;s my price ID, I&#x27;ll give you the keys in a second. Claude handles it.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Screen recording: show each step in the Stripe dashboard]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Always test in test mode first. Stripe gives you fake card numbers. Once it works in test, flip to live mode. You&#x27;re in business.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">This is the exact same flow I used to set up payments for this course. Step by step.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">One. Go to stripe dot com, sign up. Two. Turn on Test mode, top right. Test mode lets you fake payments. Three. Left sidebar, Product catalog, Add product. Set a name and price. Four. Click into the product, find the price, copy the price ID. It starts with price underscore. Five. Developers, API keys. Copy the publishable key and the secret key. Then say to Claude: Add Stripe checkout to my site, here&#x27;s my price ID, I&#x27;ll give you the keys in a second. Claude handles it.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Screen recording: show each step in the Stripe dashboard]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Always test in test mode first. Stripe gives you fake card numbers. Once it works in test, flip to live mode. You&#x27;re in business.</div></div>
 </div>
 <h2 id="l22">Lesson 22 · Your First Client <span class="chip">90-120 sec</span></h2>
 <p class="sub">How to find your first paying client.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Tutorials are always vague on this. I&#x27;m going to be specific.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Know what you&#x27;re selling. Not AI consulting. One specific thing. A local business website. A cold outreach system. A content generator. A proposal factory. Pick one. Three places I actually get clients. One, local businesses without websites, I Google Maps them and walk in. Two, Instagram DMs to creators whose vibe I like, specific not generic. Three, my own network, I just post once that I&#x27;m taking three clients and someone in my circle bites.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[On screen: a screenshot of one of your real first-client conversations would land here, but skip it if you&#x27;d rather]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Don&#x27;t undersell. Your first number becomes your anchor. Pick a price that feels slightly uncomfortable. That&#x27;s the right one.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Tutorials are always vague on this. I&#x27;m going to be specific.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Know what you&#x27;re selling. Not AI consulting. One specific thing. A local business website. A cold outreach system. A content generator. A proposal factory. Pick one. Three places I actually get clients. One, local businesses without websites, I Google Maps them and walk in. Two, Instagram DMs to creators whose vibe I like, specific not generic. Three, my own network, I just post once that I&#x27;m taking three clients and someone in my circle bites.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[On screen: a screenshot of one of your real first-client conversations would land here, but skip it if you&#x27;d rather]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Don&#x27;t undersell. Your first number becomes your anchor. Pick a price that feels slightly uncomfortable. That&#x27;s the right one.</div></div>
 </div>
 <h2 id="l23">Lesson 23 · Proposal vs Contract <span class="chip">60-90 sec</span></h2>
 <p class="sub">Two different documents, both matter.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">People confuse these constantly. They do completely different things.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">A proposal is a sales doc. Pretty, persuasive, explains what you&#x27;ll do and why you&#x27;re the right person. Not legally binding. A contract is a legal doc. Boring by design. Payment terms, cancellation, who owns the work. Both are necessary. Order, proposal closes the deal, contract protects it. The easy way, tell Claude, write me a freelance proposal and a matching contract for this project, warm on the proposal, clear on the contract. Two docs in a minute.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">One tip, put the price in the proposal, not buried in the contract. Surprising number of deals die because the client never saw what it would cost on page one.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">People confuse these constantly. They do completely different things.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">A proposal is a sales doc. Pretty, persuasive, explains what you&#x27;ll do and why you&#x27;re the right person. Not legally binding. A contract is a legal doc. Boring by design. Payment terms, cancellation, who owns the work. Both are necessary. Order, proposal closes the deal, contract protects it. The easy way, tell Claude, write me a freelance proposal and a matching contract for this project, warm on the proposal, clear on the contract. Two docs in a minute.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">One tip, put the price in the proposal, not buried in the contract. Surprising number of deals die because the client never saw what it would cost on page one.</div></div>
 </div>
 <h2 id="l24">Lesson 24 · Agents <span class="chip">90-120 sec</span></h2>
 <p class="sub">Agents. Claude doing things on its own.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Everything in this course was the foundation. Here&#x27;s where it gets actually wild. Agents.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">An agent is a version of Claude that has a specific job. Find leads, write emails, track data, post content, follow up with clients. It&#x27;s connected to the apps it needs via API keys. It runs on a schedule, every morning at 8am. And it reports back when something needs your attention. My outreach system finds businesses without websites, builds them a site, and sends them a cold email every single morning. I didn&#x27;t write any code. I just explained what I wanted.</div></div>
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[End card: Now go build something. Open Claude and type: I want to build [your idea]. Ask me any clarifying questions.]</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">That&#x27;s the whole thing. Go.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Everything in this course was the foundation. Here&#x27;s where it gets actually wild. Agents.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">An agent is a version of Claude that has a specific job. Find leads, write emails, track data, post content, follow up with clients. It&#x27;s connected to the apps it needs via API keys. It runs on a schedule, every morning at 8am. And it reports back when something needs your attention. My outreach system finds businesses without websites, builds them a site, and sends them a cold email every single morning. I didn&#x27;t write any code. I just explained what I wanted.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[End card: Now go build something. Open Claude and type: I want to build [your idea]. Ask me any clarifying questions.]</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">That&#x27;s the whole thing. Go.</div></div>
 </div>
 <h2 id="l25">Lesson 25 · Claude on Phone <span class="chip">60-90 sec</span></h2>
 <p class="sub">The mobile workflow almost nobody uses.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Half my best work happens when I&#x27;m not at my desk.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Download the Claude mobile app, same chats sync. Voice dictation is the superpower, I talk to Claude way more than I type, the mic button is a better brain-dumper than the keyboard. Photograph anything and ask, receipt you don&#x27;t get, error you don&#x27;t understand, sign in another language, plant you&#x27;re not sure how to water, picture to Claude, done. Text your Telegram agents from anywhere, from bed, from the Uber, from the bathroom, they reply in seconds.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">If you only use Claude on a laptop, you&#x27;re missing half of what it can do for you.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Half my best work happens when I&#x27;m not at my desk.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Download the Claude mobile app, same chats sync. Voice dictation is the superpower, I talk to Claude way more than I type, the mic button is a better brain-dumper than the keyboard. Photograph anything and ask, receipt you don&#x27;t get, error you don&#x27;t understand, sign in another language, plant you&#x27;re not sure how to water, picture to Claude, done. Text your Telegram agents from anywhere, from bed, from the Uber, from the bathroom, they reply in seconds.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">If you only use Claude on a laptop, you&#x27;re missing half of what it can do for you.</div></div>
 </div>
 <h2 id="l26">Lesson 26 · A Day in My Life <span class="chip">90 sec</span></h2>
 <p class="sub">What a chaotic AI life looks like.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">People always ask what my day looks like. I live a chaotic life, I&#x27;m not gonna pretend otherwise.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">There&#x27;s no perfect 9-to-5 grid for this. But there are shapes to my day, the moves I make over and over. First thing I do every morning is open Telegram and read what my agents did overnight. That&#x27;s my brief, before email, before social, before coffee. Then I pick a build block, a long uninterrupted chunk where it&#x27;s just me and Claude making something. Phone face-down, no tabs, no notifications. That&#x27;s where the actual money gets made.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Calls happen on the move. I take live notes into a Claude chat on my phone and ask Claude to turn them into a proposal right after. There&#x27;s always a chaos block in the day where the plan goes out the window, that&#x27;s fine. End of day I read what my agents shipped, approve, reject, comment. And then I get into bed and tell myself I&#x27;ll just tweak one thing, and somehow it&#x27;s 2 AM. Every time.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">I&#x27;m messy. My agents are not. Together we ship. That&#x27;s the whole system.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">People always ask what my day looks like. I live a chaotic life, I&#x27;m not gonna pretend otherwise.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">There&#x27;s no perfect 9-to-5 grid for this. But there are shapes to my day, the moves I make over and over. First thing I do every morning is open Telegram and read what my agents did overnight. That&#x27;s my brief, before email, before social, before coffee. Then I pick a build block, a long uninterrupted chunk where it&#x27;s just me and Claude making something. Phone face-down, no tabs, no notifications. That&#x27;s where the actual money gets made.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Calls happen on the move. I take live notes into a Claude chat on my phone and ask Claude to turn them into a proposal right after. There&#x27;s always a chaos block in the day where the plan goes out the window, that&#x27;s fine. End of day I read what my agents shipped, approve, reject, comment. And then I get into bed and tell myself I&#x27;ll just tweak one thing, and somehow it&#x27;s 2 AM. Every time.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">I&#x27;m messy. My agents are not. Together we ship. That&#x27;s the whole system.</div></div>
 </div>
 <h2 id="l27">Lesson 27 · Favorite Mistakes <span class="chip">90 sec</span></h2>
 <p class="sub">Things I screwed up so you don&#x27;t have to.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Two of my favorite mistakes. Neither of them broke me, both of them taught me more than a tutorial could.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">One. The morning my iMac container deleted everything. Code, configs, scheduled tasks, all gone overnight. I cried. Real cried. I thought months of work was wiped. Then I opened Claude and scrolled my chat history, because every single decision had been built in conversation with Claude. I told it, rebuild everything, you have the context. Three hours later, running again. Lesson: Claude chats are a backup, but actually push your code to GitHub too. Free insurance.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Two. I tried to build a whole agent team on day one. Scrape, qualify, outreach, reply-handle, nurture, close, all in one go. It crashed constantly. I almost quit. Then I deleted everything, built ONE agent that just sent cold emails. Worked in an hour. Then I added the scraper. Then the reply handler. One piece at a time. Lesson: don&#x27;t design the Death Star on day one. Build the smallest thing that works, then add to it.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Both became the stories. Yours will too. Push through.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Two of my favorite mistakes. Neither of them broke me, both of them taught me more than a tutorial could.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">One. The morning my iMac container deleted everything. Code, configs, scheduled tasks, all gone overnight. I cried. Real cried. I thought months of work was wiped. Then I opened Claude and scrolled my chat history, because every single decision had been built in conversation with Claude. I told it, rebuild everything, you have the context. Three hours later, running again. Lesson: Claude chats are a backup, but actually push your code to GitHub too. Free insurance.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Two. I tried to build a whole agent team on day one. Scrape, qualify, outreach, reply-handle, nurture, close, all in one go. It crashed constantly. I almost quit. Then I deleted everything, built ONE agent that just sent cold emails. Worked in an hour. Then I added the scraper. Then the reply handler. One piece at a time. Lesson: don&#x27;t design the Death Star on day one. Build the smallest thing that works, then add to it.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Both became the stories. Yours will too. Push through.</div></div>
 </div>
 <h2 id="l28">Lesson 28 · My Top Prompts <span class="chip">120 sec</span></h2>
 <p class="sub">The 10 prompts I paste every single day.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">If the prompt library is the menu, these are what I actually order.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Number one, ask me any clarifying questions before you start. Forever. Every project. Number two, explain this like I&#x27;m in 8th grade when something sounds smart and I&#x27;m quietly lost. Three, here are ten real samples of my voice, match me. Four, stop, re-read what I asked, do only that. Five, interview me one question at a time. Six, make this feel expensive. Seven, add this feature but don&#x27;t rewrite the whole site. Eight, pretend you&#x27;re my target audience, what&#x27;s confusing. Nine, write this cold email, don&#x27;t use these specific banned words. Ten, stop telling me to do it myself, you have the tools, do it.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">You don&#x27;t need 500 prompts. You need 10 you actually use.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">If the prompt library is the menu, these are what I actually order.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Number one, ask me any clarifying questions before you start. Forever. Every project. Number two, explain this like I&#x27;m in 8th grade when something sounds smart and I&#x27;m quietly lost. Three, here are ten real samples of my voice, match me. Four, stop, re-read what I asked, do only that. Five, interview me one question at a time. Six, make this feel expensive. Seven, add this feature but don&#x27;t rewrite the whole site. Eight, pretend you&#x27;re my target audience, what&#x27;s confusing. Nine, write this cold email, don&#x27;t use these specific banned words. Ten, stop telling me to do it myself, you have the tools, do it.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">You don&#x27;t need 500 prompts. You need 10 you actually use.</div></div>
 </div>
 <h2 id="l29">Lesson 29 · Post While You Build <span class="chip">2-3 min</span></h2>
 <p class="sub">Post while you\u2019re building. Not after.</p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Okay, final lesson. This is the one I wish someone had yelled at me about sooner. You need to post about what you&#x27;re building. Like, publicly. While you&#x27;re building it. Not when it&#x27;s done, not when it&#x27;s pretty, not when you finally feel ready. Now.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">I&#x27;m going to be honest with you. Posting on TikTok and Instagram about what I was making with Claude is the single biggest reason I got hired. Not my portfolio. Not cold outreach. Not a resume. The messy screen recordings of me figuring it out at 11 at night. Those got me paid.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Within one month of starting to post, two companies slid into my DMs asking if I could build them agents. And an email from a founder who&#x27;s now kind of a mentor to me. (I&#x27;m still hoping a podcast invite shows up at some point — putting it out there.) Every one of those came from a post that took me ten minutes to make. I&#x27;m not exaggerating.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">And here&#x27;s the part nobody says out loud. Posting is how you find your people. The DMs coming in aren&#x27;t just clients. They&#x27;re other builders. Other nerds. Other people who get what you&#x27;re doing. You can&#x27;t always explain this stuff to friends who aren&#x27;t in it, they don&#x27;t really care, that&#x27;s fine. The internet has your people. You just have to show up so they can find you.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">What to post? Four formats that work every single time. One, the I-don&#x27;t-know-what-I&#x27;m-doing post. Screen record Claude making something for you, voiceover something like, I&#x27;m trying to build X, here&#x27;s what&#x27;s happening. That&#x27;s a full post. Two, the before-slash-after. The prompt you gave, the thing Claude made. Fifteen seconds. Three, the problem-first post. Don&#x27;t start with the AI, start with what was annoying you. I was spending two hours a day on X, so I built a thing. Four, the Sunday recap. Three things you learned this week. What surprised you, what broke, what clicked.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Pro move. After Claude builds something, literally ask it, now write me a TikTok script for this in 45 seconds, casual, first person, no hashtags. Claude writes it. You hit record. Same for captions. The thing you just built is the content. You are never going to run out of stuff to post because you&#x27;re always building.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">The one rule: don&#x27;t wait until you&#x27;re ready. You won&#x27;t be. Post this week. Tag me. At aylablumberg dot a-i, on TikTok and Instagram. I&#x27;ll see it. I&#x27;ll re-share you. Go.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Okay, final lesson. This is the one I wish someone had yelled at me about sooner. You need to post about what you&#x27;re building. Like, publicly. While you&#x27;re building it. Not when it&#x27;s done, not when it&#x27;s pretty, not when you finally feel ready. Now.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">I&#x27;m going to be honest with you. Posting on TikTok and Instagram about what I was making with Claude is the single biggest reason I got hired. Not my portfolio. Not cold outreach. Not a resume. The messy screen recordings of me figuring it out at 11 at night. Those got me paid.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Within one month of starting to post, two companies slid into my DMs asking if I could build them agents. And an email from a founder who&#x27;s now kind of a mentor to me. (I&#x27;m still hoping a podcast invite shows up at some point, putting it out there.) Every one of those came from a post that took me ten minutes to make. I&#x27;m not exaggerating.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">And here&#x27;s the part nobody says out loud. Posting is how you find your people. The DMs coming in aren&#x27;t just clients. They&#x27;re other builders. Other nerds. Other people who get what you&#x27;re doing. You can&#x27;t always explain this stuff to friends who aren&#x27;t in it, they don&#x27;t really care, that&#x27;s fine. The internet has your people. You just have to show up so they can find you.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">What to post? Four formats that work every single time. One, the I-don&#x27;t-know-what-I&#x27;m-doing post. Screen record Claude making something for you, voiceover something like, I&#x27;m trying to build X, here&#x27;s what&#x27;s happening. That&#x27;s a full post. Two, the before-slash-after. The prompt you gave, the thing Claude made. Fifteen seconds. Three, the problem-first post. Don&#x27;t start with the AI, start with what was annoying you. I was spending two hours a day on X, so I built a thing. Four, the Sunday recap. Three things you learned this week. What surprised you, what broke, what clicked.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Pro move. After Claude builds something, literally ask it, now write me a TikTok script for this in 45 seconds, casual, first person, no hashtags. Claude writes it. You hit record. Same for captions. The thing you just built is the content. You are never going to run out of stuff to post because you&#x27;re always building.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">The one rule: don&#x27;t wait until you&#x27;re ready. You won&#x27;t be. Post this week. Tag me. At aylablumberg dot a-i, on TikTok and Instagram. I&#x27;ll see it. I&#x27;ll re-share you. Go.</div></div>
 </div>
 
 <div class="meta" style="margin-top:40px;">
-  <strong>Tip while recording:</strong> don't memorize. Glance at the block for 5 seconds, then say it your way. These words are the shape, not the cage. Trust your mouth — if something sounds better out loud, go with that.
+ <strong>Tip while recording:</strong> don't memorize. Glance at the block for 5 seconds, then say it your way. These words are the shape, not the cage. Trust your mouth, if something sounds better out loud, go with that.
 </div>
 
 <h2 id="bonus" style="margin-top:64px;">Bonus clips</h2>
 <p class="sub">Optional short videos (15–60s each) you can record to add personality to specific lesson sections. Drop the export at <code>/public/videos/bonus-SLUG.mp4</code> and I&rsquo;ll wire it up.</p>
 <div class="toc" style="column-count:1;">
-  <a href="#bonus-just-yap-mad-mode"><span class="idx">09</span>Bonus &middot; Right after the existing mad-mode chat bubbles</a>
-  <a href="#bonus-money-mode-intro"><span class="idx">17</span>Bonus &middot; Right above the &quot;Find a money idea&quot; pink button</a>
-  <a href="#bonus-first-client-walk-in"><span class="idx">22</span>Bonus &middot; After the &quot;Three places I actually get clients&quot; list</a>
-  <a href="#bonus-meet-elle-demo"><span class="idx">24</span>Bonus &middot; Inside the &quot;Meet Elle&quot; section</a>
-  <a href="#bonus-set-it-and-forget-it"><span class="idx">24</span>Bonus &middot; After the &quot;Making it actually run 24/7&quot; section</a>
-  <a href="#bonus-i-cried-container-deleted"><span class="idx">27</span>Bonus &middot; Inside callout #1 — &quot;The morning the container deleted every</a>
-  <a href="#bonus-posting-got-me-paid"><span class="idx">29</span>Bonus &middot; Inside the &quot;What actually happened to me&quot; callout</a>
+ <a href="#bonus-just-yap-mad-mode"><span class="idx">09</span>Bonus &middot; Right after the existing mad-mode chat bubbles</a>
+ <a href="#bonus-money-mode-intro"><span class="idx">17</span>Bonus &middot; Right above the &quot;Find a money idea&quot; pink button</a>
+ <a href="#bonus-first-client-walk-in"><span class="idx">22</span>Bonus &middot; After the &quot;Three places I actually get clients&quot; list</a>
+ <a href="#bonus-meet-elle-demo"><span class="idx">24</span>Bonus &middot; Inside the &quot;Meet Elle&quot; section</a>
+ <a href="#bonus-set-it-and-forget-it"><span class="idx">24</span>Bonus &middot; After the &quot;Making it actually run 24/7&quot; section</a>
+ <a href="#bonus-i-cried-container-deleted"><span class="idx">27</span>Bonus &middot; Inside callout #1, &quot;The morning the container deleted every</a>
+ <a href="#bonus-posting-got-me-paid"><span class="idx">29</span>Bonus &middot; Inside the &quot;What actually happened to me&quot; callout</a>
 </div>
 <h2 id="bonus-just-yap-mad-mode">Bonus &middot; L09 <span class="chip">15–25 sec</span></h2>
-<p class="sub"><strong>Where it goes:</strong> Right after the existing mad-mode chat bubbles (09 · Just Yap)<br><strong>Why:</strong> You&#x27;re already showing screenshots of you yelling at Claude — reading them on camera with the BEEPS in post is comedy gold.<br><strong>File:</strong> <code>bonus-just-yap-mad-mode.mp4</code></p>
+<p class="sub"><strong>Where it goes:</strong> Right after the existing mad-mode chat bubbles (09 · Just Yap)<br><strong>Why:</strong> You&#x27;re already showing screenshots of you yelling at Claude, reading them on camera with the BEEPS in post is comedy gold.<br><strong>File:</strong> <code>bonus-just-yap-mad-mode.mp4</code></p>
 <div class="script-card">
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Direct to camera, slightly mock-angry, performative. Edit the curses out with bleeps in post — it makes it funnier, not less.]</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">These are real things I have actually sent Claude. Out loud. Directly into my AirPods.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">[Read with feeling] &quot;Oh my god, you&#x27;re TERRIBLE at this, what the [BEEP] am I paying $100 a month for, just COPY THE PINTEREST INSPO PICS, OMG.&quot; [Beat] &quot;[BEEP]ING WORK.&quot; [Beat] &quot;So I pay $100 a month and you can&#x27;t do a simple task, [BEEP] this.&quot;</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Claude does not care. Claude does not have feelings. Claude just keeps going. You can say whatever you want.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Direct to camera, slightly mock-angry, performative. Edit the curses out with bleeps in post, it makes it funnier, not less.]</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">These are real things I have actually sent Claude. Out loud. Directly into my AirPods.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">[Read with feeling] &quot;Oh my god, you&#x27;re TERRIBLE at this, what the [BEEP] am I paying $100 a month for, just COPY THE PINTEREST INSPO PICS, OMG.&quot; [Beat] &quot;[BEEP]ING WORK.&quot; [Beat] &quot;So I pay $100 a month and you can&#x27;t do a simple task, [BEEP] this.&quot;</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Claude does not care. Claude does not have feelings. Claude just keeps going. You can say whatever you want.</div></div>
 </div>
 <h2 id="bonus-money-mode-intro">Bonus &middot; L17 <span class="chip">20–35 sec</span></h2>
 <p class="sub"><strong>Where it goes:</strong> Right above the &quot;Find a money idea&quot; pink button (17 · Terminal)<br><strong>Why:</strong> Sets up the money quiz with the &quot;we&#x27;re here for fun BUT also $$$&quot; wink. Currently text-only.<br><strong>File:</strong> <code>bonus-money-mode-intro.mp4</code></p>
 <div class="script-card">
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Direct to camera. Maybe at your desk, smirky energy. Hold up your phone briefly to gesture at the Stripe app.]</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">Okay quick sidebar. We are doing this whole course for the love of building, obviously.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">But also? I want you to make money. Like a lot of it. The whole reason this stuff is fun is that it actually pays. So before we get into agents and APIs, just hit the pink button below this and play the money-idea game. It picks something you could literally charge for next week. Don&#x27;t think about it, just click it.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Then come back. We&#x27;ll keep going.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Direct to camera. Maybe at your desk, smirky energy. Hold up your phone briefly to gesture at the Stripe app.]</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Okay quick sidebar. We are doing this whole course for the love of building, obviously.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">But also? I want you to make money. Like a lot of it. The whole reason this stuff is fun is that it actually pays. So before we get into agents and APIs, just hit the pink button below this and play the money-idea game. It picks something you could literally charge for next week. Don&#x27;t think about it, just click it.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Then come back. We&#x27;ll keep going.</div></div>
 </div>
 <h2 id="bonus-first-client-walk-in">Bonus &middot; L22 <span class="chip">40–60 sec</span></h2>
-<p class="sub"><strong>Where it goes:</strong> After the &quot;Three places I actually get clients&quot; list (22 · Your First Client)<br><strong>Why:</strong> Demystifies &quot;walking in&quot; — most students will never imagine doing it until they see you do it.<br><strong>File:</strong> <code>bonus-first-client-walk-in.mp4</code></p>
+<p class="sub"><strong>Where it goes:</strong> After the &quot;Three places I actually get clients&quot; list (22 · Your First Client)<br><strong>Why:</strong> Demystifies &quot;walking in&quot;, most students will never imagine doing it until they see you do it.<br><strong>File:</strong> <code>bonus-first-client-walk-in.mp4</code></p>
 <div class="script-card">
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Selfie/walk-and-talk style if possible — shoot it walking to a real café or salon near you, even if we never see the actual conversation.]</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">Okay, I&#x27;m gonna tell you exactly how I get local clients. It is so much less scary than it sounds.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">I literally Google Maps a salon, a coffee shop, a med spa near me. I check their website — like 10 seconds, you can tell when it&#x27;s outdated. I walk in, and I&#x27;m like, hey, super random question, do you guys do your own website? Most of the time they go, oh my god no, ours is awful, can you actually fix it. And I tell them yes, here&#x27;s what I&#x27;d do, here&#x27;s what it costs.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">That&#x27;s the whole pitch. Most owners are not annoyed. They are RELIEVED someone is offering. Try one this week.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Selfie/walk-and-talk style if possible, shoot it walking to a real café or salon near you, even if we never see the actual conversation.]</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Okay, I&#x27;m gonna tell you exactly how I get local clients. It is so much less scary than it sounds.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">I literally Google Maps a salon, a coffee shop, a med spa near me. I check their website, like 10 seconds, you can tell when it&#x27;s outdated. I walk in, and I&#x27;m like, hey, super random question, do you guys do your own website? Most of the time they go, oh my god no, ours is awful, can you actually fix it. And I tell them yes, here&#x27;s what I&#x27;d do, here&#x27;s what it costs.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">That&#x27;s the whole pitch. Most owners are not annoyed. They are RELIEVED someone is offering. Try one this week.</div></div>
 </div>
 <h2 id="bonus-meet-elle-demo">Bonus &middot; L24 <span class="chip">30–45 sec</span></h2>
 <p class="sub"><strong>Where it goes:</strong> Inside the &quot;Meet Elle&quot; section (24 · Agents)<br><strong>Why:</strong> Watching you actually message Elle and get a real reply IS the whole sell. Words can&#x27;t do this justice.<br><strong>File:</strong> <code>bonus-meet-elle-demo.mp4</code></p>
 <div class="script-card">
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Hold your phone up to camera with Telegram open. Type a real message to Elle live. Wait for her reply. Read it out loud. THIS is the magic moment.]</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">I want to actually show you Elle. She&#x27;s my chief-of-staff agent. She&#x27;s just an entry in my Telegram.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Watch — I&#x27;m going to text her right now. [type something like &quot;how&#x27;s the pipeline today&quot;]. Send. And she&#x27;s typing… [wait]. There. She just told me three sites went live overnight, two clients replied, and one needs a contract sent. And I haven&#x27;t done anything. She just runs all the time. THAT&#x27;S an agent. It&#x27;s a contact in your phone that texts you the report.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">By the end of this lesson, you&#x27;ll know how to build her sister.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Hold your phone up to camera with Telegram open. Type a real message to Elle live. Wait for her reply. Read it out loud. THIS is the magic moment.]</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">I want to actually show you Elle. She&#x27;s my chief-of-staff agent. She&#x27;s just an entry in my Telegram.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Watch, I&#x27;m going to text her right now. [type something like &quot;how&#x27;s the pipeline today&quot;]. Send. And she&#x27;s typing… [wait]. There. She just told me three sites went live overnight, two clients replied, and one needs a contract sent. And I haven&#x27;t done anything. She just runs all the time. THAT&#x27;S an agent. It&#x27;s a contact in your phone that texts you the report.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">By the end of this lesson, you&#x27;ll know how to build her sister.</div></div>
 </div>
 <h2 id="bonus-set-it-and-forget-it">Bonus &middot; L24 <span class="chip">20–30 sec</span></h2>
 <p class="sub"><strong>Where it goes:</strong> After the &quot;Making it actually run 24/7&quot; section (24 · Agents)<br><strong>Why:</strong> The &quot;agents are hard but worth it&quot; emotional payoff lands better as a one-take pep talk than as a paragraph.<br><strong>File:</strong> <code>bonus-set-it-and-forget-it.mp4</code></p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Quick honesty thing. Building agents is hard. Like, the hardest thing in the course.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Your first one is going to take a weekend. You&#x27;re going to scream at the words &quot;invalid API key&quot; so many times. You&#x27;re going to want to quit halfway through. And then you&#x27;ll get it working, and you&#x27;ll go to bed, and you&#x27;ll wake up to your agent having sent five emails on its own, and you will literally cry happy tears.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">I did. It&#x27;s worth it. Push through the API errors.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Quick honesty thing. Building agents is hard. Like, the hardest thing in the course.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Your first one is going to take a weekend. You&#x27;re going to scream at the words &quot;invalid API key&quot; so many times. You&#x27;re going to want to quit halfway through. And then you&#x27;ll get it working, and you&#x27;ll go to bed, and you&#x27;ll wake up to your agent having sent five emails on its own, and you will literally cry happy tears.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">I did. It&#x27;s worth it. Push through the API errors.</div></div>
 </div>
 <h2 id="bonus-i-cried-container-deleted">Bonus &middot; L27 <span class="chip">30–45 sec</span></h2>
-<p class="sub"><strong>Where it goes:</strong> Inside callout #1 — &quot;The morning the container deleted everything&quot; (27 · Favorite Mistakes)<br><strong>Why:</strong> This story is GOLD on camera. Makes the lesson land 10x harder than reading it.<br><strong>File:</strong> <code>bonus-i-cried-container-deleted.mp4</code></p>
+<p class="sub"><strong>Where it goes:</strong> Inside callout #1, &quot;The morning the container deleted everything&quot; (27 · Favorite Mistakes)<br><strong>Why:</strong> This story is GOLD on camera. Makes the lesson land 10x harder than reading it.<br><strong>File:</strong> <code>bonus-i-cried-container-deleted.mp4</code></p>
 <div class="script-card">
-  <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Direct to camera, slightly emotional / dramatic re-enactment energy. Maybe even pull up the actual Claude chat history on your laptop and turn the screen to show it briefly.]</div></div>
-  <div class="block"><div class="label hook">Hook</div><div class="text">Okay so. I want to tell you about the morning I cried because I thought I lost everything.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">I woke up, the iMac container running my whole agent system had wiped itself overnight. Code, configs, Telegram bot tokens, scheduled tasks, gone. I genuinely had a panic attack. And then I opened Claude, scrolled through my chat history, and I realized — every single decision I&#x27;d made building this thing was IN the conversation. So I just said, rebuild it, you have the context. Three hours later it was running again.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">Lesson: your Claude chats are a backup. But also, push your code to GitHub every day. Free insurance. Just do it.</div></div>
+ <div class="block"><div class="label stage">Stage</div><div class="stage-text">[Direct to camera, slightly emotional / dramatic re-enactment energy. Maybe even pull up the actual Claude chat history on your laptop and turn the screen to show it briefly.]</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Okay so. I want to tell you about the morning I cried because I thought I lost everything.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">I woke up, the iMac container running my whole agent system had wiped itself overnight. Code, configs, Telegram bot tokens, scheduled tasks, gone. I genuinely had a panic attack. And then I opened Claude, scrolled through my chat history, and I realized, every single decision I&#x27;d made building this thing was IN the conversation. So I just said, rebuild it, you have the context. Three hours later it was running again.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">Lesson: your Claude chats are a backup. But also, push your code to GitHub every day. Free insurance. Just do it.</div></div>
 </div>
 <h2 id="bonus-posting-got-me-paid">Bonus &middot; L29 <span class="chip">30–45 sec</span></h2>
 <p class="sub"><strong>Where it goes:</strong> Inside the &quot;What actually happened to me&quot; callout (29 · Post While You Build)<br><strong>Why:</strong> You said posting got you hired. Worth a face-to-camera moment, not just a bullet list.<br><strong>File:</strong> <code>bonus-posting-got-me-paid.mp4</code></p>
 <div class="script-card">
-  <div class="block"><div class="label hook">Hook</div><div class="text">Real talk for a second. I want to be specific about what posting actually got me.</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Within the first month of posting: two companies slid into my DMs asking if I could build them agents. And an email from a founder who&#x27;s now kind of a mentor to me — someone I would never have crossed paths with otherwise. (And I&#x27;m honestly still hoping a podcast invite shows up. Hasn&#x27;t yet, but I&#x27;m putting that energy out there.)</div></div>
-  <div class="block"><div class="label teach">Teach</div><div class="text">Every one of those came from a post that took me ten minutes. The point isn&#x27;t reach. It&#x27;s that posting publicly is a SIGNAL. It tells the right people you exist and what you&#x27;re building. They find you, you don&#x27;t have to find them.</div></div>
-  <div class="block"><div class="label closer">Closer</div><div class="text">If you do nothing else from this lesson — post. Today. Tag me. I&#x27;m @aylablumberg.ai, and I&#x27;ll re-share it.</div></div>
+ <div class="block"><div class="label hook">Hook</div><div class="text">Real talk for a second. I want to be specific about what posting actually got me.</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Within the first month of posting: two companies slid into my DMs asking if I could build them agents. And an email from a founder who&#x27;s now kind of a mentor to me, someone I would never have crossed paths with otherwise. (And I&#x27;m honestly still hoping a podcast invite shows up. Hasn&#x27;t yet, but I&#x27;m putting that energy out there.)</div></div>
+ <div class="block"><div class="label teach">Teach</div><div class="text">Every one of those came from a post that took me ten minutes. The point isn&#x27;t reach. It&#x27;s that posting publicly is a SIGNAL. It tells the right people you exist and what you&#x27;re building. They find you, you don&#x27;t have to find them.</div></div>
+ <div class="block"><div class="label closer">Closer</div><div class="text">If you do nothing else from this lesson, post. Today. Tag me. I&#x27;m @aylablumberg.ai, and I&#x27;ll re-share it.</div></div>
 </div>
 </body>
 </html>
