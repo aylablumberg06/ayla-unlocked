@@ -241,10 +241,22 @@ export default function LandingPage() {
           <span>Ayla <span className="text-pink italic">Unlocked</span></span>
         </div>
         <div className="mb-4">&copy; {new Date().getFullYear()} Ayla Blumberg</div>
-        <div className="max-w-2xl mx-auto text-[10px] tracking-[0.3px] leading-relaxed text-muted-light/80 normal-case font-light">
-          This course is for educational purposes only. It is not legal, financial, or career advice, and individual results vary &mdash; what worked for me won&rsquo;t necessarily work the same way for you.
-          Ayla Unlocked is not affiliated with, endorsed by, or sponsored by Anthropic, Stripe, GitHub, Vercel, Canva, Apify, Telegram, or any other company mentioned in the lessons.
-          External links are provided for convenience only; clicking them sends you to third-party sites we don&rsquo;t control. Use Claude and any AI tool at your own discretion &mdash; double-check anything important (legal, medical, financial, etc.) with a qualified professional.
+        <div className="max-w-2xl mx-auto text-[10px] tracking-[0.3px] leading-relaxed text-muted-light/80 normal-case font-light space-y-2">
+          <p>
+            <strong className="text-mid">Educational only.</strong> This course is for educational purposes. It is not legal, financial, medical, or career advice, and individual results vary &mdash; what worked for me won&rsquo;t necessarily work the same way for you. Use Claude and any AI tool at your own discretion. Double-check anything important with a qualified professional.
+          </p>
+          <p>
+            <strong className="text-mid">Not affiliated.</strong> Ayla Unlocked is not affiliated with, endorsed by, or sponsored by Anthropic, Stripe, GitHub, Vercel, Canva, Apify, Telegram, or any other company mentioned in the lessons. External links go to third-party sites we don&rsquo;t control.
+          </p>
+          <p>
+            <strong className="text-mid">Refunds.</strong> 30-day no-questions-asked refund. Email <a href="mailto:aylablumberg06@gmail.com" className="underline hover:text-pink">aylablumberg06@gmail.com</a> within 30 days of purchase and it&rsquo;s done.
+          </p>
+          <p>
+            <strong className="text-mid">Privacy.</strong> We collect your email, an encrypted password (or magic-link login), your course progress (which lessons you&rsquo;ve done, your bookmarks, notes, highlights), and your Stripe payment info (handled by Stripe, not stored by us). We use auth cookies to keep you logged in. We do not sell your data, share it with advertisers, or send marketing emails. To delete your account or export your data, email <a href="mailto:aylablumberg06@gmail.com" className="underline hover:text-pink">aylablumberg06@gmail.com</a> and we&rsquo;ll handle it within a few days.
+          </p>
+          <p>
+            <strong className="text-mid">Contact.</strong> Anything else &mdash; questions, bugs, complaints, fan mail &mdash; same email: <a href="mailto:aylablumberg06@gmail.com" className="underline hover:text-pink">aylablumberg06@gmail.com</a>.
+          </p>
         </div>
       </footer>
     </main>
