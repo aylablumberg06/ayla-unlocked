@@ -2505,7 +2505,8 @@ export default function CourseDashboard() {
  .how-step { display: grid; grid-template-columns: 42px 1fr; gap: 16px; align-items: start; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; transition: border-color 0.15s ease, transform 0.15s ease; }
  .how-step:hover { border-color: var(--pink); }
  .how-step-n { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; color: var(--pink); letter-spacing: 2px; padding-top: 4px; }
- .how-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; background: var(--pink-pale); color: var(--pink); border: 1px solid rgba(232,41,92,0.25); vertical-align: -5px; margin: 0 3px; }
+ .how-icon { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 999px; background: var(--pink-pale); color: var(--pink); border: 1px solid rgba(232,41,92,0.25); vertical-align: -8px; margin: 0 4px; line-height: 0; }
+ .how-icon svg { display: block; }
  .how-step-body h3 { font-size: 15.5px; font-weight: 600; margin: 0 0 6px; color: var(--dark); letter-spacing: -0.005em; }
  .how-step-body p { font-size: 14px; line-height: 1.65; color: var(--muted, #555); margin: 0; font-weight: 400; }
  .how-step-body kbd { font-family: 'SFMono-Regular', 'Consolas', monospace; font-size: 12px; padding: 2px 7px; border-radius: 5px; background: #f4f0f2; border: 1px solid var(--border); color: var(--dark); font-weight: 600; }
