@@ -100,10 +100,10 @@ const lessons: Lesson[] = [
     <div class="l-body">
       <div class="tools-strip">
         <span class="tools-strip-label">In this lesson</span>
-        <span class="tool-pill"><img src="/brands/claude.svg" alt="" />Claude</span>
-        <span class="tool-pill"><img src="/brands/anthropic.svg" alt="" />Anthropic</span>
-        <span class="tool-pill"><img src="/brands/openai.svg" alt="" />ChatGPT</span>
-        <span class="tool-pill"><img src="/brands/googlegemini.svg" alt="" />Gemini</span>
+        <a class="tool-pill" href="https://claude.ai" target="_blank" rel="noopener noreferrer"><img src="/brands/claude.svg" alt="" />Claude</a>
+        <a class="tool-pill" href="https://anthropic.com" target="_blank" rel="noopener noreferrer"><img src="/brands/anthropic.svg" alt="" />Anthropic</a>
+        <a class="tool-pill" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer"><img src="/brands/openai.svg" alt="" />ChatGPT</a>
+        <a class="tool-pill" href="https://gemini.google.com" target="_blank" rel="noopener noreferrer"><img src="/brands/googlegemini.svg" alt="" />Gemini</a>
       </div>
       <p>Claude is an AI made by a company called <strong>Anthropic</strong>. Anthropic is based in San Francisco and was started by a group of people who used to work at OpenAI (the company that makes ChatGPT). They left to make something they thought was safer and more useful. That's the short version.</p>
       <p>Underneath, Claude is what's called an <strong>LLM</strong>, a Large Language Model. Which sounds scary but just means: it's a program that read basically the entire internet, and now it can predict what words should come next in any conversation. That's it. That's the whole magic.</p>
@@ -118,7 +118,7 @@ const lessons: Lesson[] = [
           Try it now · 2 min
         </div>
         <div class="exercise-title">Go say hi.</div>
-        <div class="exercise-body">Open <strong>claude.ai</strong> in a new tab. In the message box, type anything. <em>Anything</em>. Ask it how its day is. Ask it to describe itself. Ask it what you should order for lunch. <br><br>Point: feel how it answers you. That vibe is what you&rsquo;ll be riding for the next few hours.</div>
+        <div class="exercise-body">Open <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>claude.ai</strong></a> in a new tab. In the message box, type anything. <em>Anything</em>. Ask it how its day is. Ask it to describe itself. Ask it what you should order for lunch. <br><br>Point: feel how it answers you. That vibe is what you&rsquo;ll be riding for the next few hours.</div>
         <button class="exercise-done" data-exercise-id="ex-01a-meet">I did it →</button>
       </div>
 </div>`
@@ -217,7 +217,7 @@ const lessons: Lesson[] = [
     <p class="l-sub">Three steps. That's all.</p>
     <div class="l-body">
       <ol class="steps">
-        <li><div><strong>Go to claude.ai in Chrome and download the desktop app.</strong> When it asks you to drag the Claude icon into another icon, do it. Open the app. Log in with Google. You're in.<div class="ss">[ Screenshot: Download flow ]</div></div></li>
+        <li><div><strong>Go to <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> in Chrome and download the desktop app.</strong> When it asks you to drag the Claude icon into another icon, do it. Open the app. Log in with Google. You're in.<div class="ss">[ Screenshot: Download flow ]</div></div></li>
         <li><div><strong>Start on the free plan.</strong> Completely fine for learning. You'll know when you hit your limit because Claude tells you directly. When you're actually building real things for people, the paid plan ($20/month) is worth it. You get way more messages and better features.</div></li>
         <li><div><strong>Know that Cowork exists, for later.</strong> Cowork is a separate desktop tool where Claude can literally control your computer, click through apps, open files, and do things for you. I don't personally use Cowork yet, but it's a powerful option once you're comfortable with the basics.</div></li>
       </ol>
@@ -228,7 +228,7 @@ const lessons: Lesson[] = [
           Do this now · 3 min
         </div>
         <div class="exercise-title">Download Claude. For real.</div>
-        <div class="exercise-body">Go to <strong>claude.ai</strong> in Chrome. Click the <strong>Download desktop app</strong> link at the top. Drag Claude into your Applications folder. Sign in with Google. Pin it to your dock. <br><br>That&rsquo;s it. Everything after this assumes you&rsquo;ve got the app open.</div>
+        <div class="exercise-body">Go to <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>claude.ai</strong></a> in Chrome. Click the <strong>Download desktop app</strong> link at the top. Drag Claude into your Applications folder. Sign in with Google. Pin it to your dock. <br><br>That&rsquo;s it. Everything after this assumes you&rsquo;ve got the app open.</div>
         <button class="exercise-done" data-exercise-id="ex-05a-download">I did it →</button>
       </div>
 </div>`
@@ -265,7 +265,7 @@ const lessons: Lesson[] = [
 
       <div class="callout"><div class="callout-tag">My personal rule</div>I default to Sonnet for everything. If Sonnet stalls or keeps making the same mistake twice in a row, I switch the same chat to <strong>Opus</strong> and ask it to think harder. If I&rsquo;m doing something boring and high-volume (like classifying 500 emails), I&rsquo;ll use <strong>Haiku</strong> through the API to save money. <em>You almost never need to think about this. Just leave it on Sonnet and live your life.</em></div>
 
-      <div class="ss">[ Screenshot: The 3 plan cards on claude.ai/pricing ]</div>
+      <div class="ss">[ Screenshot: The 3 plan cards on <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a>/pricing ]</div>
     </div>`
   },
   {
@@ -494,9 +494,9 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Claude has four different modes.</h1>
     <p class="l-sub">They do completely different things and it matters which one you use.</p>
     <div class="l-body">
-      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/claude.svg" alt="" />Claude</span><span class="tool-pill"><img src="/brands/vscode.svg" alt="" />VS Code</span></div>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://claude.ai" target="_blank" rel="noopener noreferrer"><img src="/brands/claude.svg" alt="" />Claude</a><a class="tool-pill" href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer"><img src="/brands/vscode.svg" alt="" />VS Code</a></div>
             <div class="callout">
-        <div class="callout-tag">1. Claude Chat (claude.ai)</div>
+        <div class="callout-tag">1. Claude Chat (<a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a>)</div>
         The one you're using right now. You talk, it responds. It can write things, make plans, build files, create HTML pages. But everything it makes only lives on your computer. Nobody else can access it from the internet. Think of this as your drafting table.<br><br><strong>Use this for:</strong> learning, brainstorming, prototyping, making things for yourself.
       </div>
       <div class="callout">
@@ -577,14 +577,14 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Homebrew. GitHub. Vercel.</h1>
     <p class="l-sub">Three tools that get your website live on the actual internet. Here&rsquo;s what each one does, and exactly how to set them up in order.</p>
     <div class="l-body">
-      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/homebrew.svg" alt="" />Homebrew</span><span class="tool-pill"><img src="/brands/github.svg" alt="" />GitHub</span><span class="tool-pill"><img src="/brands/vercel.svg" alt="" />Vercel</span><span class="tool-pill"><img src="/brands/godaddy.svg" alt="" />GoDaddy</span><span class="tool-pill"><img src="/brands/namecheap.svg" alt="" />Namecheap</span></div>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://brew.sh" target="_blank" rel="noopener noreferrer"><img src="/brands/homebrew.svg" alt="" />Homebrew</a><a class="tool-pill" href="https://github.com" target="_blank" rel="noopener noreferrer"><img src="/brands/github.svg" alt="" />GitHub</a><a class="tool-pill" href="https://vercel.com" target="_blank" rel="noopener noreferrer"><img src="/brands/vercel.svg" alt="" />Vercel</a><a class="tool-pill" href="https://godaddy.com" target="_blank" rel="noopener noreferrer"><img src="/brands/godaddy.svg" alt="" />GoDaddy</a><a class="tool-pill" href="https://namecheap.com" target="_blank" rel="noopener noreferrer"><img src="/brands/namecheap.svg" alt="" />Namecheap</a></div>
             <p><em>Skip this lesson for now if you&rsquo;re still in learning mode. Come back when you&rsquo;re actually ready to launch something real.</em></p>
 
       <h2 class="l-sub-head">First, what each one does (in plain English).</h2>
 
       <div class="callout"><div class="callout-tag">Homebrew &mdash; the foundation</div>A tool you install on your Mac that lets you install <em>other</em> tools. Even developers can&rsquo;t cleanly explain what it does under the hood. <strong>You just need it before anything else works.</strong> Install it first. Don&rsquo;t question it. Free.</div>
       <div class="callout"><div class="callout-tag">GitHub &mdash; cloud storage for code</div>Think of it like Google Drive, but specifically for the code Claude makes. It holds every file in your project so Vercel can find it and put it live. Free.</div>
-      <div class="callout"><div class="callout-tag">Vercel &mdash; what actually puts your site on the internet</div>It reads your code from GitHub and hosts it. Free for personal projects. This is what aylaunlocked.vercel.app and aylablumberg.com both run on. Once your site is on Vercel you can buy a real domain like yourname.com and point it at your project.</div>
+      <div class="callout"><div class="callout-tag">Vercel &mdash; what actually puts your site on the internet</div>It reads your code from GitHub and hosts it. Free for personal projects. This is what aylaunlocked.vercel.app and <a href="https://aylablumberg.com" target="_blank" rel="noopener noreferrer" class="brand-link">aylablumberg.com</a> both run on. Once your site is on Vercel you can buy a real domain like yourname.com and point it at your project.</div>
 
       <p><strong>The order matters:</strong> Homebrew first (so you can install the helper tools), then GitHub (so you have a place to put code), then Vercel (so the code goes live). Do them once, then you basically never touch them again.</p>
 
@@ -603,7 +603,7 @@ const lessons: Lesson[] = [
       <div class="divider"><span>Step 2 &middot; Make a GitHub account</span></div>
 
       <ol class="steps">
-        <li><div>Go to <strong>github.com</strong> in your browser. Click <strong>Sign up</strong>.</div></li>
+        <li><div>Go to <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>github.com</strong></a> in your browser. Click <strong>Sign up</strong>.</div></li>
         <li><div>Use a real email address (not a school one &mdash; if you graduate, you lose access). Pick a username you don&rsquo;t hate, you&rsquo;ll see it on every project.</div></li>
         <li><div>Confirm your email. Pick the <strong>Free</strong> plan when it asks.</div></li>
         <li><div>Back in Terminal, sign in via the helper you just installed. Paste:</div></li>
@@ -611,12 +611,12 @@ const lessons: Lesson[] = [
       <div class="q">gh auth login</div>
       <p>Pick <strong>GitHub.com</strong>, then <strong>HTTPS</strong>, then <strong>Login with a web browser</strong>. It&rsquo;ll show you an 8-character code, then open your browser. Paste the code, click Authorize. Come back to Terminal &mdash; you&rsquo;re signed in.</p>
 
-      <div class="callout"><div class="callout-tag">Why both?</div>The <strong>account</strong> on github.com is for humans (you). The <strong>CLI sign-in</strong> is for Claude Code, so it can push your code into your account on your behalf. You only do this once on each computer.</div>
+      <div class="callout"><div class="callout-tag">Why both?</div>The <strong>account</strong> on <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="brand-link">github.com</a> is for humans (you). The <strong>CLI sign-in</strong> is for Claude Code, so it can push your code into your account on your behalf. You only do this once on each computer.</div>
 
       <div class="divider"><span>Step 3 &middot; Make a Vercel account</span></div>
 
       <ol class="steps">
-        <li><div>Go to <strong>vercel.com</strong>. Click <strong>Sign Up</strong>.</div></li>
+        <li><div>Go to <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>vercel.com</strong></a>. Click <strong>Sign Up</strong>.</div></li>
         <li><div>Pick <strong>Continue with GitHub</strong>. Authorize it. (This is why we made GitHub first.)</div></li>
         <li><div>Pick the <strong>Hobby</strong> plan. It&rsquo;s free and it&rsquo;s plenty for anything in this course or your first 10 client sites.</div></li>
         <li><div>Done. You now have a Vercel account that already knows about your GitHub.</div></li>
@@ -633,7 +633,7 @@ const lessons: Lesson[] = [
 
       <div class="divider"><span>Optional &middot; Buy a real domain</span></div>
 
-      <div class="callout"><div class="callout-tag">When you&rsquo;re ready for yourname.com</div>Buy a domain on <strong>GoDaddy</strong> or <strong>Namecheap</strong> (about $12/year). Then in Vercel: <em>your project &rsaquo; Settings &rsaquo; Domains &rsaquo; Add Domain</em>. Vercel literally shows you the exact DNS records to paste into your domain registrar. Paste, save, wait a few minutes. Done. <strong>aylablumberg.com</strong> works exactly this way.</div>
+      <div class="callout"><div class="callout-tag">When you&rsquo;re ready for yourname.com</div>Buy a domain on <a href="https://godaddy.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>GoDaddy</strong></a> or <a href="https://namecheap.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>Namecheap</strong></a> (about $12/year). Then in Vercel: <em>your project &rsaquo; Settings &rsaquo; Domains &rsaquo; Add Domain</em>. Vercel literally shows you the exact DNS records to paste into your domain registrar. Paste, save, wait a few minutes. Done. <strong>aylablumberg.com</strong> works exactly this way.</div>
 
           <div class="exercise" data-exercise-id="ex-12a-homebrew">
         <div class="exercise-tag">
@@ -650,7 +650,7 @@ const lessons: Lesson[] = [
           Then this · 10 min
         </div>
         <div class="exercise-title">Deploy your first site.</div>
-        <div class="exercise-body">Make a GitHub account at github.com. Sign into it from Terminal with <strong>gh auth login</strong>. Make a Vercel account at vercel.com using "Continue with GitHub." Then in Claude Code, paste the deploy prompt from Step 4 above. <br><br>You&rsquo;ll have a real, public website on the internet inside of 5 minutes. Send me the link.</div>
+        <div class="exercise-body">Make a GitHub account at <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="brand-link">github.com</a>. Sign into it from Terminal with <strong>gh auth login</strong>. Make a Vercel account at <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="brand-link">vercel.com</a> using "Continue with GitHub." Then in Claude Code, paste the deploy prompt from Step 4 above. <br><br>You&rsquo;ll have a real, public website on the internet inside of 5 minutes. Send me the link.</div>
         <button class="exercise-done" data-exercise-id="ex-16-deploy">I did it →</button>
       </div>
       <div class="stuck-callout">
@@ -687,7 +687,7 @@ const lessons: Lesson[] = [
 
       <div class="callout"><div class="callout-tag">Heads up on the browser auth</div>The browser sign-in happens the <em>first time only</em>. After that, <code>claude</code> just opens straight into a session. If you ever see the browser pop open later, it usually means your token expired (every few weeks). Just sign in again and you&rsquo;re back.</div>
 
-      <div class="callout"><div class="callout-tag">Wait &mdash; is this the same as the Claude app?</div>Nope. Two different things, both called &ldquo;Claude.&rdquo; <strong>Claude app</strong> (claude.ai website + the mobile app + the Mac app) is regular chat &mdash; what you use for thinking, writing, brainstorming. <strong>Claude Code</strong> (what you just opened with <code>claude</code> in Terminal) is the builder version &mdash; it can actually touch files on your computer and build things for you. Same brain, different powers. Use chat for thinking. Use Claude Code for shipping.</div>
+      <div class="callout"><div class="callout-tag">Wait &mdash; is this the same as the Claude app?</div>Nope. Two different things, both called &ldquo;Claude.&rdquo; <strong>Claude app</strong> (<a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> website + the mobile app + the Mac app) is regular chat &mdash; what you use for thinking, writing, brainstorming. <strong>Claude Code</strong> (what you just opened with <code>claude</code> in Terminal) is the builder version &mdash; it can actually touch files on your computer and build things for you. Same brain, different powers. Use chat for thinking. Use Claude Code for shipping.</div>
       <figure class="lesson-photo">
         <img src="/lesson-terminal.jpg" alt="My Mac terminal running a Python script. You can see the percent prompt at the bottom." />
         <figcaption>My actual terminal while one of my agents was running. Don't panic at the red error, that's just a warning. The line <code>ayla@Aylas-MacBook-Air-2021 website-bot %</code> is the <strong>%</strong> prompt I was talking about. That's how you know it's ready.</figcaption>
@@ -721,7 +721,7 @@ const lessons: Lesson[] = [
     <h1 class="l-head">API keys: how Claude connects to other apps.</h1>
     <p class="l-sub">The moment you want Claude to touch Gmail, Instagram, Canva, or anything else, you need one of these.</p>
     <div class="l-body">
-      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/anthropic.svg" alt="" />Anthropic Console</span><span class="tool-pill"><img src="/brands/supabase.svg" alt="" />Supabase</span><span class="tool-pill"><img src="/brands/gmail.svg" alt="" />Gmail</span></div>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://anthropic.com" target="_blank" rel="noopener noreferrer"><img src="/brands/anthropic.svg" alt="" />Anthropic Console</a><a class="tool-pill" href="https://supabase.com" target="_blank" rel="noopener noreferrer"><img src="/brands/supabase.svg" alt="" />Supabase</a><a class="tool-pill" href="https://mail.google.com" target="_blank" rel="noopener noreferrer"><img src="/brands/gmail.svg" alt="" />Gmail</a></div>
             <p><strong>Technically:</strong> an API key is a long string of random letters and numbers that acts as a private password between two apps. It tells the other app "yes, this person's Claude is allowed to come in and do things here."</p>
       <p><strong>The real-life analogy:</strong> think of it like a hotel key card. The hotel (Gmail, Canva, whatever) gives you a card that only works for your room. You hand that card to Claude, and now Claude can get into your room and do things on your behalf. The hotel doesn't let just anyone in without the card.</p>
       <figure class="diagram-figure">
@@ -770,7 +770,7 @@ const lessons: Lesson[] = [
           Do it now · 5 min
         </div>
         <div class="exercise-title">Grab your first API key.</div>
-        <div class="exercise-body">Go to <strong>console.anthropic.com</strong>. Sign in. Click <strong>API Keys</strong>. Click <strong>Create Key</strong>. Copy it. Paste it into a notes app you trust. <br><br>You just got the key that unlocks everything in the agents section. Don&rsquo;t lose it. Don&rsquo;t share it.</div>
+        <div class="exercise-body">Go to <a href="https://console.anthropic.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>console.anthropic.com</strong></a>. Sign in. Click <strong>API Keys</strong>. Click <strong>Create Key</strong>. Copy it. Paste it into a notes app you trust. <br><br>You just got the key that unlocks everything in the agents section. Don&rsquo;t lose it. Don&rsquo;t share it.</div>
         <button class="exercise-done" data-exercise-id="ex-14a-getkey">I did it →</button>
       </div>
 </div>`
@@ -781,7 +781,7 @@ const lessons: Lesson[] = [
     <h1 class="l-head">The APIs you'll actually care about.</h1>
     <p class="l-sub">Plus the newer options that are making APIs less painful.</p>
     <div class="l-body">
-      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/gmail.svg" alt="" />Gmail</span><span class="tool-pill"><img src="/brands/apify.svg" alt="" />Apify</span><span class="tool-pill"><img src="/brands/canva.svg" alt="" />Canva</span><span class="tool-pill"><img src="/brands/anthropic.svg" alt="" />Anthropic</span></div>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://mail.google.com" target="_blank" rel="noopener noreferrer"><img src="/brands/gmail.svg" alt="" />Gmail</a><a class="tool-pill" href="https://apify.com" target="_blank" rel="noopener noreferrer"><img src="/brands/apify.svg" alt="" />Apify</a><a class="tool-pill" href="https://canva.com" target="_blank" rel="noopener noreferrer"><img src="/brands/canva.svg" alt="" />Canva</a><a class="tool-pill" href="https://anthropic.com" target="_blank" rel="noopener noreferrer"><img src="/brands/anthropic.svg" alt="" />Anthropic</a></div>
             <p>Before we list the specific apps, you should know there are now <strong>three different ways</strong> Claude can talk to other tools. Use whichever is easiest for what you need.</p>
 
       <div class="callout"><div class="callout-tag">1. APIs (the classic way)</div>Every app has an API, a private door for other programs to come in and do things. You grab an API key, hand it to Claude, and Claude uses it to send emails from your Gmail, scrape data from Apify, charge a card on Stripe, whatever. Most of this course uses APIs. <strong>Works for almost everything, but you have to copy-paste keys and sometimes debug errors.</strong></div>
@@ -820,7 +820,7 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Okay. So how do people actually buy things from you?</h1>
     <p class="l-sub">The answer is Stripe. And Claude knows exactly how to wire it up.</p>
     <div class="l-body">
-      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/stripe.svg" alt="" />Stripe</span><span class="tool-pill"><img src="/brands/shopify.svg" alt="" />Shopify</span><span class="tool-pill"><img src="/brands/substack.svg" alt="" />Substack</span></div>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://stripe.com" target="_blank" rel="noopener noreferrer"><img src="/brands/stripe.svg" alt="" />Stripe</a><a class="tool-pill" href="https://shopify.com" target="_blank" rel="noopener noreferrer"><img src="/brands/shopify.svg" alt="" />Shopify</a><a class="tool-pill" href="https://substack.com" target="_blank" rel="noopener noreferrer"><img src="/brands/substack.svg" alt="" />Substack</a></div>
             <p>If you're building anything you want to sell, a course, a template, a service, a physical product, a digital download, a subscription, you need a way to charge people. That's where <strong>Stripe</strong> comes in.</p>
       <p>Stripe is a company that handles payments online. Almost every site you've ever bought something from uses it under the hood. Shopify uses it. Substack uses it. This very course uses it. You sign up for an account, plug it into your site, and now you can take money from anyone in the world with a card.</p>
       <div class="callout"><div class="callout-tag">What Stripe does for you</div>Charges credit cards, debit cards, Apple Pay, Google Pay. Handles the security stuff so you're not storing anyone's card info. Deposits the money directly into your bank account (minus a small fee, around 2.9% + 30&cent; per transaction).</div>
@@ -874,7 +874,7 @@ const lessons: Lesson[] = [
           Do it now · 10 min
         </div>
         <div class="exercise-title">Create a Stripe account.</div>
-        <div class="exercise-body">Go to <strong>stripe.com</strong>. Sign up with your email. Flip on <strong>Test mode</strong> (top right). Click <strong>Product catalog</strong> &rarr; <strong>Add product</strong>. Name it anything. Set a test price ($1 or $39, whatever). Save. <br><br>You just have the infrastructure to accept money. Cool.</div>
+        <div class="exercise-body">Go to <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>stripe.com</strong></a>. Sign up with your email. Flip on <strong>Test mode</strong> (top right). Click <strong>Product catalog</strong> &rarr; <strong>Add product</strong>. Name it anything. Set a test price ($1 or $39, whatever). Save. <br><br>You just have the infrastructure to accept money. Cool.</div>
         <button class="exercise-done" data-exercise-id="ex-16a-stripe">I did it →</button>
       </div>
 </div>`
@@ -885,9 +885,9 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Let's actually wire up Stripe.</h1>
     <p class="l-sub">This is the exact same flow I used to set up payments for this course.</p>
     <div class="l-body">
-      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/stripe.svg" alt="" />Stripe</span></div>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://stripe.com" target="_blank" rel="noopener noreferrer"><img src="/brands/stripe.svg" alt="" />Stripe</a></div>
       <ol class="steps">
-        <li><div><strong>Go to stripe.com and create an account.</strong> Sign up with your email. You'll need to verify your phone, then eventually enter your business info and bank account to actually get paid. You can skip the bank part while you're just testing.</div></li>
+        <li><div><strong>Go to <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" class="brand-link">stripe.com</a> and create an account.</strong> Sign up with your email. You'll need to verify your phone, then eventually enter your business info and bank account to actually get paid. You can skip the bank part while you're just testing.</div></li>
         <li><div><strong>Turn on "Test mode" in the dashboard.</strong> Top right of the Stripe dashboard, there's a toggle. Turn it on. Test mode lets you set everything up and fake payments without charging real cards. You'll switch to "Live mode" right before launch.</div></li>
         <li><div><strong>Create a product.</strong> In the left sidebar, click "Product catalog" then "+ Add product." Give it a name (like "Website template" or "Consulting call"). Set a price. Choose whether it's one-time or recurring. Save.</div></li>
         <li><div><strong>Copy the price ID.</strong> Click into your product. Find the price (shows like "$39.00 USD &middot; One time"). Click the three dots &rarr; "Copy ID." It starts with <strong>price_</strong> and looks like gibberish. This is what you give Claude.</div></li>
@@ -1011,7 +1011,7 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Agents: Claude doing things on its own.</h1>
     <p class="l-sub">Everything in this course was the foundation. Here's where it gets actually wild.</p>
     <div class="l-body">
-      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/claude.svg" alt="" />Claude</span><span class="tool-pill"><img src="/brands/telegram.svg" alt="" />Telegram</span><span class="tool-pill"><img src="/brands/anthropic.svg" alt="" />Anthropic API</span></div>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://claude.ai" target="_blank" rel="noopener noreferrer"><img src="/brands/claude.svg" alt="" />Claude</a><a class="tool-pill" href="https://telegram.org" target="_blank" rel="noopener noreferrer"><img src="/brands/telegram.svg" alt="" />Telegram</a><a class="tool-pill" href="https://anthropic.com" target="_blank" rel="noopener noreferrer"><img src="/brands/anthropic.svg" alt="" />Anthropic API</a></div>
             <p>Everything you've learned in this course is about how you use Claude. Agents are about Claude using itself, automatically, without you having to tell it anything each time.</p>
       <p>An agent is basically a version of Claude that:</p>
       <ul>
@@ -1518,7 +1518,7 @@ const glossary = [
   { word: 'Deploy', def: 'Putting something live on the internet so other people can visit it. Vercel does this for you.' },
   { word: 'Homebrew', def: 'A tool you install on your Mac before everything else. Nobody can fully explain what it does under the hood. Just install it first and move on.' },
   { word: 'GitHub', def: 'Cloud storage specifically for code. Your project lives here so Vercel can find it and put it live.' },
-  { word: 'Vercel', def: 'The service that makes your website live on the internet. Free for personal projects. This is what aylablumberg.com runs on.' },
+  { word: 'Vercel', def: 'The service that makes your website live on the internet. Free for personal projects. This is what <a href="https://aylablumberg.com" target="_blank" rel="noopener noreferrer" class="brand-link">aylablumberg.com</a> runs on.' },
   { word: 'Domain', def: "Your website's name, like yourname.com. Buy it on GoDaddy, then point it to Vercel." },
   { word: 'API Key', def: 'A private code that lets Claude connect to another app. Like a hotel key card. Keep it secret or someone else can use it as you.' },
   { word: 'Agent', def: 'Claude doing things automatically on a schedule, without you having to type anything. The advanced version of all this.' },
@@ -2484,11 +2484,15 @@ export default function CourseDashboard() {
         /* "Tools you'll use" strip at the top of relevant lessons */
         .tools-strip { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 6px 0 22px; padding: 12px 14px; background: rgba(232,41,92,0.05); border: 1px solid rgba(232,41,92,0.15); border-radius: 12px; }
         .tools-strip-label { font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); font-weight: 700; margin-right: 8px; }
-        .tool-pill { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--border); border-radius: 999px; padding: 5px 11px 5px 7px; font-size: 12px; font-weight: 500; color: var(--dark); transition: border-color 0.15s; }
-        .tool-pill:hover { border-color: var(--pink); }
+        .tool-pill { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--border); border-radius: 999px; padding: 5px 11px 5px 7px; font-size: 12px; font-weight: 500; color: var(--dark); text-decoration: none; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s, color 0.15s; cursor: pointer; }
+        .tool-pill:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-1px); box-shadow: 0 2px 8px rgba(232,41,92,0.12); }
         .tool-pill img { width: 16px; height: 16px; flex-shrink: 0; }
         /* Inline app logo (smaller, next to a single mention) */
         .app-logo { display: inline-block; width: 16px; height: 16px; vertical-align: -3px; margin-right: 4px; }
+        /* Inline brand links (e.g. "go to stripe.com") */
+        .brand-link { color: var(--pink); text-decoration: none; border-bottom: 1px dashed rgba(232,41,92,0.4); transition: border-color 0.15s; }
+        .brand-link:hover { border-bottom-color: var(--pink); border-bottom-style: solid; }
+        .brand-link strong { color: var(--pink); }
         .how-it-works { display: flex; flex-direction: column; gap: 14px; margin: 22px 0 10px; }
         .how-step { display: grid; grid-template-columns: 42px 1fr; gap: 16px; align-items: start; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; transition: border-color 0.15s ease, transform 0.15s ease; }
         .how-step:hover { border-color: var(--pink); }
