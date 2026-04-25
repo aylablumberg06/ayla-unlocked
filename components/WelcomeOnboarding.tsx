@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import BrandLogo from '@/components/BrandLogo'
+import VideoPlayer from '@/components/VideoPlayer'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -48,6 +49,16 @@ export default function WelcomeOnboarding() {
             button does. It&apos;s short. I promise.
           </p>
         </div>
+      </section>
+
+      {/* HOW TO USE THIS COURSE — video tour */}
+      <section className="px-6 md:px-10 max-w-md mx-auto pb-10">
+        <div className="relative aspect-[9/16] max-h-[640px] w-full rounded-3xl overflow-hidden border border-[color:var(--border)] shadow-xl shadow-pink/10 bg-black">
+          <VideoPlayer src="/how-to-use-video.mp4" />
+        </div>
+        <p className="text-center text-[12px] text-muted-light mt-3 italic">
+          Watch this 90-second tour or skip to the buttons below if you&rsquo;d rather just read.
+        </p>
       </section>
 
       {/* FEATURES */}
