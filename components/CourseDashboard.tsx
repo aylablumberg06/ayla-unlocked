@@ -690,7 +690,7 @@ const lessons: Lesson[] = [
       <div class="callout"><div class="callout-tag">Wait &mdash; is this the same as the Claude app?</div>Nope. Two different things, both called &ldquo;Claude.&rdquo; <strong>Claude app</strong> (<a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> website + the mobile app + the Mac app) is regular chat &mdash; what you use for thinking, writing, brainstorming. <strong>Claude Code</strong> (what you just opened with <code>claude</code> in Terminal) is the builder version &mdash; it can actually touch files on your computer and build things for you. Same brain, different powers. Use chat for thinking. Use Claude Code for shipping.</div>
       <figure class="lesson-photo">
         <img src="/lesson-terminal.jpg" alt="My Mac terminal running a Python script. You can see the percent prompt at the bottom." />
-        <figcaption>My actual terminal while one of my agents was running. Don't panic at the red error, that's just a warning. The line <code>ayla@Aylas-MacBook-Air-2021 website-bot %</code> is the <strong>%</strong> prompt I was talking about. That's how you know it's ready.</figcaption>
+        <figcaption>My actual terminal while my outreach pipeline was running. Most of what you see is just info logs &mdash; <code>fetching businesses from Outscraper</code>, <code>5 results</code>, etc. That&rsquo;s what live agents look like. They just talk to themselves in Terminal while they work.</figcaption>
       </figure>
           <div class="stuck-callout">
         <div class="stuck-icon">
@@ -2410,7 +2410,10 @@ export default function CourseDashboard() {
         .exercise-done:hover { background: #C51F4E; transform: translateY(-1px); }
         .exercise.done .exercise-done { background: rgba(232,41,92,0.3); }
         .agent-team { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 24px 0 8px; }
-        .agent-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .agent-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; transition: transform 0.25s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s ease, border-color 0.25s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.04); cursor: default; }
+        .agent-card:hover { transform: translateY(-3px) rotate(-0.4deg); box-shadow: 0 14px 36px rgba(232,41,92,0.15), 0 4px 12px rgba(232,41,92,0.08); border-color: var(--pink); }
+        .agent-card:hover .agent-avatar { transform: scale(1.08) rotate(6deg); background: var(--pink); color: white; }
+        .agent-avatar { transition: transform 0.25s cubic-bezier(.2,.8,.2,1), background 0.25s ease, color 0.25s ease; }
         .agent-card:hover { border-color: var(--pink); box-shadow: 0 6px 22px rgba(232,41,92,0.12); }
         .agent-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
         .agent-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #FFD6E3 0%, #FF8FAB 100%); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 18px; font-style: italic; flex-shrink: 0; }
@@ -2425,12 +2428,20 @@ export default function CourseDashboard() {
         .stuck-body p { font-size: 14px; color: var(--dark); font-weight: 300; line-height: 1.55; margin: 0; }
         @media (max-width: 800px) { .agent-team { grid-template-columns: 1fr; } }
         .agent-team-photo { margin: 32px 0 12px; padding: 0; display: flex; flex-direction: column; align-items: center; }
-        .agent-team-photo img { width: 100%; max-width: 640px; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 12px 40px rgba(0,0,0,0.10); display: block; }
+        .agent-team-photo img { width: 100%; max-width: 640px; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 12px 40px rgba(0,0,0,0.10); display: block; transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s ease; cursor: zoom-in; }
+        .agent-team-photo:hover img { transform: scale(1.02); box-shadow: 0 24px 60px rgba(232,41,92,0.18), 0 8px 18px rgba(0,0,0,0.10); }
         .agent-team-photo figcaption { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--mid); margin-top: 12px; text-align: center; font-weight: 300; }
         .lesson-photo { margin: 28px 0 8px; padding: 0; display: flex; flex-direction: column; align-items: center; }
-        .lesson-photo img { width: 100%; max-width: 720px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 32px rgba(0,0,0,0.08); display: block; }
+        .lesson-photo img { width: 100%; max-width: 720px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 32px rgba(0,0,0,0.08); display: block; transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s ease; cursor: zoom-in; }
+        .lesson-photo:hover img { transform: scale(1.015); box-shadow: 0 22px 50px rgba(232,41,92,0.15), 0 6px 16px rgba(0,0,0,0.08); }
         .lesson-photo figcaption { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--mid); margin-top: 10px; text-align: center; font-weight: 300; max-width: 560px; line-height: 1.45; }
         .lesson-photo figcaption code { font-family: 'SF Mono', ui-monospace, monospace; font-size: 12px; background: var(--pink-light); color: var(--pink); padding: 1px 6px; border-radius: 4px; font-style: normal; }
+        /* SVG diagrams (idea-spiral, API-key flow, Stripe flow, agent hierarchy) — interactive on hover */
+        .idea-spiral-figure, .diagram-figure { transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s ease; }
+        .idea-spiral-figure:hover, .diagram-figure:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(232,41,92,0.10); }
+        /* SVG inner-element hover effects (groups + boxes glow when you mouse over them) */
+        .idea-spiral rect, .diagram-svg rect, .diagram-svg circle, .diagram-svg path[fill]:not([fill="none"]) { transition: filter 0.2s ease, transform 0.2s cubic-bezier(.2,.8,.2,1); transform-origin: center; transform-box: fill-box; }
+        .idea-spiral rect:hover, .diagram-svg rect:hover, .diagram-svg circle:hover { filter: drop-shadow(0 4px 10px rgba(232,41,92,0.35)); transform: scale(1.04); }
         .hl-popup { position: fixed; transform: translate(-50%, -100%); z-index: 1000; background: var(--pink); color: white; padding: 8px 14px; border-radius: 999px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; box-shadow: 0 8px 24px rgba(232,41,92,0.3); cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px; animation: popIn 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
         .hl-popup:hover { background: #C51F4E; }
         @keyframes popIn { from { opacity: 0; transform: translate(-50%, -95%); } to { opacity: 1; transform: translate(-50%, -100%); } }
