@@ -246,6 +246,18 @@ const lessons: Lesson[] = [
 
       <div class="callout"><div class="callout-tag">The rule of thumb</div>Hit rate limits more than twice a week? Upgrade one tier. Hit them daily? Jump again. Never hit them? You&rsquo;re on the right tier.</div>
 
+      <div class="divider"><span>Wait, what about Opus, Sonnet, and Haiku?</span></div>
+
+      <p>You&rsquo;re going to see these three names everywhere. <strong>Opus, Sonnet, Haiku.</strong> Those aren&rsquo;t plans, those are the actual <em>models</em>, the brains underneath. Each plan above (Free, Pro, Max) gives you access to different ones with different limits. Here&rsquo;s the simplest way to think about them:</p>
+
+      <div class="callout"><div class="callout-tag">Haiku &mdash; the fast one</div>Smallest, cheapest, fastest. The "quick reply" model. <strong>Use it for:</strong> short summaries, simple lookups, classifying emails as spam-or-not, parsing form data, anything you need answered in a second flat. Not great at deep reasoning or long projects.</div>
+
+      <div class="callout"><div class="callout-tag">Sonnet &mdash; the everyday one</div>The default. Smart, balanced, plenty fast. This is what shows up when you just open Claude and start typing. <strong>Use it for:</strong> 95% of what you'll do in this course, building websites, writing in your voice, drafting emails, debugging code, normal back-and-forth chats. If you&rsquo;re not sure which to pick, pick Sonnet.</div>
+
+      <div class="callout"><div class="callout-tag">Opus &mdash; the genius one</div>Slowest, smartest, priciest. Best at hard reasoning and multi-step planning. <strong>Use it for:</strong> a tricky bug Sonnet keeps fumbling, a long research deep-dive, planning out a complex agent system, contracts you need analyzed line by line. Save Opus for the moments you actually need a brain, because it costs more and takes longer.</div>
+
+      <div class="callout"><div class="callout-tag">My personal rule</div>I default to Sonnet for everything. If Sonnet stalls or keeps making the same mistake twice in a row, I switch the same chat to <strong>Opus</strong> and ask it to think harder. If I&rsquo;m doing something boring and high-volume (like classifying 500 emails), I&rsquo;ll use <strong>Haiku</strong> through the API to save money. <em>You almost never need to think about this. Just leave it on Sonnet and live your life.</em></div>
+
       <div class="ss">[ Screenshot: The 3 plan cards on claude.ai/pricing ]</div>
     </div>`
   },
