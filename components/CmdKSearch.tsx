@@ -129,6 +129,12 @@ export default function CmdKSearch() {
   function go(h: Hit) {
     setOpen(false)
     router.push(h.href)
+    // If we're already on /course and just navigating to a different lesson,
+    // Next.js may not remount the page. Notify CourseDashboard to re-read the URL.
+    if (h.kind === 'lesson' && typeof window !== 'undefined' && window.location.pathname.startsWith('/course')) {
+      // Defer to next tick so router.push has a chance to update the URL
+      setTimeout(() => window.dispatchEvent(new Event('au:lesson-jump')), 0)
+    }
   }
 
   function onKeyDown(e: React.KeyboardEvent) {

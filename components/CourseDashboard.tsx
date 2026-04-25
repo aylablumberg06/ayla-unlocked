@@ -1483,13 +1483,40 @@ export default function CourseDashboard() {
             }
           })
           .catch(() => {})
-        if (typeof p.last_lesson === 'number' && p.last_lesson > 0 && p.last_lesson < lessons.length) {
+        // Priority: ?lesson=N URL param > saved last_lesson
+        const urlLesson = (() => {
+          if (typeof window === 'undefined') return null
+          const n = Number(new URLSearchParams(window.location.search).get('lesson'))
+          return Number.isFinite(n) && n >= 0 && n < lessons.length ? n : null
+        })()
+        if (urlLesson !== null) {
+          setCur(urlLesson)
+        } else if (typeof p.last_lesson === 'number' && p.last_lesson > 0 && p.last_lesson < lessons.length) {
           setCur(p.last_lesson)
         }
         setProgressLoaded(true)
       })
       .catch(() => setProgressLoaded(true))
     return () => { cancel = true }
+  }, [])
+
+  // If the user is already on /course and triggers ⌘K to a different lesson,
+  // the URL changes but the component doesn't unmount. Listen for URL changes.
+  useEffect(() => {
+    function jumpToUrlLesson() {
+      if (typeof window === 'undefined') return
+      const n = Number(new URLSearchParams(window.location.search).get('lesson'))
+      if (Number.isFinite(n) && n >= 0 && n < lessons.length) {
+        setCur(n)
+      }
+    }
+    window.addEventListener('popstate', jumpToUrlLesson)
+    // Also listen to a custom event that we'll dispatch from CmdKSearch
+    window.addEventListener('au:lesson-jump', jumpToUrlLesson)
+    return () => {
+      window.removeEventListener('popstate', jumpToUrlLesson)
+      window.removeEventListener('au:lesson-jump', jumpToUrlLesson)
+    }
   }, [])
 
   // Persist last-visited lesson whenever it changes (after initial load).
