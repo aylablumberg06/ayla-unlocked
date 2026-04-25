@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import BrandLogo from '@/components/BrandLogo'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { IS_LIVE_FOR_SALE, NOTIFY_ME_EMAIL } from '@/lib/site-state'
 
 function SignupForm() {
  const router = useRouter()
@@ -127,6 +128,35 @@ function CheckoutCard() {
  setErr(e?.message || 'Something went wrong.')
  setLoading(false)
  }
+ }
+
+ // While the course isn't officially live, replace the Stripe checkout
+ // with a notify-me-when-it-opens email link. Owner can still preview via
+ // /api/owner-login. Flip IS_LIVE_FOR_SALE in lib/site-state.ts to re-enable.
+ if (!IS_LIVE_FOR_SALE) {
+ return (
+ <div className="rounded-2xl border-2 border-pink bg-white/50 p-8 md:p-10 relative overflow-hidden">
+ <div className="absolute -top-3 left-6 bg-pink text-white text-[10px] tracking-[2.5px] uppercase font-semibold px-3 py-1 rounded-full shadow-md">
+ Coming soon
+ </div>
+ <div className="pt-3">
+ <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-3">Almost ready</div>
+ <h2 className="font-serif italic text-3xl md:text-4xl mb-4 text-dark leading-tight">
+ Ayla Unlocked is still being polished.
+ </h2>
+ <p className="text-mid font-light mb-6 leading-relaxed text-[15px]">
+ We&rsquo;re finishing the last screenshots and double-checking everything before opening the doors. Drop your email and you&rsquo;ll be the first to know the second it goes live (probably this week).
+ </p>
+ <a
+ href={`mailto:${NOTIFY_ME_EMAIL}?subject=Notify%20me%20when%20Ayla%20Unlocked%20opens&body=Tell%20me%20the%20moment%20it%27s%20live.`}
+ className="block w-full text-center bg-pink text-white px-8 py-4 rounded-full text-xs tracking-[1.5px] uppercase font-medium hover:bg-[#C51F4E] transition"
+ >
+ Notify me when it opens
+ </a>
+ <p className="text-[11px] text-muted-light mt-4 text-center">Or check back soon, the price stays $39.</p>
+ </div>
+ </div>
+ )
  }
 
  return (

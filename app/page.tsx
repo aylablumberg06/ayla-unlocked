@@ -4,6 +4,7 @@ import ContactForm from '@/components/ContactForm'
 import HeroCover from '@/components/HeroCover'
 import ScrollReveal, { ScrollProgressBar } from '@/components/ScrollReveal'
 import { TOTAL_READ_SEC, formatMinutes } from '@/lib/estimates'
+import { IS_LIVE_FOR_SALE, NOTIFY_ME_EMAIL } from '@/lib/site-state'
 
 export default function LandingPage() {
  return (
@@ -23,12 +24,21 @@ export default function LandingPage() {
  >
  Log in
  </Link>
+ {IS_LIVE_FOR_SALE ? (
  <Link
  href="/unlock"
  className="magnetic bg-pink text-white text-[11px] tracking-[1.5px] uppercase font-medium px-5 py-2.5 rounded-full hover:bg-[#C51F4E]"
  >
  Get Access · $39
  </Link>
+ ) : (
+ <a
+ href={`mailto:${NOTIFY_ME_EMAIL}?subject=Notify%20me%20when%20Ayla%20Unlocked%20opens`}
+ className="magnetic bg-pink text-white text-[11px] tracking-[1.5px] uppercase font-medium px-5 py-2.5 rounded-full hover:bg-[#C51F4E]"
+ >
+ Coming Soon · Notify me
+ </a>
+ )}
  </div>
  </div>
  </nav>
@@ -213,12 +223,21 @@ export default function LandingPage() {
  seems.&rdquo;
  </blockquote>
  <div className="pt-8">
+ {IS_LIVE_FOR_SALE ? (
  <Link
  href="/unlock"
  className="bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-8 py-4 rounded-full hover:bg-[#C51F4E] transition inline-block"
  >
  Get Access · $39
  </Link>
+ ) : (
+ <a
+ href={`mailto:${NOTIFY_ME_EMAIL}?subject=Notify%20me%20when%20Ayla%20Unlocked%20opens`}
+ className="bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-8 py-4 rounded-full hover:bg-[#C51F4E] transition inline-block"
+ >
+ Coming Soon · Notify me
+ </a>
+ )}
  </div>
  </section>
 

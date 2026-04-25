@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { IS_LIVE_FOR_SALE, NOTIFY_ME_EMAIL } from '@/lib/site-state'
 
 /**
  * HERO COVER, full-height, cinematic.
@@ -118,12 +119,21 @@ export default function HeroCover() {
  </p>
 
  <div className="flex flex-wrap gap-4 items-center">
+ {IS_LIVE_FOR_SALE ? (
  <Link
  href="/unlock"
  className="bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-8 py-4 rounded-full hover:bg-[#C51F4E] transition shadow-lg shadow-pink/20"
  >
  Get Access · $39
  </Link>
+ ) : (
+ <a
+ href={`mailto:${NOTIFY_ME_EMAIL}?subject=Notify%20me%20when%20Ayla%20Unlocked%20opens`}
+ className="bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-8 py-4 rounded-full hover:bg-[#C51F4E] transition shadow-lg shadow-pink/20"
+ >
+ Coming Soon · Notify me
+ </a>
+ )}
  <Link
  href="/login"
  className="inline-flex items-center text-[11px] tracking-[1.5px] uppercase text-mid hover:text-pink transition px-2 py-3"
