@@ -95,7 +95,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     estLength: '60-90 sec',
     blocks: [
       { label: 'HOOK', text: "Claude has three tiers. Free, Pro, and Max. Picking the right one matters. Because the price jumps are real." },
-      { label: 'TEACH', text: "Free is zero dollars. Fine for learning, writing, brainstorming. Solid daily limit. When you hit it, Claude tells you and waits a few hours. Perfect for everything in this course. Pro is 20 a month. About 5x the messages, newest model first. What I personally pay for. The second you're building something real and getting cut off, it's worth the 20. Max is a hundred to two hundred a month. Effectively unlimited. For people running Claude like a job." },
+      { label: 'TEACH', text: "Free is zero dollars. Fine for learning, writing, brainstorming. Solid daily limit. When you hit it, Claude tells you and waits a few hours. Perfect for everything in this course. Pro is 20 a month. About 5x the messages, newest model first. The second you're building something real and getting cut off, it's worth the 20. Max is a hundred to two hundred a month. Effectively unlimited. That's what I'm on, the $100 tier — I run this stuff like a job, so it pays for itself." },
       { label: 'STAGE', text: "[Screen recording: claude.ai/pricing showing the 3 cards side by side]" },
       { label: 'CLOSER', text: "Rule of thumb. Start free. Upgrade the moment Claude cuts you off mid-project more than twice a week. Don't pre-pay for a tier you're not using yet." },
     ],
@@ -236,7 +236,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     blocks: [
       { label: 'HOOK', text: "Tutorials are always vague on this. I'm going to be specific." },
       { label: 'TEACH', text: "Know what you're selling. Not AI consulting. One specific thing. A local business website. A cold outreach system. A content generator. A proposal factory. Pick one. Three places I actually get clients. One, local businesses without websites, I Google Maps them and walk in. Two, Instagram DMs to creators whose vibe I like, specific not generic. Three, my own network, I just post once that I'm taking three clients and someone in my circle bites." },
-      { label: 'STAGE', text: "[On screen: screenshot of my first client DM + the $400 invoice that started everything]" },
+      { label: 'STAGE', text: "[On screen: a screenshot of one of your real first-client conversations would land here, but skip it if you'd rather]" },
       { label: 'CLOSER', text: "Don't undersell. Your first number becomes your anchor. Pick a price that feels slightly uncomfortable. That's the right one." },
     ],
   },
@@ -264,27 +264,28 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
     estLength: '60-90 sec',
     blocks: [
       { label: 'HOOK', text: "Half my best work happens when I'm not at my desk." },
-      { label: 'TEACH', text: "Download the Claude mobile app, same chats sync. Voice dictation is the superpower, I talk to Claude way more than I type, the mic button is a better brain-dumper than the keyboard. iPhone Shortcuts, I built one that opens Claude with a specific prompt ready on a lock screen tap. Photograph anything and ask, receipt you don't get, error you don't understand, sign in another language, plant you're not sure how to water, picture to Claude, done. Text your Telegram agents from anywhere, from bed, from the Uber, from the bathroom, they reply in seconds." },
+      { label: 'TEACH', text: "Download the Claude mobile app, same chats sync. Voice dictation is the superpower, I talk to Claude way more than I type, the mic button is a better brain-dumper than the keyboard. Photograph anything and ask, receipt you don't get, error you don't understand, sign in another language, plant you're not sure how to water, picture to Claude, done. Text your Telegram agents from anywhere, from bed, from the Uber, from the bathroom, they reply in seconds." },
       { label: 'CLOSER', text: "If you only use Claude on a laptop, you're missing half of what it can do for you." },
     ],
   },
   {
     lessonIndex: 26, lessonTag: '26, A Day in My Life', title: 'What a chaotic AI life looks like.',
-    estLength: '120 sec',
+    estLength: '90 sec',
     blocks: [
       { label: 'HOOK', text: "People always ask what my day looks like. I live a chaotic life, I'm not gonna pretend otherwise." },
-      { label: 'TEACH', text: "7 AM, check Telegram for overnight agent reports before I'm even out of bed. 8 AM, coffee and Claude chat to structure the day. 9:30, deep build block, one site or one agent at a time. 11, client or prospect call, taking notes into Claude on my phone. Lunch, inbox that Claude already filtered. 2 PM, chaos block, where half the day pivots, I answer everything from my phone. 5, review what my agents did today. 7, actual life, dinner, friends, phone down. 10 PM, I'll just tweak one thing, and now it's 2 AM. The shape of the day is chaotic human, steady agents. Together we ship." },
-      { label: 'CLOSER', text: "I'm messy. My agents are not. That's the system." },
+      { label: 'TEACH', text: "There's no perfect 9-to-5 grid for this. But there are shapes to my day, the moves I make over and over. First thing I do every morning is open Telegram and read what my agents did overnight. That's my brief, before email, before social, before coffee. Then I pick a build block, a long uninterrupted chunk where it's just me and Claude making something. Phone face-down, no tabs, no notifications. That's where the actual money gets made." },
+      { label: 'TEACH', text: "Calls happen on the move. I take live notes into a Claude chat on my phone and ask Claude to turn them into a proposal right after. There's always a chaos block in the day where the plan goes out the window, that's fine. End of day I read what my agents shipped, approve, reject, comment. And then I get into bed and tell myself I'll just tweak one thing, and somehow it's 2 AM. Every time." },
+      { label: 'CLOSER', text: "I'm messy. My agents are not. Together we ship. That's the whole system." },
     ],
   },
   {
     lessonIndex: 27, lessonTag: '27, Favorite Mistakes', title: "Things I screwed up so you don't have to.",
-    estLength: '120 sec',
+    estLength: '90 sec',
     blocks: [
-      { label: 'HOOK', text: "None of these broke me. All of them taught me more than a tutorial could." },
-      { label: 'TEACH', text: "One, the morning my iMac container deleted everything, I cried, then scrolled Claude chat history and rebuilt the whole system in three hours because every decision was in the conversation. Lesson, Claude chats are backup, but actually back up code too. Two, sent a proposal with the wrong price, missed a zero. Lesson, Claude is great at words, always double check numbers yourself. Three, tried to build a whole agent team on day one, crashed constantly. Lesson, build one thing, get it working, add the next. Four, pasted an API key in a group chat. Lesson, keep keys in a password manager, rotate the second you think they leaked. Five, spent two months doing free work because I thought I wasn't ready. Lesson, if it's worth doing it's worth charging." },
-      { label: 'STAGE', text: "[Show a real Finder screenshot of the deleted container folder + Claude chat scrolling back to reconstruct]" },
-      { label: 'CLOSER', text: "Every mistake became the story. Yours will too." },
+      { label: 'HOOK', text: "Two of my favorite mistakes. Neither of them broke me, both of them taught me more than a tutorial could." },
+      { label: 'TEACH', text: "One. The morning my iMac container deleted everything. Code, configs, scheduled tasks, all gone overnight. I cried. Real cried. I thought months of work was wiped. Then I opened Claude and scrolled my chat history, because every single decision had been built in conversation with Claude. I told it, rebuild everything, you have the context. Three hours later, running again. Lesson: Claude chats are a backup, but actually push your code to GitHub too. Free insurance." },
+      { label: 'TEACH', text: "Two. I tried to build a whole agent team on day one. Scrape, qualify, outreach, reply-handle, nurture, close, all in one go. It crashed constantly. I almost quit. Then I deleted everything, built ONE agent that just sent cold emails. Worked in an hour. Then I added the scraper. Then the reply handler. One piece at a time. Lesson: don't design the Death Star on day one. Build the smallest thing that works, then add to it." },
+      { label: 'CLOSER', text: "Both became the stories. Yours will too. Push through." },
     ],
   },
   {

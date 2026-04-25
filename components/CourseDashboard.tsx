@@ -243,9 +243,9 @@ const lessons: Lesson[] = [
 
       <div class="callout"><div class="callout-tag">Free, $0/month</div>Totally fine for learning, brainstorming, writing, and light coding. You get a solid daily message limit and access to the current Claude model. When you hit the limit, Claude literally tells you and waits a few hours to reset. <strong>Start here.</strong> It&rsquo;s perfect for this course.</div>
 
-      <div class="callout"><div class="callout-tag">Pro, $20/month</div>Roughly 5x the message limit. Upload more files at once. Access to the newest model first. This is what I personally pay for. The moment you&rsquo;re building a real thing and getting cut off mid-project is the moment Pro is worth it. If you&rsquo;re actively working on something for more than 2 hours a day, upgrade.</div>
+      <div class="callout"><div class="callout-tag">Pro, $20/month</div>Roughly 5x the message limit. Upload more files at once. Access to the newest model first. The moment you&rsquo;re building a real thing and getting cut off mid-project is the moment Pro is worth it. If you&rsquo;re actively working on something for more than 2 hours a day, upgrade.</div>
 
-      <div class="callout"><div class="callout-tag">Max, $100&ndash;200/month</div>The &ldquo;I&rsquo;m running this as my job&rdquo; tier. Effectively unlimited. Priority access when servers are slammed. Only jump here if you&rsquo;re building every day, running client work, or operating agents at volume. If you&rsquo;re a one-person agency or doing cold outreach daily, Max pays for itself in an afternoon.</div>
+      <div class="callout"><div class="callout-tag">Max, $100&ndash;200/month</div>The &ldquo;I&rsquo;m running this as my job&rdquo; tier. Effectively unlimited. Priority access when servers are slammed. <strong>This is what I personally pay for &mdash; $100/month.</strong> Only jump here if you&rsquo;re building every day, running client work, or operating agents at volume. If you&rsquo;re a one-person agency or doing cold outreach daily, Max pays for itself in an afternoon.</div>
 
       <div class="a-quote">&ldquo;Start free. You&rsquo;ll know when you need Pro because Claude will literally cut you off mid-thought. That&rsquo;s the signal.&rdquo;</div>
 
@@ -479,7 +479,7 @@ const lessons: Lesson[] = [
 
       <div class="callout"><div class="callout-tag">Anything where being wrong is dangerous</div>Medical questions. Legal advice. Safety-critical calculations. Financial decisions with real money. Claude can be confidently wrong about specific facts, and &ldquo;the AI said so&rdquo; is not a defense. Use it as a starting point, then verify with a professional.</div>
 
-      <div class="callout"><div class="callout-tag">Tasks that are genuinely faster by hand</div>Sometimes a thing takes 2 minutes manually and 20 minutes to properly explain to Claude. If your gut says &ldquo;just do it yourself,&rdquo; trust it. I write emails by hand all the time. I&rsquo;m not religious about this.</div>
+      <div class="callout"><div class="callout-tag">Tasks that are genuinely faster by hand</div>Sometimes a thing takes 2 minutes manually and 20 minutes to properly explain to Claude. If your gut says &ldquo;just do it yourself,&rdquo; trust it. Don&rsquo;t be religious about this.</div>
 
       <div class="callout"><div class="callout-tag">Creative work where you WANT your style to show</div>Your first TikTok. Your about page. The opening line of your book. Claude can write 50 drafts of the same idea. If you&rsquo;re trying to find <strong>your</strong> voice, the fastest way is to stare at a blank page until something real comes out. Claude short-circuits that process. Sometimes that&rsquo;s bad.</div>
 
@@ -1064,7 +1064,7 @@ const lessons: Lesson[] = [
         <li><strong>Free-text help.</strong> I can also just vent to her. &ldquo;Elle I&rsquo;m stressed about X what should I do.&rdquo; Because I gave her context about my business, she gives actually useful answers.</li>
       </ul>
 
-      <p>Elle runs on a Mac launch agent called <code>com.ayla.elle-telegram</code> that I set up once and haven&rsquo;t touched since. She uses Claude&rsquo;s API to think, Telegram&rsquo;s bot API to talk, and a tiny Postgres database to remember things across days.</p>
+      <p>Under the hood Elle&rsquo;s pretty simple. She uses Claude&rsquo;s API to think and a Telegram bot to talk &mdash; you set it up once and basically never touch it again.</p>
 
       <div class="a-quote">&ldquo;Elle is the one you build first. She&rsquo;s the command center. Everything else is just another teammate she introduces to you.&rdquo;</div>
 
@@ -1202,8 +1202,6 @@ const lessons: Lesson[] = [
 
       <div class="callout"><div class="callout-tag">Voice dictation is the superpower</div>I talk to Claude way more than I type to it. Tap the mic, explain the problem out loud like you&rsquo;re venting to a friend, hit send. I&rsquo;ve ranted at it about business strategy while walking to coffee. I&rsquo;ve explained a whole agent idea in a 3-minute voice note. <strong>Your phone mic is a better brain-dumper than your keyboard.</strong></div>
 
-      <div class="callout"><div class="callout-tag">iPhone Shortcuts + Claude</div>I built a Shortcut so hitting a button on my lock screen opens Claude with a specific prompt ready to go. &ldquo;Give me 5 cold email openers for a [X] business,&rdquo; with a blank for the business type. One tap. Takes 5 minutes to set up once, saves hours forever.</div>
-
       <div class="callout"><div class="callout-tag">Photograph anything and ask about it</div>Receipt I don&rsquo;t understand? Take a picture, send to Claude, &ldquo;break this down.&rdquo; Weird error on my laptop? Phone picture of the screen, &ldquo;what do I do?&rdquo; A sign in a foreign language? Same. A plant I&rsquo;m not sure how to take care of? Same. The photo &rarr; Claude habit alone is worth the monthly fee.</div>
 
       <div class="callout"><div class="callout-tag">Texting my agents from Telegram</div>My agents live in Telegram (we covered this in lesson 20). That means I can <strong>text them from anywhere.</strong> I&rsquo;ve sent Elle a status request from my bed, from the Uber, from the bathroom. She replies in 10 seconds. Nobody would know I&rsquo;m not at a desk running a business.</div>
@@ -1217,48 +1215,36 @@ const lessons: Lesson[] = [
     <h1 class="l-head">A day in my AI life.</h1>
     <p class="l-sub">I live a chaotic life. I&rsquo;m not going to pretend otherwise.</p>
     <div class="l-body">
-      <p>People always ask &ldquo;what does your day look like?&rdquo; I kept promising a YouTube vlog and never made it. So here it is in writing, actually honest, actually chaotic.</p>
+      <p>I get asked &ldquo;what does your day actually look like?&rdquo; all the time. Truth: it&rsquo;s messy. There&rsquo;s no perfect 9-to-5 grid. But there are <strong>shapes</strong> to my day, the moves I make over and over no matter what time it is.</p>
 
-      <div class="callout"><div class="callout-tag">7:12 AM &mdash; wake up, check Telegram</div>Before my feet hit the floor I open Telegram. Elle (my chief-of-staff agent) dropped a morning brief overnight. Two things resolved. Three need my input. I swipe through, mentally flag the urgent one, get out of bed.</div>
+      <div class="callout"><div class="callout-tag">First thing I do</div>Open Telegram. My agents have been running overnight. Whatever they flagged is the first thing I actually look at, before email, before social, before coffee. That&rsquo;s the morning brief.</div>
 
-      <div class="callout"><div class="callout-tag">8 AM &mdash; coffee + Claude chat</div>While the espresso runs I open Claude and brain-dump whatever&rsquo;s on my plate. Emails to write. A client meeting at 11. A thing I want to build on the side. I say &ldquo;structure my day and tell me what to do first.&rdquo; I do what it says 80% of the time. The other 20% I disagree and tell it why.</div>
+      <div class="callout"><div class="callout-tag">My best build hours</div>I do real building in long, uninterrupted chunks. Phone face-down, Telegram muted, no tabs open except Claude Code and the thing I&rsquo;m making. One site, one agent, one problem at a time. This is where the money actually gets made.</div>
 
-      <div class="callout"><div class="callout-tag">9:30 AM &mdash; the morning I actually build</div>Best focus window of my day. I do all real Claude Code work here. One site, one agent, one problem at a time. No Instagram, no Twitter, Telegram notifications off. Just me and Claude. This is where the actual money gets made.</div>
+      <div class="callout"><div class="callout-tag">Client + prospect calls happen on the move</div>Sometimes Zoom, sometimes in person. I take live notes into a Claude chat on my phone, then ask Claude to &ldquo;turn this into a proposal&rdquo; or &ldquo;pull out the three things I agreed to do&rdquo; right after.</div>
 
-      <div class="callout"><div class="callout-tag">11 AM &mdash; client or prospect call</div>Usually on Zoom. Sometimes in person if they&rsquo;re local. I take notes in real time into a Claude chat I&rsquo;ve opened on my phone. After the call I tell Claude to &ldquo;turn this into a proposal&rdquo; or &ldquo;pull out the three things I agreed to do.&rdquo;</div>
+      <div class="callout"><div class="callout-tag">The chaos block</div>There is always a part of every day where the plan goes out the window. A client texts something urgent, I get a new idea, a TikTok takes off or doesn&rsquo;t, friends want to grab dinner. I do most of my best-feeling work in this chunk, from my phone, while I&rsquo;m not at my desk.</div>
 
-      <div class="callout"><div class="callout-tag">12:30 PM &mdash; lunch + inbox</div>Claude already went through my inbox this morning. I just clear the small stuff, reply to whatever my reply-handling agent flagged. Takes 15 minutes instead of 2 hours.</div>
+      <div class="callout"><div class="callout-tag">Agent check-in</div>End of day, I read what each agent did. Approve, reject, comment back, fix what didn&rsquo;t work. They don&rsquo;t need micromanaging. They just need someone to read the report.</div>
 
-      <div class="callout"><div class="callout-tag">2 PM &mdash; the chaos block</div>This is where the day goes off the rails. Someone texts a problem. A client emails a change. I get an idea. My TikTok blows up or doesn&rsquo;t. A friend wants to hang. I pivot 6 times. I answer everything from my phone via Claude. Half of what I ship happens in this chunk. I&rsquo;m usually not at my desk.</div>
-
-      <div class="callout"><div class="callout-tag">5 PM &mdash; check agent output, review</div>Every agent drops a daily report. Barney (cold outreach) tells me what went out and who replied. Taylor (QA) tells me what&rsquo;s ready to ship. Gabriella (error fixer) tells me what she caught and fixed. I read, approve, reject, comment.</div>
-
-      <div class="callout"><div class="callout-tag">7 PM &mdash; actual life</div>Dinner. Friends. Phone down mostly. The agents keep running whether I&rsquo;m watching or not.</div>
-
-      <div class="callout"><div class="callout-tag">10 PM &mdash; &ldquo;I&rsquo;ll just tweak one thing&rdquo;</div>This is how I end up working until 2 AM. We covered this in the welcome warning. It&rsquo;s still happening.</div>
+      <div class="callout"><div class="callout-tag">&ldquo;I&rsquo;ll just tweak one thing&rdquo;</div>This is how I end up working until 2 AM way more nights than I should. We covered this in the welcome warning. It&rsquo;s still happening.</div>
 
       <p><strong>The shape of the day is: chaotic human, steady agents.</strong> I&rsquo;m messy. My agents are not. Together we ship. That&rsquo;s the whole system.</p>
     </div>`
   },
   {
-    tag: '27 - Favorite Mistakes', leftTitle: "Things I screwed up so you don't have to.", num: '27', vid: 'Lesson 27: My 5 biggest fails',
+    tag: '27 - Favorite Mistakes', leftTitle: "Things I screwed up so you don't have to.", num: '27', vid: 'Lesson 27: My favorite mistakes',
     html: `
-    <h1 class="l-head">My five favorite mistakes.</h1>
+    <h1 class="l-head">My favorite mistakes.</h1>
     <p class="l-sub">These are the stories I&rsquo;d tell you at dinner if you asked how I learned.</p>
     <div class="l-body">
-      <p>None of these broke me. All of them taught me something more useful than a tutorial could. Here they are, ranked by how embarrassed I am.</p>
+      <p>Neither of these broke me. Both taught me something more useful than a tutorial could.</p>
 
       <div class="callout"><div class="callout-tag">1. The morning the container deleted everything</div>I woke up one morning and the iMac container running my entire agent setup had wiped itself. Code, configs, scheduled tasks, everything. <strong>I flipped out.</strong> I cried for real. I thought months of work was gone.<br><br>Then I opened Claude and scrolled through the chat history. Because <em>every piece of that system had been built in conversation with Claude,</em> the logic, the decisions, the API connections, the edge cases, were all in there. I said: &ldquo;rebuild everything we had, you have the context.&rdquo; Three hours later it was running again.<br><br><strong>Lesson: your conversations with Claude are a backup. But actually back up your code too.</strong> Push to GitHub every single day. It&rsquo;s free. Do it.</div>
 
-      <div class="callout"><div class="callout-tag">2. Sent a proposal with the wrong price</div>I asked Claude to write a proposal and accidentally swapped the digits in the price. $250 instead of $2,500. Client accepted immediately. I had to write her the most awkward follow-up of my life explaining I&rsquo;d missed a zero.<br><br>She still paid, at the real price, because I explained honestly. But I almost lost ten grand to a typo.<br><br><strong>Lesson: Claude is great at words. Always double-check numbers, dates, and dollar signs yourself before anything goes out.</strong></div>
+      <div class="callout"><div class="callout-tag">2. Tried to build the whole agent team on day one</div>My first agent attempt was going to be a full pipeline: scrape, qualify, outreach, reply-handle, nurture, close. All day one. It crashed constantly. Nothing worked. I got so frustrated I almost quit.<br><br>Then I deleted everything, built ONE agent that just sent cold emails. It worked in an hour. Then I added the scraper. Then the reply handler. One piece at a time.<br><br><strong>Lesson: build one thing. Get it working. Add the next. Don&rsquo;t design the Death Star on day one.</strong></div>
 
-      <div class="callout"><div class="callout-tag">3. Tried to build the whole agent team on day one</div>My first agent attempt was going to be a full pipeline: scrape, qualify, outreach, reply-handle, nurture, close. All day one. It crashed constantly. Nothing worked. I got so frustrated I almost quit.<br><br>Then I deleted everything, built ONE agent that just sent cold emails. It worked in an hour. Then I added the scraper. Then the reply handler. One piece at a time.<br><br><strong>Lesson: build one thing. Get it working. Add the next. Don&rsquo;t design the Death Star on day one.</strong></div>
-
-      <div class="callout"><div class="callout-tag">4. Pasted an API key into a group chat</div>Exactly what it sounds like. I was troubleshooting something, screen-shared, and <strong>forgot to hide the .env file.</strong> Someone in the chat (a friend, thankfully) texted me immediately: &ldquo;rotate that, now.&rdquo; I did. Cost me an hour and the cold sweats.<br><br><strong>Lesson: keep API keys in a password manager. Never in a chat, email, or screenshot. Rotate them the second you think they might have leaked.</strong></div>
-
-      <div class="callout"><div class="callout-tag">5. Thought I was too early to charge</div>I spent two months doing free work for friends because I thought I wasn&rsquo;t &ldquo;real&rdquo; yet. Every one of those projects came out just as good as the paid ones later. I just didn&rsquo;t get paid.<br><br><strong>Lesson: if it&rsquo;s worth doing, it&rsquo;s worth charging. The second you charge something, two things happen: you treat the work more seriously, and the client does too. Free work attracts the worst clients. Paid work attracts real ones.</strong></div>
-
-      <p>These mistakes didn&rsquo;t end my AI journey. They became the stories. Every one of them made me slightly better. <strong>Yours will too.</strong></p>
+      <p>Both of these became the stories. Every one of them made me slightly better. <strong>Yours will too.</strong></p>
           <div class="exercise" data-exercise-id="ex-27-backup">
         <div class="exercise-tag">
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
@@ -1324,12 +1310,11 @@ const lessons: Lesson[] = [
       <h2 class="l-sub-head">Why posting changes everything (real talk).</h2>
       <p>I cannot overstate this. <strong>Posting about what I was building is the single biggest reason I got hired.</strong> Not my resume. Not my portfolio site. Not cold outreach. The TikToks I made at 11pm of me losing my mind at Claude.</p>
 
-      <div class="callout"><div class="callout-tag">What actually happened to me</div>Within the first month of posting, I got: <strong>inbound DMs from real companies asking if I could build them agents.</strong> A group chat invite from other girls learning to build. A podcast invite. Two unpaid-but-fun collabs that turned into paid work. An email from a founder who ended up becoming a mentor.<br><br>Every single one of those came from a post that took me 10 minutes to make. The ROI on posting is insane, and nobody talks about it enough.</div>
+      <div class="callout"><div class="callout-tag">What actually happened to me</div>Within the first month of posting, I got: <strong>inbound DMs from two companies asking if I could build them agents.</strong> An email from a founder who ended up becoming a mentor.<br><br>(I&rsquo;m also still hoping a podcast invite shows up one day &mdash; that would be cool. Hasn&rsquo;t happened yet, but I&rsquo;m putting it out there.)<br><br>Every one of those things came from a post that took me 10 minutes to make. The ROI on posting is insane, and nobody talks about it enough.</div>
 
       <p>When you post what you&rsquo;re working on, a bunch of things happen at once:</p>
       <ul>
-        <li><strong>Opportunities land in your DMs.</strong> Real ones. Paid work. Collabs. People asking you to build things for them. Post consistently for 30 days and something will land. I&rsquo;d bet money on it.</li>
-        <li><strong>You find your people.</strong> The comments and DMs are other people learning this stuff at the same time as you. Girls who code, builders, agent nerds, designers getting into AI. The group chats I&rsquo;m in now didn&rsquo;t exist until I posted and someone pulled me in. <strong>Posting is how you find a community of like-minded people who actually get what you&rsquo;re doing.</strong> Way better than trying to explain it to friends who don&rsquo;t.</li>
+        <li><strong>Opportunities land in your DMs.</strong> Real ones. People asking you to build things for them. Post consistently for 30 days and something will land. I&rsquo;d bet money on it.</li>
         <li><strong>You attract the right people.</strong> Builders. Potential clients. Mentors. They find you <em>because</em> you&rsquo;re visibly the person making stuff. The algorithm does the matchmaking.</li>
         <li><strong>You get free feedback.</strong> Someone in the comments will tell you about a tool you didn&rsquo;t know existed. A bug in your demo. A use case you hadn&rsquo;t thought of. Basically free consulting.</li>
         <li><strong>You build a portfolio in public.</strong> Instead of a fake case-study deck, you have 40 TikToks of you actually doing the thing. A thousand times more credible than a resume.</li>

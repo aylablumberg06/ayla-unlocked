@@ -142,7 +142,7 @@ export default function LandingPage() {
             <ul className="space-y-2 text-dark font-light text-[15px]">
               <li>25 &middot; Claude on my phone</li>
               <li>26 &middot; A day in my chaotic AI life</li>
-              <li>27 &middot; My 5 favorite mistakes</li>
+              <li>27 &middot; My favorite mistakes</li>
               <li>28 &middot; My top 10 daily prompts</li>
               <li>29 &middot; Post while you build</li>
             </ul>

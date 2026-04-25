@@ -51,19 +51,6 @@ export const BONUS_SCRIPTS: BonusScript[] = [
     ],
   },
   {
-    slug: 'wrong-zero-on-proposal',
-    lessonNum: 27,
-    lessonTag: '27 · Favorite Mistakes',
-    sectionLabel: 'Inside callout #2 — "Sent a proposal with the wrong price"',
-    estLength: '15–25 sec',
-    why: 'Quick punchline story. Funnier on camera than written.',
-    blocks: [
-      { label: 'HOOK', text: "I once sent a client a proposal for $250 instead of $2,500." },
-      { label: 'TEACH', text: "She accepted in 14 minutes. I wrote the most awkward apology email of my life." },
-      { label: 'CLOSER', text: "Claude is great at words. Always double-check the numbers. She still paid the real price, but… that hour was rough." },
-    ],
-  },
-  {
     slug: 'first-client-walk-in',
     lessonNum: 22,
     lessonTag: '22 · Your First Client',
@@ -73,8 +60,8 @@ export const BONUS_SCRIPTS: BonusScript[] = [
     blocks: [
       { label: 'STAGE', text: '[Selfie/walk-and-talk style if possible — shoot it walking to a real café or salon near you, even if we never see the actual conversation.]' },
       { label: 'HOOK', text: "Okay, I'm gonna tell you exactly how I get local clients. It is so much less scary than it sounds." },
-      { label: 'TEACH', text: "I literally Google Maps a salon, a coffee shop, a med spa near me. I check if their website is bad — like 10 seconds, you can tell. I walk in, I'm like, hey, super random question, do you guys do your own website? And like 9 out of 10 times they go, oh my god, no, ours is awful, can you actually fix it. And I'm like, yes, $800, I'll have it back to you Monday." },
-      { label: 'CLOSER', text: "That is the whole pitch. They are not annoyed. They are RELIEVED someone is offering. Try one this week." },
+      { label: 'TEACH', text: "I literally Google Maps a salon, a coffee shop, a med spa near me. I check their website — like 10 seconds, you can tell when it's outdated. I walk in, and I'm like, hey, super random question, do you guys do your own website? Most of the time they go, oh my god no, ours is awful, can you actually fix it. And I tell them yes, here's what I'd do, here's what it costs." },
+      { label: 'CLOSER', text: "That's the whole pitch. Most owners are not annoyed. They are RELIEVED someone is offering. Try one this week." },
     ],
   },
   {
@@ -96,12 +83,12 @@ export const BONUS_SCRIPTS: BonusScript[] = [
     lessonNum: 29,
     lessonTag: '29 · Post While You Build',
     sectionLabel: 'Inside the "What actually happened to me" callout',
-    estLength: '40–60 sec',
-    why: 'You said the posting story is the single biggest reason you got hired. That deserves a face-to-camera moment, not a bullet list.',
+    estLength: '30–45 sec',
+    why: 'You said posting got you hired. Worth a face-to-camera moment, not just a bullet list.',
     blocks: [
-      { label: 'HOOK', text: "Real talk for a second. I want to be specific about what posting actually got me. Not vibes — like, the receipts." },
-      { label: 'TEACH', text: "In the first month: two companies DM'd me to build them agents. One of them paid me five thousand dollars to set up an outreach system. Group chat invite from other girls who code, one of whom I now work with on stuff weekly. A podcast invite. An email from a founder who's now a mentor. All from posts that took me ten minutes." },
-      { label: 'TEACH', text: "I was not big. I had like 800 followers. The point isn't reach — it's that posting publicly is a SIGNAL. It tells the right people you exist and what you're building. They find you, you don't have to find them." },
+      { label: 'HOOK', text: "Real talk for a second. I want to be specific about what posting actually got me." },
+      { label: 'TEACH', text: "Within the first month of posting: two companies slid into my DMs asking if I could build them agents. And an email from a founder who's now kind of a mentor to me — someone I would never have crossed paths with otherwise. (And I'm honestly still hoping a podcast invite shows up. Hasn't yet, but I'm putting that energy out there.)" },
+      { label: 'TEACH', text: "Every one of those came from a post that took me ten minutes. The point isn't reach. It's that posting publicly is a SIGNAL. It tells the right people you exist and what you're building. They find you, you don't have to find them." },
       { label: 'CLOSER', text: "If you do nothing else from this lesson — post. Today. Tag me. I'm @aylablumberg.ai, and I'll re-share it." },
     ],
   },
