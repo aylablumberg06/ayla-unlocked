@@ -567,46 +567,82 @@ const lessons: Lesson[] = [
     tag: '16 - Deploying', leftTitle: 'Homebrew. GitHub. Vercel. Your three best friends.', num: '16', vid: 'Lesson 16: Putting it live',
     html: `
     <h1 class="l-head">Homebrew. GitHub. Vercel.</h1>
-    <p class="l-sub">Three tools that get your website live on the actual internet. Here's what each one is and how to install them.</p>
+    <p class="l-sub">Three tools that get your website live on the actual internet. Here&rsquo;s what each one does, and exactly how to set them up in order.</p>
     <div class="l-body">
-      <p><em>Skip this lesson for now if you're still in learning mode. Come back when you're ready to launch something real.</em></p>
-      <div class="callout"><div class="callout-tag">Homebrew</div>A tool you install on your Mac that makes it possible to install other tools. Even developers can't fully explain what it does under the hood. You just need it installed before anything else works. It's the foundation. Install it first, don't question it.</div>
-      <div class="callout"><div class="callout-tag">GitHub</div>Cloud storage for code. Think of it like Google Drive but specifically for your project's code. It holds everything so Vercel can find it and put it live.</div>
-      <div class="callout"><div class="callout-tag">Vercel</div>The thing that actually puts your site live on the internet. It reads your code from GitHub and hosts it for free. This is what I use for aylablumberg.com and everything else I build. Once it's on Vercel, you can buy a real domain name on GoDaddy and point it there so it has a real address.</div>
-      <div class="divider"><span>The Vercel part, step by step</span></div>
+      <p><em>Skip this lesson for now if you&rsquo;re still in learning mode. Come back when you&rsquo;re actually ready to launch something real.</em></p>
 
-      <p>Vercel is the piece students get most confused on. Here&rsquo;s the full walkthrough so you don&rsquo;t have to guess.</p>
+      <h2 class="l-sub-head">First, what each one does (in plain English).</h2>
+
+      <div class="callout"><div class="callout-tag">Homebrew &mdash; the foundation</div>A tool you install on your Mac that lets you install <em>other</em> tools. Even developers can&rsquo;t cleanly explain what it does under the hood. <strong>You just need it before anything else works.</strong> Install it first. Don&rsquo;t question it. Free.</div>
+      <div class="callout"><div class="callout-tag">GitHub &mdash; cloud storage for code</div>Think of it like Google Drive, but specifically for the code Claude makes. It holds every file in your project so Vercel can find it and put it live. Free.</div>
+      <div class="callout"><div class="callout-tag">Vercel &mdash; what actually puts your site on the internet</div>It reads your code from GitHub and hosts it. Free for personal projects. This is what aylaunlocked.vercel.app and aylablumberg.com both run on. Once your site is on Vercel you can buy a real domain like yourname.com and point it at your project.</div>
+
+      <p><strong>The order matters:</strong> Homebrew first (so you can install the helper tools), then GitHub (so you have a place to put code), then Vercel (so the code goes live). Do them once, then you basically never touch them again.</p>
+
+      <div class="divider"><span>Step 1 &middot; Install Homebrew</span></div>
+
+      <p><strong>Open Terminal.</strong> Press <code>Cmd + Space</code> on your Mac, type <code>Terminal</code>, hit Enter. A black or white window opens. That&rsquo;s it.</p>
+      <p>Then <strong>copy and paste this line</strong> into Terminal and hit Enter:</p>
+      <div class="q">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</div>
+      <p>It&rsquo;ll think for a few minutes. At one point it&rsquo;ll ask for your Mac password &mdash; type it (you won&rsquo;t see the characters, that&rsquo;s totally normal, just type and hit Enter). When it&rsquo;s done you&rsquo;ll see <code>Installation successful!</code></p>
+      <p><strong>Now install the GitHub helper and the Vercel helper</strong> in one command:</p>
+      <div class="q">brew install node gh &amp;&amp; npm install -g vercel</div>
+      <p>That installs Node (a thing GitHub and Vercel both need), the GitHub command-line tool (<code>gh</code>), and the Vercel command-line tool. Wait for it to finish &mdash; another minute or two.</p>
+
+      <div class="callout"><div class="callout-tag">If you get an error</div><strong>Paste the error straight into Claude</strong> and say &ldquo;what do I do?&rdquo; Claude is very good at debugging its own install commands. Don&rsquo;t panic.</div>
+
+      <div class="divider"><span>Step 2 &middot; Make a GitHub account</span></div>
 
       <ol class="steps">
-        <li><div><strong>Go to vercel.com and click &ldquo;Sign Up.&rdquo;</strong> Use <strong>Continue with GitHub</strong>. If you don&rsquo;t have a GitHub account yet, make one first. Vercel and GitHub are linked: your code lives in GitHub, Vercel reads it and puts it live.</div></li>
-        <li><div><strong>Pick the Hobby (free) plan.</strong> Plenty for anything in this course.</div></li>
-        <li><div><strong>Let Claude Code push your project to GitHub for you.</strong> In Claude Code, type: <em>&ldquo;push this to a new private GitHub repo called [name].&rdquo;</em> Claude creates the repo, pushes the code, and hands you the URL.</div></li>
-        <li><div><strong>Back on Vercel, click &ldquo;Add New &rsaquo; Project.&rdquo;</strong> Pick the GitHub repo you just pushed. Hit <strong>Import</strong>.</div></li>
-        <li><div><strong>Click the pink Deploy button.</strong> Don&rsquo;t touch any of the settings. Wait about 60 seconds.</div></li>
-        <li><div><strong>Open the URL.</strong> It&rsquo;ll look like <code>yourproject.vercel.app</code>. That&rsquo;s your real site, live on the actual internet, that anyone in the world can visit right now.</div></li>
+        <li><div>Go to <strong>github.com</strong> in your browser. Click <strong>Sign up</strong>.</div></li>
+        <li><div>Use a real email address (not a school one &mdash; if you graduate, you lose access). Pick a username you don&rsquo;t hate, you&rsquo;ll see it on every project.</div></li>
+        <li><div>Confirm your email. Pick the <strong>Free</strong> plan when it asks.</div></li>
+        <li><div>Back in Terminal, sign in via the helper you just installed. Paste:</div></li>
+      </ol>
+      <div class="q">gh auth login</div>
+      <p>Pick <strong>GitHub.com</strong>, then <strong>HTTPS</strong>, then <strong>Login with a web browser</strong>. It&rsquo;ll show you an 8-character code, then open your browser. Paste the code, click Authorize. Come back to Terminal &mdash; you&rsquo;re signed in.</p>
+
+      <div class="callout"><div class="callout-tag">Why both?</div>The <strong>account</strong> on github.com is for humans (you). The <strong>CLI sign-in</strong> is for Claude Code, so it can push your code into your account on your behalf. You only do this once on each computer.</div>
+
+      <div class="divider"><span>Step 3 &middot; Make a Vercel account</span></div>
+
+      <ol class="steps">
+        <li><div>Go to <strong>vercel.com</strong>. Click <strong>Sign Up</strong>.</div></li>
+        <li><div>Pick <strong>Continue with GitHub</strong>. Authorize it. (This is why we made GitHub first.)</div></li>
+        <li><div>Pick the <strong>Hobby</strong> plan. It&rsquo;s free and it&rsquo;s plenty for anything in this course or your first 10 client sites.</div></li>
+        <li><div>Done. You now have a Vercel account that already knows about your GitHub.</div></li>
       </ol>
 
-      <p><strong>Every time you make a change</strong>, tell Claude Code: <em>&ldquo;push this to GitHub and redeploy.&rdquo;</em> Vercel watches your repo, notices the change, and auto-redeploys in a minute. You don&rsquo;t touch anything.</p>
+      <div class="divider"><span>Step 4 &middot; Actually put a site live</span></div>
 
-      <div class="callout"><div class="callout-tag">Want a real domain like yourname.com?</div>Buy one on <strong>GoDaddy</strong> or <strong>Namecheap</strong> (about $12/year). In Vercel: your project &rsaquo; Settings &rsaquo; Domains &rsaquo; Add. Vercel literally tells you exactly what DNS records to paste into GoDaddy. Wait a few minutes. Your domain points to your site.</div>
+      <p>Now the payoff. Open Claude Code and tell it to deploy something:</p>
+      <div class="bubble u">push this to a new private GitHub repo called [your-project-name], then deploy it to Vercel. walk me through anything I need to click.</div>
+      <p>Claude does the whole thing: creates the GitHub repo, pushes your code, links it to Vercel, deploys it. Within about 60 seconds it hands you a live URL like <code>your-project-name.vercel.app</code>.</p>
+      <p><strong>Every time you change something after that</strong>, tell Claude:</p>
+      <div class="bubble u">push the latest changes to GitHub and redeploy.</div>
+      <p>Vercel watches your repo, sees the new commit, and re-builds the live site in about a minute. You don&rsquo;t touch anything else, ever.</p>
 
-      <div class="divider"><span>Installing the helper tools (for later, more advanced stuff)</span></div>
-      <p>Open Terminal on your Mac (press Command + Space, type "Terminal", hit Enter). Then paste these one at a time and hit Enter after each:</p>
-      <p><strong>Step 1: Install Homebrew</strong></p>
-      <div class="code-wrap"><div class="code-block" data-code="cb1">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</div><button class="copy-btn" data-copy="cb1">Copy</button></div>
-      <p>Wait for it to finish (takes a few minutes, totally normal). Then:</p>
-      <p><strong>Step 2: Install GitHub and Vercel tools</strong></p>
-      <div class="code-wrap"><div class="code-block" data-code="cb2">brew install node gh &amp;&amp; npm install -g vercel</div><button class="copy-btn" data-copy="cb2">Copy</button></div>
-      <p>If anything throws an error, paste the error message directly into Claude and it will tell you exactly what to do next. Claude is very good at debugging its own instructions.</p>
-      <div class="ss">[ Diagram: Your computer to GitHub to Vercel to live website ]</div>
+      <div class="divider"><span>Optional &middot; Buy a real domain</span></div>
+
+      <div class="callout"><div class="callout-tag">When you&rsquo;re ready for yourname.com</div>Buy a domain on <strong>GoDaddy</strong> or <strong>Namecheap</strong> (about $12/year). Then in Vercel: <em>your project &rsaquo; Settings &rsaquo; Domains &rsaquo; Add Domain</em>. Vercel literally shows you the exact DNS records to paste into your domain registrar. Paste, save, wait a few minutes. Done. <strong>aylablumberg.com</strong> works exactly this way.</div>
+
           <div class="exercise" data-exercise-id="ex-12a-homebrew">
         <div class="exercise-tag">
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           Do this now · 15 min
         </div>
-        <div class="exercise-title">Install Homebrew.</div>
-        <div class="exercise-body">Open Terminal (Cmd+Space, type &ldquo;Terminal&rdquo;). Paste the Homebrew install command you copied from this lesson. Hit Enter. Wait. It&rsquo;ll ask for your Mac password, type it (you won&rsquo;t see characters, that&rsquo;s normal). When it finishes, run the <strong>brew install node gh &amp;&amp; npm install -g vercel</strong> command. <br><br>If anything errors, copy the error straight into Claude and say &ldquo;what do I do.&rdquo; It&rsquo;ll fix it.</div>
+        <div class="exercise-title">Install Homebrew + the helpers.</div>
+        <div class="exercise-body">Open Terminal (Cmd+Space, type &ldquo;Terminal&rdquo;). Paste the Homebrew install line from Step 1 above. Hit Enter. Wait. It&rsquo;ll ask for your Mac password &mdash; type it (you won&rsquo;t see the characters, that&rsquo;s normal). When it finishes, run the <strong>brew install node gh &amp;&amp; npm install -g vercel</strong> line. <br><br>If anything errors, copy the error straight into Claude and say &ldquo;what do I do.&rdquo; It&rsquo;ll fix it.</div>
         <button class="exercise-done" data-exercise-id="ex-12a-homebrew">I did it →</button>
+      </div>
+      <div class="exercise" data-exercise-id="ex-16-deploy">
+        <div class="exercise-tag">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          Then this · 10 min
+        </div>
+        <div class="exercise-title">Deploy your first site.</div>
+        <div class="exercise-body">Make a GitHub account at github.com. Sign into it from Terminal with <strong>gh auth login</strong>. Make a Vercel account at vercel.com using "Continue with GitHub." Then in Claude Code, paste the deploy prompt from Step 4 above. <br><br>You&rsquo;ll have a real, public website on the internet inside of 5 minutes. Send me the link.</div>
+        <button class="exercise-done" data-exercise-id="ex-16-deploy">I did it →</button>
       </div>
       <div class="stuck-callout">
         <div class="stuck-icon">
