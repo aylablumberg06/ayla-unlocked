@@ -24,8 +24,8 @@ const lessons: Lesson[] = [
       <p>That's exactly who this is for. Let's go.</p>
       <div class="callout"><div class="callout-tag">What you'll be able to do after this</div>Build websites, automate repetitive tasks, generate content, create business plans, and make things that run on their own while you sleep. All just by talking. No code required.</div>
       <figure class="lesson-photo">
-        <img src="/lesson-welcome-hero.jpg" alt="Ayla's Agent Empire dashboard with Zeke and Gabriella agents running live" />
-        <figcaption>One of the dashboards my agent team runs on. Stuff like this is what you'll be able to build.</figcaption>
+        <img src="/lesson-welcome-hero.jpg" alt="A real dashboard from one of my own client projects (a lash studio in Dallas), where my agents handle the brand brief and error routing in the background" />
+        <figcaption>This is from a totally separate project of mine &mdash; a dashboard I built for a Dallas lash studio, where my agents handle the brand brief and error routing while I&rsquo;m doing other things. Showing you because <strong>this kind of thing is what you&rsquo;ll be able to build by the end of the course</strong>. (The course itself doesn&rsquo;t use agents &mdash; it&rsquo;s just lessons.)</figcaption>
       </figure>
 
       <hr class="l-divider" />
@@ -105,7 +105,7 @@ const lessons: Lesson[] = [
         <a class="tool-pill" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer"><img src="/brands/openai.svg" alt="" />ChatGPT</a>
         <a class="tool-pill" href="https://gemini.google.com" target="_blank" rel="noopener noreferrer"><img src="/brands/googlegemini.svg" alt="" />Gemini</a>
       </div>
-      <p>Claude is an AI made by a company called <strong>Anthropic</strong>. Anthropic is based in San Francisco and was started by a group of people who used to work at OpenAI (the company that makes ChatGPT). They left to make something they thought was safer and more useful. That's the short version.</p>
+      <p>Claude is an AI made by a company called <a href="https://anthropic.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>Anthropic</strong></a>. Anthropic is based in San Francisco and was started by a group of people who used to work at OpenAI (the company that makes ChatGPT). They left to make something they thought was safer and more useful. That's the short version.</p>
       <p>Underneath, Claude is what's called an <strong>LLM</strong>, a Large Language Model. Which sounds scary but just means: it's a program that read basically the entire internet, and now it can predict what words should come next in any conversation. That's it. That's the whole magic.</p>
       <p>When you talk to Claude, you're not searching a database. You're talking to something that learned how to think in language by reading millions of books, articles, code files, conversations, and websites. That's why it can write, code, analyze, summarize, plan, debate, and explain things all in the same chat.</p>
       <div class="callout"><div class="callout-tag">Claude vs. ChatGPT vs. Gemini</div>Claude (Anthropic), ChatGPT (OpenAI), and Gemini (Google) are all LLMs. They do similar things. I use Claude because it's the best for actually building. It writes better code, follows instructions more carefully, and gets into fewer weird spirals. Other people swear by ChatGPT. Honestly, the exact model matters less than learning how to direct any of them well. This course teaches you with Claude because that's what I use every day.</div>
@@ -217,7 +217,7 @@ const lessons: Lesson[] = [
     <p class="l-sub">Three steps. That's all.</p>
     <div class="l-body">
       <ol class="steps">
-        <li><div><strong>Go to <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> in Chrome and download the desktop app.</strong> When it asks you to drag the Claude icon into another icon, do it. Open the app. Log in with Google. You're in.<div class="ss">[ Screenshot: Download flow ]</div></div></li>
+        <li><div><strong>Go to <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> in Chrome and download the desktop app.</strong> When it asks you to drag the Claude icon into another icon, do it. Open the app. Log in with Google. You're in.</div></li>
         <li><div><strong>Start on the free plan.</strong> Completely fine for learning. You'll know when you hit your limit because Claude tells you directly. When you're actually building real things for people, the paid plan ($20/month) is worth it. You get way more messages and better features.</div></li>
         <li><div><strong>Know that Cowork exists, for later.</strong> Cowork is a separate desktop tool where Claude can literally control your computer, click through apps, open files, and do things for you. I don't personally use Cowork yet, but it's a powerful option once you're comfortable with the basics.</div></li>
       </ol>
@@ -265,7 +265,6 @@ const lessons: Lesson[] = [
 
       <div class="callout"><div class="callout-tag">My personal rule</div>I default to Sonnet for everything. If Sonnet stalls or keeps making the same mistake twice in a row, I switch the same chat to <strong>Opus</strong> and ask it to think harder. If I&rsquo;m doing something boring and high-volume (like classifying 500 emails), I&rsquo;ll use <strong>Haiku</strong> through the API to save money. <em>You almost never need to think about this. Just leave it on Sonnet and live your life.</em></div>
 
-      <div class="ss">[ Screenshot: The 3 plan cards on <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a>/pricing ]</div>
     </div>`
   },
   {
@@ -311,7 +310,6 @@ const lessons: Lesson[] = [
       <p>There is a microphone button in Claude. Tap it and start talking. Way faster than typing. You can explain a whole business idea in two minutes out loud.</p>
       <p><strong>Even better on Mac:</strong> go to System Settings, then Keyboard, and set up a keyboard shortcut for dictation. I set mine so double-tapping Control starts the mic anywhere on my computer. No matter what I'm looking at, I just double-tap and start talking.</p>
       <p><strong>For voice memos:</strong> if you recorded something in the iPhone Voice Memos app, press the three dots on the recording and tap Transcribe. Copy the transcript and paste it directly into Claude. Or just upload the audio file and Claude will read it. Either works.</p>
-      <div class="ss">[ Screenshot: Mic button in Claude + system settings dictation shortcut ]</div>
 
       <div class="callout"><div class="callout-tag">This is actually the best part &mdash; you can bring it anywhere</div>I voice-dictate to Claude while I&rsquo;m doing my makeup. While I&rsquo;m doing my homework. While I&rsquo;m walking. While I&rsquo;m driving (hands-free, relax). While I&rsquo;m in line at a coffee shop thinking about something. The whole point is: <strong>you don&rsquo;t have to be at a desk to use this.</strong> If you can talk, you can build. Five minutes of rambling in your car is a 500-word spec. Claude turns it into something real by the time you&rsquo;re home.</div>
 
@@ -369,7 +367,6 @@ const lessons: Lesson[] = [
       <div class="callout"><div class="callout-tag">Rule 1: Stay in the same chat</div>If you're actively building something, don't start a new chat in the middle of it. Keep going in the same one. Claude remembers everything you've discussed throughout that conversation. Starting over means it forgets everything and you have to re-explain your whole project.</div>
       <div class="callout"><div class="callout-tag">Rule 2: Use Projects</div>Claude has a Projects feature that groups related chats together and lets you add notes Claude always has access to, like a permanent briefing. Set up a Project for anything ongoing. Name it clearly. Keep all related chats inside it. This is the closest thing Claude has to actually remembering you.</div>
       <div class="callout"><div class="callout-tag">Rule 3: Always check which chat you're in</div>This sounds obvious but I've made this mistake more than once. Before you start typing, make sure you're in the right chat for the right project. Starting in the wrong place means Claude has no context and you'll waste time re-explaining everything.</div>
-      <div class="ss">[ Screenshot: Claude Projects feature, how to create and name a project ]</div>
 
       <div class="divider"><span>The reference-doc habit</span></div>
       <p>This is the move that changed how much I retain and how fast I rebuild things. Every time Claude figures something out for me &mdash; how to set up Stripe, how to deploy to Vercel, how I configured a cron, whatever &mdash; I say one of these at the end:</p>
@@ -494,14 +491,14 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Claude has four different modes.</h1>
     <p class="l-sub">They do completely different things and it matters which one you use.</p>
     <div class="l-body">
-      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://claude.ai" target="_blank" rel="noopener noreferrer"><img src="/brands/claude.svg" alt="" />Claude</a><a class="tool-pill" href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer"><img src="/brands/vscode.svg" alt="" />VS Code</a></div>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://claude.ai" target="_blank" rel="noopener noreferrer"><img src="/brands/claude.svg" alt="" />Claude</a></div>
             <div class="callout">
         <div class="callout-tag">1. Claude Chat (<a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a>)</div>
         The one you're using right now. You talk, it responds. It can write things, make plans, build files, create HTML pages. But everything it makes only lives on your computer. Nobody else can access it from the internet. Think of this as your drafting table.<br><br><strong>Use this for:</strong> learning, brainstorming, prototyping, making things for yourself.
       </div>
       <div class="callout">
         <div class="callout-tag">2. Claude Code</div>
-        This is what you use when you want something actually live. A real website people can visit. A system that runs automatically. Claude Code installs inside VS Code (a free app) and handles all the technical stuff itself. You barely have to touch Terminal.<br><br><strong>Use this for:</strong> anything you want on the internet or running automatically.
+        This is what you use when you want something actually live. A real website people can visit. A system that runs automatically. Claude Code <strong>runs in Terminal</strong> (we walk through Terminal in lesson 17 &mdash; don&rsquo;t worry, it&rsquo;s easy). It can also be used from inside VS Code&rsquo;s built-in terminal panel if you prefer that.<br><br><strong>Use this for:</strong> anything you want on the internet or running automatically.
       </div>
       <div class="callout">
         <div class="callout-tag">3. Cowork</div>
@@ -519,8 +516,8 @@ const lessons: Lesson[] = [
       </div>
       <p style="margin-top:10px;">Rule of thumb: <strong>Chat</strong> while learning. <strong>Claude Code</strong> when you're launching real projects. <strong>Cowork</strong> for computer-wide automation. <strong>Chrome extension</strong> when the thing you want done lives in a browser tab.</p>
       <figure class="lesson-photo">
-        <img src="/lesson-four-modes.jpg" alt="The Claude desktop app showing Chat, Cowork, and Code tabs at the top with an HTML preview on the side" />
-        <figcaption>The Claude desktop app while I was building something. On the right is an HTML preview of what was actually getting made.</figcaption>
+        <img src="/lesson-four-modes.jpg" alt="A real Claude Chat conversation where I asked it to build a story-post about my agent team — the rendered preview is on the right" />
+        <figcaption>This is <strong>Claude Chat</strong> in practice. Left: I&rsquo;m talking to it. Right: it&rsquo;s rendering a preview of what it&rsquo;s building, live, while we go.</figcaption>
       </figure>
 
       <div class="divider"><span>My favorite workflow: talk it out in Chat, then hand off to Code</span></div>
@@ -821,7 +818,7 @@ const lessons: Lesson[] = [
     <p class="l-sub">The answer is Stripe. And Claude knows exactly how to wire it up.</p>
     <div class="l-body">
       <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><a class="tool-pill" href="https://stripe.com" target="_blank" rel="noopener noreferrer"><img src="/brands/stripe.svg" alt="" />Stripe</a><a class="tool-pill" href="https://shopify.com" target="_blank" rel="noopener noreferrer"><img src="/brands/shopify.svg" alt="" />Shopify</a><a class="tool-pill" href="https://substack.com" target="_blank" rel="noopener noreferrer"><img src="/brands/substack.svg" alt="" />Substack</a></div>
-            <p>If you're building anything you want to sell, a course, a template, a service, a physical product, a digital download, a subscription, you need a way to charge people. That's where <strong>Stripe</strong> comes in.</p>
+            <p>If you're building anything you want to sell, a course, a template, a service, a physical product, a digital download, a subscription, you need a way to charge people. That's where <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>Stripe</strong></a> comes in.</p>
       <p>Stripe is a company that handles payments online. Almost every site you've ever bought something from uses it under the hood. Shopify uses it. Substack uses it. This very course uses it. You sign up for an account, plug it into your site, and now you can take money from anyone in the world with a card.</p>
       <div class="callout"><div class="callout-tag">What Stripe does for you</div>Charges credit cards, debit cards, Apple Pay, Google Pay. Handles the security stuff so you're not storing anyone's card info. Deposits the money directly into your bank account (minus a small fee, around 2.9% + 30&cent; per transaction).</div>
       <p>Before Stripe existed, accepting online payments was a nightmare. You had to get a "merchant account," deal with banks, pay monthly fees, build all kinds of security into your site. Now you sign up, verify your identity, and you're live in an afternoon.</p>
@@ -865,9 +862,6 @@ const lessons: Lesson[] = [
           <text x="340" y="195" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#888" font-style="italic">you never touch a credit card. you never store card info. Stripe does all of it.</text>
         </svg>
       </figure>
-      <figure class="lesson-photo">
-        <div style="background: var(--pink-pale); border-radius: 12px; padding: 28px 20px; text-align: center; color: var(--pink); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; font-weight: 300;">[ Drop a Stripe dashboard Products screenshot at /public/lesson-stripe-products.jpg to replace this block ]</div>
-      </figure>
           <div class="exercise" data-exercise-id="ex-16a-stripe">
         <div class="exercise-tag">
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
@@ -900,14 +894,13 @@ const lessons: Lesson[] = [
       <div class="callout"><div class="callout-tag">Webhooks, the one tricky part</div>A webhook is how Stripe tells your site when a payment actually went through. Without it, your site doesn't know who paid. When you ask Claude to add checkout, also say: "also set up a webhook so I know when someone pays." Claude will give you a URL to paste into Stripe's webhook settings, and Stripe will send you a signing secret to paste back.</div>
       <div class="callout"><div class="callout-tag">Test mode vs. live mode</div>Always test in test mode first. Stripe gives you fake card numbers (like <strong>4242 4242 4242 4242</strong>) you can use to fake a successful payment. Once everything works in test mode, flip the switch to live mode, get new keys, get new price IDs, and paste those in. Then you're live.</div>
       <p>One more thing: Stripe handles taxes, receipts, refunds, and disputes through its dashboard. You barely have to think about any of it once it's set up. Customers pay. Money lands in your bank account 2-3 days later. That's the loop.</p>
-      <div class="ss">[ Screenshot: Stripe checkout page on mobile ]</div>
           <div class="exercise" data-exercise-id="ex-17a-checkout">
         <div class="exercise-tag">
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           Build it now · 20 min
         </div>
         <div class="exercise-title">Add Stripe checkout to something.</div>
-        <div class="exercise-body">In Claude Code, with a site open (doesn&rsquo;t matter what, even your HTML file from lesson 11), paste:<div class="q">Add a Stripe checkout button for my price_XXX. When clicked, go to Stripe&rsquo;s hosted page. Redirect to /thanks on success. Also set up the webhook.</div>When it asks for your keys, paste them. Walk through whatever it prompts. Test with card <strong>4242 4242 4242 4242</strong>. <br><br>You just built an actual payment flow.</div>
+        <div class="exercise-body">In Claude Code, with a site open (doesn&rsquo;t matter what, even your HTML file from lesson 15), paste:<div class="q">Add a Stripe checkout button for my price_XXX. When clicked, go to Stripe&rsquo;s hosted page. Redirect to /thanks on success. Also set up the webhook.</div>When it asks for your keys, paste them. Walk through whatever it prompts. Test with card <strong>4242 4242 4242 4242</strong>. <br><br>You just built an actual payment flow.</div>
         <button class="exercise-done" data-exercise-id="ex-17a-checkout">I did it →</button>
       </div>
       <div class="stuck-callout">
@@ -1000,7 +993,7 @@ const lessons: Lesson[] = [
         <li><strong>How disputes get handled</strong> (one round of good-faith discussion, then mediation)</li>
       </ul>
 
-      <div class="callout"><div class="callout-tag">The easy way</div>Tell Claude: &ldquo;Write me a freelance proposal for [project] and a matching contract. Use $[X] total, [timeline], and these deliverables: [list]. Warm tone, not legalese on the proposal, clear on the contract.&rdquo; Two docs in 60 seconds. Edit the parts that don&rsquo;t sound like you.</div>
+      <div class="callout"><div class="callout-tag">The easy way</div>Tell Claude:<div class="q">Write me a freelance proposal for [project] and a matching contract. Use $[X] total, [timeline], and these deliverables: [list]. Warm tone, not legalese on the proposal, clear on the contract.</div>Two docs in 60 seconds. Edit the parts that don&rsquo;t sound like you.</div>
 
       <p>One real tip: <strong>put the price in the proposal, not just the contract.</strong> A surprising number of deals die because the price was buried. Show it confidently on page 1. You&rsquo;re not embarrassed, they shouldn&rsquo;t be either.</p>
     </div>`
@@ -1138,15 +1131,15 @@ const lessons: Lesson[] = [
       <p class="agent-footnote"><em>Yes I named them after Legally Blonde, High School Musical, and How I Met Your Mother characters. Yes it&rsquo;s on brand. No I won&rsquo;t apologize.</em></p>
 
       <figure class="agent-team-photo">
-        <img src="/agent-team.jpg" alt="A screenshot of my first real agent team, running in Telegram" />
-        <figcaption>My actual agent team. This is them running in Telegram, reporting back while I was still in bed.</figcaption>
+        <img src="/agent-team.jpg" alt="My actual agent lineup with each agent's name, role, and a one-liner that's true to how they actually work" />
+        <figcaption>My actual agent lineup. Each one has a job, a personality, and a one-liner you&rsquo;d recognize from the kind of message they&rsquo;d send me.</figcaption>
       </figure>
 
       <div class="divider"><span>How agents actually talk to you</span></div>
 
       <p>The question I get the most once someone understands agents: <em>&ldquo;so once it&rsquo;s running, how do I know what it did?&rdquo;</em></p>
 
-      <p><strong>Telegram.</strong> You set up a Telegram bot, give the bot&rsquo;s token to your agents, and they start messaging you from inside Telegram like a real contact. You can message them back. I can literally text Elle &ldquo;how&rsquo;s the pipeline today?&rdquo; and she replies with a status in seconds.</p>
+      <p><a href="https://telegram.org" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>Telegram.</strong></a> You set up a Telegram bot, give the bot&rsquo;s token to your agents, and they start messaging you from inside Telegram like a real contact. You can message them back. I can literally text Elle &ldquo;how&rsquo;s the pipeline today?&rdquo; and she replies with a status in seconds.</p>
 
       <p>Telegram is the secret weapon because it&rsquo;s <strong>free, instant, and handles anything</strong>: text, images, files, voice notes. Plus no character limit, and you can reply from your phone at any hour. Email works too but clogs up your inbox and feels slower.</p>
 
@@ -1158,7 +1151,7 @@ const lessons: Lesson[] = [
         <li><strong>Find @BotFather inside Telegram.</strong> Search &ldquo;BotFather&rdquo; in Telegram. It&rsquo;s the official bot-creator bot (yes, a bot that makes bots, very Claude-coded of them).</li>
         <li><strong>Send <code>/newbot</code> to BotFather.</strong> It&rsquo;ll ask you what to name your bot and what username to give it. I named mine &ldquo;Elle&rdquo; with the handle <code>@ayla_elle_bot</code>.</li>
         <li><strong>Copy the token it gives you.</strong> Looks like <code>123456789:ABC-DEF1234ghIkl...</code>. Don&rsquo;t share this token anywhere public &mdash; it&rsquo;s the password to your bot. Save it in a password manager or a <code>.env</code> file.</li>
-        <li><strong>Get your chat ID.</strong> Tell Claude: &ldquo;I just made a Telegram bot, walk me through getting my chat ID so the bot knows where to message me.&rdquo; It&rsquo;ll give you a little curl command that returns your chat ID. Save that too.</li>
+        <li><strong>Get your chat ID.</strong> Tell Claude:<div class="q">I just made a Telegram bot, walk me through getting my chat ID so the bot knows where to message me.</div>It&rsquo;ll give you a little curl command that returns your chat ID. Save that too.</li>
         <li><strong>Give Claude the token and chat ID</strong> when you&rsquo;re building an agent, and tell it: &ldquo;every time something important happens, have the bot send me a message.&rdquo; Claude does the rest.</li>
       </ol>
 
@@ -1198,13 +1191,13 @@ const lessons: Lesson[] = [
 
       <div class="callout"><div class="callout-tag">The Claude mobile app</div>Download it from the App Store. Same account, same chats, same Projects. Everything syncs in real time. I&rsquo;ll start a thought on my phone in an Uber and pick it up on my laptop at home.</div>
 
-      <div class="callout"><div class="callout-tag">Important &mdash; the phone app is CHAT ONLY</div>Quick clarification because this trips people up: <strong>the Claude app on your phone is just chat.</strong> Regular conversations, voice, image uploads, photos &mdash; all that works. But the thing we call <em>Claude Code</em> (the terminal-based builder from lesson 14) <strong>does not exist on phone.</strong> Claude Code is desktop only. It has to be &mdash; it needs a terminal and a file system. So on your phone: chat for thinking, brainstorming, and quick builds. On your laptop: chat + Claude Code for actually shipping stuff. Both are &ldquo;Claude,&rdquo; same account, different tools.</div>
+      <div class="callout"><div class="callout-tag">Important &mdash; the phone app is CHAT ONLY</div>Quick clarification because this trips people up: <strong>the Claude app on your phone is just chat.</strong> Regular conversations, voice, image uploads, photos &mdash; all that works. But the thing we call <em>Claude Code</em> (the terminal-based builder from lessons 14 and 17) <strong>does not exist on phone.</strong> Claude Code is desktop only. It has to be &mdash; it needs a terminal and a file system. So on your phone: chat for thinking, brainstorming, and quick builds. On your laptop: chat + Claude Code for actually shipping stuff. Both are &ldquo;Claude,&rdquo; same account, different tools.</div>
 
       <div class="callout"><div class="callout-tag">Voice dictation is the superpower</div>I talk to Claude way more than I type to it. Tap the mic, explain the problem out loud like you&rsquo;re venting to a friend, hit send. I&rsquo;ve ranted at it about business strategy while walking to coffee. I&rsquo;ve explained a whole agent idea in a 3-minute voice note. <strong>Your phone mic is a better brain-dumper than your keyboard.</strong></div>
 
       <div class="callout"><div class="callout-tag">Photograph anything and ask about it</div>Receipt I don&rsquo;t understand? Take a picture, send to Claude, &ldquo;break this down.&rdquo; Weird error on my laptop? Phone picture of the screen, &ldquo;what do I do?&rdquo; A sign in a foreign language? Same. A plant I&rsquo;m not sure how to take care of? Same. The photo &rarr; Claude habit alone is worth the monthly fee.</div>
 
-      <div class="callout"><div class="callout-tag">Texting my agents from Telegram</div>My agents live in Telegram (we covered this in lesson 20). That means I can <strong>text them from anywhere.</strong> I&rsquo;ve sent Elle a status request from my bed, from the Uber, from the bathroom. She replies in 10 seconds. Nobody would know I&rsquo;m not at a desk running a business.</div>
+      <div class="callout"><div class="callout-tag">Texting my agents from Telegram</div>My agents live in Telegram (we covered this in lesson 24). That means I can <strong>text them from anywhere.</strong> I&rsquo;ve sent Elle a status request from my bed, from the Uber, from the bathroom. She replies in 10 seconds. Nobody would know I&rsquo;m not at a desk running a business.</div>
 
       <p>The phone is an underrated tool. <strong>If you can only use Claude on a laptop, you&rsquo;re missing half of what it can do for you.</strong></p>
     </div>`
@@ -1358,7 +1351,7 @@ const lessons: Lesson[] = [
         </div>
       </div>
 
-      <div class="callout"><div class="callout-tag">Pro tip &mdash; let Claude write your TikTok scripts</div>After Claude builds something for you, say: <em>&ldquo;Now write me a TikTok script explaining this in 45 seconds. Casual, no hashtags, first person.&rdquo;</em> It will. Then you just hit record. Same for captions, threads, LinkedIn posts &mdash; whatever platform you\u2019re on. The thing you just built is the content.</div>
+      <div class="callout"><div class="callout-tag">Pro tip &mdash; let Claude write your TikTok scripts</div>After Claude builds something for you, paste this:<div class="q">Now write me a TikTok script explaining this in 45 seconds. Casual, no hashtags, first person.</div>It will. Then you just hit record. Same for captions, threads, LinkedIn posts &mdash; whatever platform you&rsquo;re on. The thing you just built is the content.</div>
 
       <h2 class="l-sub-head">The one rule.</h2>
       <p>Don\u2019t wait until you&rsquo;re &ldquo;ready.&rdquo; You will never be ready. The people you\u2019re watching online weren\u2019t ready either. They just posted before they were.</p>
@@ -1514,7 +1507,7 @@ const glossary = [
   { word: 'Context', def: "What Claude knows about your conversation. It only remembers what's in the current chat, which is why staying in the right one matters." },
   { word: 'Apify', def: 'A platform that scrapes data from the internet: TikTok comments, Instagram followers, Google Maps listings. Connects to Claude with an API key.' },
   { word: 'LLM', def: 'Large Language Model. The AI brain underneath Claude. Using one vs. building with one are very different things.' },
-  { word: 'VS Code', def: 'A free code editor app. This is where Claude Code lives. You can download it at code.visualstudio.com.' },
+  { word: 'VS Code', def: 'A free code editor app. Claude Code itself runs in Terminal, but a lot of people use it from inside VS Code\u2019s built-in terminal panel because they like having a file tree and code preview alongside. Optional, not required. Download at <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="brand-link">code.visualstudio.com</a>.' },
 ]
 
 // ──────────────────────────────────────────────────────────
