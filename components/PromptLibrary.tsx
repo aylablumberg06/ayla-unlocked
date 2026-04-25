@@ -4,6 +4,12 @@ import Link from 'next/link'
 import BrandLogo from '@/components/BrandLogo'
 import { useMemo, useState } from 'react'
 import { PROMPTS, CATEGORIES, type PromptCategory } from '@/lib/prompts'
+import { censorHtml } from '@/lib/censor'
+
+// Tiny HTML escape so we can run censor on raw text safely
+function esc(s: string) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+}
 
 export default function PromptLibrary() {
   const [active, setActive] = useState<PromptCategory | 'all'>('all')
@@ -102,7 +108,7 @@ export default function PromptLibrary() {
           {filtered.map((p) => (
             <div key={p.id} className="bg-white rounded-2xl border border-[color:var(--border)] p-6 md:p-7">
               <div className="flex items-start justify-between gap-4 mb-3">
-                <h3 className="font-serif text-xl md:text-2xl text-dark leading-tight">{p.title}</h3>
+                <h3 className="font-serif text-xl md:text-2xl text-dark leading-tight" dangerouslySetInnerHTML={{ __html: censorHtml(esc(p.title)) }} />
                 <button
                   onClick={() => copy(p.body, p.id)}
                   className={`shrink-0 px-4 py-2 rounded-full text-[11px] tracking-[1.5px] uppercase transition ${
@@ -114,11 +120,14 @@ export default function PromptLibrary() {
                   {copied === p.id ? 'Copied!' : 'Copy'}
                 </button>
               </div>
-              <pre className="bg-[color:var(--pink-pale)] rounded-xl p-4 font-sans text-[13.5px] leading-relaxed text-dark whitespace-pre-wrap break-words border border-[color:var(--border)]">{p.body}</pre>
+              <pre
+                className="bg-[color:var(--pink-pale)] rounded-xl p-4 font-sans text-[13.5px] leading-relaxed text-dark whitespace-pre-wrap break-words border border-[color:var(--border)]"
+                dangerouslySetInnerHTML={{ __html: censorHtml(esc(p.body)) }}
+              />
               {p.tip && (
                 <div className="mt-3 pl-4 border-l-2 border-pink text-[13px] text-mid italic font-light">
                   <span className="text-[10px] not-italic tracking-[1.5px] uppercase text-pink font-semibold block mb-1">Why it works</span>
-                  {p.tip}
+                  <span dangerouslySetInnerHTML={{ __html: censorHtml(esc(p.tip)) }} />
                 </div>
               )}
             </div>

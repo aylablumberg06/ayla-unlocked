@@ -2350,7 +2350,16 @@ export default function CourseDashboard() {
         }
         .lesson-wrap span.au-gloss:hover::after,
         .lesson-wrap span.au-gloss:hover::before { opacity: 1; }
-        .au-censor, .lesson-wrap s.au-censor, .bubble s.au-censor { text-decoration: line-through; text-decoration-color: currentColor; text-decoration-thickness: 1.5px; text-decoration-skip-ink: none; opacity: 0.85; }
+        /* Auto-censor strikethrough — works on lesson body, chat bubbles (.u and .c), and any inline mention */
+        s.au-censor, .lesson-wrap s.au-censor, .bubble s.au-censor, .au-censor {
+          text-decoration: line-through !important;
+          text-decoration-color: currentColor !important;
+          text-decoration-thickness: 2.5px !important;
+          text-decoration-skip-ink: none !important;
+          opacity: 0.78;
+        }
+        /* Slightly thicker on the colored bubbles where small strokes get lost on the saturated bg */
+        .bubble.u s.au-censor, .bubble.u.mad s.au-censor { text-decoration-thickness: 3px !important; opacity: 0.9; }
         .exercise {
           margin: 28px 0;
           background: linear-gradient(135deg, #FFF5F8 0%, #FFE4ED 100%);

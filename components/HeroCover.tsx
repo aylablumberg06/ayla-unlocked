@@ -281,6 +281,7 @@ function HeroVideo({
           </>
         )}
       </button>
+      )}
 
       {/* Play/Pause pill (top-right) */}
       <button

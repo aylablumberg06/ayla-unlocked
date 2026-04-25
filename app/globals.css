@@ -151,13 +151,20 @@ html {
   transform: scaleX(1);
 }
 
-/* Profanity auto-censor (global) */
+/* Profanity auto-censor (global) — used on prompts page, real-chats, lessons, anywhere */
+s.au-censor,
 .au-censor {
-  text-decoration: line-through;
-  text-decoration-color: currentColor;
-  text-decoration-thickness: 1.5px;
-  text-decoration-skip-ink: none;
-  opacity: 0.85;
+  text-decoration: line-through !important;
+  text-decoration-color: currentColor !important;
+  text-decoration-thickness: 2.5px !important;
+  text-decoration-skip-ink: none !important;
+  opacity: 0.78;
+}
+/* Pink chat bubbles need a thicker line so the strike doesn't get lost on the saturated bg */
+.bubble.u s.au-censor,
+.bubble.u.mad s.au-censor {
+  text-decoration-thickness: 3px !important;
+  opacity: 0.9;
 }
 
 /* Top-of-page scroll progress bar */
