@@ -1177,9 +1177,11 @@ const lessons: Lesson[] = [
       <p>Whichever you pick, <strong>the setup process is the same</strong>: you tell Claude &ldquo;deploy this agent to [the service]&rdquo; and it walks you through adding the keys, pushing the code, and scheduling it.</p>
 
       <div class="callout"><div class="callout-tag">Real talk: agents are the hardest part of this course</div>
-      <strong>I&rsquo;m going to be honest with you.</strong> Building real, always-on agents is the most finicky, frustrating, trial-and-error-heavy thing you will do with Claude. Expect to spend a full weekend on your first one. Expect the message &ldquo;invalid API key&rdquo; to haunt you. Expect to screenshot 40 error messages back to Claude. Expect to add an API, hit a rate limit, fix it, add another, realize you forgot a dependency, and start over.
+      <strong>I&rsquo;m going to be honest with you.</strong> This is the hardest thing in the course, and it&rsquo;s the one part I genuinely can&rsquo;t fully walk you through step-by-step. <strong>Building agents is mostly trial and error with Claude.</strong> The more time you spend with Claude, the more you get a feel for HOW to explain what you want building, and at some point you just&hellip; figure it out. There&rsquo;s no perfect script for it.
       <br><br>
-      <strong>But the process is still the same thing you&rsquo;ve been doing this whole course.</strong> You describe the annoying problem. You let Claude interview you. You build one piece at a time. You screenshot errors back. You keep going. Eventually it works, and then you have a tiny employee working for you forever.
+      What I CAN tell you is what to expect. Expect to spend a full weekend on your first agent. Expect &ldquo;invalid API key&rdquo; to haunt you. Expect to screenshot 40 error messages back into Claude. Expect to add an API, hit a rate limit, fix it, add another, realize you forgot a dependency, and start over. None of that means you&rsquo;re bad at this. That IS the process.
+      <br><br>
+      <strong>The good news:</strong> the process is still the same thing you&rsquo;ve been doing this whole course. You describe the annoying problem. You let Claude interview you. You build one piece at a time. You screenshot errors back. You keep going. Eventually it works, and you have a tiny employee working for you forever.
       <br><br>
       The difference between agents and websites is just <em>more pieces, more things that can break, more patience.</em> <strong>Not more skill. You already have the skill.</strong>
       </div>
@@ -1358,6 +1360,8 @@ const lessons: Lesson[] = [
       </div>
 
       <div class="callout"><div class="callout-tag">Pro tip &mdash; let Claude write your TikTok scripts</div>After Claude builds something for you, paste this:<div class="q">Now write me a TikTok script explaining this in 45 seconds. Casual, no hashtags, first person.</div>It will. Then you just hit record. Same for captions, threads, LinkedIn posts &mdash; whatever platform you&rsquo;re on. The thing you just built is the content.</div>
+
+      <div class="callout"><div class="callout-tag">How I actually edit them</div>I edit everything in <strong>CapCut</strong> &mdash; all my videos, overlays, cuts, and captions live there. Free app, way more than enough. You don&rsquo;t need premium. Throw the screen recording in, slap on auto-captions, drop in some text overlays for the punchline moments, cut the dead air. Done.</div>
 
       <h2 class="l-sub-head">The one rule.</h2>
       <p>Don\u2019t wait until you&rsquo;re &ldquo;ready.&rdquo; You will never be ready. The people you\u2019re watching online weren\u2019t ready either. They just posted before they were.</p>
