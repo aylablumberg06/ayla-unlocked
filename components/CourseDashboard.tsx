@@ -426,7 +426,7 @@ const lessons: Lesson[] = [
       <button class="quiz-btn" data-quiz="1"><span>&#10022;</span> Find my idea</button>
 
       <div class="divider"><span>The thing nobody says about ideas</span></div>
-      <p>Here&rsquo;s the part everyone gets wrong. You are <em>not</em> trying to pick THE idea. You&rsquo;re not trying to find the one perfect thing that&rsquo;ll change your life. That pressure is what kept me stuck for years.</p>
+      <p>Here&rsquo;s the part everyone gets wrong. You are <em>not</em> trying to pick THE idea. You&rsquo;re not trying to find the one perfect thing that&rsquo;ll change your life.</p>
       <p>You&rsquo;re just trying to get your brain into <strong>idea-mode.</strong> Once you&rsquo;re in it, one thing unlocks the next. You make the ugly first thing. It sparks a better version. That one sparks something completely different. The third idea is usually where the real thing lives.</p>
 
       <figure class="idea-spiral-figure">
@@ -2792,7 +2792,7 @@ export default function CourseDashboard() {
           {glossary.map((g, i) => (
             <div key={i} className="g-term">
               <div className="g-word">{g.word}</div>
-              <div className="g-def">{g.def}</div>
+              <div className="g-def" dangerouslySetInnerHTML={{ __html: g.def }} />
             </div>
           ))}
         </div>
