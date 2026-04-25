@@ -3,6 +3,7 @@ import BrandLogo from '@/components/BrandLogo'
 import { createSupabaseAdminClient } from '@/lib/supabase'
 import { VIDEO_SCRIPTS } from '@/lib/video-scripts'
 import AdminScripts from '@/components/AdminScripts'
+import { SELF_IDEA_POOL, CLIENT_IDEA_POOL } from '@/lib/idea-pools'
 
 export const metadata = {
   title: 'Ayla Unlocked, Admin',
@@ -77,6 +78,8 @@ export default async function AdminDashboard() {
             <a href="#contacts" className="text-mid hover:text-pink">Contacts</a>
             <a href="#visits" className="text-mid hover:text-pink">Visits</a>
             <a href="#submissions" className="text-mid hover:text-pink">Builds</a>
+            <a href="#quiz" className="text-mid hover:text-pink">Quiz log</a>
+            <a href="#ideas" className="text-mid hover:text-pink">All ideas</a>
             <a href="#scripts" className="text-mid hover:text-pink">Scripts</a>
           </div>
         </div>
@@ -268,6 +271,101 @@ export default async function AdminDashboard() {
               ))}
             </div>
           )}
+        </section>
+
+        {/* QUIZ LOG — what users entered + what got served back */}
+        <section id="quiz">
+          <h2 className="font-serif italic text-4xl mb-2">Quiz attempts.</h2>
+          <p className="text-mid mb-6 text-[15px]">
+            Every time someone runs the &ldquo;find my idea&rdquo; quiz (self-mode in lesson 12) or the &ldquo;find a money idea&rdquo; quiz (client-mode in lesson 17), their answers and top 3 results land here. Latest first.
+          </p>
+          {(() => {
+            // Pull all quiz entries from user_progress.notes._quiz_log
+            type Entry = { ts: string; mode: 'self' | 'client'; inputs: any; top: { title: string; score: number }[]; email: string }
+            const entries: Entry[] = []
+            for (const p of progress as any[]) {
+              const log = p?.notes?._quiz_log
+              if (typeof log !== 'string') continue
+              try {
+                const parsed = JSON.parse(log) as any[]
+                for (const e of parsed) {
+                  entries.push({ ...e, email: p.email })
+                }
+              } catch { /* skip bad rows */ }
+            }
+            entries.sort((a, b) => (a.ts < b.ts ? 1 : -1))
+            if (entries.length === 0) {
+              return <EmptyBox text="No quiz attempts yet. Once a student runs the idea-generator quiz, every input + result will show up here." />
+            }
+            return (
+              <div className="space-y-3">
+                {entries.slice(0, 60).map((e, i) => (
+                  <div key={i} className="bg-white rounded-2xl border border-[color:var(--border)] p-5 md:p-6">
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <Pill>{e.mode === 'client' ? 'Money mode' : 'For me'}</Pill>
+                      <span className="font-mono text-[12px] text-mid">{e.email}</span>
+                      <span className="text-[11px] text-muted-light tracking-[1px]">· {timeAgo(e.ts)}</span>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">What they answered</div>
+                        <ul className="text-[13.5px] text-dark font-light space-y-1">
+                          {Array.isArray(e.inputs?.interests) && e.inputs.interests.length > 0 && (
+                            <li><span className="text-mid">Interests / who they know:</span> {e.inputs.interests.join(', ')}</li>
+                          )}
+                          {e.inputs?.pain && <li><span className="text-mid">Pain / pricing:</span> {e.inputs.pain}</li>}
+                          {e.inputs?.goal && <li><span className="text-mid">Goal / fun:</span> {e.inputs.goal}</li>}
+                          {e.inputs?.intensity && <li><span className="text-mid">Intensity / hours:</span> {e.inputs.intensity}</li>}
+                        </ul>
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-2">Top 3 ideas served</div>
+                        <ol className="text-[13.5px] text-dark font-light space-y-1 list-decimal list-inside">
+                          {e.top.map((t, j) => (
+                            <li key={j}><strong>{t.title}</strong> <span className="text-muted-light text-[11px]">(score {t.score})</span></li>
+                          ))}
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )
+          })()}
+        </section>
+
+        {/* IDEA POOLS — every possible result */}
+        <section id="ideas">
+          <h2 className="font-serif italic text-4xl mb-2">All possible quiz ideas.</h2>
+          <p className="text-mid mb-6 text-[15px]">
+            Every idea in both quizzes. Use this to remember what students could be told to build, edit copy, or add new ones in <code className="mx-1 text-pink bg-[color:var(--pink-pale)] px-1.5 py-0.5 rounded">lib/idea-pools.ts</code>.
+          </p>
+          <div className="grid md:grid-cols-2 gap-5">
+            <div className="bg-white rounded-2xl border border-[color:var(--border)] p-5 md:p-6">
+              <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Lesson 12 &middot; For yourself ({SELF_IDEA_POOL.length})</div>
+              <ol className="space-y-3 text-[13.5px]">
+                {SELF_IDEA_POOL.map((idea, i) => (
+                  <li key={i} className="border-l-2 border-pink pl-3">
+                    <div className="font-semibold text-dark mb-1">{idea.title}</div>
+                    <div className="flex gap-2 mb-1.5"><Pill>{idea.difficulty}</Pill><Pill>{idea.time}</Pill></div>
+                    <div className="text-mid font-light leading-relaxed">{idea.description}</div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="bg-white rounded-2xl border border-[color:var(--border)] p-5 md:p-6">
+              <div className="text-[10px] font-semibold tracking-[2px] uppercase text-pink mb-3">Lesson 17 &middot; For other people ({CLIENT_IDEA_POOL.length})</div>
+              <ol className="space-y-3 text-[13.5px]">
+                {CLIENT_IDEA_POOL.map((idea, i) => (
+                  <li key={i} className="border-l-2 border-pink pl-3">
+                    <div className="font-semibold text-dark mb-1">{idea.title}</div>
+                    <div className="flex gap-2 mb-1.5"><Pill>{idea.difficulty}</Pill><Pill>{idea.time}</Pill></div>
+                    <div className="text-mid font-light leading-relaxed">{idea.description}</div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
         </section>
 
         {/* VIDEO SCRIPTS */}

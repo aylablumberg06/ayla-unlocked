@@ -98,6 +98,13 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Okay. So what even is Claude?</h1>
     <p class="l-sub">Let's actually understand what you're about to use.</p>
     <div class="l-body">
+      <div class="tools-strip">
+        <span class="tools-strip-label">In this lesson</span>
+        <span class="tool-pill"><img src="/brands/claude.svg" alt="" />Claude</span>
+        <span class="tool-pill"><img src="/brands/anthropic.svg" alt="" />Anthropic</span>
+        <span class="tool-pill"><img src="/brands/openai.svg" alt="" />ChatGPT</span>
+        <span class="tool-pill"><img src="/brands/googlegemini.svg" alt="" />Gemini</span>
+      </div>
       <p>Claude is an AI made by a company called <strong>Anthropic</strong>. Anthropic is based in San Francisco and was started by a group of people who used to work at OpenAI (the company that makes ChatGPT). They left to make something they thought was safer and more useful. That's the short version.</p>
       <p>Underneath, Claude is what's called an <strong>LLM</strong>, a Large Language Model. Which sounds scary but just means: it's a program that read basically the entire internet, and now it can predict what words should come next in any conversation. That's it. That's the whole magic.</p>
       <p>When you talk to Claude, you're not searching a database. You're talking to something that learned how to think in language by reading millions of books, articles, code files, conversations, and websites. That's why it can write, code, analyze, summarize, plan, debate, and explain things all in the same chat.</p>
@@ -487,7 +494,8 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Claude has four different modes.</h1>
     <p class="l-sub">They do completely different things and it matters which one you use.</p>
     <div class="l-body">
-      <div class="callout">
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/claude.svg" alt="" />Claude</span><span class="tool-pill"><img src="/brands/vscode.svg" alt="" />VS Code</span></div>
+            <div class="callout">
         <div class="callout-tag">1. Claude Chat (claude.ai)</div>
         The one you're using right now. You talk, it responds. It can write things, make plans, build files, create HTML pages. But everything it makes only lives on your computer. Nobody else can access it from the internet. Think of this as your drafting table.<br><br><strong>Use this for:</strong> learning, brainstorming, prototyping, making things for yourself.
       </div>
@@ -569,7 +577,8 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Homebrew. GitHub. Vercel.</h1>
     <p class="l-sub">Three tools that get your website live on the actual internet. Here&rsquo;s what each one does, and exactly how to set them up in order.</p>
     <div class="l-body">
-      <p><em>Skip this lesson for now if you&rsquo;re still in learning mode. Come back when you&rsquo;re actually ready to launch something real.</em></p>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/homebrew.svg" alt="" />Homebrew</span><span class="tool-pill"><img src="/brands/github.svg" alt="" />GitHub</span><span class="tool-pill"><img src="/brands/vercel.svg" alt="" />Vercel</span><span class="tool-pill"><img src="/brands/godaddy.svg" alt="" />GoDaddy</span><span class="tool-pill"><img src="/brands/namecheap.svg" alt="" />Namecheap</span></div>
+            <p><em>Skip this lesson for now if you&rsquo;re still in learning mode. Come back when you&rsquo;re actually ready to launch something real.</em></p>
 
       <h2 class="l-sub-head">First, what each one does (in plain English).</h2>
 
@@ -692,6 +701,18 @@ const lessons: Lesson[] = [
           <p>If anything on this page or your screen doesn&rsquo;t make sense, <strong>take a screenshot, paste it into Claude, and type &ldquo;help, explain this and tell me exactly what to do.&rdquo;</strong> Works every time. You don&rsquo;t have to understand the words on your screen, Claude does.</p>
         </div>
       </div>
+
+      <div class="divider"><span>Quick pivot &mdash; what would you build for someone else?</span></div>
+
+      <p>You&rsquo;re about to learn API keys, real APIs, agents, all the stuff that makes this go from &ldquo;cool I built myself a website&rdquo; to &ldquo;cool I&rsquo;m getting paid to build agent teams for companies.&rdquo;</p>
+
+      <p>So before we dive in, take a second to actually picture what you&rsquo;d build for <em>other</em> people. Because the rest of the course (Stripe, agents, your first client, all of it) only makes sense if you have a fuzzy version of that in your head.</p>
+
+      <p>Same kind of quiz as the one in lesson 12, but flipped. Earlier you answered &ldquo;what should I build for me.&rdquo; This one is <strong>&ldquo;what could I build for actual money, for actual people I know.&rdquo;</strong> It takes 90 seconds. The answers it gives you are the kind of thing you could put on Stripe and sell next month.</p>
+
+      <button class="quiz-btn" data-quiz="2"><span>$</span> Find a money idea</button>
+
+      <p>Don&rsquo;t skip this. Even if you have no idea who&rsquo;d pay you yet. The point of this one is to seed the question in your head so when you do the API/agent lessons next, you&rsquo;re thinking <em>&ldquo;ok, how would this pay me?&rdquo;</em> not just <em>&ldquo;cool fact.&rdquo;</em></p>
 </div>`
   },
   {
@@ -700,7 +721,8 @@ const lessons: Lesson[] = [
     <h1 class="l-head">API keys: how Claude connects to other apps.</h1>
     <p class="l-sub">The moment you want Claude to touch Gmail, Instagram, Canva, or anything else, you need one of these.</p>
     <div class="l-body">
-      <p><strong>Technically:</strong> an API key is a long string of random letters and numbers that acts as a private password between two apps. It tells the other app "yes, this person's Claude is allowed to come in and do things here."</p>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/anthropic.svg" alt="" />Anthropic Console</span><span class="tool-pill"><img src="/brands/supabase.svg" alt="" />Supabase</span><span class="tool-pill"><img src="/brands/gmail.svg" alt="" />Gmail</span></div>
+            <p><strong>Technically:</strong> an API key is a long string of random letters and numbers that acts as a private password between two apps. It tells the other app "yes, this person's Claude is allowed to come in and do things here."</p>
       <p><strong>The real-life analogy:</strong> think of it like a hotel key card. The hotel (Gmail, Canva, whatever) gives you a card that only works for your room. You hand that card to Claude, and now Claude can get into your room and do things on your behalf. The hotel doesn't let just anyone in without the card.</p>
       <figure class="diagram-figure">
         <svg class="diagram-svg" viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An API key flow: Claude uses your key to talk to another app">
@@ -759,7 +781,8 @@ const lessons: Lesson[] = [
     <h1 class="l-head">The APIs you'll actually care about.</h1>
     <p class="l-sub">Plus the newer options that are making APIs less painful.</p>
     <div class="l-body">
-      <p>Before we list the specific apps, you should know there are now <strong>three different ways</strong> Claude can talk to other tools. Use whichever is easiest for what you need.</p>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/gmail.svg" alt="" />Gmail</span><span class="tool-pill"><img src="/brands/apify.svg" alt="" />Apify</span><span class="tool-pill"><img src="/brands/canva.svg" alt="" />Canva</span><span class="tool-pill"><img src="/brands/anthropic.svg" alt="" />Anthropic</span></div>
+            <p>Before we list the specific apps, you should know there are now <strong>three different ways</strong> Claude can talk to other tools. Use whichever is easiest for what you need.</p>
 
       <div class="callout"><div class="callout-tag">1. APIs (the classic way)</div>Every app has an API, a private door for other programs to come in and do things. You grab an API key, hand it to Claude, and Claude uses it to send emails from your Gmail, scrape data from Apify, charge a card on Stripe, whatever. Most of this course uses APIs. <strong>Works for almost everything, but you have to copy-paste keys and sometimes debug errors.</strong></div>
 
@@ -797,7 +820,8 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Okay. So how do people actually buy things from you?</h1>
     <p class="l-sub">The answer is Stripe. And Claude knows exactly how to wire it up.</p>
     <div class="l-body">
-      <p>If you're building anything you want to sell, a course, a template, a service, a physical product, a digital download, a subscription, you need a way to charge people. That's where <strong>Stripe</strong> comes in.</p>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/stripe.svg" alt="" />Stripe</span><span class="tool-pill"><img src="/brands/shopify.svg" alt="" />Shopify</span><span class="tool-pill"><img src="/brands/substack.svg" alt="" />Substack</span></div>
+            <p>If you're building anything you want to sell, a course, a template, a service, a physical product, a digital download, a subscription, you need a way to charge people. That's where <strong>Stripe</strong> comes in.</p>
       <p>Stripe is a company that handles payments online. Almost every site you've ever bought something from uses it under the hood. Shopify uses it. Substack uses it. This very course uses it. You sign up for an account, plug it into your site, and now you can take money from anyone in the world with a card.</p>
       <div class="callout"><div class="callout-tag">What Stripe does for you</div>Charges credit cards, debit cards, Apple Pay, Google Pay. Handles the security stuff so you're not storing anyone's card info. Deposits the money directly into your bank account (minus a small fee, around 2.9% + 30&cent; per transaction).</div>
       <p>Before Stripe existed, accepting online payments was a nightmare. You had to get a "merchant account," deal with banks, pay monthly fees, build all kinds of security into your site. Now you sign up, verify your identity, and you're live in an afternoon.</p>
@@ -861,6 +885,7 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Let's actually wire up Stripe.</h1>
     <p class="l-sub">This is the exact same flow I used to set up payments for this course.</p>
     <div class="l-body">
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/stripe.svg" alt="" />Stripe</span></div>
       <ol class="steps">
         <li><div><strong>Go to stripe.com and create an account.</strong> Sign up with your email. You'll need to verify your phone, then eventually enter your business info and bank account to actually get paid. You can skip the bank part while you're just testing.</div></li>
         <li><div><strong>Turn on "Test mode" in the dashboard.</strong> Top right of the Stripe dashboard, there's a toggle. Turn it on. Test mode lets you set everything up and fake payments without charging real cards. You'll switch to "Live mode" right before launch.</div></li>
@@ -986,7 +1011,8 @@ const lessons: Lesson[] = [
     <h1 class="l-head">Agents: Claude doing things on its own.</h1>
     <p class="l-sub">Everything in this course was the foundation. Here's where it gets actually wild.</p>
     <div class="l-body">
-      <p>Everything you've learned in this course is about how you use Claude. Agents are about Claude using itself, automatically, without you having to tell it anything each time.</p>
+      <div class="tools-strip"><span class="tools-strip-label">In this lesson</span><span class="tool-pill"><img src="/brands/claude.svg" alt="" />Claude</span><span class="tool-pill"><img src="/brands/telegram.svg" alt="" />Telegram</span><span class="tool-pill"><img src="/brands/anthropic.svg" alt="" />Anthropic API</span></div>
+            <p>Everything you've learned in this course is about how you use Claude. Agents are about Claude using itself, automatically, without you having to tell it anything each time.</p>
       <p>An agent is basically a version of Claude that:</p>
       <ul>
         <li>Has a specific job (find leads, write emails, track data, post content, follow up with clients)</li>
@@ -1424,6 +1450,66 @@ const ideaPool: Idea[] = [
 ]
 
 // ──────────────────────────────────────────────────────────
+// CLIENT-MODE QUIZ — "what to build for OTHER people"
+// (Opens via the second "Find a money idea" button later in the course.)
+// ──────────────────────────────────────────────────────────
+const clientQuizSteps: QuizStep[] = [
+  {
+    q: 'Who do you actually know in real life?', hint: 'Pick all that apply', multi: true, opts: [
+      { l: 'Local businesses (salons, gyms, restaurants)', v: 'local' },
+      { l: 'Real estate agents', v: 'realestate' },
+      { l: 'Creators or influencers', v: 'creators' },
+      { l: 'Coaches or consultants', v: 'coaches' },
+      { l: 'Lawyers, doctors, dentists', v: 'pro' },
+      { l: 'Friends with side hustles', v: 'friends' },
+      { l: 'Designers or artists', v: 'designers' },
+      { l: 'People who hate their current website', v: 'hatesite' },
+    ],
+  },
+  {
+    q: 'What do you actually want to charge?', hint: 'Pick the closest one', multi: false, opts: [
+      { l: '$200–500 per project (testing the waters)', v: 'low' },
+      { l: '$500–2,000 (real services)', v: 'mid' },
+      { l: '$2,000–10,000 (agency-style packages)', v: 'high' },
+      { l: '$300–2,000/month (monthly retainer)', v: 'retainer' },
+      { l: 'I want recurring / passive money', v: 'passive' },
+    ],
+  },
+  {
+    q: 'How many hours a week can you actually put in?', hint: 'Be honest', multi: false, opts: [
+      { l: '~5 hours, side hustle vibes', v: 'side' },
+      { l: '10–20 hours, real second income', v: 'second' },
+      { l: 'Full time, this is becoming my job', v: 'full' },
+    ],
+  },
+  {
+    q: 'What sounds most fun to make for someone?', hint: 'Pick one', multi: false, opts: [
+      { l: 'Pretty websites people drool over', v: 'sites' },
+      { l: 'Automations that handle the boring stuff', v: 'autos' },
+      { l: 'Content / captions / posts in their voice', v: 'content' },
+      { l: 'Dashboards and trackers', v: 'dashboards' },
+      { l: 'Sales pages, checkout, payments', v: 'sales' },
+    ],
+  },
+]
+
+const clientIdeaPool: Idea[] = [
+  { t: 'Local business websites ($500–$2k each)', d: "Walk into a restaurant, salon, or gym near you, ask if they'd want a new website, charge $500–$2,000. Build it in a weekend with Claude. Most local businesses still have ugly sites or none. The easiest first money you can make. I started here.", diff: 'Easiest', time: '1 weekend per site', sc: (i, p, g) => (i.includes('local') || i.includes('hatesite') ? 4 : 0) + (g === 'sites' ? 4 : 0) + (p === 'low' || p === 'mid' ? 2 : 0) },
+  { t: "Real estate agent's listing site", d: "Real estate agents need pretty, fast, mobile-friendly listing sites and almost none of them have one. Build a template, swap photos and addresses per agent, charge $1,500 per site or a $300/month retainer.", diff: 'Beginner', time: '1–2 days', sc: (i, p, g) => (i.includes('realestate') ? 6 : 0) + (g === 'sites' ? 2 : 0) + (p === 'mid' || p === 'retainer' ? 2 : 0) },
+  { t: 'Cold outreach system for a sales team', d: 'Build the outreach pipeline I use, but for someone else. Finds leads, personalizes emails, sends on schedule. Companies pay $1,500–$5,000 to set this up because it replaces a $60k/yr SDR.', diff: 'Intermediate', time: '3–5 days', sc: (i, p, g) => (i.includes('coaches') || i.includes('pro') ? 2 : 0) + (g === 'autos' ? 5 : 0) + (p === 'high' || p === 'mid' ? 3 : 0) },
+  { t: "A creator's content-automation pack", d: 'Caption generator, comment-reply agent, hashtag tool, all in their voice. Sell it as a $500–$1,500 setup or a monthly subscription. Creators will pay because their time is the bottleneck.', diff: 'Intermediate', time: '2–4 days', sc: (i, p, g) => (i.includes('creators') ? 5 : 0) + (g === 'content' ? 4 : 0) + (p === 'retainer' || p === 'passive' ? 3 : 0) },
+  { t: 'Booking + menu site for a restaurant', d: 'Online menu, OpenTable-style booking, simple "order ahead" flow with Stripe. $1,000–$3,000 each. Local food spots are dying for this and most owners are not doing it themselves.', diff: 'Intermediate', time: '3–5 days', sc: (i, p, g) => (i.includes('local') ? 4 : 0) + (g === 'sites' || g === 'sales' ? 3 : 0) + (p === 'mid' || p === 'high' ? 2 : 0) },
+  { t: 'Lawyer / doctor / dentist intake-form site', d: "Trust-signal landing page + smart intake form that filters out time-wasters before they call. Pros pay well because every wasted consult costs them. $2,000–$5,000 plus an optional retainer.", diff: 'Intermediate', time: '1 week', sc: (i, p, g) => (i.includes('pro') ? 6 : 0) + (g === 'sites' || g === 'autos' ? 2 : 0) + (p === 'high' || p === 'mid' ? 3 : 0) },
+  { t: 'Proposal factory for an agency', d: "Agencies write the same proposal 50 times. Build them a tool that takes a 5-field intake and spits out a custom-branded proposal. Charge $3,000 setup + $200/month, or sell it as a one-time tool.", diff: 'Intermediate', time: '4–6 days', sc: (i, p, g) => (i.includes('coaches') || i.includes('friends') ? 2 : 0) + (g === 'autos' || g === 'sales' ? 3 : 0) + (p === 'high' || p === 'retainer' ? 4 : 0) },
+  { t: 'Mini-brand-in-a-day package', d: 'Logo, color palette, fonts, one landing page. All AI-assisted. $500–$1,500 per package, takes you a day. Great for friends starting side hustles. Easy to refer.', diff: 'Easiest', time: '1 day', sc: (i, p, g) => (i.includes('friends') || i.includes('designers') ? 4 : 0) + (g === 'sites' ? 2 : 0) + (p === 'low' || p === 'mid' ? 3 : 0) + (p === 'side' ? 2 : 0) },
+  { t: 'Small-business AI receptionist', d: 'A bot on their website that books appointments, answers FAQs, and DMs the owner when something needs a human. Setup $1,500, plus $100–300/month. Local businesses would pay forever.', diff: 'Intermediate', time: '1 week', sc: (i, p, g) => (i.includes('local') || i.includes('pro') ? 4 : 0) + (g === 'autos' ? 4 : 0) + (p === 'retainer' || p === 'passive' ? 5 : 0) },
+  { t: 'Custom CRM dashboard', d: "A clean, simple lead/customer dashboard for a friend or agency, built in a weekend, that replaces their messy spreadsheet. People are willing to pay $1,000–$3,000 just to never look at Excel again.", diff: 'Intermediate', time: '3–5 days', sc: (i, p, g) => (i.includes('coaches') || i.includes('friends') ? 2 : 0) + (g === 'dashboards' ? 5 : 0) + (p === 'mid' || p === 'high' ? 3 : 0) },
+  { t: 'Influencer DM-reply agent', d: 'Read their DMs, draft replies in their voice, queue them for one-tap send. Most creators get hundreds a day and can\'t keep up. Charge $500 setup + $200/month per creator.', diff: 'Intermediate', time: '3–4 days', sc: (i, p, g) => (i.includes('creators') ? 5 : 0) + (g === 'content' || g === 'autos' ? 3 : 0) + (p === 'retainer' || p === 'passive' ? 3 : 0) },
+  { t: 'Stripe-checkout setup for someone\'s site', d: "Lots of people have a site but no way to actually take money on it. You wire up Stripe products, prices, and a checkout flow for them in a few hours. $300–$700 each. Easy first paid gig if you're nervous.", diff: 'Easiest', time: '2–4 hours', sc: (i, p, g) => (g === 'sales' ? 5 : 0) + (i.includes('hatesite') || i.includes('friends') ? 2 : 0) + (p === 'low' ? 3 : 0) + (p === 'side' ? 2 : 0) },
+  { t: 'Newsletter automation for a creator', d: 'Pull their best content from the week, draft the newsletter in their voice, queue it for review. Set it once, $300/month forever. The creator never writes another newsletter.', diff: 'Intermediate', time: '3–4 days', sc: (i, p, g) => (i.includes('creators') || i.includes('coaches') ? 4 : 0) + (g === 'content' ? 3 : 0) + (p === 'retainer' || p === 'passive' ? 5 : 0) },
+]
+
+// ──────────────────────────────────────────────────────────
 // GLOSSARY
 // ──────────────────────────────────────────────────────────
 const glossary = [
@@ -1483,6 +1569,7 @@ export default function CourseDashboard() {
   const [cur, setCur] = useState(0)
   const [glossaryOpen, setGlossaryOpen] = useState(false)
   const [quizOpen, setQuizOpen] = useState(false)
+  const [quizMode, setQuizMode] = useState<'self' | 'client'>('self')
   const [qStep, setQStep] = useState(0)
   const [qAns, setQAns] = useState<(string[] | string | null)[]>([[], null, null, null])
   const [completion, setCompletion] = useState(false)
@@ -1970,7 +2057,8 @@ export default function CourseDashboard() {
       }
       const quizBtn = t.closest('[data-quiz]') as HTMLElement | null
       if (quizBtn) {
-        openQuiz()
+        const mode = quizBtn.getAttribute('data-quiz') === '2' ? 'client' : 'self'
+        openQuiz(mode)
         return
       }
       const exerciseBtn = t.closest('.exercise-done') as HTMLElement | null
@@ -2113,11 +2201,16 @@ export default function CourseDashboard() {
     return () => cancelAnimationFrame(raf)
   }, [completion])
 
-  function openQuiz() {
+  function openQuiz(mode: 'self' | 'client' = 'self') {
+    setQuizMode(mode)
     setQStep(0)
     setQAns([[], null, null, null])
     setQuizOpen(true)
   }
+
+  // POST quiz results once when the user lands on the results step.
+  // (The actual fire happens in another effect below, after resultTop is computed.)
+  const quizPostedRef = useRef<string | null>(null)
 
   function pickQ(step: number, v: string, multi: boolean) {
     setQAns(prev => {
@@ -2161,8 +2254,40 @@ export default function CourseDashboard() {
   const interests = (Array.isArray(qAns[0]) ? qAns[0] : []) as string[]
   const pain = (typeof qAns[1] === 'string' ? qAns[1] : null) as string | null
   const goal = (typeof qAns[2] === 'string' ? qAns[2] : null) as string | null
-  const resultRanks = ['Perfect for you', 'Great option', 'Worth considering']
-  const resultTop = [...ideaPool].map(x => ({ ...x, s: x.sc(interests, pain, goal) })).sort((a, b) => b.s - a.s).slice(0, 3)
+  const activeQuizSteps = quizMode === 'client' ? clientQuizSteps : quizSteps
+  const activeIdeaPool = quizMode === 'client' ? clientIdeaPool : ideaPool
+  const resultRanks = quizMode === 'client'
+    ? ['Closest match', 'Strong option', 'Worth considering']
+    : ['Perfect for you', 'Great option', 'Worth considering']
+  const resultTop = [...activeIdeaPool].map(x => ({ ...x, s: x.sc(interests, pain, goal) })).sort((a, b) => b.s - a.s).slice(0, 3)
+
+  // Fire-once POST when user lands on the results screen
+  useEffect(() => {
+    if (!quizOpen) return
+    if (qStep < activeQuizSteps.length) return
+    const sig = JSON.stringify({ mode: quizMode, qAns, top: resultTop.map(r => r.t) })
+    if (quizPostedRef.current === sig) return
+    quizPostedRef.current = sig
+    fetch('/api/quiz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        mode: quizMode,
+        inputs: {
+          interests: Array.isArray(qAns[0]) ? qAns[0] : [],
+          pain: typeof qAns[1] === 'string' ? qAns[1] : null,
+          goal: typeof qAns[2] === 'string' ? qAns[2] : null,
+          intensity: typeof qAns[3] === 'string' ? qAns[3] : null,
+        },
+        top: resultTop.map(r => ({ title: r.t, score: r.s })),
+      }),
+    }).catch(() => { /* swallow — not critical */ })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quizOpen, qStep, quizMode])
+
+  const quizHeadline = quizMode === 'client'
+    ? 'Here\u2019s what to actually charge for.'
+    : 'Here\u2019s where to start.'
 
   return (
     <div className="course-root">
@@ -2356,6 +2481,14 @@ export default function CourseDashboard() {
         .callout-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 7px; }
         .l-divider { border: 0; border-top: 1px solid var(--border); margin: 36px 0 28px; }
         .l-sub-head { font-size: 26px; font-weight: 600; margin: 0 0 14px; color: var(--dark); letter-spacing: -0.01em; }
+        /* "Tools you'll use" strip at the top of relevant lessons */
+        .tools-strip { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 6px 0 22px; padding: 12px 14px; background: rgba(232,41,92,0.05); border: 1px solid rgba(232,41,92,0.15); border-radius: 12px; }
+        .tools-strip-label { font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); font-weight: 700; margin-right: 8px; }
+        .tool-pill { display: inline-flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--border); border-radius: 999px; padding: 5px 11px 5px 7px; font-size: 12px; font-weight: 500; color: var(--dark); transition: border-color 0.15s; }
+        .tool-pill:hover { border-color: var(--pink); }
+        .tool-pill img { width: 16px; height: 16px; flex-shrink: 0; }
+        /* Inline app logo (smaller, next to a single mention) */
+        .app-logo { display: inline-block; width: 16px; height: 16px; vertical-align: -3px; margin-right: 4px; }
         .how-it-works { display: flex; flex-direction: column; gap: 14px; margin: 22px 0 10px; }
         .how-step { display: grid; grid-template-columns: 42px 1fr; gap: 16px; align-items: start; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; transition: border-color 0.15s ease, transform 0.15s ease; }
         .how-step:hover { border-color: var(--pink); }
@@ -2671,31 +2804,31 @@ export default function CourseDashboard() {
       <div className={`q-overlay${quizOpen ? ' open' : ''}`}>
         <button className="q-close" onClick={() => setQuizOpen(false)}>&times;</button>
         <div className="q-inner">
-          {qStep < quizSteps.length ? (
+          {qStep < activeQuizSteps.length ? (
             <div>
-              <div className="q-num">{qStep + 1} of {quizSteps.length}</div>
-              <div className="q-question">{quizSteps[qStep].q}</div>
-              {quizSteps[qStep].hint && <div className="q-hint">{quizSteps[qStep].hint}</div>}
+              <div className="q-num">{qStep + 1} of {activeQuizSteps.length}{quizMode === 'client' && ' · Money mode'}</div>
+              <div className="q-question">{activeQuizSteps[qStep].q}</div>
+              {activeQuizSteps[qStep].hint && <div className="q-hint">{activeQuizSteps[qStep].hint}</div>}
               <div className="q-opts">
-                {quizSteps[qStep].opts.map((o) => (
+                {activeQuizSteps[qStep].opts.map((o) => (
                   <button
                     key={o.v}
                     className={`q-opt${isQSel(qStep, o.v) ? ' sel' : ''}`}
-                    onClick={() => pickQ(qStep, o.v, quizSteps[qStep].multi)}
+                    onClick={() => pickQ(qStep, o.v, activeQuizSteps[qStep].multi)}
                   >
                     {o.l}
                   </button>
                 ))}
               </div>
               <button className="q-go" onClick={() => setQStep(qStep + 1)}>
-                {qStep === quizSteps.length - 1 ? 'See my ideas' : 'Next'}
+                {qStep === activeQuizSteps.length - 1 ? 'See my ideas' : 'Next'}
               </button>
               {qStep > 0 && <button className="q-back" onClick={() => setQStep(qStep - 1)}>Go back</button>}
             </div>
           ) : (
             <div>
               <div className="q-num">Your results</div>
-              <div className="q-question" style={{ fontSize: '28px', marginBottom: '24px' }}>Here&apos;s where to start.</div>
+              <div className="q-question" style={{ fontSize: '28px', marginBottom: '24px' }}>{quizHeadline}</div>
               <div className="idea-cards">
                 {resultTop.map((x, i) => (
                   <div key={i} className="idea-card">
