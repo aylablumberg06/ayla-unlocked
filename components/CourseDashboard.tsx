@@ -20,12 +20,11 @@ const lessons: Lesson[] = [
     <div class="l-body">
       <p>I'm 19. I've never taken a coding class or even watched a YouTube explanation of how to code. I'm building two AI businesses and am starting to get hired to make AI agent teams for people and businesses.</p>
       <div class="a-quote">"All this stuff is intimidating and can sometimes feel like it's impossible to catch up. But I learned Claude mid-March and wrote this course mid-April. It's much easier than it seems. I'm no genius. I'm just ambitious and patient."</div>
-      <p>This course is for the person who keeps seeing AI stuff online and thinking: <em>this looks insane, I don't know where to start, and every explanation feels like it's made for someone who already knows what they're doing.</em></p>
-      <p>That's exactly who this is for. Let's go.</p>
+      <p>This course is for the person who keeps seeing AI stuff online and thinking: <em>this looks insane, I don't know where to start, and every explanation feels like it's made for someone who already knows what they're doing.</em> Let&rsquo;s go.</p>
       <div class="callout"><div class="callout-tag">What you'll be able to do after this</div>Build websites, automate repetitive tasks, generate content, create business plans, and make things that run on their own while you sleep. All just by talking. No code required.</div>
       <figure class="lesson-photo">
-        <img src="/lesson-welcome-hero.jpg" alt="A real dashboard from one of my own client projects (a lash studio in Dallas), where my agents handle the brand brief and error routing in the background" />
-        <figcaption>This is from a totally separate project of mine &mdash; a dashboard I built for a Dallas lash studio, where my agents handle the brand brief and error routing while I&rsquo;m doing other things. Showing you because <strong>this kind of thing is what you&rsquo;ll be able to build by the end of the course</strong>. (The course itself doesn&rsquo;t use agents &mdash; it&rsquo;s just lessons.)</figcaption>
+        <img src="/lesson-welcome-hero.jpg" alt="A dashboard I built where my agents are working on a project in real time" />
+        <figcaption>My agents working on a project. <strong>An example of what you&rsquo;ll be able to build by the end of the course.</strong></figcaption>
       </figure>
 
       <hr class="l-divider" />
@@ -38,7 +37,7 @@ const lessons: Lesson[] = [
           <div class="how-step-n">01</div>
           <div class="how-step-body">
             <h3>Every lesson has a video.</h3>
-            <p>Press play at the top. It's me, talking at you the way I'd talk at a friend. Sometimes I demo something on screen. Watch it on 1.5x if I'm yapping too slow — I won't be offended.</p>
+            <p>Press play at the top. It's me, talking at you the way I'd talk at a friend. Watch it on 1.5x if I'm yapping too slow — I won't be offended.</p>
           </div>
         </div>
         <div class="how-step">
