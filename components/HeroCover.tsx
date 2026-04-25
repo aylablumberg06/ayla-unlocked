@@ -11,6 +11,7 @@ import { TOTAL_COMBINED_SEC, formatMinutes } from '@/lib/estimates'
  */
 export default function HeroCover() {
   const [muted, setMuted] = useState(true)
+  const [paused, setPaused] = useState(false)
   const [hasInteracted, setHasInteracted] = useState(false)
   const inlineRef = useRef<HTMLVideoElement>(null)
 
@@ -29,6 +30,23 @@ export default function HeroCover() {
     return () => clearTimeout(t)
   }, [])
 
+  // Sync paused state if the video pauses/plays from outside (e.g. video ended)
+  useEffect(() => {
+    const v = inlineRef.current
+    if (!v) return
+    const onPlay = () => setPaused(false)
+    const onPause = () => setPaused(true)
+    const onEnded = () => setPaused(true)
+    v.addEventListener('play', onPlay)
+    v.addEventListener('pause', onPause)
+    v.addEventListener('ended', onEnded)
+    return () => {
+      v.removeEventListener('play', onPlay)
+      v.removeEventListener('pause', onPause)
+      v.removeEventListener('ended', onEnded)
+    }
+  }, [])
+
   function toggleMute() {
     const v = inlineRef.current
     if (!v) return
@@ -37,6 +55,19 @@ export default function HeroCover() {
     setMuted(newMuted)
     setHasInteracted(true)
     if (!newMuted) v.play().catch(() => {})
+  }
+
+  function togglePause() {
+    const v = inlineRef.current
+    if (!v) return
+    if (v.paused || v.ended) {
+      // If ended, restart from the beginning
+      if (v.ended) v.currentTime = 0
+      v.play().catch(() => {})
+    } else {
+      v.pause()
+    }
+    setHasInteracted(true)
   }
 
   return (
@@ -70,8 +101,10 @@ export default function HeroCover() {
               <HeroVideo
                 videoRef={inlineRef}
                 muted={muted}
+                paused={paused}
                 showBigUnmute={!hasInteracted && muted}
                 onUnmuteClick={toggleMute}
+                onPauseClick={togglePause}
               />
             </div>
 
@@ -126,8 +159,10 @@ export default function HeroCover() {
             <HeroVideo
               videoRef={inlineRef}
               muted={muted}
+              paused={paused}
               showBigUnmute={!hasInteracted && muted}
               onUnmuteClick={toggleMute}
+              onPauseClick={togglePause}
             />
           </div>
         </div>
@@ -150,13 +185,17 @@ export default function HeroCover() {
 function HeroVideo({
   videoRef,
   muted,
+  paused,
   showBigUnmute,
   onUnmuteClick,
+  onPauseClick,
 }: {
   videoRef: React.RefObject<HTMLVideoElement>
   muted: boolean
+  paused: boolean
   showBigUnmute: boolean
   onUnmuteClick: () => void
+  onPauseClick: () => void
 }) {
   return (
     <div className="relative aspect-[9/16] max-h-[560px] w-full max-w-[360px] mx-auto">
@@ -170,7 +209,7 @@ function HeroVideo({
         muted
         playsInline
         preload="auto"
-        onClick={onUnmuteClick}
+        onClick={onPauseClick}
       />
 
       {/* Big centered unmute CTA (shown when muted + before interaction) */}
@@ -241,6 +280,29 @@ function HeroVideo({
         )}
       </button>
 
+      {/* Play/Pause pill (top-right) */}
+      <button
+        onClick={(e) => { e.stopPropagation(); onPauseClick() }}
+        className="absolute top-4 right-4 z-30 inline-flex items-center gap-2 bg-black/60 backdrop-blur-sm text-white text-[10px] tracking-[1.5px] uppercase font-semibold px-3 py-2 rounded-full hover:bg-black/80 transition"
+        aria-label={paused ? 'Play video' : 'Pause video'}
+      >
+        {paused ? (
+          <>
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor">
+              <polygon points="6 3 21 12 6 21 6 3" />
+            </svg>
+            Play
+          </>
+        ) : (
+          <>
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor">
+              <rect x="6" y="4" width="4" height="16" rx="1" />
+              <rect x="14" y="4" width="4" height="16" rx="1" />
+            </svg>
+            Pause
+          </>
+        )}
+      </button>
       </div>{/* end inner clipping container */}
 
       {/* $39 forever floating sticker — outside the clip so it can poke out */}

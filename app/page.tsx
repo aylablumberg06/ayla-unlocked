@@ -3,7 +3,6 @@ import BrandLogo from '@/components/BrandLogo'
 import ContactForm from '@/components/ContactForm'
 import HeroCover from '@/components/HeroCover'
 import ScrollReveal, { ScrollProgressBar } from '@/components/ScrollReveal'
-import ThemeToggle from '@/components/ThemeToggle'
 import { TOTAL_COMBINED_SEC, TOTAL_READ_SEC, formatMinutes } from '@/lib/estimates'
 
 export default function LandingPage() {
@@ -18,7 +17,6 @@ export default function LandingPage() {
             <span>Ayla <span className="text-pink italic">Unlocked</span></span>
           </Link>
           <div className="flex items-center gap-2 md:gap-3">
-            <ThemeToggle />
             <Link
               href="/login"
               className="link-underline text-[11px] tracking-[1.5px] uppercase text-mid hover:text-pink px-3 py-2.5 transition"
