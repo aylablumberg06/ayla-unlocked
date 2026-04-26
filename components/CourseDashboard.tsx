@@ -1041,7 +1041,6 @@ const lessons: Lesson[] = [
  <ul>
  <li><strong>Cold outreach system</strong>, finds local businesses without websites, builds each one a preview site, and sends a personalized cold email every morning. Replies land in my Gmail. I just hit send on the ones I like.</li>
  <li><strong>Prospect tracker</strong>, watches a Google Sheet of leads, re-scores them every night based on replies, moves them between stages, and pings me if a hot one goes cold.</li>
- <li><strong>Content caption agent</strong>, reads my drafts folder, writes three caption options per video in my voice, and drops them into a doc for me to pick.</li>
  </ul>
  <p>None of these took more than a weekend. None of them required me to know what I was doing. <strong>Just me, Claude, and a clear description of what was annoying me.</strong></p>
 
@@ -1054,7 +1053,7 @@ const lessons: Lesson[] = [
  <p>What Elle actually does every day:</p>
  <ul>
  <li><strong>Morning brief at 8:10am.</strong> She pings me in Telegram with everything that happened overnight, which client replies came in, which automated tasks completed, what errored, what needs my eyes first. So I wake up and instead of opening 9 apps, I open Telegram and read one message from Elle.</li>
- <li><strong>Error triage.</strong> When any of my other agents break, Elle is the first to know. She screenshots the error, tags the right fixer (usually Gabriella), and tells me whether I can ignore it or need to jump in.</li>
+ <li><strong>Error handling.</strong> When any of my other agents break, Elle is the first to know. She screenshots the error, tags the right fixer (usually Gabriella), and tells me whether I can ignore it or need to jump in.</li>
  <li><strong>Status on demand.</strong> I can text her anytime: &ldquo;how&rsquo;s the pipeline,&rdquo; &ldquo;any client replies today,&rdquo; &ldquo;did the cron run,&rdquo; &ldquo;summarize the week.&rdquo; She answers in 10 seconds. That&rsquo;s what I mean by &ldquo;personal agent&rdquo;, she&rsquo;s the front door to everything else.</li>
  <li><strong>Free-text help.</strong> I can also just vent to her. &ldquo;Elle I&rsquo;m stressed about X what should I do.&rdquo; Because I gave her context about my business, she gives actually useful answers.</li>
  </ul>
@@ -1514,6 +1513,7 @@ const glossary = [
  { word: 'Context', def: "What Claude knows about your conversation. It only remembers what's in the current chat, which is why staying in the right one matters." },
  { word: 'Apify', def: 'A platform that scrapes data from the internet: TikTok comments, Instagram followers, Google Maps listings. Connects to Claude with an API key.' },
  { word: 'LLM', def: 'Large Language Model. The AI brain underneath Claude. Using one vs. building with one are very different things.' },
+ { word: 'Spec', def: 'Short for specification. A clear, written breakdown of what a thing does, step by step, including the inputs, the order of operations, and any edge cases. When Claude builds for you, the better your spec, the better the result.' },
 ]
 
 // ──────────────────────────────────────────────────────────
@@ -1838,26 +1838,37 @@ export default function CourseDashboard() {
  const txt = textNode.nodeValue ?? ''
  const lower = txt.toLowerCase()
  const needle = word.toLowerCase()
- const idx = lower.indexOf(needle)
- if (idx === -1) continue
- // Word boundary check
+ // Find every word-boundary-respecting match in this text node.
+ const matchIdxs: number[] = []
+ let searchFrom = 0
+ while (searchFrom < txt.length) {
+ const idx = lower.indexOf(needle, searchFrom)
+ if (idx === -1) break
  const before = idx > 0 ? txt[idx - 1] : ' '
  const after = idx + word.length < txt.length ? txt[idx + word.length] : ' '
- if (/[a-z0-9]/i.test(before) || /[a-z0-9]/i.test(after)) continue
- const matchText = txt.slice(idx, idx + word.length)
+ if (!/[a-z0-9]/i.test(before) && !/[a-z0-9]/i.test(after)) {
+ matchIdxs.push(idx)
+ }
+ searchFrom = idx + word.length
+ }
+ if (matchIdxs.length === 0) continue
+ // Replace this text node with a fragment containing wrapped spans
+ // for every match, plus the surrounding text in between.
+ const parent = textNode.parentNode
+ if (!parent) continue
+ const frag = document.createDocumentFragment()
+ let cursor = 0
+ for (const idx of matchIdxs) {
+ if (idx > cursor) frag.appendChild(document.createTextNode(txt.slice(cursor, idx)))
  const span = document.createElement('span')
  span.className = 'au-gloss'
- span.textContent = matchText
+ span.textContent = txt.slice(idx, idx + word.length)
  span.setAttribute('data-def', def)
- const parent = textNode.parentNode
- if (!parent) break
- const beforeText = txt.slice(0, idx)
- const afterText = txt.slice(idx + word.length)
- if (beforeText) parent.insertBefore(document.createTextNode(beforeText), textNode)
- parent.insertBefore(span, textNode)
- if (afterText) parent.insertBefore(document.createTextNode(afterText), textNode)
- parent.removeChild(textNode)
- break // only first occurrence per lesson per term
+ frag.appendChild(span)
+ cursor = idx + word.length
+ }
+ if (cursor < txt.length) frag.appendChild(document.createTextNode(txt.slice(cursor)))
+ parent.replaceChild(frag, textNode)
  }
  }
  }, [cur])
