@@ -1217,9 +1217,9 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">My actual build hours</div>Some days I&rsquo;ll sit completely locked in for hours, deep in one project, phone down, headphones on, just me and Claude Code. Other days I&rsquo;m checking on Claude Code between errands, between meetings, between the mall and lunch and a workout. And honestly, most of the time I have like ten tabs open at once running different projects, one site is building, one agent is testing, another chat is helping me draft a proposal. There is no &ldquo;right&rdquo; setup. Whatever fits the day fits the day.</div>
 
- <div class="callout"><div class="callout-tag">Client + prospect calls happen on the move</div>Sometimes Zoom, sometimes in person. I take live notes into a Claude chat on my phone, then ask Claude to &ldquo;turn this into a proposal&rdquo; or &ldquo;pull out the three things I agreed to do&rdquo; right after.</div>
+ <div class="callout"><div class="callout-tag">Client + prospect calls happen on the move</div>Sometimes Zoom, sometimes in person. Right after a call I voice-dictate everything I can remember into Claude so it holds the memory for me, then ask Claude to &ldquo;turn this into a proposal&rdquo; or &ldquo;pull out the three things I agreed to do.&rdquo;</div>
 
- <div class="callout"><div class="callout-tag">The chaos block</div>There is always a part of every day where the plan goes out the window. A client texts something urgent, I get a new idea, a TikTok takes off or doesn&rsquo;t, friends want to grab dinner. I do most of my best-feeling work in this chunk, from my phone, while I&rsquo;m not at my desk.</div>
+ <div class="callout"><div class="callout-tag">The chaos block</div>There is always a part of every day where the plan goes out the window. A client requests a big change to the plan, I get a new idea, a TikTok takes off or doesn&rsquo;t, friends want to grab dinner. I do most of my best-feeling work in this chunk, from my phone, while I&rsquo;m not at my desk.</div>
 
  <div class="callout"><div class="callout-tag">Agent check-in</div>End of day, I read what each agent did. Approve, reject, comment back, fix what didn&rsquo;t work. They don&rsquo;t need micromanaging. They just need someone to read the report.</div>
 
