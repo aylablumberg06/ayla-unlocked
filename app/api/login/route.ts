@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { createClient } from '@supabase/supabase-js'
 import { createSupabaseAdminClient } from '@/lib/supabase'
 
 export const runtime = 'nodejs'
@@ -9,24 +8,22 @@ export const dynamic = 'force-dynamic'
 const OWNER_EMAIL = 'aylablumberg06@gmail.com'
 
 /**
- * POST /api/login, email + password auth. Only lets paid users in.
+ * POST /api/login — send a magic link to the user's email.
+ * Only sends to owner or paid users. The session cookie set after
+ * the link is clicked is long-lived (see SESSION_TTL in lib/supabase.ts).
  */
 export async function POST(req: NextRequest) {
  try {
- const { email: rawEmail, password } = await req.json().catch(() => ({}))
+ const { email: rawEmail } = await req.json().catch(() => ({}))
  const email = String(rawEmail || '').trim().toLowerCase()
- const pw = String(password || '')
 
  if (!email || !email.includes('@')) {
  return NextResponse.json({ error: 'Valid email required.' }, { status: 400 })
  }
- if (!pw) {
- return NextResponse.json({ error: 'Password required.' }, { status: 400 })
- }
 
- // Gate: must be owner OR paid user
- if (email !== OWNER_EMAIL) {
  const admin = createSupabaseAdminClient()
+
+ if (email !== OWNER_EMAIL) {
  const { data } = await admin
  .from('users')
  .select('paid')
@@ -40,32 +37,25 @@ export async function POST(req: NextRequest) {
  }
  }
 
- const res = NextResponse.json({ ok: true, redirect: '/course' })
- const cookieStore = cookies()
- const supa = createServerClient(
+ const site = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+ const anon = createClient(
  process.env.NEXT_PUBLIC_SUPABASE_URL!,
  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
- {
- cookies: {
- get(name: string) { return cookieStore.get(name)?.value },
- set(name: string, value: string, options: CookieOptions) {
- res.cookies.set({ name, value, ...options, maxAge: 60 * 60 * 24 * 5 })
- },
- remove(name: string, options: CookieOptions) {
- res.cookies.set({ name, value: '', ...options, maxAge: 0 })
- },
- },
- }
+ { auth: { persistSession: false } }
  )
-
- const { error } = await supa.auth.signInWithPassword({ email, password: pw })
+ const { error } = await anon.auth.signInWithOtp({
+ email,
+ options: {
+ emailRedirectTo: `${site}/api/auth/callback`,
+ shouldCreateUser: true,
+ },
+ })
  if (error) {
- return NextResponse.json(
- { error: 'Wrong password. Try again, or reset below.' },
- { status: 401 }
- )
+ console.error('[login] signInWithOtp error', error)
+ return NextResponse.json({ error: 'Could not send link. Try again.' }, { status: 500 })
  }
- return res
+
+ return NextResponse.json({ ok: true })
  } catch (e: any) {
  console.error('[login] unhandled', e)
  return NextResponse.json({ error: 'Something went wrong.' }, { status: 500 })

@@ -3,8 +3,8 @@ import { createClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 import type { NextRequest, NextResponse } from 'next/server'
 
-// 5 days in seconds
-const SESSION_TTL = 60 * 60 * 24 * 5
+// 1 year in seconds — long-lived session, magic-link only
+const SESSION_TTL = 60 * 60 * 24 * 365
 
 // ──────────────────────────────────────────────────────────
 // Browser / client components
