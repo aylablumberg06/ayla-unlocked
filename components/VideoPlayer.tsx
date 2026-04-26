@@ -172,8 +172,8 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  )}
  </button>
 
- <span className="font-mono text-[10px] tabular-nums opacity-90 select-none">
- {fmtTime(currentTime)} / {fmtTime(duration)}
+ <span className="font-mono text-[9px] tabular-nums opacity-90 select-none whitespace-nowrap shrink-0">
+ {fmtTime(currentTime)}/{fmtTime(duration)}
  </span>
 
  <input
