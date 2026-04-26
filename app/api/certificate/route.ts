@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+import { sendEmail } from '@/lib/email'
 import { createSupabaseServerClient, createSupabaseAdminClient } from '@/lib/supabase'
 import { renderCertificateHtml, makeCertId } from '@/lib/certificate-html'
 
@@ -75,21 +75,14 @@ export async function POST(req: NextRequest) {
  })
 
  // Send email (optional, silent fail)
- if (process.env.RESEND_API_KEY) {
- const resend = new Resend(process.env.RESEND_API_KEY)
- const { error: sendErr } = await resend.emails.send({
- from: 'Ayla Unlocked <hello@aylaunlocked.com>',
- to: [email],
- bcc: ['aylablumberg06@gmail.com'],
+ try {
+ await sendEmail({
+ to: [email, 'aylablumberg06@gmail.com'],
  subject: `${name}, you did it. Your Ayla Unlocked certificate.`,
  html: certHtml,
- text: `You did the thing. What? Like it's hard. Your Ayla Unlocked certificate is attached as HTML. Certificate ID: ${certId}`,
  })
- if (sendErr) {
- console.error('[certificate] resend error', sendErr)
- }
- } else {
- console.warn('[certificate] RESEND_API_KEY not set, email skipped')
+ } catch (sendErr) {
+ console.error('[certificate] gmail send error', sendErr)
  }
 
  return NextResponse.json({

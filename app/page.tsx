@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import BrandLogo from '@/components/BrandLogo'
 import ContactForm from '@/components/ContactForm'
 import HeroCover from '@/components/HeroCover'
@@ -6,7 +7,17 @@ import ScrollReveal, { ScrollProgressBar } from '@/components/ScrollReveal'
 import { TOTAL_READ_SEC, formatMinutes } from '@/lib/estimates'
 import { IS_LIVE_FOR_SALE, NOTIFY_ME_EMAIL } from '@/lib/site-state'
 
-export default function LandingPage() {
+export default function LandingPage({
+ searchParams,
+}: {
+ searchParams?: { code?: string }
+}) {
+ // If Supabase sent a magic-link callback to / instead of /api/auth/callback
+ // (because the redirect-to allowlist matches the wildcard at the root),
+ // forward the code through so the session gets exchanged.
+ if (searchParams?.code) {
+ redirect(`/api/auth/callback?code=${encodeURIComponent(searchParams.code)}`)
+ }
  return (
  <main className="min-h-screen bg-cream text-dark">
  <ScrollProgressBar />

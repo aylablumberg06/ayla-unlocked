@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+import { sendEmail } from '@/lib/email'
 import { createSupabaseAdminClient } from '@/lib/supabase'
+
+export const runtime = 'nodejs'
 
 const OWNER_EMAIL = 'aylablumberg06@gmail.com'
 
@@ -28,12 +30,10 @@ export async function POST(req: NextRequest) {
  // Don't block email if DB insert fails.
  }
 
- // Send email via Resend
- if (process.env.RESEND_API_KEY) {
- const resend = new Resend(process.env.RESEND_API_KEY)
- const { error: emailErr } = await resend.emails.send({
- from: 'Ayla Unlocked <hello@aylaunlocked.com>',
- to: [OWNER_EMAIL],
+ // Send email via Gmail SMTP
+ try {
+ await sendEmail({
+ to: OWNER_EMAIL,
  replyTo: e,
  subject: `Ayla Unlocked, New Message from ${n}`,
  html: `
@@ -49,11 +49,9 @@ export async function POST(req: NextRequest) {
  </div>
  </div>
  `,
- text: `New message from ${n} (${e})\n\n${m}`,
  })
- if (emailErr) console.error('[contact] resend error', emailErr)
- } else {
- console.warn('[contact] RESEND_API_KEY not set, skipping email send')
+ } catch (emailErr) {
+ console.error('[contact] gmail send error', emailErr)
  }
 
  return NextResponse.json({ ok: true })
