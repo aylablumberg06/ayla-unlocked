@@ -1265,7 +1265,7 @@ const lessons: Lesson[] = [
  <div class="l-body">
  <p>You&rsquo;ve already seen the full prompt library in the top nav. These are the 10 I keep coming back to. Copy them, paste them, swap the brackets, use them daily.</p>
 
- <div class="callout"><div class="callout-tag">#1, The clarifying-questions opener</div><div class="bubble u">I want to build [your thing]. Ask me any clarifying questions before you start so we don&rsquo;t build the wrong thing.</div>This is the single most important one. Forever. Every project.</div>
+ <div class="callout"><div class="callout-tag">#1, The clarifying-questions opener</div><div class="bubble u">I want to build [your thing]. Ask me any clarifying questions before you start.</div>This is the single most important one. Forever. Every project.</div>
 
  <div class="callout"><div class="callout-tag">#2, The &ldquo;explain like I&rsquo;m in 8th grade&rdquo; reset</div><div class="bubble u">I don&rsquo;t understand any of this. Explain it like I&rsquo;m in 8th grade. Use an analogy if you can.</div>I use this every time something sounds smart and I&rsquo;m quietly lost.</div>
 
@@ -1275,13 +1275,13 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">#5, The interview-me prompt</div><div class="bubble u">Interview me. One question at a time. After 8 questions, give me a plan.</div>Anywhere I&rsquo;m stuck on deciding what to build or pitch, this one wins.</div>
 
- <div class="callout"><div class="callout-tag">#6, The &ldquo;make it feel expensive&rdquo; design prompt</div><div class="bubble u">Redo this. Make it feel expensive. Better fonts, real color palette, actual hierarchy, subtle animations. Mobile-first.</div>Magic phrase. Works way better than &ldquo;make it nicer.&rdquo;</div>
+ <div class="callout"><div class="callout-tag">#6, The &ldquo;make it feel expensive&rdquo; design prompt</div><div class="bubble u">Redo this. Make it feel expensive. Better fonts, real color palette, scroll features, subtle animations. Mobile-first.</div>Magic phrase. Works way better than &ldquo;make it nicer.&rdquo;</div>
 
  <div class="callout"><div class="callout-tag">#7, The &ldquo;don&rsquo;t rewrite my whole site&rdquo; guard</div><div class="bubble u">Add [this feature] to my site. Don&rsquo;t rewrite the whole site. Hand me the new section and tell me exactly where to paste it.</div>Protects you from Claude &ldquo;helpfully&rdquo; changing 14 other things.</div>
 
  <div class="callout"><div class="callout-tag">#8, The &ldquo;what would you change&rdquo; critique</div><div class="bubble u">Here&rsquo;s [thing I made]. Pretend you&rsquo;re [target audience]. What&rsquo;s confusing? What&rsquo;s boring? What would make you close the tab?</div>Harsh feedback on demand. Always use &ldquo;pretend you&rsquo;re&rdquo; for honesty.</div>
 
- <div class="callout"><div class="callout-tag">#9, The cold-email rule set</div><div class="bubble u">Write a cold email to [person] offering [thing]. Under 120 words. Open with something specific, not &ldquo;I hope this finds you well.&rdquo; Don&rsquo;t use: leverage, solution, partner, synergy.</div>The banned-words trick is what stops your email from sounding like every cold email.</div>
+ <div class="callout"><div class="callout-tag">#9, The cold-email rule set</div><div class="bubble u">Write a cold email to [person] offering [thing]. Open with something specific, not &ldquo;I hope this finds you well.&rdquo; Don&rsquo;t use: leverage, solution, partner, synergy.</div>The banned-words trick is what stops your email from sounding like every cold email.</div>
 
  <div class="callout"><div class="callout-tag">#10, The &ldquo;do it for me&rdquo; command</div><div class="bubble u">Stop telling me to do it myself. You have the tools. Do it. If you really can&rsquo;t, explain why in one sentence.</div>Only works in Claude Code / Cowork / Chrome extension. Doesn&rsquo;t work in Chat. But when it works, it works.</div>
 

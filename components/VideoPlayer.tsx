@@ -32,6 +32,7 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  const [muted, setMuted] = useState(false)
  const [currentTime, setCurrentTime] = useState(0)
  const [duration, setDuration] = useState(0)
+ const [buffering, setBuffering] = useState(false)
 
  useEffect(() => {
  if (ref.current) ref.current.playbackRate = speed
@@ -62,12 +63,18 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  }
  }
  const onVol = () => setMuted(v.muted)
+ const onWaiting = () => setBuffering(true)
+ const onCanPlay = () => setBuffering(false)
+ const onPlaying = () => setBuffering(false)
  v.addEventListener('play', onPlay)
  v.addEventListener('pause', onPause)
  v.addEventListener('ended', onEnded)
  v.addEventListener('timeupdate', onTime)
  v.addEventListener('loadedmetadata', onMeta)
  v.addEventListener('volumechange', onVol)
+ v.addEventListener('waiting', onWaiting)
+ v.addEventListener('canplay', onCanPlay)
+ v.addEventListener('playing', onPlaying)
  return () => {
  v.removeEventListener('play', onPlay)
  v.removeEventListener('pause', onPause)
@@ -75,8 +82,11 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  v.removeEventListener('timeupdate', onTime)
  v.removeEventListener('loadedmetadata', onMeta)
  v.removeEventListener('volumechange', onVol)
+ v.removeEventListener('waiting', onWaiting)
+ v.removeEventListener('canplay', onCanPlay)
+ v.removeEventListener('playing', onPlaying)
  }
- }, [])
+ }, [autoPlay])
 
  function togglePlay() {
  const v = ref.current
@@ -137,6 +147,28 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  onClick={togglePlay}
  onError={() => setFailed(true)}
  />
+
+ {/* Buffering overlay, replaces the iOS Safari black-spinner default
+     with our Ayla character so it's on-brand instead of a black blob. */}
+ {buffering && playing && (
+ <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none bg-black/30 backdrop-blur-[2px]">
+ <span className="w-14 h-14 rounded-full overflow-hidden vp-bob" style={{ boxShadow: '0 6px 20px rgba(232,41,92,0.35)' }}>
+ <svg viewBox="0 0 64 64" className="w-full h-full">
+ <rect width="64" height="64" fill="#FFE4ED" />
+ <path d="M10 38 C10 20 22 10 32 10 C42 10 54 20 54 38 L54 58 L10 58 Z" fill="#6B3D2A" />
+ <ellipse cx="32" cy="34" rx="15" ry="17" fill="#F5D2B8" />
+ <path d="M17 26 C20 19 26 15 32 15 C38 15 44 18 47 26 C43 22 37 21 32 21 C27 21 22 23 17 26 Z" fill="#6B3D2A" />
+ <ellipse cx="26" cy="31" rx="1.4" ry="2" fill="#1A1A1A" />
+ <ellipse cx="38" cy="31" rx="1.4" ry="2" fill="#1A1A1A" />
+ <path d="M28 42 C30 43 33 43 36 41" stroke="#C45575" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+ <circle cx="23" cy="38" r="2.3" fill="#FF9BB3" opacity="0.55" />
+ <circle cx="41" cy="38" r="2.3" fill="#FF9BB3" opacity="0.55" />
+ <circle cx="32" cy="48" r="2.2" fill="#F5D2B8" />
+ <path d="M32 46 L34 42 L36 41" stroke="#F5D2B8" strokeWidth="3" strokeLinecap="round" fill="none" />
+ </svg>
+ </span>
+ </div>
+ )}
 
  {/* Centered play button (only shown when paused/ended) */}
  {!playing && (
@@ -256,6 +288,14 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  background: white;
  box-shadow: 0 0 0 2px #E8295C, 0 2px 6px rgba(0,0,0,0.3);
  cursor: grab;
+ }
+ .vp-bob {
+ animation: vpBob 1.6s ease-in-out infinite;
+ display: inline-block;
+ }
+ @keyframes vpBob {
+ 0%, 100% { transform: translateY(0) rotate(-3deg); }
+ 50% { transform: translateY(-5px) rotate(3deg); }
  }
  .vp-seek::-moz-range-thumb {
  width: 12px;
