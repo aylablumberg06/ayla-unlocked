@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+import { sendEmail } from '@/lib/email'
 import { createSupabaseServerClient, createSupabaseAdminClient } from '@/lib/supabase'
 
 export const runtime = 'nodejs'
@@ -41,13 +41,9 @@ export async function POST(req: NextRequest) {
  return NextResponse.json({ error: 'Could not save your submission.' }, { status: 500 })
  }
 
- // Ping Ayla so she knows
- if (process.env.RESEND_API_KEY) {
  try {
- const resend = new Resend(process.env.RESEND_API_KEY)
- await resend.emails.send({
- from: 'Ayla Unlocked <hello@aylaunlocked.com>',
- to: [OWNER_EMAIL],
+ await sendEmail({
+ to: OWNER_EMAIL,
  replyTo: user.email,
  subject: `New submission: ${projectName}`,
  html: `
@@ -63,11 +59,9 @@ export async function POST(req: NextRequest) {
  </div>
  </div>
  `,
- text: `${projectName}, from ${user.email}\n\n${description}\n\n${projectUrl || ''}\n${screenshotUrl || ''}`,
  })
  } catch (e) {
  console.warn('[submit] email failed', e)
- }
  }
 
  return NextResponse.json({ ok: true })

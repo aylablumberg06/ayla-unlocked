@@ -7,7 +7,7 @@
 //   [ ] STRIPE_WEBHOOK_SECRET env var is set on Vercel (Settings → Env Vars)
 //       Get it from: Stripe Dashboard → Developers → Webhooks → your endpoint → Signing secret (starts with whsec_)
 //   [ ] Webhook endpoint registered in Stripe Dashboard pointing to:
-//       https://aylaunlocked.com/api/stripe-webhook
+//       https://unlocked.aylablumberg.com/api/stripe-webhook
 //       Events to subscribe: checkout.session.completed
 //   [ ] Test the full flow in Stripe TEST mode with card 4242 4242 4242 4242
 //       Verify a row appears in Supabase users table with paid: true

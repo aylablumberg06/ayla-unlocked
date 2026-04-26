@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+import { sendEmail } from '@/lib/email'
 import { createSupabaseAdminClient } from '@/lib/supabase'
 
 const OWNER_EMAIL = 'aylablumberg06@gmail.com'
@@ -50,11 +50,9 @@ export async function POST(req: NextRequest) {
  })
  if (dbErr) console.error('[ask-ayla] db error', dbErr)
 
- if (process.env.RESEND_API_KEY) {
- const resend = new Resend(process.env.RESEND_API_KEY)
- const { error: emailErr } = await resend.emails.send({
- from: 'Ayla Unlocked <hello@aylaunlocked.com>',
- to: [OWNER_EMAIL],
+ try {
+ await sendEmail({
+ to: OWNER_EMAIL,
  replyTo: e,
  subject: `Ayla Unlocked, Ask-Ayla chat from ${n}`,
  html: `
@@ -71,11 +69,9 @@ export async function POST(req: NextRequest) {
  </div>
  </div>
  `,
- text: `New Ask-Ayla chat from ${n} <${e}>\n\n${transcriptText}`,
  })
- if (emailErr) console.error('[ask-ayla] resend error', emailErr)
- } else {
- console.warn('[ask-ayla] RESEND_API_KEY not set; email skipped')
+ } catch (emailErr) {
+ console.error('[ask-ayla] gmail send error', emailErr)
  }
 
  return NextResponse.json({ ok: true })
