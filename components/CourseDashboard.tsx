@@ -227,7 +227,7 @@ const lessons: Lesson[] = [
  <p class="l-sub">Three steps. That's all.</p>
  <div class="l-body">
  <ol class="steps">
- <li><div><strong>Go to <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> in Chrome and download the desktop app.</strong> When it asks you to drag the Claude icon into another icon, do it. Open the app. Log in with Google. You're in.</div></li>
+ <li><div><strong>Go to <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> in Chrome and download the desktop app.</strong> When it asks you to drag the Claude icon into another icon, do it. Open the app. Log in with Google. You're in.<figure class="lesson-photo" style="margin-top:14px"><img src="/lesson-claude-install.jpg" alt="Three-step Claude desktop app install: open the .dmg, drag the Claude app into Applications, then launch from your dock" /><figcaption>Three steps. Open the <code>.dmg</code>. Drag Claude into Applications. Launch from your dock or Launchpad. Done.</figcaption></figure></div></li>
  <li><div><strong>Start on the free plan.</strong> Completely fine for learning. You'll know when you hit your limit because Claude tells you directly. When you're actually building real things for people, the paid plan ($20/month) is worth it. You get way more messages and better features.</div></li>
  <li><div><strong>Know that Cowork exists, for later.</strong> Cowork is a separate desktop tool where Claude can literally control your computer, click through apps, open files, and do things for you. I don't personally use Cowork yet, but it's a powerful option once you're comfortable with the basics.</div></li>
  </ol>

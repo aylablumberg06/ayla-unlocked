@@ -81,6 +81,7 @@ export default async function AdminDashboard() {
  <a href="#quiz" className="text-mid hover:text-pink">Quiz log</a>
  <a href="#ideas" className="text-mid hover:text-pink">All ideas</a>
  <a href="#scripts" className="text-mid hover:text-pink">Scripts</a>
+ <Link href="/admin/leads" className="text-pink hover:underline font-semibold">Leads →</Link>
  </div>
  </div>
  </nav>

@@ -88,6 +88,41 @@ create table if not exists confused_flags (
 create index if not exists confused_flags_lesson_idx on confused_flags (lesson_index);
 
 -- ──────────────────────────────────────────────────────────
+-- tiktok_leads: people commenting on Ayla's videos who look like
+--   they'd buy the course. Populated by /api/scrape-tiktok which
+--   uses Apify's tiktok-comments-scraper, then scored by Claude.
+--
+--   handle:        commenter's @ (no @ prefix)
+--   source:        'comment' | 'dm' | 'manual'
+--   video_url:     the TikTok URL the comment came from
+--   video_caption: the caption of that video, for context
+--   comment_text:  what they actually said
+--   intent_score:  Claude's 1-10 estimate of purchase intent
+--   intent_reason: short Claude rationale
+--   status:        'new' | 'sent' | 'replied' | 'converted' | 'skip'
+--   notes:         free text Ayla can add
+--   sent_at:       when she marked them as sent
+-- ──────────────────────────────────────────────────────────
+create table if not exists tiktok_leads (
+  id uuid primary key default gen_random_uuid(),
+  handle text not null,
+  source text not null default 'comment',
+  video_url text,
+  video_caption text,
+  comment_text text,
+  intent_score int default 0,
+  intent_reason text,
+  status text default 'new',
+  notes text,
+  sent_at timestamp with time zone,
+  created_at timestamp with time zone default now(),
+  unique (handle, video_url, comment_text)
+);
+create index if not exists tiktok_leads_status_idx on tiktok_leads (status);
+create index if not exists tiktok_leads_score_idx on tiktok_leads (intent_score desc);
+create index if not exists tiktok_leads_created_idx on tiktok_leads (created_at desc);
+
+-- ──────────────────────────────────────────────────────────
 -- indexes
 -- ──────────────────────────────────────────────────────────
 create index if not exists users_email_idx on users (email);
