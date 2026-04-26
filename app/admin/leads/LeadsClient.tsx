@@ -28,7 +28,6 @@ export default function LeadsClient({
   initialError: string | null
 }) {
   const [leads, setLeads] = useState<Lead[]>(initialLeads)
-  const [filter, setFilter] = useState<'all' | 'new' | 'sent' | 'converted'>('all')
   const [scrapeBusy, setScrapeBusy] = useState(false)
   const [scrapeMsg, setScrapeMsg] = useState<string | null>(null)
   const [tab, setTab] = useState<'list' | 'dm'>('list')
@@ -43,10 +42,71 @@ export default function LeadsClient({
   const [dmAdding, setDmAdding] = useState(false)
   const [dmMsg, setDmMsg] = useState<string | null>(null)
 
-  const filtered =
-    filter === 'all'
-      ? leads
-      : leads.filter((l) => (filter === 'new' ? l.status === 'new' : l.status === filter))
+  // Filter + sort state
+  const [statusFilter, setStatusFilter] = useState<'all' | typeof STATUSES[number]>('all')
+  const [sourceFilter, setSourceFilter] = useState<'all' | 'comment' | 'dm' | 'manual'>('all')
+  const [sentFilter, setSentFilter] = useState<'all' | 'sent' | 'unsent'>('all')
+  const [minScore, setMinScore] = useState<number>(1)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [sortBy, setSortBy] = useState<'score-desc' | 'score-asc' | 'newest' | 'oldest' | 'sent-newest' | 'handle'>('score-desc')
+
+  const filtered = leads
+    .filter((l) => statusFilter === 'all' || l.status === statusFilter)
+    .filter((l) => sourceFilter === 'all' || (l.source || '').toLowerCase() === sourceFilter)
+    .filter((l) => {
+      if (sentFilter === 'all') return true
+      const isSent = l.status === 'sent' || l.status === 'replied' || l.status === 'converted' || !!l.sent_at
+      return sentFilter === 'sent' ? isSent : !isSent
+    })
+    .filter((l) => (l.intent_score || 0) >= minScore)
+    .filter((l) => {
+      if (!searchQuery.trim()) return true
+      const q = searchQuery.toLowerCase()
+      return (
+        l.handle.toLowerCase().includes(q) ||
+        (l.comment_text || '').toLowerCase().includes(q) ||
+        (l.notes || '').toLowerCase().includes(q) ||
+        (l.intent_reason || '').toLowerCase().includes(q)
+      )
+    })
+    .sort((a, b) => {
+      switch (sortBy) {
+        case 'score-desc':
+          return (b.intent_score || 0) - (a.intent_score || 0) ||
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        case 'score-asc':
+          return (a.intent_score || 0) - (b.intent_score || 0)
+        case 'newest':
+          return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        case 'oldest':
+          return new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        case 'sent-newest': {
+          const av = a.sent_at ? new Date(a.sent_at).getTime() : 0
+          const bv = b.sent_at ? new Date(b.sent_at).getTime() : 0
+          return bv - av
+        }
+        case 'handle':
+          return a.handle.localeCompare(b.handle)
+        default:
+          return 0
+      }
+    })
+
+  function resetFilters() {
+    setStatusFilter('all')
+    setSourceFilter('all')
+    setSentFilter('all')
+    setMinScore(1)
+    setSearchQuery('')
+    setSortBy('score-desc')
+  }
+  const filtersActive =
+    statusFilter !== 'all' ||
+    sourceFilter !== 'all' ||
+    sentFilter !== 'all' ||
+    minScore !== 1 ||
+    !!searchQuery.trim() ||
+    sortBy !== 'score-desc'
 
   const stats = {
     total: leads.length,
@@ -253,28 +313,135 @@ export default function LeadsClient({
               </p>
             </div>
 
-            {/* Filter chips */}
-            <div className="flex gap-2 mb-4 flex-wrap">
-              {(['all', 'new', 'sent', 'converted'] as const).map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  className={`px-4 py-1.5 rounded-full text-[11px] tracking-[1.5px] uppercase font-medium transition ${
-                    filter === f
-                      ? 'bg-pink text-white'
-                      : 'bg-white border border-[color:var(--border)] text-mid hover:border-pink hover:text-pink'
-                  }`}
-                >
-                  {f}
-                </button>
-              ))}
+            {/* Filter + sort panel */}
+            <div className="rounded-2xl border border-[color:var(--border)] bg-white/60 p-4 md:p-5 mb-4 space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="text-[10px] font-semibold tracking-[2.5px] uppercase text-pink">Filter & sort</div>
+                <div className="flex items-center gap-3">
+                  <span className="text-[11px] text-mid">
+                    {filtered.length} of {leads.length} {leads.length === 1 ? 'lead' : 'leads'}
+                  </span>
+                  {filtersActive && (
+                    <button
+                      onClick={resetFilters}
+                      className="text-[10px] tracking-[1.5px] uppercase text-pink hover:underline"
+                    >
+                      Reset
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Search bar */}
+              <div>
+                <input
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search handle, comment, notes…"
+                  className="w-full px-3 py-2 rounded-lg border border-[color:var(--border)] bg-white text-sm focus:border-pink focus:outline-none"
+                />
+              </div>
+
+              {/* Source segmented control */}
+              <div>
+                <div className="text-[10px] tracking-[2px] uppercase text-mid mb-1.5">Source</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {(['all', 'comment', 'dm', 'manual'] as const).map((s) => (
+                    <button
+                      key={s}
+                      onClick={() => setSourceFilter(s)}
+                      className={`px-3 py-1 rounded-full text-[10px] tracking-[1.5px] uppercase font-semibold transition ${
+                        sourceFilter === s
+                          ? 'bg-pink text-white'
+                          : 'bg-white border border-[color:var(--border)] text-mid hover:border-pink hover:text-pink'
+                      }`}
+                    >
+                      {s === 'comment' ? 'comments' : s === 'dm' ? 'DMs' : s}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Status chips */}
+              <div>
+                <div className="text-[10px] tracking-[2px] uppercase text-mid mb-1.5">Status</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {(['all', ...STATUSES] as const).map((s) => (
+                    <button
+                      key={s}
+                      onClick={() => setStatusFilter(s as any)}
+                      className={`px-3 py-1 rounded-full text-[10px] tracking-[1.5px] uppercase font-semibold transition ${
+                        statusFilter === s
+                          ? 'bg-pink text-white'
+                          : 'bg-white border border-[color:var(--border)] text-mid hover:border-pink hover:text-pink'
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Sent state */}
+              <div>
+                <div className="text-[10px] tracking-[2px] uppercase text-mid mb-1.5">Outreach state</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {(['all', 'sent', 'unsent'] as const).map((s) => (
+                    <button
+                      key={s}
+                      onClick={() => setSentFilter(s)}
+                      className={`px-3 py-1 rounded-full text-[10px] tracking-[1.5px] uppercase font-semibold transition ${
+                        sentFilter === s
+                          ? 'bg-pink text-white'
+                          : 'bg-white border border-[color:var(--border)] text-mid hover:border-pink hover:text-pink'
+                      }`}
+                    >
+                      {s === 'unsent' ? 'not sent yet' : s === 'sent' ? 'already sent' : 'all'}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bottom row: score + sort */}
+              <div className="grid md:grid-cols-2 gap-4 items-end">
+                <div>
+                  <div className="text-[10px] tracking-[2px] uppercase text-mid mb-1.5">
+                    Min intent score: <span className="text-pink font-semibold">{minScore}</span>+
+                  </div>
+                  <input
+                    type="range"
+                    min={1}
+                    max={10}
+                    value={minScore}
+                    onChange={(e) => setMinScore(Number(e.target.value))}
+                    className="w-full accent-pink"
+                  />
+                </div>
+                <div>
+                  <div className="text-[10px] tracking-[2px] uppercase text-mid mb-1.5">Sort by</div>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value as any)}
+                    className="w-full px-3 py-2 rounded-lg border border-[color:var(--border)] bg-white text-sm focus:border-pink focus:outline-none"
+                  >
+                    <option value="score-desc">Intent score (high → low)</option>
+                    <option value="score-asc">Intent score (low → high)</option>
+                    <option value="newest">Newest first</option>
+                    <option value="oldest">Oldest first</option>
+                    <option value="sent-newest">Recently sent first</option>
+                    <option value="handle">Handle (A→Z)</option>
+                  </select>
+                </div>
+              </div>
             </div>
 
             {/* Leads list */}
             <div className="space-y-3">
               {filtered.length === 0 && (
                 <div className="text-center text-mid py-12 text-sm">
-                  No leads {filter === 'all' ? 'yet' : `with status “${filter}”`}. Run a scrape above or add one manually.
+                  {leads.length === 0
+                    ? 'No leads yet. Run a scrape above or add one manually.'
+                    : 'No leads match the current filters.'}
                 </div>
               )}
               {filtered.map((l) => (
