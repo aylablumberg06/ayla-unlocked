@@ -33,6 +33,7 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  const [currentTime, setCurrentTime] = useState(0)
  const [duration, setDuration] = useState(0)
  const [buffering, setBuffering] = useState(false)
+ const [hasFrame, setHasFrame] = useState(false)
 
  useEffect(() => {
  if (ref.current) ref.current.playbackRate = speed
@@ -64,8 +65,9 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  }
  const onVol = () => setMuted(v.muted)
  const onWaiting = () => setBuffering(true)
- const onCanPlay = () => setBuffering(false)
- const onPlaying = () => setBuffering(false)
+ const onCanPlay = () => { setBuffering(false); setHasFrame(true) }
+ const onPlaying = () => { setBuffering(false); setHasFrame(true) }
+ const onLoadedData = () => setHasFrame(true)
  v.addEventListener('play', onPlay)
  v.addEventListener('pause', onPause)
  v.addEventListener('ended', onEnded)
@@ -75,6 +77,7 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  v.addEventListener('waiting', onWaiting)
  v.addEventListener('canplay', onCanPlay)
  v.addEventListener('playing', onPlaying)
+ v.addEventListener('loadeddata', onLoadedData)
  return () => {
  v.removeEventListener('play', onPlay)
  v.removeEventListener('pause', onPause)
@@ -85,6 +88,7 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  v.removeEventListener('waiting', onWaiting)
  v.removeEventListener('canplay', onCanPlay)
  v.removeEventListener('playing', onPlaying)
+ v.removeEventListener('loadeddata', onLoadedData)
  }
  }, [autoPlay])
 
@@ -148,11 +152,13 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  onError={() => setFailed(true)}
  />
 
- {/* Buffering overlay, replaces the iOS Safari black-spinner default
-     with our Ayla character so it's on-brand instead of a black blob. */}
- {buffering && playing && (
- <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none bg-black/30 backdrop-blur-[2px]">
- <span className="w-14 h-14 rounded-full overflow-hidden vp-bob" style={{ boxShadow: '0 6px 20px rgba(232,41,92,0.35)' }}>
+ {/* Loader overlay: shows during initial load (no frame yet) and
+     during any mid-playback buffer stall. Covers the OS-default
+     black spinner with our Ayla character. */}
+ {(buffering || !hasFrame) && (
+ <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none bg-black/55">
+ <span className="absolute inset-0 bg-gradient-to-br from-[#FFE4ED] via-[#FFF7FA] to-[#FFE4ED] opacity-95" />
+ <span className="relative w-14 h-14 rounded-full overflow-hidden vp-bob" style={{ boxShadow: '0 6px 20px rgba(232,41,92,0.35)' }}>
  <svg viewBox="0 0 64 64" className="w-full h-full">
  <rect width="64" height="64" fill="#FFE4ED" />
  <path d="M10 38 C10 20 22 10 32 10 C42 10 54 20 54 38 L54 58 L10 58 Z" fill="#6B3D2A" />

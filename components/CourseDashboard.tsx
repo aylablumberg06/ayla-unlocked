@@ -1306,12 +1306,12 @@ const lessons: Lesson[] = [
  <div class="l-body">
  <p>Here&rsquo;s a thing that nobody tells you when you start learning this stuff, and I wish someone had told me: <strong>post about what you&rsquo;re building as you&rsquo;re building it.</strong> Not when it&rsquo;s done. Not when it&rsquo;s perfect. While it&rsquo;s half-broken and you&rsquo;re figuring it out in real time.</p>
 
- <div class="a-quote">"The stuff I posted at the ugliest stage, when I had no idea what I was doing, is what got me my first three clients."</div>
+ <div class="a-quote">"Social media is fake-it-till-you-make-it. Post like you already know what you&rsquo;re doing, even on day one, and somewhere along the way you actually do."</div>
 
  <h2 class="l-sub-head">Why posting changes everything (real talk).</h2>
- <p>I cannot overstate this. <strong>Posting about what I was building is the single biggest reason I got hired.</strong> Not my resume. Not my portfolio site. Not cold outreach. The TikToks I made at 11pm of me losing my mind at Claude.</p>
+ <p>I cannot overstate this. <strong>Posting about what I was building is the single biggest reason I got hired.</strong> Not my resume. Not my portfolio site. Not cold outreach. The TikToks I made at 11pm.</p>
 
- <div class="callout"><div class="callout-tag">What actually happened to me</div>Within the first month of posting, I got: <strong>inbound DMs from two companies asking if I could build them agents.</strong> An email from a founder who ended up becoming a mentor.<br><br>(I&rsquo;m also still hoping a podcast invite shows up one day, that would be cool. Hasn&rsquo;t happened yet, but I&rsquo;m putting it out there.)<br><br>Every one of those things came from a post that took me 10 minutes to make. The ROI on posting is insane, and nobody talks about it enough.</div>
+ <div class="callout"><div class="callout-tag">What actually happened to me</div>Within the first month of posting, I got: <strong>inbound DMs from two companies asking if I could build them agents.</strong> An email from a founder who ended up becoming a mentor.<br><br>(I&rsquo;m also still hoping a podcast invite shows up one day, that would be cool. Hasn&rsquo;t happened yet, but I&rsquo;m putting it out there.)<br><br>Every one of those things came from a post that took me less than an hour to make. The ROI on posting is insane, and nobody talks about it enough.</div>
 
  <p>When you post what you&rsquo;re working on, a bunch of things happen at once:</p>
  <ul>

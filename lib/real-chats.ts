@@ -78,7 +78,7 @@ export const REAL_CHATS: ChatExchange[] = [
  },
  ],
  lesson:
- 'When Claude gets too technical, name it. "I don\'t understand, what do I actually need to do?" is the cleanest reset. It\'ll swap to the version your 14-year-old cousin could follow.',
+ 'When Claude gets too technical, name it. "I don\'t understand, what do I actually need to do?" is the cleanest reset. It\'ll swap to the version your baby cousin could follow.',
  },
 
  {
