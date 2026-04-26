@@ -161,7 +161,7 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
  estLength: '90 sec',
  blocks: [
  { label: 'HOOK', text: "Claude has three different modes. They do different things. It matters which one you use." },
- { label: 'TEACH', text: "One. Claude Chat, at claude dot ai. The one you're using now. It makes things, but they live on your computer. Nobody else can access them. Great for learning, brainstorming, making stuff for yourself. Two. Claude Code. Installs inside a free app called VS Code. This is when you want something actually live. A real website, a system that runs automatically. Three. Cowork. Claude with hands. Controls your computer, clicks around apps, moves files. I don't personally use it yet." },
+ { label: 'TEACH', text: "One. Claude Chat, at claude dot ai. The one you're using now. It makes things, but they live on your computer. Nobody else can access them. Great for learning, brainstorming, making stuff for yourself. Two. Claude Code. Runs in Terminal or right inside the Code tab of the Claude app. This is when you want something actually live. A real website, a system that runs automatically. Three. Cowork. Claude with hands. Controls your computer, clicks around apps, moves files. I don't personally use it yet." },
  { label: 'CLOSER', text: "Rule of thumb. Chat while learning. Claude Code when launching something. Cowork for repetitive computer tasks." },
  ],
  },

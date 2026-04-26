@@ -510,7 +510,7 @@ const lessons: Lesson[] = [
  </div>
  <div class="callout">
  <div class="callout-tag">2. Claude Code</div>
- This is what you use when you want something actually live. A real website people can visit. A system that runs automatically. Claude Code <strong>runs in Terminal</strong> (we walk through Terminal in lesson 17, don&rsquo;t worry, it&rsquo;s easy). It can also be used from inside <strong>VS Code&rsquo;s built-in terminal panel</strong> if you prefer that, or directly in the <strong>Claude desktop / web app</strong> itself once you connect it. Same Claude Code, just three different surfaces. Pick whichever feels least scary, they all do the same thing.<br><br><strong>Use this for:</strong> anything you want on the internet or running automatically.
+ This is what you use when you want something actually live. A real website people can visit. A system that runs automatically. Claude Code can run in two places: in <strong>Terminal</strong> (we walk through Terminal in lesson 17, don&rsquo;t worry, it&rsquo;s easy), or directly inside the <strong>Code tab of the Claude app</strong>. Same Claude Code either way, pick whichever feels less scary.<br><br><strong>Use this for:</strong> anything you want on the internet or running automatically.
  </div>
  <div class="callout">
  <div class="callout-tag">3. Cowork</div>
@@ -696,7 +696,7 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">Heads up on the browser auth</div>The browser sign-in happens the <em>first time only</em>. After that, <code>claude</code> just opens straight into a session. If you ever see the browser pop open later, it usually means your token expired (every few weeks). Just sign in again and you&rsquo;re back.</div>
 
- <div class="callout"><div class="callout-tag">Wait, is this the same as the Claude app?</div>Nope. Two different things, both called &ldquo;Claude.&rdquo; <strong>Claude app</strong> (<a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> website + the mobile app + the Mac app) is regular chat, what you use for thinking, writing, brainstorming. <strong>Claude Code</strong> (what you just opened with <code>claude</code> in Terminal) is the builder version, it can actually touch files on your computer and build things for you. Same brain, different powers. Use chat for thinking. Use Claude Code for shipping.</div>
+ <div class="callout"><div class="callout-tag">Wait, is this the same as the Claude app?</div>Same Claude, two different modes. The <strong>Claude app</strong> (<a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> + the mobile app + the Mac app) has two surfaces inside it: the regular <strong>Chat</strong> tab, what you use for thinking, writing, brainstorming, AND a <strong>Code</strong> tab where Claude Code lives. Claude Code is the builder version, it can actually touch files on your computer and build things for you. <strong>Claude Code can run in two places:</strong> in Terminal (what we just set up with <code>claude</code>), <em>or</em> right inside the Code tab of the Claude app. Same builder, same powers, just two surfaces, pick whichever you&rsquo;re more comfortable with. Use Chat for thinking. Use Claude Code (in Terminal or in the app) for shipping.</div>
  <figure class="lesson-photo">
  <img src="/lesson-terminal.jpg" alt="My Mac terminal running a Python script. You can see the percent prompt at the bottom." />
  <figcaption>My actual terminal while my outreach pipeline was running. Most of what you see is just info logs, <code>fetching businesses from Outscraper</code>, <code>5 results</code>, etc. That&rsquo;s what live agents look like. They just talk to themselves in Terminal while they work.</figcaption>
@@ -1518,13 +1518,12 @@ const glossary = [
  { word: 'Agent', def: 'Claude doing things automatically on a schedule, without you having to type anything. The advanced version of all this.' },
  { word: 'Cron Job', def: 'A scheduled task. Like setting an alarm that says "run this code every morning at 8am."' },
  { word: 'Cron', def: 'Short for cron job. A scheduled task that runs your code on a timer (every morning at 8am, every hour, every Sunday, etc.) without you touching it.' },
- { word: 'Claude Code', def: 'The version of Claude that actually builds and deploys things. Installs in VS Code. No Terminal needed.' },
+ { word: 'Claude Code', def: 'The version of Claude that actually builds and deploys things. Runs in Terminal or directly in the Code tab of the Claude app.' },
  { word: 'Cowork', def: 'A desktop tool where Claude controls your computer for you. Like Claude having hands.' },
  { word: 'Project (Claude)', def: 'A folder in Claude that keeps related chats together with shared context. Use this to stay organized.' },
  { word: 'Context', def: "What Claude knows about your conversation. It only remembers what's in the current chat, which is why staying in the right one matters." },
  { word: 'Apify', def: 'A platform that scrapes data from the internet: TikTok comments, Instagram followers, Google Maps listings. Connects to Claude with an API key.' },
  { word: 'LLM', def: 'Large Language Model. The AI brain underneath Claude. Using one vs. building with one are very different things.' },
- { word: 'VS Code', def: 'A free code editor app. Claude Code itself runs in Terminal, but a lot of people use it from inside VS Code\u2019s built-in terminal panel because they like having a file tree and code preview alongside. Optional, not required. Download at <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="brand-link">code.visualstudio.com</a>.' },
 ]
 
 // ──────────────────────────────────────────────────────────
