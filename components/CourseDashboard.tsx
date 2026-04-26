@@ -510,7 +510,7 @@ const lessons: Lesson[] = [
  </div>
  <div class="callout">
  <div class="callout-tag">2. Claude Code</div>
- This is what you use when you want something actually live. A real website people can visit. A system that runs automatically. Claude Code <strong>runs in Terminal</strong> (we walk through Terminal in lesson 17, don&rsquo;t worry, it&rsquo;s easy). It can also be used from inside VS Code&rsquo;s built-in terminal panel if you prefer that.<br><br><strong>Use this for:</strong> anything you want on the internet or running automatically.
+ This is what you use when you want something actually live. A real website people can visit. A system that runs automatically. Claude Code <strong>runs in Terminal</strong> (we walk through Terminal in lesson 17, don&rsquo;t worry, it&rsquo;s easy). It can also be used from inside <strong>VS Code&rsquo;s built-in terminal panel</strong> if you prefer that, or directly in the <strong>Claude desktop / web app</strong> itself once you connect it. Same Claude Code, just three different surfaces. Pick whichever feels least scary, they all do the same thing.<br><br><strong>Use this for:</strong> anything you want on the internet or running automatically.
  </div>
  <div class="callout">
  <div class="callout-tag">3. Cowork</div>
@@ -2302,7 +2302,7 @@ export default function CourseDashboard() {
  .progress-track-tick { flex: 1; height: 26px; cursor: pointer; background: transparent; border: 0; padding: 0; position: relative; }
  .progress-track-tick.has-bookmark::after { content: '★'; position: absolute; top: 1px; left: 50%; transform: translateX(-50%); font-size: 8px; color: #E8B14A; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.08); pointer-events: none; }
  .progress-track-marker { position: absolute; top: 50%; width: 22px; height: 22px; transform: translate(-50%, -50%); transition: left 0.55s cubic-bezier(.45,0,.15,1); pointer-events: none; z-index: 2; display: flex; align-items: center; justify-content: center; color: var(--pink); filter: drop-shadow(0 2px 5px rgba(232,41,92,0.4)); animation: planeFloat 2.6s ease-in-out infinite; }
- .progress-track-marker svg { width: 19px; height: 19px; transform: rotate(-12deg); }
+ .progress-track-marker svg { width: 20px; height: 20px; transform: rotate(90deg); }
  @keyframes planeFloat {
  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
  50% { transform: translate(-50%, -50%) translateY(-2px); }
@@ -2679,8 +2679,8 @@ export default function CourseDashboard() {
  style={{ left: lessons.length > 1 ? `${(cur / (lessons.length - 1)) * 100}%` : '0%' }}
  aria-hidden="true"
  >
- <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="0.6" strokeLinejoin="round">
- <path d="M2.5 11.4 21.6 2.4 14.6 21.4 11.7 13.3 2.5 11.4z" />
+ <svg viewBox="0 0 24 24" fill="currentColor">
+ <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
  </svg>
  </div>
  </div>
