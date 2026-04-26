@@ -51,12 +51,15 @@ export async function POST(req: NextRequest) {
  email,
  options: { redirectTo: `${site}/api/auth/callback` },
  })
- if (linkErr || !linkData?.properties?.action_link) {
+ const tokenHash = (linkData?.properties as any)?.hashed_token
+ if (linkErr || !tokenHash) {
  console.error('[login] generateLink error', linkErr)
  return NextResponse.json({ error: 'Could not send link. Try again.' }, { status: 500 })
  }
 
- const link = linkData.properties.action_link
+ // Wrap in our own URL so the click hits a server-side handler that
+ // exchanges the token and sets cookies — no browser-JS dependency.
+ const link = `${site}/api/auth/m?t=${encodeURIComponent(tokenHash)}`
  await sendEmail({
  to: email,
  subject: 'Your Ayla Unlocked sign-in link',
