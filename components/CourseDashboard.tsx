@@ -2500,8 +2500,12 @@ export default function CourseDashboard() {
  .l-body strong { font-weight: 700; color: var(--pink); }
  .l-body em { font-style: italic; color: var(--dark); font-weight: 400; }
  .l-body .pop { color: var(--pink); font-weight: 700; }
- .l-body ul.l-body ol { padding-left: 20px; margin: 14px 0; }
- .l-body li { margin-bottom: 9px; line-height: 1.65; }
+ .l-body ul, .l-body ol { padding-left: 22px; margin: 14px 0; }
+ .l-body ul { list-style: disc; }
+ .l-body ul li::marker { color: var(--pink); font-size: 1.05em; }
+ .l-body ol { list-style: decimal; }
+ .l-body ol li::marker { color: var(--pink); font-weight: 600; }
+ .l-body li { margin-bottom: 9px; line-height: 1.65; padding-left: 4px; }
  .callout { background: var(--pink-pale); border-left: 3px solid var(--pink); border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 22px 0; font-size: 14.5px; line-height: 1.65; }
  .callout-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 7px; }
  .l-divider { border: 0; border-top: 1px solid var(--border); margin: 36px 0 28px; }
