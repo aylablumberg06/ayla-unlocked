@@ -383,11 +383,11 @@ const lessons: Lesson[] = [
 
  <div class="divider"><span>The reference-doc habit</span></div>
  <p>This is the move that changed how much I retain and how fast I rebuild things. Every time Claude figures something out for me, how to set up Stripe, how to deploy to Vercel, how I configured a cron, whatever, I say one of these at the end:</p>
- <div class="callout"><div class="callout-tag">The exact prompt I use</div><div class="bubble u">Now write this up as a reference doc so I can rebuild it later. Step by step, everything you just did, including why you made each choice. Save it as a markdown file I can stash in my Project.</div></div>
+ <div class="callout"><div class="callout-tag">The exact prompt I use</div><div class="bubble u">Now write this up as a reference doc so I can rebuild it later. Step by step, everything you just did, including why you made each choice.</div></div>
  <p>Claude will drop you a clean, self-contained doc. <strong>Save it in the Project&rsquo;s instructions or attach it as a file.</strong> Three weeks from now, when you vaguely remember fixing this exact thing, you can open that doc and redo it in four minutes instead of another 2-hour rabbit hole.</p>
  <p>Over time these compound. You end up with a personal knowledge base that reads exactly like you think. Nobody else has one like it.</p>
 
- <div class="callout"><div class="callout-tag">The even-better version, build a dashboard of all your docs</div>Once you have 10+ reference docs scattered across Projects, ask Claude to build you a simple HTML dashboard that links to all of them. Something like: <em>&ldquo;Make me a one-page dashboard I can open from my browser, with every reference doc I&rsquo;ve made, grouped by category (Stripe, deploy, Claude workflows, business ops), with a search bar.&rdquo;</em> Claude will ship it. You&rsquo;ll end up with your own personal Notion-style hub, except you built it in 20 minutes and it&rsquo;s exactly the way you think. Mine is the first thing I open every morning.</div>
+ <div class="callout"><div class="callout-tag">The even-better version, build a dashboard of all your docs</div>Once you have 10+ reference docs scattered across Projects, ask Claude to build you a simple HTML dashboard that links to all of them. Something like: <em>&ldquo;Make me a one-page dashboard I can open from my browser, with every reference doc I&rsquo;ve made, grouped by category (Stripe, deploy, Claude workflows, business ops), with a search bar.&rdquo;</em> Claude will ship it. You&rsquo;ll end up with your own personal Notion-style hub, except you built it in 20 minutes and it&rsquo;s exactly the way you think.</div>
 
  <div class="divider"><span>Customizing Claude so it acts the way you want</span></div>
  <p>This is the part that makes Claude feel like <em>yours</em> instead of a generic chatbot. You can tell Claude your preferences <strong>once</strong>, and it&rsquo;ll apply them to every chat, as long as you tell it to remember.</p>
@@ -1518,6 +1518,7 @@ const glossary = [
  { word: 'API Key', def: 'A private code that lets Claude connect to another app. Like a hotel key card. Keep it secret or someone else can use it as you.' },
  { word: 'Agent', def: 'Claude doing things automatically on a schedule, without you having to type anything. The advanced version of all this.' },
  { word: 'Cron Job', def: 'A scheduled task. Like setting an alarm that says "run this code every morning at 8am."' },
+ { word: 'Cron', def: 'Short for cron job. A scheduled task that runs your code on a timer (every morning at 8am, every hour, every Sunday, etc.) without you touching it.' },
  { word: 'Claude Code', def: 'The version of Claude that actually builds and deploys things. Installs in VS Code. No Terminal needed.' },
  { word: 'Cowork', def: 'A desktop tool where Claude controls your computer for you. Like Claude having hands.' },
  { word: 'Project (Claude)', def: 'A folder in Claude that keeps related chats together with shared context. Use this to stay organized.' },
