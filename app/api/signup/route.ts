@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseAdminClient } from '@/lib/supabase'
+import { stripe } from '@/lib/stripe'
 import { sendEmail } from '@/lib/email'
 
 export const runtime = 'nodejs'
@@ -8,14 +9,22 @@ export const dynamic = 'force-dynamic'
 const OWNER_EMAIL = 'aylablumberg06@gmail.com'
 
 /**
- * POST /api/signup — called after Stripe payment. Verifies the email paid,
- * stores phone, ensures auth user exists, then sends a magic link via Gmail.
+ * POST /api/signup — called after Stripe payment. Body: { email, phone?, session_id? }.
+ *
+ * Three ways to verify the buyer paid:
+ *   1. They are the owner email.
+ *   2. The users table already has paid=true for that email (Stripe webhook
+ *      ran and the email matched what they entered here).
+ *   3. They pass a Stripe checkout session_id that Stripe confirms is paid —
+ *      this catches Apple Pay buyers, where the relay address Stripe got
+ *      doesn't match the real email they want to use.
  */
 export async function POST(req: NextRequest) {
  try {
  const body = await req.json().catch(() => ({}))
  const email = String(body.email || '').trim().toLowerCase()
  const phone = String(body.phone || '').trim()
+ const sessionId = String(body.session_id || '').trim()
 
  if (!email || !email.includes('@')) {
  return NextResponse.json({ error: 'Valid email required.' }, { status: 400 })
@@ -30,7 +39,21 @@ export async function POST(req: NextRequest) {
  .maybeSingle()
 
  const isOwner = email === OWNER_EMAIL
- if (!isOwner && userRow?.paid !== true) {
+ let paidVerified = isOwner || userRow?.paid === true
+
+ // Fallback: verify via Stripe session_id (Apple Pay, etc.).
+ if (!paidVerified && sessionId.startsWith('cs_')) {
+ try {
+ const session = await stripe.checkout.sessions.retrieve(sessionId)
+ if (session.payment_status === 'paid' && (session.amount_total || 0) > 0) {
+ paidVerified = true
+ }
+ } catch (err) {
+ console.error('[signup] stripe session lookup failed', err)
+ }
+ }
+
+ if (!paidVerified) {
  return NextResponse.json(
  { error: 'We don\'t see a paid account for that email. Try the email you used at checkout.' },
  { status: 403 }

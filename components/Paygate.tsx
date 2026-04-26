@@ -5,7 +5,7 @@ import BrandLogo from '@/components/BrandLogo'
 import { useSearchParams } from 'next/navigation'
 import { IS_LIVE_FOR_SALE, NOTIFY_ME_EMAIL } from '@/lib/site-state'
 
-function SignupForm() {
+function SignupForm({ sessionId }: { sessionId?: string }) {
  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
  const [sentTo, setSentTo] = useState('')
  const [error, setError] = useState<string | null>(null)
@@ -22,7 +22,7 @@ function SignupForm() {
  const r = await fetch('/api/signup', {
  method: 'POST',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify({ email, phone }),
+ body: JSON.stringify({ email, phone, session_id: sessionId }),
  })
  const out = await r.json().catch(() => ({}))
  if (!r.ok) throw new Error(out?.error || 'Something went wrong.')
@@ -171,6 +171,7 @@ function CheckoutCard() {
 export default function Paygate() {
  const params = useSearchParams()
  const showSignup = params.get('payment') === 'success'
+ const sessionId = params.get('session_id') || undefined
 
  return (
  <main className="min-h-screen bg-cream text-dark">
@@ -185,7 +186,7 @@ export default function Paygate() {
 
  <section className="pt-32 pb-20 px-6 md:px-10 max-w-4xl mx-auto">
  {showSignup ? (
- <SignupForm />
+ <SignupForm sessionId={sessionId} />
  ) : (
  <>
  <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-4">Get Access</div>
