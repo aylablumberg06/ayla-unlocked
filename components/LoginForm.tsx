@@ -141,7 +141,7 @@ export default function LoginForm() {
 
  <p className="text-[12px] text-muted-light mt-8 text-center">
  Don&apos;t have access yet?{' '}
- <Link href="/unlock" className="text-pink hover:underline">Buy the course, $39</Link>
+ <Link href="/unlock" className="text-pink hover:underline">Buy the course, $79</Link>
  </p>
  </>
  )}

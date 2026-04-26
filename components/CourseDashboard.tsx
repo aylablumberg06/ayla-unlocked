@@ -836,7 +836,7 @@ const lessons: Lesson[] = [
  <p>Before Stripe existed, accepting online payments was a nightmare. You had to get a "merchant account," deal with banks, pay monthly fees, build all kinds of security into your site. Now you sign up, verify your identity, and you're live in an afternoon.</p>
  <div class="divider"><span>The three things you need to know</span></div>
  <div class="callout"><div class="callout-tag">1. Products</div>The things you're selling. A one-time thing (a course, a template) or a subscription (monthly access to something). You create these in the Stripe dashboard.</div>
- <div class="callout"><div class="callout-tag">2. Prices</div>Each product has one or more prices attached to it. You can charge $39 one time. Or $10 a month. Or $100 a year. Stripe calls these "prices" and gives each one a unique ID.</div>
+ <div class="callout"><div class="callout-tag">2. Prices</div>Each product has one or more prices attached to it. You can charge $79 one time. Or $10 a month. Or $100 a year. Stripe calls these "prices" and gives each one a unique ID.</div>
  <div class="callout"><div class="callout-tag">3. Checkout</div>The page where your customer enters their card info. Stripe gives you a pre-built, pretty, secure checkout page for free, you just tell it what price ID to charge.</div>
  <p>You build the site. Claude wires up the checkout. Money comes in. That's the whole model.</p>
  <figure class="diagram-figure">
@@ -887,7 +887,7 @@ const lessons: Lesson[] = [
  <li><div><strong>Go to <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" class="brand-link">stripe.com</a> and create an account.</strong> Sign up with your email. You'll need to verify your phone, then eventually enter your business info and bank account to actually get paid. You can skip the bank part while you're just testing.</div></li>
  <li><div><strong>Turn on "Test mode" in the dashboard.</strong> Top right of the Stripe dashboard, there's a toggle. Turn it on. Test mode lets you set everything up and fake payments without charging real cards. You'll switch to "Live mode" right before launch.</div></li>
  <li><div><strong>Create a product.</strong> In the left sidebar, click "Product catalog" then "+ Add product." Give it a name (like "Website template" or "Consulting call"). Set a price. Choose whether it's one-time or recurring. Save.</div></li>
- <li><div><strong>Copy the price ID.</strong> Click into your product. Find the price (shows like "$39.00 USD &middot; One time"). Click the three dots &rarr; "Copy ID." It starts with <strong>price_</strong> and looks like gibberish. This is what you give Claude.</div></li>
+ <li><div><strong>Copy the price ID.</strong> Click into your product. Find the price (shows like "$79.00 USD &middot; One time"). Click the three dots &rarr; "Copy ID." It starts with <strong>price_</strong> and looks like gibberish. This is what you give Claude.</div></li>
  <li><div><strong>Get your API keys.</strong> In the dashboard, click "Developers" &rarr; "API keys." You'll see a <strong>Publishable key</strong> (safe to use anywhere) and a <strong>Secret key</strong> (keep secret, server-only). Both of these go to Claude when you tell it to add checkout to your site.</div></li>
  </ol>
  <div class="divider"><span>What you say to Claude</span></div>

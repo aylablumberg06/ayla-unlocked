@@ -153,7 +153,7 @@ function CheckoutCard() {
  >
  Notify me when it opens
  </a>
- <p className="text-[11px] text-muted-light mt-4 text-center">Or check back soon, the price stays $39.</p>
+ <p className="text-[11px] text-muted-light mt-4 text-center">Or check back soon, the price stays $79.</p>
  </div>
  </div>
  )
@@ -163,7 +163,7 @@ function CheckoutCard() {
  <div className="rounded-2xl border border-[color:var(--border)] bg-white/50 p-8 md:p-10">
  <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-3">Lifetime Access</div>
  <div className="flex items-baseline gap-2 mb-6">
- <span className="font-serif text-6xl md:text-7xl text-dark">$39</span>
+ <span className="font-serif text-6xl md:text-7xl text-dark">$79</span>
  <span className="text-sm text-muted-light tracking-[1px] uppercase">one-time</span>
  </div>
  <ul className="space-y-3 mb-8 text-dark">
@@ -179,7 +179,7 @@ function CheckoutCard() {
  disabled={loading}
  className="w-full bg-pink text-white px-8 py-4 rounded-full text-xs tracking-[1.5px] uppercase font-medium hover:bg-[#C51F4E] transition disabled:opacity-50"
  >
- {loading ? 'Redirecting…' : 'Get Access · $39'}
+ {loading ? 'Redirecting…' : 'Get Access · $79'}
  </button>
  <p className="text-[11px] text-muted-light mt-4 text-center">Secure checkout via Stripe</p>
  </div>
@@ -211,7 +211,7 @@ export default function Paygate() {
  One payment. <span className="italic">Forever yours.</span>
  </h1>
  <p className="text-lg text-mid font-light mb-12 max-w-xl">
- $39 gets you the entire course, permanently. No subscription, no upsells, no drip
+ $79 gets you the entire course, permanently. No subscription, no upsells, no drip
  content. Pay once. Learn at your pace. Build whatever you want.
  </p>
  <div className="grid md:grid-cols-1 gap-6 max-w-xl">

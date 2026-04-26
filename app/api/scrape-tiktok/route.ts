@@ -243,7 +243,7 @@ async function scoreCommentsWithClaude(
       .map((c, j) => `${j}. @${c.handle}: ${c.text.replace(/\s+/g, ' ').slice(0, 220)}`)
       .join('\n')
 
-    const prompt = `You are scoring TikTok comments for "Ayla Unlocked," a $39 self-paced course teaching people how to actually build with Claude (websites, agents, automations) without a coding background. The audience skews young, female, non-tech.
+    const prompt = `You are scoring TikTok comments for "Ayla Unlocked," a $79 self-paced course teaching people how to actually build with Claude (websites, agents, automations) without a coding background. The audience skews young, female, non-tech.
 
 Score each comment 1-10 for likelihood the commenter would buy this course right now if they saw the link.
 

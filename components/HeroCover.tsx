@@ -124,7 +124,7 @@ export default function HeroCover() {
  href="/unlock"
  className="bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-8 py-4 rounded-full hover:bg-[#C51F4E] transition shadow-lg shadow-pink/20"
  >
- Get Access · $39
+ Get Access · $79
  </Link>
  ) : (
  <a
@@ -145,7 +145,7 @@ export default function HeroCover() {
  {/* social proof row */}
  <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs text-mid tracking-[0.5px]">
  <div className="flex items-center gap-2">
- <span className="text-pink font-semibold">$39</span>
+ <span className="text-pink font-semibold">$79</span>
  <span>&middot; lifetime access</span>
  </div>
  <div className="flex items-center gap-2">
@@ -184,7 +184,7 @@ export default function HeroCover() {
 }
 
 /**
- * Inline autoplay-muted video card with a pink "$39 forever" sticker
+ * Inline autoplay-muted video card with a pink "$79 forever" sticker
  * and an unmute pill. Tapping the video itself just toggles unmute.
  *
  * When `showBigUnmute` is true, shows a prominent centered "tap to unmute"
@@ -317,9 +317,9 @@ function HeroVideo({
  </button>
  </div>{/* end inner clipping container */}
 
- {/* $39 forever floating sticker, outside the clip so it can poke out */}
+ {/* $79 forever floating sticker, outside the clip so it can poke out */}
  <div className="absolute -top-3 -right-3 rotate-12 bg-pink text-white px-4 py-2 rounded-full text-[10px] tracking-[2px] uppercase font-semibold shadow-lg z-30 whitespace-nowrap">
- $39 forever
+ $79 forever
  </div>
 
  {/* scoped animations */}

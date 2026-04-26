@@ -29,7 +29,7 @@ export default function LandingPage() {
  href="/unlock"
  className="magnetic bg-pink text-white text-[11px] tracking-[1.5px] uppercase font-medium px-5 py-2.5 rounded-full hover:bg-[#C51F4E]"
  >
- Get Access · $39
+ Get Access · $79
  </Link>
  ) : (
  <a
@@ -228,7 +228,7 @@ export default function LandingPage() {
  href="/unlock"
  className="bg-pink text-white text-xs tracking-[1.5px] uppercase font-medium px-8 py-4 rounded-full hover:bg-[#C51F4E] transition inline-block"
  >
- Get Access · $39
+ Get Access · $79
  </Link>
  ) : (
  <a
