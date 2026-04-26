@@ -53,7 +53,14 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  const onPause = () => setPlaying(false)
  const onEnded = () => setPlaying(false)
  const onTime = () => setCurrentTime(v.currentTime)
- const onMeta = () => setDuration(v.duration || 0)
+ const onMeta = () => {
+ setDuration(v.duration || 0)
+ // Force the first frame to render as the "poster" so the
+ // video isn't a black box before you press play.
+ if (!autoPlay && v.currentTime === 0) {
+ try { v.currentTime = 0.05 } catch {}
+ }
+ }
  const onVol = () => setMuted(v.muted)
  v.addEventListener('play', onPlay)
  v.addEventListener('pause', onPause)
@@ -125,7 +132,7 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  disableRemotePlayback
  controlsList="nofullscreen nodownload noplaybackrate noremoteplayback"
  x-webkit-airplay="deny"
- preload="metadata"
+ preload="auto"
  className="w-full h-full object-cover cursor-pointer"
  onClick={togglePlay}
  onError={() => setFailed(true)}
