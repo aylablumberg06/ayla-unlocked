@@ -874,15 +874,6 @@ const lessons: Lesson[] = [
  <text x="340" y="195" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#888" font-style="italic">you never touch a credit card. you never store card info. Stripe does all of it.</text>
  </svg>
  </figure>
- <div class="exercise" data-exercise-id="ex-16a-stripe">
- <div class="exercise-tag">
- <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
- Do it now · 10 min
- </div>
- <div class="exercise-title">Create a Stripe account.</div>
- <div class="exercise-body">Go to <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>stripe.com</strong></a>. Sign up with your email. Flip on <strong>Test mode</strong> (top right). Click <strong>Product catalog</strong> &rarr; <strong>Add product</strong>. Name it anything. Set a test price ($1 or $39, whatever). Save. <br><br>You just have the infrastructure to accept money. Cool.</div>
- <button class="exercise-done" data-exercise-id="ex-16a-stripe">I did it →</button>
- </div>
 </div>`
  },
  {
