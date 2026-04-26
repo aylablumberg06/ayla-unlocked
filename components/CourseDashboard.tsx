@@ -2294,10 +2294,24 @@ export default function CourseDashboard() {
  .course-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.3px; color: var(--dark); text-decoration: none; cursor: pointer; transition: opacity 0.15s; display: inline-flex; align-items: center; }
  .course-brand:hover { opacity: 0.7; }
  .course-brand span { color: var(--pink); font-style: italic; }
- .progress-dots { display: flex; gap: 5px; align-items: center; }
- .dot { width: 6px; height: 6px; border-radius: 50%; background: transparent; border: 1.5px solid rgba(232,41,92,0.3); transition: all 0.3s ease; cursor: pointer; }
- .dot.done { background: var(--pink); border-color: var(--pink); }
- .dot.now { background: var(--pink); border-color: var(--pink); transform: scale(1.5); }
+ /* Lesson progress track. Continuous hairline thread with a pulsing
+    pink "you are here" bead, hover ticks, and gold bookmark stars. */
+ .progress-track { position: relative; flex: 1; max-width: 520px; min-width: 280px; height: 22px; display: flex; align-items: center; margin: 0 24px; }
+ .progress-track-bg { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(232,41,92,0.18); transform: translateY(-50%); border-radius: 1px; }
+ .progress-track-fill { position: absolute; top: 50%; left: 0; height: 2px; background: linear-gradient(90deg, var(--pink) 0%, #FF7BA8 100%); transform: translateY(-50%); transition: width 0.55s cubic-bezier(.45,0,.15,1); box-shadow: 0 0 10px rgba(232,41,92,0.45); border-radius: 2px; }
+ .progress-track-tick { flex: 1; height: 22px; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; background: transparent; border: 0; padding: 0; }
+ .progress-track-tick::before { content: ''; width: 1px; height: 4px; background: rgba(232,41,92,0.32); transition: all 0.18s ease; border-radius: 1px; }
+ .progress-track-tick:hover::before { height: 11px; width: 2px; background: var(--pink); }
+ .progress-track-tick.done::before { background: var(--pink); height: 5px; }
+ .progress-track-tick.now::before { width: 2px; height: 14px; background: var(--pink); box-shadow: 0 0 8px rgba(232,41,92,0.55); }
+ .progress-track-tick.has-bookmark::after { content: '★'; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); font-size: 8px; color: #E8B14A; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+ .progress-track-marker { position: absolute; top: 50%; width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FF8DB3, var(--pink) 65%); transform: translate(-50%, -50%); transition: left 0.55s cubic-bezier(.45,0,.15,1); box-shadow: 0 0 0 3px var(--cream), 0 0 14px rgba(232,41,92,0.55); pointer-events: none; z-index: 2; animation: trackPulse 2.4s ease-in-out infinite; }
+ @keyframes trackPulse {
+ 0%, 100% { box-shadow: 0 0 0 3px var(--cream), 0 0 8px rgba(232,41,92,0.4); }
+ 50% { box-shadow: 0 0 0 3px var(--cream), 0 0 22px rgba(232,41,92,0.85); }
+ }
+ .progress-track-label { position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); font-weight: 700; white-space: nowrap; opacity: 0; transition: opacity 0.18s, bottom 0.18s; pointer-events: none; }
+ .progress-track-tick:hover .progress-track-label { opacity: 1; bottom: -12px; }
  .glossary-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); background: var(--pink-light); border: none; padding: 7px 16px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
  .glossary-btn:hover { background: var(--pink); color: white; }
  .top-links { display: flex; align-items: center; gap: 6px; }
@@ -2645,19 +2659,31 @@ export default function CourseDashboard() {
 
  <nav className="top-nav">
  <a href="/" className="course-brand" aria-label="Back to Ayla Unlocked home"><BrandLogo size={20} className="mr-2" />Ayla <span>Unlocked</span></a>
- <div className="progress-dots">
+ <div className="progress-track" role="navigation" aria-label="Lesson progress">
+ <div className="progress-track-bg" />
+ <div
+ className="progress-track-fill"
+ style={{ width: lessons.length > 1 ? `${(cur / (lessons.length - 1)) * 100}%` : '0%' }}
+ />
  {lessons.map((les, i) => {
  const isDone = progress.completed_lessons.includes(i)
  const hasBm = progress.bookmarks.includes(i)
  return (
- <div
+ <button
  key={i}
- className={`dot${i === cur ? ' now' : (isDone || i < cur) ? ' done' : ''}${hasBm ? ' has-bookmark' : ''}`}
+ type="button"
+ className={`progress-track-tick${i === cur ? ' now' : (isDone || i < cur) ? ' done' : ''}${hasBm ? ' has-bookmark' : ''}`}
  onClick={() => go(0, i)}
  title={les.tag + (hasBm ? ' ★' : '') + (isDone ? ' ✓' : '')}
+ aria-label={les.tag}
  />
  )
  })}
+ <div
+ className="progress-track-marker"
+ style={{ left: lessons.length > 1 ? `${(cur / (lessons.length - 1)) * 100}%` : '0%' }}
+ aria-hidden="true"
+ />
  </div>
  <div className="top-links">
  {progress.streak_days > 0 && (
