@@ -1563,6 +1563,28 @@ export default function CourseDashboard() {
  const [noteSaved, setNoteSaved] = useState<'idle' | 'saving' | 'saved'>('idle')
  const rightRef = useRef<HTMLDivElement>(null)
 
+ // Synchronous localStorage fallback, runs before the /api/progress
+ // fetch resolves so reloads land on the last lesson instantly even
+ // for non-authenticated owner previews. The DB read still wins
+ // once it finishes for logged-in users.
+ useEffect(() => {
+ if (typeof window === 'undefined') return
+ const url = new URLSearchParams(window.location.search).get('lesson')
+ if (url !== null) return // ?lesson=N takes priority
+ const saved = Number(localStorage.getItem('au-last-lesson'))
+ if (Number.isFinite(saved) && saved > 0 && saved < lessons.length) {
+ setCur(saved)
+ }
+ // Run only once on mount
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ }, [])
+
+ // Mirror cur into localStorage every time it changes (cheap, sync).
+ useEffect(() => {
+ if (typeof window === 'undefined') return
+ try { localStorage.setItem('au-last-lesson', String(cur)) } catch {}
+ }, [cur])
+
  // Load progress once on mount, jump to last-visited lesson.
  useEffect(() => {
  let cancel = false
