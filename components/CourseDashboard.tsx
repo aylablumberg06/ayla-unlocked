@@ -488,7 +488,7 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">Anything where being wrong is dangerous</div>Medical questions. Legal advice. Safety-critical calculations. Financial decisions with real money. Claude can be confidently wrong about specific facts, and &ldquo;the AI said so&rdquo; is not a defense. Use it as a starting point, then verify with a professional.</div>
 
- <div class="callout"><div class="callout-tag">Tasks that are genuinely faster by hand</div>Sometimes a thing takes 2 minutes manually and 20 minutes to properly explain to Claude. If your gut says &ldquo;just do it yourself,&rdquo; trust it. Don&rsquo;t be religious about this.</div>
+ <div class="callout"><div class="callout-tag">Tasks that are genuinely faster by hand</div>Sometimes a thing takes 2 minutes manually and 20 minutes to properly explain to Claude. If your gut says &ldquo;just do it yourself,&rdquo; trust it.</div>
 
  <div class="callout"><div class="callout-tag">Creative work where you WANT your style to show</div>Your first TikTok. Your about page. The opening line of your book. Claude can write 50 drafts of the same idea. If you&rsquo;re trying to find <strong>your</strong> voice, the fastest way is to stare at a blank page until something real comes out. Claude short-circuits that process. Sometimes that&rsquo;s bad.</div>
 
