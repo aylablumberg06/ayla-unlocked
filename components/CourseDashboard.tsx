@@ -2098,7 +2098,8 @@ export default function CourseDashboard() {
  useEffect(() => {
  const wrap = rightRef.current?.querySelector('.lesson-wrap') as HTMLElement | null
  if (!wrap) return
- const targets = wrap.querySelectorAll<HTMLElement>('.bubble.u, .q')
+ // Skip .mad bubbles, those are real ranty messages I've sent, not prompts to copy
+ const targets = wrap.querySelectorAll<HTMLElement>('.bubble.u:not(.mad), .q')
  targets.forEach((el) => {
  // Avoid double-decorating
  if (el.querySelector(':scope > .copy-btn')) return
