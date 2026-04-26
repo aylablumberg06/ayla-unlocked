@@ -29,6 +29,9 @@ export default function AskAylaWidget() {
  const buttonBottom = isCoursePage ? 'bottom-[90px] md:bottom-24' : 'bottom-5'
  const panelBottom = isCoursePage ? 'bottom-[158px] md:bottom-[168px]' : 'bottom-24'
 
+ // Locked everywhere except inside the paid course area.
+ const locked = !pathname || !pathname.startsWith('/course')
+
  useEffect(() => {
  logRef.current?.scrollTo({ top: logRef.current.scrollHeight, behavior: 'smooth' })
  }, [messages, sending])
@@ -105,7 +108,7 @@ export default function AskAylaWidget() {
 
  {/* CHAT PANEL */}
  {open && (
- <div className={`fixed ${panelBottom} right-5 z-[70] w-[92vw] max-w-[380px] h-[560px] max-h-[70vh] rounded-3xl bg-cream border border-[color:var(--border)] shadow-2xl shadow-pink/10 flex flex-col overflow-hidden`}>
+ <div className={`fixed ${panelBottom} right-5 z-[70] w-[92vw] max-w-[380px] ${locked ? 'h-auto' : 'h-[560px] max-h-[70vh]'} rounded-3xl bg-cream border border-[color:var(--border)] shadow-2xl shadow-pink/10 flex flex-col overflow-hidden`}>
  {/* Header */}
  <div className="px-5 py-4 border-b border-[color:var(--border)] flex items-center gap-3 bg-white/60">
  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-pink bg-pink-light">
@@ -124,7 +127,23 @@ export default function AskAylaWidget() {
  </button>
  </div>
 
- {!handoff ? (
+ {locked ? (
+ <div className="px-6 py-7 text-center">
+ <div className="text-[10px] font-semibold tracking-[3px] uppercase text-pink mb-3">Members only</div>
+ <h3 className="font-serif italic text-2xl leading-tight mb-3">
+ This will be accessible once you&apos;ve purchased the course.
+ </h3>
+ <p className="text-[13px] text-mid font-light leading-relaxed mb-5">
+ Ask Ayla is a personal AI assistant included with Ayla Unlocked. She knows the entire course and answers any question you have while you&apos;re building.
+ </p>
+ <a
+ href="/unlock"
+ className="inline-block w-full bg-pink text-white text-[11px] tracking-[1.5px] uppercase font-medium rounded-full py-3 hover:bg-[#C51F4E] transition"
+ >
+ Get Access · $79
+ </a>
+ </div>
+ ) : !handoff ? (
  <>
  {/* Messages */}
  <div ref={logRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-2 text-[14px]">

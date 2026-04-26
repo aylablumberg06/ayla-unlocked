@@ -373,6 +373,10 @@ function TabBtn({
   )
 }
 
+function buildDM(_lead: Lead): string {
+  return `Hi, I saw your comment on my post about AI. I made a course that explains everything I've learned. 30 lessons that take you from never having opened claude to building real stuff with it. plain english, no tech jargon aylaunlocked.com  !!`
+}
+
 function LeadCard({
   lead,
   onPatch,
@@ -384,7 +388,27 @@ function LeadCard({
 }) {
   const [notes, setNotes] = useState(lead.notes ?? '')
   const [notesOpen, setNotesOpen] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const [dmOpen, setDmOpen] = useState(false)
+  const dm = buildDM(lead)
   const sentVisual = lead.status === 'sent' || lead.status === 'replied' || lead.status === 'converted'
+
+  async function copyDM() {
+    try {
+      await navigator.clipboard.writeText(dm)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // fallback: select textarea contents
+      const ta = document.getElementById(`dm-${lead.id}`) as HTMLTextAreaElement | null
+      if (ta) {
+        ta.select()
+        document.execCommand('copy')
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
+      }
+    }
+  }
 
   const tiktokUrl = `https://www.tiktok.com/@${lead.handle}`
   const scoreColor = lead.intent_score >= 8 ? 'bg-pink text-white' : lead.intent_score >= 6 ? 'bg-pink-light text-pink' : 'bg-white border border-[color:var(--border)] text-mid'
@@ -464,12 +488,47 @@ function LeadCard({
         </div>
       </div>
 
-      <button
-        onClick={() => setNotesOpen((v) => !v)}
-        className="mt-3 text-[10px] tracking-[1.5px] uppercase text-mid hover:text-pink"
-      >
-        {notesOpen ? 'hide notes' : lead.notes ? 'view notes' : 'add notes'}
-      </button>
+      <div className="mt-3 flex gap-4 flex-wrap">
+        <button
+          onClick={() => setDmOpen((v) => !v)}
+          className="text-[10px] tracking-[1.5px] uppercase text-mid hover:text-pink"
+        >
+          {dmOpen ? 'hide message' : 'view message'}
+        </button>
+        <button
+          onClick={() => setNotesOpen((v) => !v)}
+          className="text-[10px] tracking-[1.5px] uppercase text-mid hover:text-pink"
+        >
+          {notesOpen ? 'hide notes' : lead.notes ? 'view notes' : 'add notes'}
+        </button>
+      </div>
+      {dmOpen && (
+        <div className="mt-2 rounded-lg border border-[color:var(--border)] bg-pink-light/40 p-3">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] tracking-[2px] uppercase text-pink font-semibold">Draft DM</span>
+            <button
+              onClick={copyDM}
+              className={`px-3 py-1 rounded-full text-[10px] tracking-[1.5px] uppercase font-semibold transition ${
+                copied
+                  ? 'bg-pink text-white'
+                  : 'bg-white border border-[color:var(--border)] text-mid hover:border-pink hover:text-pink'
+              }`}
+            >
+              {copied ? '✓ Copied' : 'Copy'}
+            </button>
+          </div>
+          <textarea
+            id={`dm-${lead.id}`}
+            readOnly
+            value={dm}
+            rows={3}
+            className="w-full px-3 py-2 rounded-lg border border-[color:var(--border)] bg-white text-sm resize-y leading-relaxed"
+          />
+          <p className="text-[10px] text-muted-light mt-2">
+            Tweak before sending if you want — this is a starter draft.
+          </p>
+        </div>
+      )}
       {notesOpen && (
         <div className="mt-2">
           <textarea

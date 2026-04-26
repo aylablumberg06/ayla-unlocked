@@ -3,8 +3,12 @@ import { createClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 import type { NextRequest, NextResponse } from 'next/server'
 
-// 1 year in seconds — long-lived session, magic-link only
-const SESSION_TTL = 60 * 60 * 24 * 365
+// 10 years in seconds — effectively lifetime, magic-link only.
+// Browsers clamp cookies to ~400 days max, but the SSR client re-sets the
+// cookie on every refresh-token rotation, so active users stay signed in
+// forever in practice. If they ever lose the cookie, a new magic link
+// gets them right back in.
+const SESSION_TTL = 60 * 60 * 24 * 365 * 10
 
 // ──────────────────────────────────────────────────────────
 // Browser / client components

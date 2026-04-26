@@ -34,6 +34,18 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  const [duration, setDuration] = useState(0)
  const [buffering, setBuffering] = useState(false)
  const [hasFrame, setHasFrame] = useState(false)
+ // Mobile: don't preload the whole video, only metadata. Saves cellular
+ // data + fixes the "video won't start" problem on flaky LTE. Desktop
+ // keeps preload="auto" so it's instant.
+ const [isMobile, setIsMobile] = useState(false)
+ useEffect(() => {
+ if (typeof window === 'undefined') return
+ const mq = window.matchMedia('(max-width: 767px)')
+ const update = () => setIsMobile(mq.matches)
+ update()
+ mq.addEventListener('change', update)
+ return () => mq.removeEventListener('change', update)
+ }, [])
 
  useEffect(() => {
  if (ref.current) ref.current.playbackRate = speed
@@ -146,7 +158,7 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  disableRemotePlayback
  controlsList="nofullscreen nodownload noplaybackrate noremoteplayback"
  x-webkit-airplay="deny"
- preload="auto"
+ preload={isMobile ? 'metadata' : 'auto'}
  className="w-full h-full object-cover cursor-pointer"
  onClick={togglePlay}
  onError={() => setFailed(true)}
