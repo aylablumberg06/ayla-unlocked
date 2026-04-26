@@ -93,7 +93,7 @@ const lessons: Lesson[] = [
  </div>
  </div>
 
- <div class="callout"><div class="callout-tag">One more thing</div>This course is meant to be <em>multi-modal</em>. That's a fancy way of saying: you can watch, read, highlight, try things, ask questions, and post about what you're building , all in here. Not every lesson works the same way for every brain. That's the point.</div>
+ <div class="callout"><div class="callout-tag">One more thing</div>This course is meant to be <em>multi-modal</em>. That's a fancy way of saying: you can watch, read, highlight, try things, ask questions, and post about what you're building, all in here. Not every lesson works the same way for every brain. That's the point.</div>
 
  <div class="callout"><div class="callout-tag">Take breaks whenever you want</div>For real, close this tab mid-lesson if you need to. Go get coffee. Come back tomorrow. We&rsquo;ll drop you right where you left off. It&rsquo;s not like I can see where you&rsquo;re at and judge you&hellip; <br><br><em>Actually. I can. I have a dashboard where I can see exactly what lesson everyone&rsquo;s on. But don&rsquo;t let me judge you. Take the break. Go.</em></div>
  </div>`
@@ -211,10 +211,10 @@ const lessons: Lesson[] = [
  <p>A few reframes that helped me:</p>
 
  <ul>
- <li><strong>&ldquo;I don&rsquo;t know the vocab&rdquo;</strong> , fine. Use different words. The concepts matter, not the jargon. Most of it is a gatekeeping scam anyway.</li>
- <li><strong>&ldquo;I&rsquo;ll look dumb if I ask&rdquo;</strong> , you look dumber when you pretend. Ask Claude the &ldquo;dumb&rdquo; question. It won&rsquo;t judge. And after a while you&rsquo;ll stop asking because you&rsquo;ll actually know.</li>
- <li><strong>&ldquo;Other people are further along&rdquo;</strong> , the only comparison that matters is you vs. you a month ago. Everybody&rsquo;s chart starts flat. Mine did.</li>
- <li><strong>&ldquo;What if I sell something and it breaks&rdquo;</strong> , charge less at first. Overdeliver. Fix it when it breaks. This is how every business in history has worked.</li>
+ <li><strong>&ldquo;I don&rsquo;t know the vocab&rdquo;</strong>, fine. Use different words. The concepts matter, not the jargon. Most of it is a gatekeeping scam anyway.</li>
+ <li><strong>&ldquo;I&rsquo;ll look dumb if I ask&rdquo;</strong>, you look dumber when you pretend. Ask Claude the &ldquo;dumb&rdquo; question. It won&rsquo;t judge. And after a while you&rsquo;ll stop asking because you&rsquo;ll actually know.</li>
+ <li><strong>&ldquo;Other people are further along&rdquo;</strong>, the only comparison that matters is you vs. you a month ago. Everybody&rsquo;s chart starts flat. Mine did.</li>
+ <li><strong>&ldquo;What if I sell something and it breaks&rdquo;</strong>, charge less at first. Overdeliver. Fix it when it breaks. This is how every business in history has worked.</li>
  </ul>
 
  <p>The people who make it are the ones who just keep building through the feeling. <strong>You&rsquo;re not behind. Go build the thing.</strong></p>
@@ -255,7 +255,7 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">Pro, $20/month</div>Roughly 5x the message limit. Upload more files at once. Access to the newest model first. The moment you&rsquo;re building a real thing and getting cut off mid-project is the moment Pro is worth it. If you&rsquo;re actively working on something for more than 2 hours a day, upgrade.</div>
 
- <div class="callout"><div class="callout-tag">Max, $100&ndash;200/month</div>The &ldquo;I&rsquo;m running this as my job&rdquo; tier. Effectively unlimited. Priority access when servers are slammed. <strong>This is what I personally pay for , $100/month.</strong> Only jump here if you&rsquo;re building every day, running client work, or operating agents at volume. If you&rsquo;re a one-person agency or doing cold outreach daily, Max pays for itself in an afternoon.</div>
+ <div class="callout"><div class="callout-tag">Max, $100&ndash;200/month</div>The &ldquo;I&rsquo;m running this as my job&rdquo; tier. Effectively unlimited. Priority access when servers are slammed. <strong>This is what I personally pay for, $100/month.</strong> Only jump here if you&rsquo;re building every day, running client work, or operating agents at volume. If you&rsquo;re a one-person agency or doing cold outreach daily, Max pays for itself in an afternoon.</div>
 
  <div class="a-quote">&ldquo;Start free. You&rsquo;ll know when you need Pro because Claude will literally cut you off mid-thought. That&rsquo;s the signal.&rdquo;</div>
 
@@ -267,11 +267,11 @@ const lessons: Lesson[] = [
 
  <p>You&rsquo;re going to see these three names everywhere. <strong>Opus, Sonnet, Haiku.</strong> Those aren&rsquo;t plans, those are the actual <em>models</em>, the brains underneath. Each plan above (Free, Pro, Max) gives you access to different ones with different limits. Here&rsquo;s the simplest way to think about them:</p>
 
- <div class="callout"><div class="callout-tag">Haiku , the fast one</div>Smallest, cheapest, fastest. The "quick reply" model. <strong>Use it for:</strong> short summaries, simple lookups, classifying emails as spam-or-not, parsing form data, anything you need answered in a second flat. Not great at deep reasoning or long projects.</div>
+ <div class="callout"><div class="callout-tag">Haiku, the fast one</div>Smallest, cheapest, fastest. The "quick reply" model. <strong>Use it for:</strong> short summaries, simple lookups, classifying emails as spam-or-not, parsing form data, anything you need answered in a second flat. Not great at deep reasoning or long projects.</div>
 
- <div class="callout"><div class="callout-tag">Sonnet , the everyday one</div>The default. Smart, balanced, plenty fast. This is what shows up when you just open Claude and start typing. <strong>Use it for:</strong> 95% of what you'll do in this course, building websites, writing in your voice, drafting emails, debugging code, normal back-and-forth chats. If you&rsquo;re not sure which to pick, pick Sonnet.</div>
+ <div class="callout"><div class="callout-tag">Sonnet, the everyday one</div>The default. Smart, balanced, plenty fast. This is what shows up when you just open Claude and start typing. <strong>Use it for:</strong> 95% of what you'll do in this course, building websites, writing in your voice, drafting emails, debugging code, normal back-and-forth chats. If you&rsquo;re not sure which to pick, pick Sonnet.</div>
 
- <div class="callout"><div class="callout-tag">Opus , the genius one</div>Slowest, smartest, priciest. Best at hard reasoning and multi-step planning. <strong>Use it for:</strong> a tricky bug Sonnet keeps fumbling, a long research deep-dive, planning out a complex agent system, contracts you need analyzed line by line. Save Opus for the moments you actually need a brain, because it costs more and takes longer.</div>
+ <div class="callout"><div class="callout-tag">Opus, the genius one</div>Slowest, smartest, priciest. Best at hard reasoning and multi-step planning. <strong>Use it for:</strong> a tricky bug Sonnet keeps fumbling, a long research deep-dive, planning out a complex agent system, contracts you need analyzed line by line. Save Opus for the moments you actually need a brain, because it costs more and takes longer.</div>
 
  <div class="callout"><div class="callout-tag">My personal rule</div>I default to Sonnet for everything. If Sonnet stalls or keeps making the same mistake twice in a row, I switch the same chat to <strong>Opus</strong> and ask it to think harder. If I&rsquo;m doing something boring and high-volume (like classifying 500 emails), I&rsquo;ll use <strong>Haiku</strong> through the API to save money. <em>You almost never need to think about this. Just leave it on Sonnet and live your life.</em></div>
 
@@ -321,9 +321,9 @@ const lessons: Lesson[] = [
  <p><strong>Even better on Mac:</strong> go to System Settings, then Keyboard, and set up a keyboard shortcut for dictation. I set mine so double-tapping Control starts the mic anywhere on my computer. No matter what I'm looking at, I just double-tap and start talking.</p>
  <p><strong>For voice memos:</strong> if you recorded something in the iPhone Voice Memos app, press the three dots on the recording and tap Transcribe. Copy the transcript and paste it directly into Claude. Or just upload the audio file and Claude will read it. Either works.</p>
 
- <div class="callout"><div class="callout-tag">This is actually the best part , you can bring it anywhere</div>I voice-dictate to Claude while I&rsquo;m doing my makeup. While I&rsquo;m doing my homework. While I&rsquo;m walking. While I&rsquo;m driving (hands-free, relax). While I&rsquo;m in line at a coffee shop thinking about something. The whole point is: <strong>you don&rsquo;t have to be at a desk to use this.</strong> If you can talk, you can build. Five minutes of rambling in your car is a 500-word spec. Claude turns it into something real by the time you&rsquo;re home.</div>
+ <div class="callout"><div class="callout-tag">This is actually the best part, you can bring it anywhere</div>I voice-dictate to Claude while I&rsquo;m doing my makeup. While I&rsquo;m doing my homework. While I&rsquo;m walking. While I&rsquo;m driving (hands-free, relax). While I&rsquo;m in line at a coffee shop thinking about something. The whole point is: <strong>you don&rsquo;t have to be at a desk to use this.</strong> If you can talk, you can build. Five minutes of rambling in your car is a 500-word spec. Claude turns it into something real by the time you&rsquo;re home.</div>
 
- <div class="callout"><div class="callout-tag">Chain tasks in one conversation</div>Once Claude builds something for you, don&rsquo;t start a new chat. Keep going. Say: <em>&ldquo;Now write me a TikTok script explaining this.&rdquo;</em> Or: <em>&ldquo;Now draft an email pitching this to my email list.&rdquo;</em> Or: <em>&ldquo;Now turn the main idea into three Instagram captions.&rdquo;</em> Claude already has all the context , it knows exactly what you built. One conversation, ten outputs. Way better than starting over every time.</div>
+ <div class="callout"><div class="callout-tag">Chain tasks in one conversation</div>Once Claude builds something for you, don&rsquo;t start a new chat. Keep going. Say: <em>&ldquo;Now write me a TikTok script explaining this.&rdquo;</em> Or: <em>&ldquo;Now draft an email pitching this to my email list.&rdquo;</em> Or: <em>&ldquo;Now turn the main idea into three Instagram captions.&rdquo;</em> Claude already has all the context, it knows exactly what you built. One conversation, ten outputs. Way better than starting over every time.</div>
  <div class="exercise" data-exercise-id="ex-09a-clarify">
  <div class="exercise-tag">
  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
@@ -342,7 +342,7 @@ const lessons: Lesson[] = [
  <p class="l-sub">This is completely normal and it happens to everyone including me constantly.</p>
  <div class="l-body">
  <p>Claude is going to misunderstand you, build the wrong thing, go off on a tangent, or give you something that's close but not quite right. This is just part of the process. Don't let it spiral you out.</p>
- <div class="callout"><div class="callout-tag">Think of it like&hellip;</div><strong>Your intern messed up.</strong> A smart intern on day three. They're sharp, they're fast, they want to get it right, but they don't know everything about you or your taste or your project. So they guess. Sometimes they guess wrong. You don't fire them when they mess up once. You say, &ldquo;hey, not that , more like <em>this</em>,&rdquo; and they get it right on the second try. That's the whole vibe.</div>
+ <div class="callout"><div class="callout-tag">Think of it like&hellip;</div><strong>Your intern is messing up.</strong> A smart intern on day three. They're sharp, they're fast, they want to get it right, but they don't know everything about you or your taste or your project. So they guess. Sometimes they guess wrong. You don't fire them when they mess up once. You say, &ldquo;hey, not that, more like <em>this</em>,&rdquo; and they get it right on the second try. That's the whole vibe.</div>
  <p>What actually helps when something goes wrong:</p>
  <ul>
  <li><strong>Be specific about what's wrong.</strong> Not "this is bad" but "the colors are wrong, I wanted pink not purple, the button needs to be on the right side, and the font is too small."</li>
@@ -379,21 +379,21 @@ const lessons: Lesson[] = [
  <div class="callout"><div class="callout-tag">Rule 3: Always check which chat you're in</div>This sounds obvious but I've made this mistake more than once. Before you start typing, make sure you're in the right chat for the right project. Starting in the wrong place means Claude has no context and you'll waste time re-explaining everything.</div>
 
  <div class="divider"><span>The reference-doc habit</span></div>
- <p>This is the move that changed how much I retain and how fast I rebuild things. Every time Claude figures something out for me , how to set up Stripe, how to deploy to Vercel, how I configured a cron, whatever , I say one of these at the end:</p>
+ <p>This is the move that changed how much I retain and how fast I rebuild things. Every time Claude figures something out for me, how to set up Stripe, how to deploy to Vercel, how I configured a cron, whatever, I say one of these at the end:</p>
  <div class="callout"><div class="callout-tag">The exact prompt I use</div><div class="bubble u">Now write this up as a reference doc so I can rebuild it later. Step by step, everything you just did, including why you made each choice. Save it as a markdown file I can stash in my Project.</div></div>
  <p>Claude will drop you a clean, self-contained doc. <strong>Save it in the Project&rsquo;s instructions or attach it as a file.</strong> Three weeks from now, when you vaguely remember fixing this exact thing, you can open that doc and redo it in four minutes instead of another 2-hour rabbit hole.</p>
  <p>Over time these compound. You end up with a personal knowledge base that reads exactly like you think. Nobody else has one like it.</p>
 
- <div class="callout"><div class="callout-tag">The even-better version , build a dashboard of all your docs</div>Once you have 10+ reference docs scattered across Projects, ask Claude to build you a simple HTML dashboard that links to all of them. Something like: <em>&ldquo;Make me a one-page dashboard I can open from my browser, with every reference doc I&rsquo;ve made, grouped by category (Stripe, deploy, Claude workflows, business ops), with a search bar.&rdquo;</em> Claude will ship it. You&rsquo;ll end up with your own personal Notion-style hub, except you built it in 20 minutes and it&rsquo;s exactly the way you think. Mine is the first thing I open every morning.</div>
+ <div class="callout"><div class="callout-tag">The even-better version, build a dashboard of all your docs</div>Once you have 10+ reference docs scattered across Projects, ask Claude to build you a simple HTML dashboard that links to all of them. Something like: <em>&ldquo;Make me a one-page dashboard I can open from my browser, with every reference doc I&rsquo;ve made, grouped by category (Stripe, deploy, Claude workflows, business ops), with a search bar.&rdquo;</em> Claude will ship it. You&rsquo;ll end up with your own personal Notion-style hub, except you built it in 20 minutes and it&rsquo;s exactly the way you think. Mine is the first thing I open every morning.</div>
 
  <div class="divider"><span>Customizing Claude so it acts the way you want</span></div>
- <p>This is the part that makes Claude feel like <em>yours</em> instead of a generic chatbot. You can tell Claude your preferences <strong>once</strong>, and it&rsquo;ll apply them to every chat , as long as you tell it to remember.</p>
+ <p>This is the part that makes Claude feel like <em>yours</em> instead of a generic chatbot. You can tell Claude your preferences <strong>once</strong>, and it&rsquo;ll apply them to every chat, as long as you tell it to remember.</p>
  <p>Examples of things I&rsquo;ve locked in on my Claude:</p>
  <ul>
  <li>&ldquo;Always default to <strong>pink</strong> as the primary brand color when building anything for me, unless I specify otherwise.&rdquo;</li>
  <li>&ldquo;When I ask for code, skip the explanation unless I ask. Just give me the code.&rdquo;</li>
- <li>&ldquo;I&rsquo;m a 19-year-old solo founder in Dallas, so tailor business advice to that scale , no enterprise assumptions.&rdquo;</li>
- <li>&ldquo;Use casual tone. Drop the &lsquo;certainly!&rsquo; and &lsquo;I&rsquo;d be happy to&rsquo; , just answer.&rdquo;</li>
+ <li>&ldquo;I&rsquo;m a 19-year-old solo founder in Dallas, so tailor business advice to that scale, no enterprise assumptions.&rdquo;</li>
+ <li>&ldquo;Use casual tone. Drop the &lsquo;certainly!&rsquo; and &lsquo;I&rsquo;d be happy to&rsquo;, just answer.&rdquo;</li>
  </ul>
  <div class="callout"><div class="callout-tag">The exact magic words</div>After any preference you&rsquo;ve just explained, add: <div class="bubble u">Remember this for all future chats.</div>That tells Claude to push the preference into your account-level memory (or the active Project&rsquo;s instructions, depending on where you are). From that point on, every new conversation starts with that preference already loaded. You don&rsquo;t have to repeat yourself.</div>
  <p>You can also go straight to <strong>Settings &rarr; Personalization</strong> in the Claude app and type the preferences in yourself. Same effect. Either way, the goal is the same: Claude stops being a blank slate every time and starts knowing you.</p>
@@ -459,7 +459,7 @@ const lessons: Lesson[] = [
  </svg>
  </figure>
 
- <p>So when you&rsquo;re staring at the list above and nothing feels right , <strong>just pick something.</strong> Even something dumb. The point of the first build isn&rsquo;t to be the right one. The point is to unlock the next one. And the one after that.</p>
+ <p>So when you&rsquo;re staring at the list above and nothing feels right, <strong>just pick something.</strong> Even something dumb. The point of the first build isn&rsquo;t to be the right one. The point is to unlock the next one. And the one after that.</p>
  <div class="a-quote">&ldquo;You&rsquo;re not hunting for the idea. You&rsquo;re warming up your idea brain. It gets louder the more you build.&rdquo;</div>
  <div class="exercise" data-exercise-id="ex-08a-interview">
  <div class="exercise-tag">
@@ -508,7 +508,7 @@ const lessons: Lesson[] = [
  </div>
  <div class="callout">
  <div class="callout-tag">2. Claude Code</div>
- This is what you use when you want something actually live. A real website people can visit. A system that runs automatically. Claude Code <strong>runs in Terminal</strong> (we walk through Terminal in lesson 17 , don&rsquo;t worry, it&rsquo;s easy). It can also be used from inside VS Code&rsquo;s built-in terminal panel if you prefer that.<br><br><strong>Use this for:</strong> anything you want on the internet or running automatically.
+ This is what you use when you want something actually live. A real website people can visit. A system that runs automatically. Claude Code <strong>runs in Terminal</strong> (we walk through Terminal in lesson 17, don&rsquo;t worry, it&rsquo;s easy). It can also be used from inside VS Code&rsquo;s built-in terminal panel if you prefer that.<br><br><strong>Use this for:</strong> anything you want on the internet or running automatically.
  </div>
  <div class="callout">
  <div class="callout-tag">3. Cowork</div>
@@ -589,9 +589,9 @@ const lessons: Lesson[] = [
 
  <h2 class="l-sub-head">First, what each one does (in plain English).</h2>
 
- <div class="callout"><div class="callout-tag">Homebrew , the foundation</div>A tool you install on your Mac that lets you install <em>other</em> tools. Even developers can&rsquo;t cleanly explain what it does under the hood. <strong>You just need it before anything else works.</strong> Install it first. Don&rsquo;t question it. Free.</div>
- <div class="callout"><div class="callout-tag">GitHub , cloud storage for code</div>Think of it like Google Drive, but specifically for the code Claude makes. It holds every file in your project so Vercel can find it and put it live. Free.</div>
- <div class="callout"><div class="callout-tag">Vercel , what actually puts your site on the internet</div>It reads your code from GitHub and hosts it. Free for personal projects. This is what aylaunlocked.vercel.app and <a href="https://aylablumberg.com" target="_blank" rel="noopener noreferrer" class="brand-link">aylablumberg.com</a> both run on. Once your site is on Vercel you can buy a real domain like yourname.com and point it at your project.</div>
+ <div class="callout"><div class="callout-tag">Homebrew, the foundation</div>A tool you install on your Mac that lets you install <em>other</em> tools. Even developers can&rsquo;t cleanly explain what it does under the hood. <strong>You just need it before anything else works.</strong> Install it first. Don&rsquo;t question it. Free.</div>
+ <div class="callout"><div class="callout-tag">GitHub, cloud storage for code</div>Think of it like Google Drive, but specifically for the code Claude makes. It holds every file in your project so Vercel can find it and put it live. Free.</div>
+ <div class="callout"><div class="callout-tag">Vercel, what actually puts your site on the internet</div>It reads your code from GitHub and hosts it. Free for personal projects. This is what aylaunlocked.vercel.app and <a href="https://aylablumberg.com" target="_blank" rel="noopener noreferrer" class="brand-link">aylablumberg.com</a> both run on. Once your site is on Vercel you can buy a real domain like yourname.com and point it at your project.</div>
 
  <p><strong>The order matters:</strong> Homebrew first (so you can install the helper tools), then GitHub (so you have a place to put code), then Vercel (so the code goes live). Do them once, then you basically never touch them again.</p>
 
@@ -600,10 +600,10 @@ const lessons: Lesson[] = [
  <p><strong>Open Terminal.</strong> Press <code>Cmd + Space</code> on your Mac, type <code>Terminal</code>, hit Enter. A black or white window opens. That&rsquo;s it.</p>
  <p>Then <strong>copy and paste this line</strong> into Terminal and hit Enter:</p>
  <div class="q">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</div>
- <p>It&rsquo;ll think for a few minutes. At one point it&rsquo;ll ask for your Mac password , type it (you won&rsquo;t see the characters, that&rsquo;s totally normal, just type and hit Enter). When it&rsquo;s done you&rsquo;ll see <code>Installation successful!</code></p>
+ <p>It&rsquo;ll think for a few minutes. At one point it&rsquo;ll ask for your Mac password, type it (you won&rsquo;t see the characters, that&rsquo;s totally normal, just type and hit Enter). When it&rsquo;s done you&rsquo;ll see <code>Installation successful!</code></p>
  <p><strong>Now install the GitHub helper and the Vercel helper</strong> in one command:</p>
  <div class="q">brew install node gh &amp;&amp; npm install -g vercel</div>
- <p>That installs Node (a thing GitHub and Vercel both need), the GitHub command-line tool (<code>gh</code>), and the Vercel command-line tool. Wait for it to finish , another minute or two.</p>
+ <p>That installs Node (a thing GitHub and Vercel both need), the GitHub command-line tool (<code>gh</code>), and the Vercel command-line tool. Wait for it to finish, another minute or two.</p>
 
  <div class="callout"><div class="callout-tag">If you get an error</div><strong>Paste the error straight into Claude</strong> and say &ldquo;what do I do?&rdquo; Claude is very good at debugging its own install commands. Don&rsquo;t panic.</div>
 
@@ -611,12 +611,12 @@ const lessons: Lesson[] = [
 
  <ol class="steps">
  <li><div>Go to <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="brand-link"><strong>github.com</strong></a> in your browser. Click <strong>Sign up</strong>.</div></li>
- <li><div>Use a real email address (not a school one , if you graduate, you lose access). Pick a username you don&rsquo;t hate, you&rsquo;ll see it on every project.</div></li>
+ <li><div>Use a real email address (not a school one, if you graduate, you lose access). Pick a username you don&rsquo;t hate, you&rsquo;ll see it on every project.</div></li>
  <li><div>Confirm your email. Pick the <strong>Free</strong> plan when it asks.</div></li>
  <li><div>Back in Terminal, sign in via the helper you just installed. Paste:</div></li>
  </ol>
  <div class="q">gh auth login</div>
- <p>Pick <strong>GitHub.com</strong>, then <strong>HTTPS</strong>, then <strong>Login with a web browser</strong>. It&rsquo;ll show you an 8-character code, then open your browser. Paste the code, click Authorize. Come back to Terminal , you&rsquo;re signed in.</p>
+ <p>Pick <strong>GitHub.com</strong>, then <strong>HTTPS</strong>, then <strong>Login with a web browser</strong>. It&rsquo;ll show you an 8-character code, then open your browser. Paste the code, click Authorize. Come back to Terminal, you&rsquo;re signed in.</p>
 
  <div class="callout"><div class="callout-tag">Why both?</div>The <strong>account</strong> on <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="brand-link">github.com</a> is for humans (you). The <strong>CLI sign-in</strong> is for Claude Code, so it can push your code into your account on your behalf. You only do this once on each computer.</div>
 
@@ -648,7 +648,7 @@ const lessons: Lesson[] = [
  Do this now · 15 min
  </div>
  <div class="exercise-title">Install Homebrew + the helpers.</div>
- <div class="exercise-body">Open Terminal (Cmd+Space, type &ldquo;Terminal&rdquo;). Paste the Homebrew install line from Step 1 above. Hit Enter. Wait. It&rsquo;ll ask for your Mac password , type it (you won&rsquo;t see the characters, that&rsquo;s normal). When it finishes, run the <strong>brew install node gh &amp;&amp; npm install -g vercel</strong> line. <br><br>If anything errors, copy the error straight into Claude and say &ldquo;what do I do.&rdquo; It&rsquo;ll fix it.</div>
+ <div class="exercise-body">Open Terminal (Cmd+Space, type &ldquo;Terminal&rdquo;). Paste the Homebrew install line from Step 1 above. Hit Enter. Wait. It&rsquo;ll ask for your Mac password, type it (you won&rsquo;t see the characters, that&rsquo;s normal). When it finishes, run the <strong>brew install node gh &amp;&amp; npm install -g vercel</strong> line. <br><br>If anything errors, copy the error straight into Claude and say &ldquo;what do I do.&rdquo; It&rsquo;ll fix it.</div>
  <button class="exercise-done" data-exercise-id="ex-12a-homebrew">I did it →</button>
  </div>
  <div class="exercise" data-exercise-id="ex-16-deploy">
@@ -687,17 +687,17 @@ const lessons: Lesson[] = [
  <ol>
  <li>Open Terminal (Cmd + Space, type &ldquo;Terminal,&rdquo; hit return).</li>
  <li>Type <code>claude</code> and press enter.</li>
- <li>The first time you run it, Claude will pop open a browser window asking you to sign in with your Anthropic account. This is the authentication step , it&rsquo;s how Terminal proves you&rsquo;re actually you.</li>
+ <li>The first time you run it, Claude will pop open a browser window asking you to sign in with your Anthropic account. This is the authentication step, it&rsquo;s how Terminal proves you&rsquo;re actually you.</li>
  <li>Sign in, approve, come back to Terminal. Done. You&rsquo;re inside Claude Code.</li>
  <li>Now you just talk to it like normal: &ldquo;build me a landing page,&rdquo; &ldquo;fix this bug,&rdquo; whatever.</li>
  </ol>
 
  <div class="callout"><div class="callout-tag">Heads up on the browser auth</div>The browser sign-in happens the <em>first time only</em>. After that, <code>claude</code> just opens straight into a session. If you ever see the browser pop open later, it usually means your token expired (every few weeks). Just sign in again and you&rsquo;re back.</div>
 
- <div class="callout"><div class="callout-tag">Wait , is this the same as the Claude app?</div>Nope. Two different things, both called &ldquo;Claude.&rdquo; <strong>Claude app</strong> (<a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> website + the mobile app + the Mac app) is regular chat , what you use for thinking, writing, brainstorming. <strong>Claude Code</strong> (what you just opened with <code>claude</code> in Terminal) is the builder version , it can actually touch files on your computer and build things for you. Same brain, different powers. Use chat for thinking. Use Claude Code for shipping.</div>
+ <div class="callout"><div class="callout-tag">Wait, is this the same as the Claude app?</div>Nope. Two different things, both called &ldquo;Claude.&rdquo; <strong>Claude app</strong> (<a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="brand-link">claude.ai</a> website + the mobile app + the Mac app) is regular chat, what you use for thinking, writing, brainstorming. <strong>Claude Code</strong> (what you just opened with <code>claude</code> in Terminal) is the builder version, it can actually touch files on your computer and build things for you. Same brain, different powers. Use chat for thinking. Use Claude Code for shipping.</div>
  <figure class="lesson-photo">
  <img src="/lesson-terminal.jpg" alt="My Mac terminal running a Python script. You can see the percent prompt at the bottom." />
- <figcaption>My actual terminal while my outreach pipeline was running. Most of what you see is just info logs , <code>fetching businesses from Outscraper</code>, <code>5 results</code>, etc. That&rsquo;s what live agents look like. They just talk to themselves in Terminal while they work.</figcaption>
+ <figcaption>My actual terminal while my outreach pipeline was running. Most of what you see is just info logs, <code>fetching businesses from Outscraper</code>, <code>5 results</code>, etc. That&rsquo;s what live agents look like. They just talk to themselves in Terminal while they work.</figcaption>
  </figure>
  <div class="stuck-callout">
  <div class="stuck-icon">
@@ -709,7 +709,7 @@ const lessons: Lesson[] = [
  </div>
  </div>
 
- <div class="divider"><span>Quick pivot , what would you build for someone else?</span></div>
+ <div class="divider"><span>Quick pivot, what would you build for someone else?</span></div>
 
  <p>You&rsquo;re about to learn API keys, real APIs, agents, all the stuff that makes this go from &ldquo;cool I built myself a website&rdquo; to &ldquo;cool I&rsquo;m getting paid to build agent teams for companies.&rdquo;</p>
 
@@ -941,7 +941,7 @@ const lessons: Lesson[] = [
  <li><strong>Booking / scheduling automations</strong> for service businesses</li>
  <li><strong>Lead lists</strong> scraped + enriched for early-stage startups ($500 to $2,000)</li>
  <li><strong>Internal AI dashboards</strong> (trackers, pipelines) for small teams</li>
- <li><strong>Agent teams</strong> that run a whole function (outreach, support, content) , premium pricing</li>
+ <li><strong>Agent teams</strong> that run a whole function (outreach, support, content), premium pricing</li>
  </ul>
  <p>Pick one. Literally one. You can diversify later. Right now you need a clear answer when someone asks &ldquo;what do you do?&rdquo;</p>
 
@@ -984,13 +984,13 @@ const lessons: Lesson[] = [
 
  <div class="divider"><span>What to put in the proposal</span></div>
  <ul>
- <li><strong>One-line summary</strong> , what you&rsquo;re building, in plain English</li>
- <li><strong>Scope</strong> , what&rsquo;s included and (crucial) what&rsquo;s NOT included</li>
- <li><strong>Timeline</strong> , realistic, with a little buffer</li>
- <li><strong>Price</strong> , fixed amount or hourly rate + estimated hours</li>
- <li><strong>Deliverables</strong> , bullet list of what they&rsquo;ll actually receive</li>
- <li><strong>Why me</strong> , one paragraph. Don&rsquo;t oversell.</li>
- <li><strong>Next steps</strong> , &ldquo;reply if this looks right and I&rsquo;ll send the contract + invoice.&rdquo;</li>
+ <li><strong>One-line summary</strong>, what you&rsquo;re building, in plain English</li>
+ <li><strong>Scope</strong>, what&rsquo;s included and (crucial) what&rsquo;s NOT included</li>
+ <li><strong>Timeline</strong>, realistic, with a little buffer</li>
+ <li><strong>Price</strong>, fixed amount or hourly rate + estimated hours</li>
+ <li><strong>Deliverables</strong>, bullet list of what they&rsquo;ll actually receive</li>
+ <li><strong>Why me</strong>, one paragraph. Don&rsquo;t oversell.</li>
+ <li><strong>Next steps</strong>, &ldquo;reply if this looks right and I&rsquo;ll send the contract + invoice.&rdquo;</li>
  </ul>
 
  <div class="divider"><span>What to put in the contract</span></div>
@@ -1035,7 +1035,7 @@ const lessons: Lesson[] = [
 
  <div class="chat-ex"><div class="bubble u">i keep doing [the annoying thing] manually and it's eating my time. help me think through whether this could be an agent. walk me through what it would need to do, what apps it would need to connect to, and what could go wrong. ask me clarifying questions first.</div></div>
 
- <p>Claude turns into my co-founder for the next hour. It asks questions I wouldn't have thought of. It breaks the task into steps. It tells me which steps can be fully automated and which ones I'd need to keep doing myself. <strong>By the end of the chat I have a full spec</strong> , the order of operations, the integrations needed, the edge cases.</p>
+ <p>Claude turns into my co-founder for the next hour. It asks questions I wouldn't have thought of. It breaks the task into steps. It tells me which steps can be fully automated and which ones I'd need to keep doing myself. <strong>By the end of the chat I have a full spec</strong>, the order of operations, the integrations needed, the edge cases.</p>
 
  <p>Only then do I build. I just paste back to Claude:</p>
 
@@ -1047,27 +1047,27 @@ const lessons: Lesson[] = [
 
  <p>A few agents I&rsquo;ve built this way, just so you can see the range:</p>
  <ul>
- <li><strong>Cold outreach system</strong> , finds local businesses without websites, builds each one a preview site, and sends a personalized cold email every morning. Replies land in my Gmail. I just hit send on the ones I like.</li>
- <li><strong>Prospect tracker</strong> , watches a Google Sheet of leads, re-scores them every night based on replies, moves them between stages, and pings me if a hot one goes cold.</li>
- <li><strong>Content caption agent</strong> , reads my drafts folder, writes three caption options per video in my voice, and drops them into a doc for me to pick.</li>
+ <li><strong>Cold outreach system</strong>, finds local businesses without websites, builds each one a preview site, and sends a personalized cold email every morning. Replies land in my Gmail. I just hit send on the ones I like.</li>
+ <li><strong>Prospect tracker</strong>, watches a Google Sheet of leads, re-scores them every night based on replies, moves them between stages, and pings me if a hot one goes cold.</li>
+ <li><strong>Content caption agent</strong>, reads my drafts folder, writes three caption options per video in my voice, and drops them into a doc for me to pick.</li>
  </ul>
  <p>None of these took more than a weekend. None of them required me to know what I was doing. <strong>Just me, Claude, and a clear description of what was annoying me.</strong></p>
 
- <div class="divider"><span>Meet Elle , my personal agent</span></div>
+ <div class="divider"><span>Meet Elle, my personal agent</span></div>
 
  <p>Before I show you my whole team, I want to zoom in on one agent specifically: <strong>Elle.</strong> She&rsquo;s my personal assistant agent and the one I talk to the most. If you take nothing else from this lesson, take this: <em>you should have an Elle.</em></p>
 
- <div class="callout"><div class="callout-tag">Why I named her Elle Woods</div>I named her after Elle from Legally Blonde on purpose. Elle is what I want my assistant agent to be , warm, relentless, underestimated, and actually good at the job. She&rsquo;s not a robot checking off tasks. She&rsquo;s a team member who speaks in my voice, handles the boring stuff, and keeps me sane. Also , naming her matters. I know it sounds dumb, but you talk to her differently when she&rsquo;s Elle than when she&rsquo;s &ldquo;assistant.&rdquo; The name pulls a personality out of her.</div>
+ <div class="callout"><div class="callout-tag">Why I named her Elle Woods</div>I named her after Elle from Legally Blonde on purpose. Elle is what I want my assistant agent to be, warm, relentless, underestimated, and actually good at the job. She&rsquo;s not a robot checking off tasks. She&rsquo;s a team member who speaks in my voice, handles the boring stuff, and keeps me sane. Also, naming her matters. I know it sounds dumb, but you talk to her differently when she&rsquo;s Elle than when she&rsquo;s &ldquo;assistant.&rdquo; The name pulls a personality out of her.</div>
 
  <p>What Elle actually does every day:</p>
  <ul>
- <li><strong>Morning brief at 8:10am.</strong> She pings me in Telegram with everything that happened overnight , which client replies came in, which automated tasks completed, what errored, what needs my eyes first. So I wake up and instead of opening 9 apps, I open Telegram and read one message from Elle.</li>
+ <li><strong>Morning brief at 8:10am.</strong> She pings me in Telegram with everything that happened overnight, which client replies came in, which automated tasks completed, what errored, what needs my eyes first. So I wake up and instead of opening 9 apps, I open Telegram and read one message from Elle.</li>
  <li><strong>Error triage.</strong> When any of my other agents break, Elle is the first to know. She screenshots the error, tags the right fixer (usually Gabriella), and tells me whether I can ignore it or need to jump in.</li>
- <li><strong>Status on demand.</strong> I can text her anytime: &ldquo;how&rsquo;s the pipeline,&rdquo; &ldquo;any client replies today,&rdquo; &ldquo;did the cron run,&rdquo; &ldquo;summarize the week.&rdquo; She answers in 10 seconds. That&rsquo;s what I mean by &ldquo;personal agent&rdquo; , she&rsquo;s the front door to everything else.</li>
+ <li><strong>Status on demand.</strong> I can text her anytime: &ldquo;how&rsquo;s the pipeline,&rdquo; &ldquo;any client replies today,&rdquo; &ldquo;did the cron run,&rdquo; &ldquo;summarize the week.&rdquo; She answers in 10 seconds. That&rsquo;s what I mean by &ldquo;personal agent&rdquo;, she&rsquo;s the front door to everything else.</li>
  <li><strong>Free-text help.</strong> I can also just vent to her. &ldquo;Elle I&rsquo;m stressed about X what should I do.&rdquo; Because I gave her context about my business, she gives actually useful answers.</li>
  </ul>
 
- <p>Under the hood Elle&rsquo;s pretty simple. She uses Claude&rsquo;s API to think and a Telegram bot to talk , you set it up once and basically never touch it again.</p>
+ <p>Under the hood Elle&rsquo;s pretty simple. She uses Claude&rsquo;s API to think and a Telegram bot to talk, you set it up once and basically never touch it again.</p>
 
  <div class="a-quote">&ldquo;Elle is the one you build first. She&rsquo;s the command center. Everything else is just another teammate she introduces to you.&rdquo;</div>
 
@@ -1153,19 +1153,19 @@ const lessons: Lesson[] = [
 
  <p>Telegram is the secret weapon because it&rsquo;s <strong>free, instant, and handles anything</strong>: text, images, files, voice notes. Plus no character limit, and you can reply from your phone at any hour. Email works too but clogs up your inbox and feels slower.</p>
 
- <div class="callout"><div class="callout-tag">Wait , what is Telegram?</div>Quick context in case you&rsquo;ve never used it: Telegram is basically iMessage / WhatsApp, but free on every platform and it lets <strong>bots</strong> live inside your chat list like real people. Install the Telegram app, make an account, and now any agent you build can text you there. It&rsquo;s the same chat list that has your friends, except Elle is in it too. That&rsquo;s all.</div>
+ <div class="callout"><div class="callout-tag">Wait, what is Telegram?</div>Quick context in case you&rsquo;ve never used it: Telegram is basically iMessage / WhatsApp, but free on every platform and it lets <strong>bots</strong> live inside your chat list like real people. Install the Telegram app, make an account, and now any agent you build can text you there. It&rsquo;s the same chat list that has your friends, except Elle is in it too. That&rsquo;s all.</div>
 
  <div class="divider"><span>How to actually set up Telegram for your agents</span></div>
  <ol>
  <li><strong>Install Telegram.</strong> Download the app on your phone + laptop. Sign up with your phone number.</li>
  <li><strong>Find @BotFather inside Telegram.</strong> Search &ldquo;BotFather&rdquo; in Telegram. It&rsquo;s the official bot-creator bot (yes, a bot that makes bots, very Claude-coded of them).</li>
  <li><strong>Send <code>/newbot</code> to BotFather.</strong> It&rsquo;ll ask you what to name your bot and what username to give it. I named mine &ldquo;Elle&rdquo; with the handle <code>@ayla_elle_bot</code>.</li>
- <li><strong>Copy the token it gives you.</strong> Looks like <code>123456789:ABC-DEF1234ghIkl...</code>. Don&rsquo;t share this token anywhere public , it&rsquo;s the password to your bot. Save it in a password manager or a <code>.env</code> file.</li>
+ <li><strong>Copy the token it gives you.</strong> Looks like <code>123456789:ABC-DEF1234ghIkl...</code>. Don&rsquo;t share this token anywhere public, it&rsquo;s the password to your bot. Save it in a password manager or a <code>.env</code> file.</li>
  <li><strong>Get your chat ID.</strong> Tell Claude:<div class="q">I just made a Telegram bot, walk me through getting my chat ID so the bot knows where to message me.</div>It&rsquo;ll give you a little curl command that returns your chat ID. Save that too.</li>
  <li><strong>Give Claude the token and chat ID</strong> when you&rsquo;re building an agent, and tell it: &ldquo;every time something important happens, have the bot send me a message.&rdquo; Claude does the rest.</li>
  </ol>
 
- <div class="callout"><div class="callout-tag">Why this specifically , and not Slack / email / texting</div>Telegram bots are the easiest integration of anything I&rsquo;ve tried. No approval process, no marketplace, no rate limit for personal use, no cost. You set one up in under 10 minutes. Slack bots require a whole app setup. iMessage is Apple-only and locked down. Email gets marked as spam. Telegram just &hellip; works.</div>
+ <div class="callout"><div class="callout-tag">Why this specifically, and not Slack / email / texting</div>Telegram bots are the easiest integration of anything I&rsquo;ve tried. No approval process, no marketplace, no rate limit for personal use, no cost. You set one up in under 10 minutes. Slack bots require a whole app setup. iMessage is Apple-only and locked down. Email gets marked as spam. Telegram just &hellip; works.</div>
 
  <div class="divider"><span>Making it actually run 24/7</span></div>
 
@@ -1203,7 +1203,7 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">The Claude mobile app</div>Download it from the App Store. Same account, same chats, same Projects. Everything syncs in real time. I&rsquo;ll start a thought on my phone in an Uber and pick it up on my laptop at home.</div>
 
- <div class="callout"><div class="callout-tag">Important , the phone app is CHAT ONLY</div>Quick clarification because this trips people up: <strong>the Claude app on your phone is just chat.</strong> Regular conversations, voice, image uploads, photos , all that works. But the thing we call <em>Claude Code</em> (the terminal-based builder from lessons 14 and 17) <strong>does not exist on phone.</strong> Claude Code is desktop only. It has to be , it needs a terminal and a file system. So on your phone: chat for thinking, brainstorming, and quick builds. On your laptop: chat + Claude Code for actually shipping stuff. Both are &ldquo;Claude,&rdquo; same account, different tools.</div>
+ <div class="callout"><div class="callout-tag">Important, the phone app is CHAT ONLY</div>Quick clarification because this trips people up: <strong>the Claude app on your phone is just chat.</strong> Regular conversations, voice, image uploads, photos, all that works. But the thing we call <em>Claude Code</em> (the terminal-based builder from lessons 14 and 17) <strong>does not exist on phone.</strong> Claude Code is desktop only. It has to be, it needs a terminal and a file system. So on your phone: chat for thinking, brainstorming, and quick builds. On your laptop: chat + Claude Code for actually shipping stuff. Both are &ldquo;Claude,&rdquo; same account, different tools.</div>
 
  <div class="callout"><div class="callout-tag">Voice dictation is the superpower</div>I talk to Claude way more than I type to it. Tap the mic, explain the problem out loud like you&rsquo;re venting to a friend, hit send. I&rsquo;ve ranted at it about business strategy while walking to coffee. I&rsquo;ve explained a whole agent idea in a 3-minute voice note. <strong>Your phone mic is a better brain-dumper than your keyboard.</strong></div>
 
@@ -1269,25 +1269,25 @@ const lessons: Lesson[] = [
  <div class="l-body">
  <p>You&rsquo;ve already seen the full prompt library in the top nav. These are the 10 I keep coming back to. Copy them, paste them, swap the brackets, use them daily.</p>
 
- <div class="callout"><div class="callout-tag">#1 , The clarifying-questions opener</div><div class="bubble u">I want to build [your thing]. Ask me any clarifying questions before you start so we don&rsquo;t build the wrong thing.</div>This is the single most important one. Forever. Every project.</div>
+ <div class="callout"><div class="callout-tag">#1, The clarifying-questions opener</div><div class="bubble u">I want to build [your thing]. Ask me any clarifying questions before you start so we don&rsquo;t build the wrong thing.</div>This is the single most important one. Forever. Every project.</div>
 
- <div class="callout"><div class="callout-tag">#2 , The &ldquo;explain like I&rsquo;m in 8th grade&rdquo; reset</div><div class="bubble u">I don&rsquo;t understand any of this. Explain it like I&rsquo;m in 8th grade. Use an analogy if you can.</div>I use this every time something sounds smart and I&rsquo;m quietly lost.</div>
+ <div class="callout"><div class="callout-tag">#2, The &ldquo;explain like I&rsquo;m in 8th grade&rdquo; reset</div><div class="bubble u">I don&rsquo;t understand any of this. Explain it like I&rsquo;m in 8th grade. Use an analogy if you can.</div>I use this every time something sounds smart and I&rsquo;m quietly lost.</div>
 
- <div class="callout"><div class="callout-tag">#3 , The voice-match prompt</div><div class="bubble u">Here are 10 real captions/emails/posts I wrote. Match my voice. Don&rsquo;t generic-ify me.</div>Pasting real samples is the only way to get actual-you output instead of AI-ish output.</div>
+ <div class="callout"><div class="callout-tag">#3, The voice-match prompt</div><div class="bubble u">Here are 10 real captions/emails/posts I wrote. Match my voice. Don&rsquo;t generic-ify me.</div>Pasting real samples is the only way to get actual-you output instead of AI-ish output.</div>
 
- <div class="callout"><div class="callout-tag">#4 , The &ldquo;stop&rdquo; reset</div><div class="bubble u">Stop. Re-read what I originally asked. You&rsquo;re doing something I didn&rsquo;t ask for. Here&rsquo;s what I actually need: [one sentence]. Do only that.</div>When Claude is off the rails, this pulls it back faster than anything.</div>
+ <div class="callout"><div class="callout-tag">#4, The &ldquo;stop&rdquo; reset</div><div class="bubble u">Stop. Re-read what I originally asked. You&rsquo;re doing something I didn&rsquo;t ask for. Here&rsquo;s what I actually need: [one sentence]. Do only that.</div>When Claude is off the rails, this pulls it back faster than anything.</div>
 
- <div class="callout"><div class="callout-tag">#5 , The interview-me prompt</div><div class="bubble u">Interview me. One question at a time. After 8 questions, give me a plan.</div>Anywhere I&rsquo;m stuck on deciding what to build or pitch, this one wins.</div>
+ <div class="callout"><div class="callout-tag">#5, The interview-me prompt</div><div class="bubble u">Interview me. One question at a time. After 8 questions, give me a plan.</div>Anywhere I&rsquo;m stuck on deciding what to build or pitch, this one wins.</div>
 
- <div class="callout"><div class="callout-tag">#6 , The &ldquo;make it feel expensive&rdquo; design prompt</div><div class="bubble u">Redo this. Make it feel expensive. Better fonts, real color palette, actual hierarchy, subtle animations. Mobile-first.</div>Magic phrase. Works way better than &ldquo;make it nicer.&rdquo;</div>
+ <div class="callout"><div class="callout-tag">#6, The &ldquo;make it feel expensive&rdquo; design prompt</div><div class="bubble u">Redo this. Make it feel expensive. Better fonts, real color palette, actual hierarchy, subtle animations. Mobile-first.</div>Magic phrase. Works way better than &ldquo;make it nicer.&rdquo;</div>
 
- <div class="callout"><div class="callout-tag">#7 , The &ldquo;don&rsquo;t rewrite my whole site&rdquo; guard</div><div class="bubble u">Add [this feature] to my site. Don&rsquo;t rewrite the whole site. Hand me the new section and tell me exactly where to paste it.</div>Protects you from Claude &ldquo;helpfully&rdquo; changing 14 other things.</div>
+ <div class="callout"><div class="callout-tag">#7, The &ldquo;don&rsquo;t rewrite my whole site&rdquo; guard</div><div class="bubble u">Add [this feature] to my site. Don&rsquo;t rewrite the whole site. Hand me the new section and tell me exactly where to paste it.</div>Protects you from Claude &ldquo;helpfully&rdquo; changing 14 other things.</div>
 
- <div class="callout"><div class="callout-tag">#8 , The &ldquo;what would you change&rdquo; critique</div><div class="bubble u">Here&rsquo;s [thing I made]. Pretend you&rsquo;re [target audience]. What&rsquo;s confusing? What&rsquo;s boring? What would make you close the tab?</div>Harsh feedback on demand. Always use &ldquo;pretend you&rsquo;re&rdquo; for honesty.</div>
+ <div class="callout"><div class="callout-tag">#8, The &ldquo;what would you change&rdquo; critique</div><div class="bubble u">Here&rsquo;s [thing I made]. Pretend you&rsquo;re [target audience]. What&rsquo;s confusing? What&rsquo;s boring? What would make you close the tab?</div>Harsh feedback on demand. Always use &ldquo;pretend you&rsquo;re&rdquo; for honesty.</div>
 
- <div class="callout"><div class="callout-tag">#9 , The cold-email rule set</div><div class="bubble u">Write a cold email to [person] offering [thing]. Under 120 words. Open with something specific, not &ldquo;I hope this finds you well.&rdquo; Don&rsquo;t use: leverage, solution, partner, synergy.</div>The banned-words trick is what stops your email from sounding like every cold email.</div>
+ <div class="callout"><div class="callout-tag">#9, The cold-email rule set</div><div class="bubble u">Write a cold email to [person] offering [thing]. Under 120 words. Open with something specific, not &ldquo;I hope this finds you well.&rdquo; Don&rsquo;t use: leverage, solution, partner, synergy.</div>The banned-words trick is what stops your email from sounding like every cold email.</div>
 
- <div class="callout"><div class="callout-tag">#10 , The &ldquo;do it for me&rdquo; command</div><div class="bubble u">Stop telling me to do it myself. You have the tools. Do it. If you really can&rsquo;t, explain why in one sentence.</div>Only works in Claude Code / Cowork / Chrome extension. Doesn&rsquo;t work in Chat. But when it works, it works.</div>
+ <div class="callout"><div class="callout-tag">#10, The &ldquo;do it for me&rdquo; command</div><div class="bubble u">Stop telling me to do it myself. You have the tools. Do it. If you really can&rsquo;t, explain why in one sentence.</div>Only works in Claude Code / Cowork / Chrome extension. Doesn&rsquo;t work in Chat. But when it works, it works.</div>
 
  <p>Pin these. Screenshot them. Memorize them. <strong>You don&rsquo;t need 500 prompts. You need 10 you actually use.</strong></p>
 
@@ -1297,7 +1297,7 @@ const lessons: Lesson[] = [
  Try it now &middot; 3 min
  </div>
  <div class="exercise-title">Copy your three favorite prompts.</div>
- <div class="exercise-body">Scroll back up. Pick the <strong>three prompts</strong> that would make the biggest difference for what you&rsquo;re building right now. Copy them into a note on your phone, or into a pinned Claude chat called &ldquo;Daily prompts.&rdquo; Next time you sit down to work, paste one and go. That&rsquo;s how you actually internalize these , by using them on day one.</div>
+ <div class="exercise-body">Scroll back up. Pick the <strong>three prompts</strong> that would make the biggest difference for what you&rsquo;re building right now. Copy them into a note on your phone, or into a pinned Claude chat called &ldquo;Daily prompts.&rdquo; Next time you sit down to work, paste one and go. That&rsquo;s how you actually internalize these, by using them on day one.</div>
  <button class="exercise-done" data-exercise-id="ex-28-pickprompts">I copied them &rarr;</button>
  </div>
  </div>`
@@ -1310,12 +1310,12 @@ const lessons: Lesson[] = [
  <div class="l-body">
  <p>Here&rsquo;s a thing that nobody tells you when you start learning this stuff, and I wish someone had told me: <strong>post about what you&rsquo;re building as you&rsquo;re building it.</strong> Not when it&rsquo;s done. Not when it&rsquo;s perfect. While it&rsquo;s half-broken and you&rsquo;re figuring it out in real time.</p>
 
- <div class="a-quote">"The stuff I posted at the ugliest stage , when I had no idea what I was doing , is what got me my first three clients."</div>
+ <div class="a-quote">"The stuff I posted at the ugliest stage, when I had no idea what I was doing, is what got me my first three clients."</div>
 
  <h2 class="l-sub-head">Why posting changes everything (real talk).</h2>
  <p>I cannot overstate this. <strong>Posting about what I was building is the single biggest reason I got hired.</strong> Not my resume. Not my portfolio site. Not cold outreach. The TikToks I made at 11pm of me losing my mind at Claude.</p>
 
- <div class="callout"><div class="callout-tag">What actually happened to me</div>Within the first month of posting, I got: <strong>inbound DMs from two companies asking if I could build them agents.</strong> An email from a founder who ended up becoming a mentor.<br><br>(I&rsquo;m also still hoping a podcast invite shows up one day , that would be cool. Hasn&rsquo;t happened yet, but I&rsquo;m putting it out there.)<br><br>Every one of those things came from a post that took me 10 minutes to make. The ROI on posting is insane, and nobody talks about it enough.</div>
+ <div class="callout"><div class="callout-tag">What actually happened to me</div>Within the first month of posting, I got: <strong>inbound DMs from two companies asking if I could build them agents.</strong> An email from a founder who ended up becoming a mentor.<br><br>(I&rsquo;m also still hoping a podcast invite shows up one day, that would be cool. Hasn&rsquo;t happened yet, but I&rsquo;m putting it out there.)<br><br>Every one of those things came from a post that took me 10 minutes to make. The ROI on posting is insane, and nobody talks about it enough.</div>
 
  <p>When you post what you&rsquo;re working on, a bunch of things happen at once:</p>
  <ul>
@@ -1328,7 +1328,7 @@ const lessons: Lesson[] = [
 
  <h2 class="l-sub-head">The honest thing about the gap.</h2>
  <p>When I started posting about AI building, I noticed almost immediately: <strong>most of the loud public faces in this space look pretty similar.</strong> Mostly the same vibe, mostly the same demographic. Not all, but a lot.</p>
- <p>That&rsquo;s an opportunity, not a grievance. <strong>If you don&rsquo;t fit the standard tech-guy mold, the space is wide open for you.</strong> Whatever your background , if you&rsquo;re young, female, non-traditional, career-switching, whatever , post. Tag me. I&rsquo;ll re-share you. I want more variety up here.</p>
+ <p>That&rsquo;s an opportunity, not a grievance. <strong>If you don&rsquo;t fit the standard tech-guy mold, the space is wide open for you.</strong> Whatever your background, if you&rsquo;re young, female, non-traditional, career-switching, whatever, post. Tag me. I&rsquo;ll re-share you. I want more variety up here.</p>
  <p>And if you do already fit the standard mold and you&rsquo;re here too: welcome. The course is for anyone who wants to actually build. The space gets better when all kinds of people show up in it.</p>
 
  <h2 class="l-sub-head">What to actually post.</h2>
@@ -1363,9 +1363,9 @@ const lessons: Lesson[] = [
  </div>
  </div>
 
- <div class="callout"><div class="callout-tag">Pro tip , let Claude write your TikTok scripts</div>After Claude builds something for you, paste this:<div class="q">Now write me a TikTok script explaining this in 45 seconds. Casual, no hashtags, first person.</div>It will. Then you just hit record. Same for captions, threads, LinkedIn posts , whatever platform you&rsquo;re on. The thing you just built is the content.</div>
+ <div class="callout"><div class="callout-tag">Pro tip, let Claude write your TikTok scripts</div>After Claude builds something for you, paste this:<div class="q">Now write me a TikTok script explaining this in 45 seconds. Casual, no hashtags, first person.</div>It will. Then you just hit record. Same for captions, threads, LinkedIn posts, whatever platform you&rsquo;re on. The thing you just built is the content.</div>
 
- <div class="callout"><div class="callout-tag">How I actually edit them</div>I edit everything in <strong>CapCut</strong> , all my videos, overlays, cuts, and captions live there. Free app, way more than enough. You don&rsquo;t need premium. Throw the screen recording in, slap on auto-captions, drop in some text overlays for the punchline moments, cut the dead air. Done.</div>
+ <div class="callout"><div class="callout-tag">How I actually edit them</div>I edit everything in <strong>CapCut</strong>, all my videos, overlays, cuts, and captions live there. Free app, way more than enough. You don&rsquo;t need premium. Throw the screen recording in, slap on auto-captions, drop in some text overlays for the punchline moments, cut the dead air. Done.</div>
 
  <h2 class="l-sub-head">The one rule.</h2>
  <p>Don\u2019t wait until you&rsquo;re &ldquo;ready.&rdquo; You will never be ready. The people you\u2019re watching online weren\u2019t ready either. They just posted before they were.</p>

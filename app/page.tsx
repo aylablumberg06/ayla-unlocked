@@ -96,7 +96,7 @@ export default function LandingPage() {
  Five sections. Twenty-nine lessons. Zero gatekeeping.
  </h2>
  <p className="text-mid font-light mb-6 text-[15px]">
- About <span className="text-pink font-medium">3 hours total</span> if you actually do the hands-on exercises , and you should. Break it up however you want.
+ About <span className="text-pink font-medium">3 hours total</span> if you actually do the hands-on exercises, and you should. Break it up however you want.
  Speed the videos to 2x and cut through faster. Read-only mode? <span className="text-pink font-medium">{formatMinutes(TOTAL_READ_SEC)}</span>.
  </p>
  <p className="text-[13px] text-muted-light italic mb-10">
@@ -262,7 +262,7 @@ export default function LandingPage() {
  <div className="mb-4">&copy; {new Date().getFullYear()} Ayla Blumberg</div>
  <div className="max-w-2xl mx-auto text-[10px] tracking-[0.3px] leading-relaxed text-muted-light/80 normal-case font-light space-y-2">
  <p>
- <strong className="text-mid">Educational only.</strong> This course is for educational purposes. It is not legal, financial, medical, or career advice, and individual results vary , what worked for me won&rsquo;t necessarily work the same way for you. Use Claude and any AI tool at your own discretion. Double-check anything important with a qualified professional.
+ <strong className="text-mid">Educational only.</strong> This course is for educational purposes. It is not legal, financial, medical, or career advice, and individual results vary, what worked for me won&rsquo;t necessarily work the same way for you. Use Claude and any AI tool at your own discretion. Double-check anything important with a qualified professional.
  </p>
  <p>
  <strong className="text-mid">Not affiliated.</strong> Ayla Unlocked is not affiliated with, endorsed by, or sponsored by Anthropic, Stripe, GitHub, Vercel, Canva, Apify, Telegram, or any other company mentioned in the lessons. External links go to third-party sites we don&rsquo;t control.
@@ -274,7 +274,7 @@ export default function LandingPage() {
  <strong className="text-mid">Privacy.</strong> We collect your email, an encrypted password (or magic-link login), your course progress (which lessons you&rsquo;ve done, your bookmarks, notes, highlights), and your Stripe payment info (handled by Stripe, not stored by us). We use auth cookies to keep you logged in. We do not sell your data, share it with advertisers, or send marketing emails. To delete your account or export your data, email <a href="mailto:aylablumberg06@gmail.com" className="underline hover:text-pink">aylablumberg06@gmail.com</a> and we&rsquo;ll handle it within a few days.
  </p>
  <p>
- <strong className="text-mid">Contact.</strong> Anything else , questions, bugs, complaints, fan mail , same email: <a href="mailto:aylablumberg06@gmail.com" className="underline hover:text-pink">aylablumberg06@gmail.com</a>.
+ <strong className="text-mid">Contact.</strong> Anything else, questions, bugs, complaints, fan mail, same email: <a href="mailto:aylablumberg06@gmail.com" className="underline hover:text-pink">aylablumberg06@gmail.com</a>.
  </p>
  </div>
  </footer>
