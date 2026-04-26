@@ -73,14 +73,14 @@ const lessons: Lesson[] = [
  <div class="how-step">
  <div class="how-step-n">06</div>
  <div class="how-step-body">
- <h3>Save a lesson with the <span class="how-icon"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M12 17.3L5.8 21l1.6-7.3L2 8.8l7.4-.6L12 1.5l2.6 6.7 7.4.6-5.4 4.9L18.2 21 12 17.3z" fill="currentColor"/></svg></span> button.</h3>
+ <h3>Save a lesson with the <span class="how-icon"><svg viewBox="0 0 24 24" width="15" height="15"><g transform="translate(0,0.75)"><path d="M12 17.3L5.8 21l1.6-7.3L2 8.8l7.4-.6L12 1.5l2.6 6.7 7.4.6-5.4 4.9L18.2 21 12 17.3z" fill="currentColor"/></g></svg></span> button.</h3>
  <p>Top of every lesson you&rsquo;ll see a star. Tap it to save the lesson to your Notes tab. Useful when you know you&rsquo;ll need it again at 2am.</p>
  </div>
  </div>
  <div class="how-step">
  <div class="how-step-n">07</div>
  <div class="how-step-body">
- <h3>Flag confusing parts with the <span class="how-icon"><svg viewBox="0 0 24 24" width="13" height="13"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.2 9.5 a2.8 2.8 0 1 1 4.4 2.3 c-1 .55 -1.6 1.05 -1.6 2.3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17.2" r="1.2" fill="currentColor"/></svg></span> button.</h3>
+ <h3>Flag confusing parts with the <span class="how-icon"><svg viewBox="0 0 24 24" width="15" height="15"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.2 9.5 a2.8 2.8 0 1 1 4.4 2.3 c-1 .55 -1.6 1.05 -1.6 2.3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17.2" r="1.2" fill="currentColor"/></svg></span> button.</h3>
  <p>If a lesson loses you, hit the question-mark button. It tells me, I rewrite that lesson. This course gets better because you told me when it wasn&rsquo;t working.</p>
  </div>
  </div>
