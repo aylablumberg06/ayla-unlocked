@@ -162,7 +162,7 @@ const lessons: Lesson[] = [
  <h1 class="l-head">Claude is not Google.</h1>
  <p class="l-sub">This is a fundamentally different thing and it matters that you understand why.</p>
  <div class="l-body">
- <p>Most people open Claude and treat it like a search engine. Quick question, quick answer, close the tab. That's using maybe 5% of what it can actually do.</p>
+ <p>You&rsquo;re probably treating Claude like a search engine right now. Quick question in, quick answer out, close the tab. That&rsquo;s the wrong frame entirely.</p>
  <p>The better way to think about it: <strong>you hired a really smart friend who's good at literally everything.</strong> Coding, writing, designing, researching, planning, building. And you're just explaining to them what you want done.</p>
  <p>They'll figure it out. They might not get it perfect on the first try, and you'll go back and forth a little. That's normal. That's the process. You're the boss with the vision. Claude is the team executing it.</p>
  <div class="callout"><div class="callout-tag">The big shift</div>Instead of Googling how to do something, you tell Claude to do it and it does it. Instead of paying a developer thousands of dollars, you build it yourself for free. Instead of spending a week writing emails, you do it in an hour. Claude saves you time and lets you operate at a scale you couldn't reach alone.</div>
@@ -2793,7 +2793,7 @@ export default function CourseDashboard() {
 
  <div className="bot-nav">
  <button className="nav-btn prev" disabled={cur === 0} onClick={() => go(-1)}>Previous</button>
- <div className="nav-cnt">{cur + 1} / {lessons.length}</div>
+ <div className="nav-cnt">{lessons[cur].num ? `${lessons[cur].num} / 29` : 'Intro'}</div>
  <button className="nav-btn next" onClick={() => go(1)}>{cur === lessons.length - 1 ? 'Finish' : 'Next'}</button>
  </div>
 
