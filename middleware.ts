@@ -28,11 +28,12 @@ export async function middleware(req: NextRequest) {
   }
 
   // ──────────────────────────────────────────────────────────
-  // / and /login: if the visitor is already a signed-in paid
-  // user, send them straight into /course. They have no reason
-  // to see the marketing cover or a login form.
+  // /login: if the visitor is already a signed-in paid user,
+  // send them straight into /course (no reason to show a login
+  // form to someone already logged in). The logo at "/" stays
+  // public so signed-in users can still see the marketing site.
   // ──────────────────────────────────────────────────────────
-  if (supaConfigured && (path === '/' || path === '/login')) {
+  if (supaConfigured && path === '/login') {
     try {
       const supabase = createSupabaseMiddlewareClient(req, res)
       const { data: { user } } = await supabase.auth.getUser()
@@ -52,7 +53,7 @@ export async function middleware(req: NextRequest) {
         }
       }
     } catch (e) {
-      console.error('[middleware] root/login auth check failed', e)
+      console.error('[middleware] /login auth check failed', e)
     }
     return res
   }
@@ -99,5 +100,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/login', '/course/:path*', '/admin/:path*'],
+  matcher: ['/login', '/course/:path*', '/admin/:path*'],
 }
