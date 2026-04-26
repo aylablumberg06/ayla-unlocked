@@ -27,6 +27,6 @@
 // The owner can still preview everything via /api/owner-login?secret=...
 // ──────────────────────────────────────────────────────────
 
-export const IS_LIVE_FOR_SALE = false
+export const IS_LIVE_FOR_SALE = true
 
 export const NOTIFY_ME_EMAIL = 'aylablumberg06@gmail.com'
