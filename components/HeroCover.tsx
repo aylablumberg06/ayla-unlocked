@@ -13,6 +13,8 @@ export default function HeroCover() {
  const [muted, setMuted] = useState(true)
  const [paused, setPaused] = useState(false)
  const [hasInteracted, setHasInteracted] = useState(false)
+ const [currentTime, setCurrentTime] = useState(0)
+ const [duration, setDuration] = useState(0)
  const inlineRef = useRef<HTMLVideoElement>(null)
 
  // Kick autoplay on mount. Browsers universally allow muted autoplay.
@@ -30,22 +32,42 @@ export default function HeroCover() {
  return () => clearTimeout(t)
  }, [])
 
- // Sync paused state if the video pauses/plays from outside (e.g. video ended)
+ // Sync paused/time state from the video element itself
  useEffect(() => {
  const v = inlineRef.current
  if (!v) return
  const onPlay = () => setPaused(false)
  const onPause = () => setPaused(true)
  const onEnded = () => setPaused(true)
+ const onTime = () => setCurrentTime(v.currentTime)
+ const onMeta = () => setDuration(v.duration || 0)
  v.addEventListener('play', onPlay)
  v.addEventListener('pause', onPause)
  v.addEventListener('ended', onEnded)
+ v.addEventListener('timeupdate', onTime)
+ v.addEventListener('loadedmetadata', onMeta)
  return () => {
  v.removeEventListener('play', onPlay)
  v.removeEventListener('pause', onPause)
  v.removeEventListener('ended', onEnded)
+ v.removeEventListener('timeupdate', onTime)
+ v.removeEventListener('loadedmetadata', onMeta)
  }
  }, [])
+
+ function seekTo(pct: number) {
+ const v = inlineRef.current
+ if (!v || !duration) return
+ v.currentTime = Math.max(0, Math.min(duration, pct * duration))
+ setHasInteracted(true)
+ }
+
+ function rewind10() {
+ const v = inlineRef.current
+ if (!v) return
+ v.currentTime = Math.max(0, v.currentTime - 10)
+ setHasInteracted(true)
+ }
 
  function toggleMute() {
  const v = inlineRef.current
@@ -102,9 +124,13 @@ export default function HeroCover() {
  videoRef={inlineRef}
  muted={muted}
  paused={paused}
+ currentTime={currentTime}
+ duration={duration}
  showBigUnmute={!hasInteracted && muted}
  onUnmuteClick={toggleMute}
  onPauseClick={togglePause}
+ onSeek={seekTo}
+ onRewind={rewind10}
  />
  </div>
 
@@ -169,9 +195,13 @@ export default function HeroCover() {
  videoRef={inlineRef}
  muted={muted}
  paused={paused}
+ currentTime={currentTime}
+ duration={duration}
  showBigUnmute={!hasInteracted && muted}
  onUnmuteClick={toggleMute}
  onPauseClick={togglePause}
+ onSeek={seekTo}
+ onRewind={rewind10}
  />
  </div>
  </div>
@@ -195,17 +225,31 @@ function HeroVideo({
  videoRef,
  muted,
  paused,
+ currentTime,
+ duration,
  showBigUnmute,
  onUnmuteClick,
  onPauseClick,
+ onSeek,
+ onRewind,
 }: {
  videoRef: React.RefObject<HTMLVideoElement>
  muted: boolean
  paused: boolean
+ currentTime: number
+ duration: number
  showBigUnmute: boolean
  onUnmuteClick: () => void
  onPauseClick: () => void
+ onSeek: (pct: number) => void
+ onRewind: () => void
 }) {
+ const progressPct = duration > 0 ? (currentTime / duration) * 100 : 0
+ function handleScrub(e: React.MouseEvent<HTMLDivElement>) {
+ const r = e.currentTarget.getBoundingClientRect()
+ const pct = (e.clientX - r.left) / r.width
+ onSeek(pct)
+ }
  return (
  <div className="relative aspect-[9/16] max-h-[560px] w-full max-w-[360px] mx-auto">
  {/* Inner clipping container for the video, only this gets overflow-hidden so corner stickers can poke past the rounded edge */}
@@ -315,6 +359,32 @@ function HeroVideo({
  </>
  )}
  </button>
+
+ {/* Bottom controls: rewind 10s + scrubbable progress bar */}
+ <div className="absolute bottom-0 left-0 right-0 z-30 px-3 pb-3 pt-6 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-center gap-3">
+ <button
+ onClick={(e) => { e.stopPropagation(); onRewind() }}
+ className="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white text-[10px] font-semibold transition"
+ aria-label="Rewind 10 seconds"
+ >
+ <span className="relative">
+ <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+ <path d="M3 12a9 9 0 1 0 3-6.7L3 8" />
+ <polyline points="3 4 3 8 7 8" />
+ </svg>
+ </span>
+ </button>
+ <div
+ onClick={(e) => { e.stopPropagation(); handleScrub(e) }}
+ className="relative flex-1 h-1.5 rounded-full bg-white/25 cursor-pointer group"
+ >
+ <div className="absolute top-0 left-0 h-full rounded-full bg-pink" style={{ width: `${progressPct}%` }} />
+ <div
+ className="absolute top-1/2 w-3 h-3 rounded-full bg-white shadow opacity-0 group-hover:opacity-100 transition"
+ style={{ left: `calc(${progressPct}% - 6px)`, transform: 'translateY(-50%)' }}
+ />
+ </div>
+ </div>
  </div>{/* end inner clipping container */}
 
  {/* $79 forever floating sticker, outside the clip so it can poke out */}

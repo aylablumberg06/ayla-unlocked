@@ -7,10 +7,14 @@ export async function middleware(req: NextRequest) {
   const res = NextResponse.next()
   const path = req.nextUrl.pathname
 
+  const supaUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supaConfigured = !!supaUrl && !supaUrl.includes('placeholder')
+
+  // ──────────────────────────────────────────────────────────
   // /admin is owner-only
+  // ──────────────────────────────────────────────────────────
   if (path.startsWith('/admin')) {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-    if (!url || url.includes('placeholder')) {
+    if (!supaConfigured) {
       return NextResponse.redirect(new URL('/login', req.url))
     }
     try {
@@ -23,15 +27,44 @@ export async function middleware(req: NextRequest) {
     }
   }
 
-  // only guard /course further
+  // ──────────────────────────────────────────────────────────
+  // / and /login: if the visitor is already a signed-in paid
+  // user, send them straight into /course. They have no reason
+  // to see the marketing cover or a login form.
+  // ──────────────────────────────────────────────────────────
+  if (supaConfigured && (path === '/' || path === '/login')) {
+    try {
+      const supabase = createSupabaseMiddlewareClient(req, res)
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user?.email) {
+        const email = user.email.toLowerCase()
+        if (email === OWNER_EMAIL) {
+          return NextResponse.redirect(new URL('/course', req.url))
+        }
+        const adminClient = createSupabaseAdminClient()
+        const { data: row } = await adminClient
+          .from('users')
+          .select('paid')
+          .eq('email', email)
+          .maybeSingle()
+        if (row?.paid === true) {
+          return NextResponse.redirect(new URL('/course', req.url))
+        }
+      }
+    } catch (e) {
+      console.error('[middleware] root/login auth check failed', e)
+    }
+    return res
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // /course is paid-only
+  // ──────────────────────────────────────────────────────────
   if (!path.startsWith('/course')) {
     return res
   }
 
-  // If Supabase env isn't configured yet (e.g. first deploy before keys set),
-  // fail safe to /unlock instead of 500ing.
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-  if (!url || url.includes('placeholder')) {
+  if (!supaConfigured) {
     return NextResponse.redirect(new URL('/unlock', req.url))
   }
 
@@ -43,14 +76,10 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL('/unlock', req.url))
     }
 
-    // owner override
     if (user.email?.toLowerCase() === OWNER_EMAIL) {
       return res
     }
 
-    // Use admin client (service role) so the paid check bypasses RLS.
-    // The middleware's anon-keyed client respects "users can read own row"
-    // RLS, which can fail on edge-case JWT email casing or missing rows.
     const adminClient = createSupabaseAdminClient()
     const { data: row } = await adminClient
       .from('users')
@@ -70,5 +99,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/course/:path*', '/admin/:path*'],
+  matcher: ['/', '/login', '/course/:path*', '/admin/:path*'],
 }
