@@ -73,14 +73,14 @@ const lessons: Lesson[] = [
  <div class="how-step">
  <div class="how-step-n">06</div>
  <div class="how-step-body">
- <h3>Save a lesson with the <span class="how-icon"><svg viewBox="0 0 24 24" width="15" height="15"><g transform="translate(0,0.75)"><path d="M12 17.3L5.8 21l1.6-7.3L2 8.8l7.4-.6L12 1.5l2.6 6.7 7.4.6-5.4 4.9L18.2 21 12 17.3z" fill="currentColor"/></g></svg></span> button.</h3>
+ <h3>Save a lesson with the <span class="how-icon"><svg viewBox="0 0 24 24" width="12" height="12"><g transform="translate(0,0.75)"><path d="M12 17.3L5.8 21l1.6-7.3L2 8.8l7.4-.6L12 1.5l2.6 6.7 7.4.6-5.4 4.9L18.2 21 12 17.3z" fill="currentColor"/></g></svg></span> button.</h3>
  <p>Top of every lesson you&rsquo;ll see a star. Tap it to save the lesson to your Notes tab. Useful when you know you&rsquo;ll need it again at 2am.</p>
  </div>
  </div>
  <div class="how-step">
  <div class="how-step-n">07</div>
  <div class="how-step-body">
- <h3>Flag confusing parts with the <span class="how-icon"><svg viewBox="0 0 24 24" width="15" height="15"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.2 9.5 a2.8 2.8 0 1 1 4.4 2.3 c-1 .55 -1.6 1.05 -1.6 2.3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17.2" r="1.2" fill="currentColor"/></svg></span> button.</h3>
+ <h3>Flag confusing parts with the <span class="how-icon"><svg viewBox="0 0 24 24" width="12" height="12"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.2 9.5 a2.8 2.8 0 1 1 4.4 2.3 c-1 .55 -1.6 1.05 -1.6 2.3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17.2" r="1.2" fill="currentColor"/></svg></span> button.</h3>
  <p>If a lesson loses you, hit the question-mark button. It tells me, I rewrite that lesson. This course gets better because you told me when it wasn&rsquo;t working.</p>
  </div>
  </div>
@@ -2505,7 +2505,7 @@ export default function CourseDashboard() {
  .how-step { display: grid; grid-template-columns: 42px 1fr; gap: 16px; align-items: start; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; transition: border-color 0.15s ease, transform 0.15s ease; }
  .how-step:hover { border-color: var(--pink); }
  .how-step-n { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; color: var(--pink); letter-spacing: 2px; padding-top: 4px; }
- .how-icon { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 999px; background: var(--pink-pale); color: var(--pink); border: 1px solid rgba(232,41,92,0.25); vertical-align: -8px; margin: 0 4px; line-height: 0; }
+ .how-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; background: var(--pink-pale); color: var(--pink); border: 1px solid rgba(232,41,92,0.25); vertical-align: middle; margin: 0 4px; line-height: 0; position: relative; top: -1px; }
  .how-icon svg { display: block; }
  .how-step-body h3 { font-size: 15.5px; font-weight: 600; margin: 0 0 6px; color: var(--dark); letter-spacing: -0.005em; }
  .how-step-body p { font-size: 14px; line-height: 1.65; color: var(--muted, #555); margin: 0; font-weight: 400; }
