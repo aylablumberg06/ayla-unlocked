@@ -78,7 +78,9 @@ export async function POST(req: NextRequest) {
  email,
  options: { redirectTo: `${site}/api/auth/callback` },
  })
- const tokenHash = (linkData?.properties as any)?.hashed_token
+ const tokenHash =
+ (linkData?.properties as any)?.hashed_token ||
+ (linkData as any)?.hashed_token
  if (linkErr || !tokenHash) {
  console.error('[signup] generateLink error', linkErr)
  return NextResponse.json({ error: 'Could not send link. Try again.' }, { status: 500 })
