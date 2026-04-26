@@ -799,7 +799,7 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">3. Connectors (the easiest way, right now)</div>Claude has a built-in menu inside the app called "Connectors." Gmail, Google Drive, Calendar, more get added every month. You click "Enable," sign in once, and Claude can use them directly in chats. <strong>No API key copy-paste. No installation.</strong> If there's a Connector for what you need, always use it first.</div>
 
- <div class="callout"><div class="callout-tag">Rule of thumb</div>Check for a <strong>Connector</strong> first (easiest). If none, look for an <strong>MCP server</strong> (still easy). If neither, use the <strong>API</strong> directly (always works, just more setup). Claude will always tell you which option is available for what you're trying to build.</div>
+ <div class="callout"><div class="callout-tag">Rule of thumb</div>You don&rsquo;t actually have to figure out which of these to use, just describe what you want and Claude tells you. When you say something like <em>&ldquo;I want to send myself a daily Gmail summary&rdquo;</em> or <em>&ldquo;hook this up to my Stripe,&rdquo;</em> Claude will check which option exists and tell you: <em>&ldquo;there&rsquo;s a Connector for this, just enable it&rdquo;</em> or <em>&ldquo;use this MCP server&rdquo;</em> or <em>&ldquo;you&rsquo;ll need an API key, here&rsquo;s where to get it.&rdquo;</em> The order it picks from is always the same: <strong>Connector</strong> first (easiest), then <strong>MCP server</strong> (still easy), then <strong>API</strong> directly (always works, just more setup). Your job is just to describe the goal in plain English. Claude does the picking.</div>
 
  <div class="divider"><span>The actual APIs you'll use the most</span></div>
 
