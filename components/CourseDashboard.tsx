@@ -593,7 +593,7 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">Homebrew, the foundation</div>A tool you install on your Mac that lets you install <em>other</em> tools. Even developers can&rsquo;t cleanly explain what it does under the hood. <strong>You just need it before anything else works.</strong> Install it first. Don&rsquo;t question it. Free.</div>
  <div class="callout"><div class="callout-tag">GitHub, cloud storage for code</div>Think of it like Google Drive, but specifically for the code Claude makes. It holds every file in your project so Vercel can find it and put it live. Free.</div>
- <div class="callout"><div class="callout-tag">Vercel, what actually puts your site on the internet</div>It reads your code from GitHub and hosts it. Free for personal projects. This is what aylaunlocked.vercel.app and <a href="https://aylablumberg.com" target="_blank" rel="noopener noreferrer" class="brand-link">aylablumberg.com</a> both run on. Once your site is on Vercel you can buy a real domain like yourname.com and point it at your project.</div>
+ <div class="callout"><div class="callout-tag">Vercel, what actually puts your site on the internet</div>It reads your code from GitHub and hosts it. Free for personal projects. This is what this course and <a href="https://aylablumberg.com" target="_blank" rel="noopener noreferrer" class="brand-link">aylablumberg.com</a> both run on. Once your site is on Vercel you can buy a real domain like yourname.com and point it at your project.</div>
 
  <p><strong>The order matters:</strong> Homebrew first (so you can install the helper tools), then GitHub (so you have a place to put code), then Vercel (so the code goes live). Do them once, then you basically never touch them again.</p>
 
@@ -2494,8 +2494,8 @@ export default function CourseDashboard() {
  .lesson-wrap { max-width: 600px; animation: courseSlideIn 0.4s cubic-bezier(.4,0.2,1); }
  @keyframes courseSlideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
  .l-head { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 400; line-height: 1.1; color: var(--dark); margin-bottom: 10px; }
- .l-sub { font-size: 14px; color: var(--mid); font-weight: 300; margin-bottom: 36px; line-height: 1.5; }
- .l-body { font-size: 15.5px; line-height: 1.78; color: var(--dark); font-weight: 300; }
+ .l-sub { font-size: 14px; color: var(--mid); font-weight: 400; margin-bottom: 36px; line-height: 1.5; }
+ .l-body { font-size: 15.5px; line-height: 1.78; color: var(--dark); font-weight: 400; }
  .l-body p { margin-bottom: 18px; }
  .l-body strong { font-weight: 700; color: var(--pink); }
  .l-body em { font-style: italic; color: var(--dark); font-weight: 400; }
@@ -2580,7 +2580,7 @@ export default function CourseDashboard() {
  .a-quote { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-style: italic; font-weight: 400; color: var(--dark); line-height: 1.5; border-left: 3px solid var(--pink); padding: 12px 20px; margin: 26px 0; }
  .divider { display: flex; align-items: center; gap: 14px; margin: 28px 0; }
  .divider::before.divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
- .divider span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--light); }
+ .divider span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); font-weight: 600; }
  .steps { list-style: none; padding: 0; counter-reset: s; }
  .steps li { counter-increment: s; display: flex; gap: 14px; margin-bottom: 22px; align-items: flex-start; }
  .steps li::before { content: counter(s); min-width: 26px; height: 26px; background: var(--pink); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
