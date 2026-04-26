@@ -1198,9 +1198,9 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">Voice dictation is the superpower</div>I talk to Claude way more than I type to it. Tap the mic, explain the problem out loud like you&rsquo;re venting to a friend, hit send. I&rsquo;ve ranted at it about business strategy while walking to coffee. I&rsquo;ve explained a whole agent idea in a 3-minute voice note. <strong>Your phone mic is a better brain-dumper than your keyboard.</strong></div>
 
- <div class="callout"><div class="callout-tag">Photograph anything and ask about it</div>Receipt I don&rsquo;t understand? Take a picture, send to Claude, &ldquo;break this down.&rdquo; Weird error on my laptop? Phone picture of the screen, &ldquo;what do I do?&rdquo; A sign in a foreign language? Same. A plant I&rsquo;m not sure how to take care of? Same. The photo &rarr; Claude habit alone is worth the monthly fee.</div>
+ <div class="callout"><div class="callout-tag">Photograph anything and ask about it</div>Receipt I don&rsquo;t understand? Take a picture, send to Claude, &ldquo;break this down.&rdquo; Weird error on my laptop? Phone picture of the screen, &ldquo;what do I do?&rdquo; A sign in a foreign language? Same. The photo &rarr; Claude habit alone is worth the monthly fee.</div>
 
- <div class="callout"><div class="callout-tag">Texting my agents from Telegram</div>My agents live in Telegram (we covered this in lesson 24). That means I can <strong>text them from anywhere.</strong> I&rsquo;ve sent Elle a status request from my bed, from the Uber, from the bathroom. She replies in 10 seconds. Nobody would know I&rsquo;m not at a desk running a business.</div>
+ <div class="callout"><div class="callout-tag">Texting my agents from Telegram</div>My agents live in Telegram (we covered this in lesson 24). That means I can <strong>text them from anywhere.</strong> I&rsquo;ve sent Elle a status request from my bed, from the Uber, from the mall. She replies in 10 seconds. Nobody would know I&rsquo;m not at a desk running a business.</div>
 
  <p>The phone is an underrated tool. <strong>If you can only use Claude on a laptop, you&rsquo;re missing half of what it can do for you.</strong></p>
  </div>`
