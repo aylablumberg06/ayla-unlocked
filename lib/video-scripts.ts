@@ -75,8 +75,8 @@ export const VIDEO_SCRIPTS: VideoScript[] = [
  lessonIndex: 5, lessonTag: '05, Imposter Syndrome', title: "You're not behind. Nobody is.",
  estLength: '60-90 sec',
  blocks: [
- { label: 'HOOK', text: "I need to say this. I see a lot of people, especially folks who weren't already \"in tech,\" hang back in AI because of it." },
- { label: 'TEACH', text: "You are not behind. Everybody in AI is lost right now. The tools change every month. The people calling themselves experts on Twitter are just louder, not smarter. I'm nineteen. I had zero background. I just had a willingness to look stupid in public for long enough to stop being stupid. That's the whole skill. If you feel imposter-y, that's a signal you're in new territory, which means you're learning. It's not a sign to stop. Ask the dumb question, use different words than the jargon, compare yourself to you from a month ago, not to Twitter." },
+ { label: 'HOOK', text: "I need to say this. I see a lot of people, especially people who weren't already \"in tech,\" hang back in AI because of it." },
+ { label: 'TEACH', text: "You are not behind. Everybody in AI is lost right now. The tools change every day. The people calling themselves experts on Twitter are just louder, not smarter. I'm nineteen. I had zero background. I just had a willingness to look stupid in public for long enough to stop being stupid. That's the whole skill. If you feel imposter-y, that's a signal you're in new territory, which means you're learning. It's not a sign to stop. Ask the dumb question, use different words than the jargon, compare yourself to you from a month ago, not to Twitter." },
  { label: 'CLOSER', text: "The people who make it just keep building through the feeling. You're not behind. Go build the thing." },
  ],
  },

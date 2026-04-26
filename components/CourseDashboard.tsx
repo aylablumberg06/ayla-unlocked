@@ -200,9 +200,9 @@ const lessons: Lesson[] = [
  <h1 class="l-head">Nobody actually knows what they&rsquo;re doing.</h1>
  <p class="l-sub">Real talk from somebody who taught herself.</p>
  <div class="l-body">
- <p>I need to say this because I think about it a lot. And I see a lot of people, especially folks who weren&rsquo;t already &ldquo;in tech,&rdquo; hang back because of it.</p>
+ <p>I need to say this because I think about it a lot. And I see a lot of people, especially people who weren&rsquo;t already &ldquo;in tech,&rdquo; hang back because of it.</p>
 
- <p><strong>You&rsquo;re not behind.</strong> Not on anything. The honest truth is that <em>everybody in AI is lost right now.</em> The tools change every month. What counted as expertise six months ago is outdated. The people on Twitter calling themselves &ldquo;AI experts&rdquo; are mostly just louder, not smarter.</p>
+ <p><strong>You&rsquo;re not behind.</strong> Not on anything. The honest truth is that <em>everybody in AI is lost right now.</em> The tools change every day. What counted as expertise six months ago is outdated. The people on Twitter calling themselves &ldquo;AI experts&rdquo; are mostly just louder, not smarter.</p>
 
  <p>I built two businesses inside of a few months. I&rsquo;m nineteen. I had no background. What I had was <strong>a willingness to look stupid in public for long enough to stop being stupid.</strong> That is the whole skill.</p>
 
@@ -1950,9 +1950,9 @@ export default function CourseDashboard() {
  })
  }
 
- // Scroll to top on lesson change
+ // Scroll to top on lesson change (instant, no smooth animation)
  useEffect(() => {
- rightRef.current?.scrollTo({ top: 0 })
+ if (rightRef.current) rightRef.current.scrollTop = 0
  }, [cur])
 
  // Arrow-key navigation between lessons (ignore when typing)
@@ -2475,7 +2475,7 @@ export default function CourseDashboard() {
  .vid-icon { width: 56px; height: 56px; background: var(--pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(232,41,92,0.25); }
  .vid-icon svg { width: 20px; height: 20px; fill: white; margin-left: 3px; }
  .vid-label { font-size: 11px; color: var(--pink); text-align: center; padding: 0 12px; line-height: 1.5; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
- .right { flex: 1; overflow-y: auto; padding: 52px 60px 110px; }
+ .right { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 52px 60px 110px; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; scroll-behavior: auto; }
  .right::-webkit-scrollbar { width: 3px; }
  .right::-webkit-scrollbar-thumb { background: rgba(232,41,92,0.2); border-radius: 2px; }
  .lesson-wrap { max-width: 600px; animation: courseSlideIn 0.4s cubic-bezier(.4,0.2,1); }
