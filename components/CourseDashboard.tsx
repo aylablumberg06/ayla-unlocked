@@ -1515,7 +1515,6 @@ const glossary = [
  { word: 'Claude Code', def: 'The version of Claude that actually builds and deploys things. Runs in Terminal or directly in the Code tab of the Claude app.' },
  { word: 'Cowork', def: 'A desktop tool where Claude controls your computer for you. Like Claude having hands.' },
  { word: 'Project (Claude)', def: 'A folder in Claude that keeps related chats together with shared context. Use this to stay organized.' },
- { word: 'Context', def: "What Claude knows about your conversation. It only remembers what's in the current chat, which is why staying in the right one matters." },
  { word: 'Apify', def: 'A platform that scrapes data from the internet: TikTok comments, Instagram followers, Google Maps listings. Connects to Claude with an API key.' },
  { word: 'LLM', def: 'Large Language Model. The AI brain underneath Claude. Using one vs. building with one are very different things.' },
  { word: 'Spec', def: 'Short for specification. A clear, written breakdown of what a thing does, step by step, including the inputs, the order of operations, and any edge cases. When Claude builds for you, the better your spec, the better the result.' },
