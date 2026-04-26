@@ -259,7 +259,7 @@ const lessons: Lesson[] = [
 
  <div class="a-quote">&ldquo;Start free. You&rsquo;ll know when you need Pro because Claude will literally cut you off mid-thought. That&rsquo;s the signal.&rdquo;</div>
 
- <p><strong>My actual progression.</strong> I was on free the first two weeks. Hit the limit constantly. Upgraded to Pro. Stayed there for two months. Once I was using it for client work every day, jumped to Max.</p>
+ <p><strong>My actual progression.</strong> I was on Free for like two days. Hit the limit constantly. Upgraded to Pro and stayed there for two weeks. Once I was using it for client work every day, jumped to Max.</p>
 
  <div class="callout"><div class="callout-tag">The rule of thumb</div>Hit rate limits more than twice a week? Upgrade one tier. Hit them daily? Jump again. Never hit them? You&rsquo;re on the right tier.</div>
 
