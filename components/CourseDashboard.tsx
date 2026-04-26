@@ -2294,24 +2294,19 @@ export default function CourseDashboard() {
  .course-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.3px; color: var(--dark); text-decoration: none; cursor: pointer; transition: opacity 0.15s; display: inline-flex; align-items: center; }
  .course-brand:hover { opacity: 0.7; }
  .course-brand span { color: var(--pink); font-style: italic; }
- /* Lesson progress track. Continuous hairline thread with a pulsing
-    pink "you are here" bead, hover ticks, and gold bookmark stars. */
- .progress-track { position: relative; flex: 1; max-width: 520px; min-width: 280px; height: 22px; display: flex; align-items: center; margin: 0 24px; }
- .progress-track-bg { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(232,41,92,0.18); transform: translateY(-50%); border-radius: 1px; }
- .progress-track-fill { position: absolute; top: 50%; left: 0; height: 2px; background: linear-gradient(90deg, var(--pink) 0%, #FF7BA8 100%); transform: translateY(-50%); transition: width 0.55s cubic-bezier(.45,0,.15,1); box-shadow: 0 0 10px rgba(232,41,92,0.45); border-radius: 2px; }
- .progress-track-tick { flex: 1; height: 22px; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; background: transparent; border: 0; padding: 0; }
- .progress-track-tick::before { content: ''; width: 1px; height: 4px; background: rgba(232,41,92,0.32); transition: all 0.18s ease; border-radius: 1px; }
- .progress-track-tick:hover::before { height: 11px; width: 2px; background: var(--pink); }
- .progress-track-tick.done::before { background: var(--pink); height: 5px; }
- .progress-track-tick.now::before { width: 2px; height: 14px; background: var(--pink); box-shadow: 0 0 8px rgba(232,41,92,0.55); }
- .progress-track-tick.has-bookmark::after { content: '★'; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); font-size: 8px; color: #E8B14A; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.08); }
- .progress-track-marker { position: absolute; top: 50%; width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FF8DB3, var(--pink) 65%); transform: translate(-50%, -50%); transition: left 0.55s cubic-bezier(.45,0,.15,1); box-shadow: 0 0 0 3px var(--cream), 0 0 14px rgba(232,41,92,0.55); pointer-events: none; z-index: 2; animation: trackPulse 2.4s ease-in-out infinite; }
- @keyframes trackPulse {
- 0%, 100% { box-shadow: 0 0 0 3px var(--cream), 0 0 8px rgba(232,41,92,0.4); }
- 50% { box-shadow: 0 0 0 3px var(--cream), 0 0 22px rgba(232,41,92,0.85); }
+ /* Lesson progress track. Dashed pink runway with a paper plane
+    flying along it. Each lesson is an invisible click target. */
+ .progress-track { position: relative; flex: 1; max-width: 520px; min-width: 280px; height: 26px; display: flex; align-items: center; margin: 0 24px; }
+ .progress-track-bg { position: absolute; top: 50%; left: 0; right: 0; height: 3px; background-image: repeating-linear-gradient(90deg, rgba(232,41,92,0.3) 0 7px, transparent 7px 13px); transform: translateY(-50%); border-radius: 2px; }
+ .progress-track-fill { position: absolute; top: 50%; left: 0; height: 3px; background-image: repeating-linear-gradient(90deg, var(--pink) 0 7px, transparent 7px 13px); transform: translateY(-50%); transition: width 0.55s cubic-bezier(.45,0,.15,1); border-radius: 2px; }
+ .progress-track-tick { flex: 1; height: 26px; cursor: pointer; background: transparent; border: 0; padding: 0; position: relative; }
+ .progress-track-tick.has-bookmark::after { content: '★'; position: absolute; top: 1px; left: 50%; transform: translateX(-50%); font-size: 8px; color: #E8B14A; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.08); pointer-events: none; }
+ .progress-track-marker { position: absolute; top: 50%; width: 22px; height: 22px; transform: translate(-50%, -50%); transition: left 0.55s cubic-bezier(.45,0,.15,1); pointer-events: none; z-index: 2; display: flex; align-items: center; justify-content: center; color: var(--pink); filter: drop-shadow(0 2px 5px rgba(232,41,92,0.4)); animation: planeFloat 2.6s ease-in-out infinite; }
+ .progress-track-marker svg { width: 19px; height: 19px; transform: rotate(-12deg); }
+ @keyframes planeFloat {
+ 0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+ 50% { transform: translate(-50%, -50%) translateY(-2px); }
  }
- .progress-track-label { position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); font-weight: 700; white-space: nowrap; opacity: 0; transition: opacity 0.18s, bottom 0.18s; pointer-events: none; }
- .progress-track-tick:hover .progress-track-label { opacity: 1; bottom: -12px; }
  .glossary-btn { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); background: var(--pink-light); border: none; padding: 7px 16px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
  .glossary-btn:hover { background: var(--pink); color: white; }
  .top-links { display: flex; align-items: center; gap: 6px; }
@@ -2683,7 +2678,11 @@ export default function CourseDashboard() {
  className="progress-track-marker"
  style={{ left: lessons.length > 1 ? `${(cur / (lessons.length - 1)) * 100}%` : '0%' }}
  aria-hidden="true"
- />
+ >
+ <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="0.6" strokeLinejoin="round">
+ <path d="M2.5 11.4 21.6 2.4 14.6 21.4 11.7 13.3 2.5 11.4z" />
+ </svg>
+ </div>
  </div>
  <div className="top-links">
  {progress.streak_days > 0 && (
