@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { createSupabaseMiddlewareClient } from '@/lib/supabase'
+import { createSupabaseMiddlewareClient, createSupabaseAdminClient } from '@/lib/supabase'
 
 const OWNER_EMAIL = 'aylablumberg06@gmail.com'
 
@@ -48,7 +48,11 @@ export async function middleware(req: NextRequest) {
       return res
     }
 
-    const { data: row } = await supabase
+    // Use admin client (service role) so the paid check bypasses RLS.
+    // The middleware's anon-keyed client respects "users can read own row"
+    // RLS, which can fail on edge-case JWT email casing or missing rows.
+    const adminClient = createSupabaseAdminClient()
+    const { data: row } = await adminClient
       .from('users')
       .select('paid')
       .eq('email', user.email!.toLowerCase())
