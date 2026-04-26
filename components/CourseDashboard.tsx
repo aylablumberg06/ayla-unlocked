@@ -395,7 +395,6 @@ const lessons: Lesson[] = [
  <ul>
  <li>&ldquo;Always default to <strong>pink</strong> as the primary brand color when building anything for me, unless I specify otherwise.&rdquo;</li>
  <li>&ldquo;When I ask for code, skip the explanation unless I ask. Just give me the code.&rdquo;</li>
- <li>&ldquo;I&rsquo;m a 19-year-old solo founder in Dallas, so tailor business advice to that scale, no enterprise assumptions.&rdquo;</li>
  <li>&ldquo;Use casual tone. Drop the &lsquo;certainly!&rsquo; and &lsquo;I&rsquo;d be happy to&rsquo;, just answer.&rdquo;</li>
  </ul>
  <div class="callout"><div class="callout-tag">The exact magic words</div>After any preference you&rsquo;ve just explained, add: <div class="bubble u">Remember this for all future chats.</div>That tells Claude to push the preference into your account-level memory (or the active Project&rsquo;s instructions, depending on where you are). From that point on, every new conversation starts with that preference already loaded. You don&rsquo;t have to repeat yourself.</div>
