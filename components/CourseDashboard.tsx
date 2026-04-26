@@ -1215,7 +1215,7 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">First thing I do</div>Open Telegram. My agents have been running overnight. Whatever they flagged is the first thing I actually look at, before email, before social, before coffee. That&rsquo;s the morning brief.</div>
 
- <div class="callout"><div class="callout-tag">My best build hours</div>I do real building in long, uninterrupted chunks. Phone face-down, Telegram muted, no tabs open except Claude Code and the thing I&rsquo;m making. One site, one agent, one problem at a time. This is where the money actually gets made.</div>
+ <div class="callout"><div class="callout-tag">My actual build hours</div>Some days I&rsquo;ll sit completely locked in for hours, deep in one project, phone down, headphones on, just me and Claude Code. Other days I&rsquo;m checking on Claude Code between errands, between meetings, between the mall and lunch and a workout. And honestly, most of the time I have like ten tabs open at once running different projects, one site is building, one agent is testing, another chat is helping me draft a proposal. There is no &ldquo;right&rdquo; setup. Whatever fits the day fits the day.</div>
 
  <div class="callout"><div class="callout-tag">Client + prospect calls happen on the move</div>Sometimes Zoom, sometimes in person. I take live notes into a Claude chat on my phone, then ask Claude to &ldquo;turn this into a proposal&rdquo; or &ldquo;pull out the three things I agreed to do&rdquo; right after.</div>
 
