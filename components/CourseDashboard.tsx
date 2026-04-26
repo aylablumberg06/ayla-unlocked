@@ -924,7 +924,7 @@ const lessons: Lesson[] = [
  <p class="l-sub">The actual tactics, not the LinkedIn platitudes.</p>
  <div class="l-body">
  <p>Most tutorials are vague on this. &ldquo;Network!&rdquo; &ldquo;Post on social media!&rdquo; Cool. I&rsquo;ll be specific.</p>
- <p>First, know <strong>what you&rsquo;re selling.</strong> You don&rsquo;t need to be an &ldquo;AI consultant.&rdquo; You need <strong>one specific thing a specific person will pay for.</strong> Here are things students have actually sold:</p>
+ <p>First, know <strong>what you&rsquo;re selling.</strong> You don&rsquo;t need to be an &ldquo;AI consultant.&rdquo; You need <strong>one specific thing a specific person will pay for.</strong> Here are some things people actually sell:</p>
  <ul>
  <li><strong>Websites for local businesses</strong> without one ($500 to $2,500 each)</li>
  <li><strong>Personal portfolio sites</strong> for people in creative fields ($200 to $800)</li>
@@ -946,7 +946,6 @@ const lessons: Lesson[] = [
 
  <div class="callout"><div class="callout-tag">3. Your own network</div>You have more contacts than you think. Post one thing on Instagram: &ldquo;Taking 3 clients this month to build [specific thing] for $[X]. DM me.&rdquo; Tag nobody. Let it breathe. Somebody in your circle has been waiting for exactly this.</div>
 
- <p>My first paying client came from option 3. <strong>$400 to build her a personal website.</strong> That was it. Then she told two friends. Then I raised my prices. That&rsquo;s the whole arc.</p>
 
  <div class="callout"><div class="callout-tag">The one rule</div>Don&rsquo;t undersell. Your first client sets your pricing anchor. Pick a number that feels <em>slightly</em> uncomfortable. That&rsquo;s the right price.</div>
 
@@ -956,7 +955,7 @@ const lessons: Lesson[] = [
  Do it today &middot; 15 min
  </div>
  <div class="exercise-title">Send one outreach message.</div>
- <div class="exercise-body">Pick ONE of the three channels above. Write to ONE person. Use this prompt to draft it: <div class="q">Draft a 3-sentence outreach message to a [local business / creator / person in my network] offering to build them [X]. Specific, warm, no buzzwords. Pricing: $[number]. Use my real voice, casual, lowercase.</div> Paste Claude&rsquo;s draft. Tweak one line so it sounds like you. Send it. That&rsquo;s the exercise.</div>
+ <div class="exercise-body">Pick ONE of the three channels above. Write to ONE person. Use this prompt to draft it: <div class="q">Draft a 3-sentence outreach message to a [local business / creator / person in my network] offering to build them [X]. Specific, warm, no buzzwords. Pricing: $[number]. Use my real voice, casual.</div> Paste Claude&rsquo;s draft. Tweak one line so it sounds like you. Send it. That&rsquo;s the exercise.</div>
  <button class="exercise-done" data-exercise-id="ex-22-outreach">I sent it &rarr;</button>
  </div>
  </div>`
