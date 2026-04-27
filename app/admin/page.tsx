@@ -40,14 +40,16 @@ export default async function AdminDashboard() {
  const visits = visitRes.data ?? []
  const submissions = submissionsRes.data ?? []
 
- const paidCount = users.filter((u: any) => u.paid).length
-
- // Net revenue from Stripe — sum (amount - amount_refunded) across all paid
- // charges. Pulls up to ~300 most-recent charges, plenty for now. Returns
- // null on error so the stat just shows "—" instead of crashing the page.
+ // Stripe-backed customer + revenue stats. The users table can have
+ // duplicate rows for the same human (Stripe-email + the email they
+ // typed at signup are both inserted as paid=true), so we count actual
+ // paying customers from Stripe charges instead. A fully refunded
+ // charge contributes $0 and isn't counted as a customer.
+ let paidCustomerCount: number | null = null
  let netRevenueCents: number | null = null
  try {
- let total = 0
+ let revenue = 0
+ let customers = 0
  let starting_after: string | undefined
  for (let page = 0; page < 3; page++) {
  const res = await stripe.charges.list({
@@ -56,14 +58,17 @@ export default async function AdminDashboard() {
  })
  for (const c of res.data) {
  if (c.paid && c.status === 'succeeded') {
- total += (c.amount || 0) - (c.amount_refunded || 0)
+ const net = (c.amount || 0) - (c.amount_refunded || 0)
+ revenue += net
+ if (net > 0) customers += 1
  }
  }
  if (!res.has_more) break
  starting_after = res.data[res.data.length - 1]?.id
  if (!starting_after) break
  }
- netRevenueCents = total
+ paidCustomerCount = customers
+ netRevenueCents = revenue
  } catch (err) {
  console.error('[admin] stripe revenue fetch failed', err)
  }
@@ -118,8 +123,11 @@ export default async function AdminDashboard() {
  <section id="overview">
  <h2 className="font-serif italic text-4xl mb-6">Overview.</h2>
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
- <Stat label="Total signups" value={users.length} />
- <Stat label="Paid" value={paidCount} accent />
+ <Stat
+ label="Paying customers"
+ value={paidCustomerCount == null ? users.length : paidCustomerCount}
+ accent
+ />
  <Stat
  label="Net revenue"
  value={netRevenueCents == null ? '—' : `$${(netRevenueCents / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
