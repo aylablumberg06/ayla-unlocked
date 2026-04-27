@@ -183,17 +183,29 @@ export default async function AdminDashboard() {
  <EmptyBox text="No one's flagged anything confusing yet." />
  ) : (
  <div className="bg-white rounded-2xl border border-[color:var(--border)] divide-y divide-[color:var(--border)]">
- {confusedRanked.map(([label, count]) => (
- <div key={label} className="flex items-center justify-between p-4 px-6">
- <div className="font-mono text-[13px]">{label}</div>
+ {confusedRanked.map(([label, count]) => {
+ // label format: "<lesson_index> · <lesson_tag>"
+ const idxStr = label.split(' · ')[0]
+ const idxNum = Number.parseInt(idxStr, 10)
+ const href = Number.isFinite(idxNum)
+ ? `/course?lesson=${idxNum}`
+ : '/course'
+ return (
+ <Link
+ key={label}
+ href={href}
+ className="group flex items-center justify-between p-4 px-6 hover:bg-[color:var(--pink-pale)]/40 transition"
+ >
+ <div className="font-mono text-[13px] group-hover:text-pink transition">{label} →</div>
  <div className="flex items-center gap-3">
  <div className="w-32 h-2 rounded-full bg-[color:var(--pink-pale)] overflow-hidden">
  <div className="h-full bg-pink" style={{ width: `${Math.min(100, count * 20)}%` }} />
  </div>
  <Pill>{count} flag{count === 1 ? '' : 's'}</Pill>
  </div>
- </div>
- ))}
+ </Link>
+ )
+ })}
  </div>
  )}
  </section>
