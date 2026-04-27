@@ -282,10 +282,10 @@ export default function LandingPage({
  <strong className="text-mid">Refunds.</strong> All sales are final, no refunds. The full lesson list is right above so you can see exactly what you&rsquo;re paying for before you click Get Access.
  </p>
  <p>
- <strong className="text-mid">Privacy.</strong> We collect your email, an encrypted password (or magic-link login), your course progress (which lessons you&rsquo;ve done, your bookmarks, notes, highlights), and your Stripe payment info (handled by Stripe, not stored by us). We use auth cookies to keep you logged in. We do not sell your data, share it with advertisers, or send marketing emails. To delete your account or export your data, email <a href="mailto:aylablumberg06@gmail.com" className="underline hover:text-pink">aylablumberg06@gmail.com</a> and we&rsquo;ll handle it within a few days.
+ <strong className="text-mid">Privacy.</strong> We collect your email, an encrypted password (or magic-link login), your course progress (which lessons you&rsquo;ve done, your bookmarks, notes, highlights), and your Stripe payment info (handled by Stripe, not stored by us). We use auth cookies to keep you logged in. We do not sell your data, share it with advertisers, or send marketing emails. To delete your account or export your data, use the contact form and we&rsquo;ll handle it within a few days.
  </p>
  <p>
- <strong className="text-mid">Contact.</strong> Anything else, questions, bugs, complaints, fan mail, same email: <a href="mailto:aylablumberg06@gmail.com" className="underline hover:text-pink">aylablumberg06@gmail.com</a>.
+ <strong className="text-mid">Contact.</strong> Anything else, questions, bugs, complaints, fan mail — use the contact form on the site.
  </p>
  </div>
  </footer>

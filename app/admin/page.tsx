@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import BrandLogo from '@/components/BrandLogo'
 import { createSupabaseAdminClient } from '@/lib/supabase'
+import { stripe } from '@/lib/stripe'
 import { VIDEO_SCRIPTS } from '@/lib/video-scripts'
 import AdminScripts from '@/components/AdminScripts'
 import { SELF_IDEA_POOL, CLIENT_IDEA_POOL } from '@/lib/idea-pools'
@@ -40,6 +41,32 @@ export default async function AdminDashboard() {
  const submissions = submissionsRes.data ?? []
 
  const paidCount = users.filter((u: any) => u.paid).length
+
+ // Net revenue from Stripe — sum (amount - amount_refunded) across all paid
+ // charges. Pulls up to ~300 most-recent charges, plenty for now. Returns
+ // null on error so the stat just shows "—" instead of crashing the page.
+ let netRevenueCents: number | null = null
+ try {
+ let total = 0
+ let starting_after: string | undefined
+ for (let page = 0; page < 3; page++) {
+ const res = await stripe.charges.list({
+ limit: 100,
+ ...(starting_after ? { starting_after } : {}),
+ })
+ for (const c of res.data) {
+ if (c.paid && c.status === 'succeeded') {
+ total += (c.amount || 0) - (c.amount_refunded || 0)
+ }
+ }
+ if (!res.has_more) break
+ starting_after = res.data[res.data.length - 1]?.id
+ if (!starting_after) break
+ }
+ netRevenueCents = total
+ } catch (err) {
+ console.error('[admin] stripe revenue fetch failed', err)
+ }
  const completedCount = progress.filter((p: any) => p.completed_at).length
  const activeLast7 = progress.filter((p: any) => {
  const d = new Date(p.updated_at)
@@ -93,6 +120,11 @@ export default async function AdminDashboard() {
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
  <Stat label="Total signups" value={users.length} />
  <Stat label="Paid" value={paidCount} accent />
+ <Stat
+ label="Net revenue"
+ value={netRevenueCents == null ? '—' : `$${(netRevenueCents / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+ accent
+ />
  <Stat label="Completed" value={completedCount} />
  <Stat label="Active (7d)" value={activeLast7} />
  <Stat label="Contact msgs" value={contacts.length} />
@@ -384,10 +416,11 @@ export default async function AdminDashboard() {
  )
 }
 
-function Stat({ label, value, accent }: { label: string; value: number; accent?: boolean }) {
+function Stat({ label, value, accent }: { label: string; value: number | string; accent?: boolean }) {
+ const display = typeof value === 'number' ? value.toLocaleString() : value
  return (
  <div className={`rounded-2xl p-5 border ${accent ? 'bg-pink text-white border-pink' : 'bg-white border-[color:var(--border)]'}`}>
- <div className={`font-serif text-4xl ${accent ? '' : 'text-pink'}`}>{value.toLocaleString()}</div>
+ <div className={`font-serif text-4xl ${accent ? '' : 'text-pink'}`}>{display}</div>
  <div className={`text-[10px] tracking-[2px] uppercase mt-1 ${accent ? 'text-white/80' : 'text-mid'}`}>{label}</div>
  </div>
  )
