@@ -16,7 +16,7 @@ export const dynamic = 'force-dynamic'
  * Only touches the auth user when a sign-in attempt fails.
  */
 const OWNER_EMAIL = 'aylablumberg06@gmail.com'
-const DEFAULT_OWNER_PASSWORD = 'ayla123456'
+
 
 export async function GET(req: NextRequest) {
  const { searchParams, origin } = new URL(req.url)
@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
  return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
  }
 
- const password = process.env.OWNER_PASSWORD || DEFAULT_OWNER_PASSWORD
+ const password = process.env.OWNER_PASSWORD ?? ""
  const supaUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
