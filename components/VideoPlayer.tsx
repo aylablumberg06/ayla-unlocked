@@ -156,18 +156,20 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  playsInline
  disablePictureInPicture
  disableRemotePlayback
+ controls={isMobile}
  controlsList="nofullscreen nodownload noplaybackrate noremoteplayback"
  x-webkit-airplay="deny"
  preload={isMobile ? 'metadata' : 'auto'}
  className="w-full h-full object-cover cursor-pointer"
- onClick={togglePlay}
+ onClick={isMobile ? undefined : togglePlay}
  onError={() => setFailed(true)}
  />
 
  {/* Loader overlay: shows during initial load (no frame yet) and
      during any mid-playback buffer stall. Covers the OS-default
-     black spinner with our Ayla character. */}
- {(buffering || !hasFrame) && (
+     black spinner with our Ayla character. Mobile uses the OS
+     native indicator instead, so we skip our heavy SVG overlay. */}
+ {!isMobile && (buffering || !hasFrame) && (
  <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none bg-black/55">
  <span className="absolute inset-0 bg-gradient-to-br from-[#FFE4ED] via-[#FFF7FA] to-[#FFE4ED] opacity-95" />
  <span className="relative w-14 h-14 rounded-full overflow-hidden vp-bob" style={{ boxShadow: '0 6px 20px rgba(232,41,92,0.35)' }}>
@@ -188,8 +190,9 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  </div>
  )}
 
- {/* Centered play button (only shown when paused/ended) */}
- {!playing && (
+ {/* Centered play button (only shown when paused/ended).
+     Mobile uses the native browser controls, so suppress this. */}
+ {!isMobile && !playing && (
  <button
  onClick={togglePlay}
  aria-label="Play"
@@ -203,7 +206,8 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  </button>
  )}
 
- {/* Bottom custom control bar */}
+ {/* Bottom custom control bar (desktop only — mobile uses native) */}
+ {!isMobile && (
  <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/70 via-black/40 to-transparent px-3 pt-6 pb-2.5 flex items-center gap-2.5 text-white text-[11px] tracking-wide">
  <button
  onClick={togglePlay}
@@ -255,8 +259,10 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  )}
  </button>
  </div>
+ )}
 
- {/* Speed chip, sits above the bottom bar */}
+ {/* Speed chip, sits above the bottom bar (desktop only) */}
+ {!isMobile && (
  <div className="absolute bottom-12 right-3 z-20">
  <button
  onClick={() => setSpeedOpen((v) => !v)}
@@ -285,6 +291,7 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  </div>
  )}
  </div>
+ )}
 
  <style jsx>{`
  .vp-seek {
