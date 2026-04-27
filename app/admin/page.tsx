@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import BrandLogo from '@/components/BrandLogo'
 import { createSupabaseAdminClient } from '@/lib/supabase'
 import { stripe } from '@/lib/stripe'
 import { VIDEO_SCRIPTS } from '@/lib/video-scripts'
 import AdminScripts from '@/components/AdminScripts'
+import AdminNav from '@/components/AdminNav'
 import { SELF_IDEA_POOL, CLIENT_IDEA_POOL } from '@/lib/idea-pools'
 
 export const metadata = {
@@ -96,36 +96,7 @@ export default async function AdminDashboard() {
 
  return (
  <main className="min-h-screen bg-cream text-dark">
- <nav className="sticky top-0 z-40 backdrop-blur-md bg-[rgba(253,246,240,0.95)] border-b border-[color:var(--border)]">
- <div className="max-w-7xl mx-auto px-6 md:px-10 py-3 flex items-center justify-between gap-6 flex-wrap">
- <Link href="/" className="font-serif text-lg tracking-wide flex items-center shrink-0">
- <BrandLogo size={22} className="mr-2" />Ayla <span className="text-pink italic mx-1">Unlocked</span>
- <span className="text-xs text-muted-light tracking-[2px] uppercase ml-3">Admin</span>
- </Link>
- <div className="flex flex-wrap gap-x-5 gap-y-2 text-[10px] tracking-[1.5px] uppercase">
- <NavGroup label="Performance">
- <a href="#overview" className="text-mid hover:text-pink">Overview</a>
- <a href="#confused" className="text-mid hover:text-pink">Confused</a>
- <a href="#visits" className="text-mid hover:text-pink">Visits</a>
- </NavGroup>
- <NavGroup label="People">
- <a href="#students" className="text-mid hover:text-pink">Students</a>
- <a href="#contacts" className="text-mid hover:text-pink">Contacts</a>
- <a href="#chats" className="text-mid hover:text-pink">Chats</a>
- <a href="#submissions" className="text-mid hover:text-pink">Builds</a>
- </NavGroup>
- <NavGroup label="Marketing">
- <Link href="/admin/leads" className="text-pink hover:underline font-semibold">Leads →</Link>
- <Link href="/admin/tiktok-scripts" className="text-pink hover:underline font-semibold">TikToks →</Link>
- <a href="#scripts" className="text-mid hover:text-pink">Video scripts</a>
- </NavGroup>
- <NavGroup label="Reference">
- <a href="#quiz" className="text-mid hover:text-pink">Quiz log</a>
- <a href="#ideas" className="text-mid hover:text-pink">All ideas</a>
- </NavGroup>
- </div>
- </div>
- </nav>
+ <AdminNav />
 
  <div className="max-w-7xl mx-auto px-6 md:px-10 py-10 space-y-16">
  {/* OVERVIEW */}
@@ -442,15 +413,6 @@ export default async function AdminDashboard() {
  </section>
  </div>
  </main>
- )
-}
-
-function NavGroup({ label, children }: { label: string; children: React.ReactNode }) {
- return (
- <div className="flex flex-col gap-0.5">
- <div className="text-[8.5px] tracking-[2.5px] uppercase text-muted-light font-semibold">{label}</div>
- <div className="flex gap-3 flex-wrap">{children}</div>
- </div>
  )
 }
 
