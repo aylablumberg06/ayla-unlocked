@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { createSupabaseAdminClient } from '@/lib/supabase'
+import { sendEmail } from '@/lib/email'
 import type Stripe from 'stripe'
+
+const OWNER_EMAIL = 'aylablumberg06@gmail.com'
 
 export const runtime = 'nodejs'
 // Must have raw body for signature verification
@@ -41,7 +44,42 @@ export async function POST(req: NextRequest) {
  return NextResponse.json({ error: 'db error' }, { status: 500 })
  }
  console.log('[stripe-webhook] marked paid:', email)
+
+ // Notify Ayla. Silent failure — never block a paid event on email send.
+ try {
+ const name = session.customer_details?.name || ''
+ const amountCents = session.amount_total || 0
+ const amount = `$${(amountCents / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+ await sendEmail({
+ to: OWNER_EMAIL,
+ subject: `🎉 yay new sale on Ayla Unlocked — ${amount}`,
+ html: `
+ <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#FDF6F0;padding:32px;color:#1A1A1A;">
+ <div style="max-width:520px;margin:0 auto;background:white;border-radius:16px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+ <div style="font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E8295C;margin-bottom:8px;">New sale</div>
+ <h1 style="font-family:Georgia,serif;font-size:32px;font-style:italic;margin:0 0 16px;font-weight:400;line-height:1.1;">yay 🎉</h1>
+ <table style="width:100%;border-collapse:collapse;margin-bottom:8px;">
+ <tr><td style="padding:6px 0;color:#5C5C5C;font-size:13px;">Email</td><td style="padding:6px 0;text-align:right;font-family:ui-monospace,monospace;font-size:13px;">${escapeHtml(email)}</td></tr>
+ ${name ? `<tr><td style="padding:6px 0;color:#5C5C5C;font-size:13px;">Name</td><td style="padding:6px 0;text-align:right;">${escapeHtml(name)}</td></tr>` : ''}
+ <tr><td style="padding:6px 0;color:#5C5C5C;font-size:13px;">Amount</td><td style="padding:6px 0;text-align:right;font-weight:600;color:#E8295C;">${amount}</td></tr>
+ <tr><td style="padding:6px 0;color:#5C5C5C;font-size:13px;">Session</td><td style="padding:6px 0;text-align:right;font-family:ui-monospace,monospace;font-size:11px;color:#999;">${session.id.slice(0, 24)}…</td></tr>
+ </table>
+ </div>
+ </div>`,
+ })
+ } catch (mailErr) {
+ console.error('[stripe-webhook] sale-notify email failed', mailErr)
+ }
  }
 
  return NextResponse.json({ received: true })
+}
+
+function escapeHtml(s: string) {
+ return s
+ .replaceAll('&', '&amp;')
+ .replaceAll('<', '&lt;')
+ .replaceAll('>', '&gt;')
+ .replaceAll('"', '&quot;')
+ .replaceAll("'", '&#39;')
 }
