@@ -32,6 +32,9 @@ export const LESSON_ESTIMATES: { index: number; readSec: number; watchSec: numbe
  { index: 28, readSec: 160, watchSec: 120 },
 ]
 
+/** Number of lesson screens in the course (welcome + numbered lessons). */
+export const TOTAL_LESSONS = 29
+
 export const TOTAL_READ_SEC = 2839
 export const TOTAL_WATCH_SEC = 2520
 /** 13 hands-on exercises, realistic completion time (~89 min total). */

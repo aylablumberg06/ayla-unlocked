@@ -541,7 +541,7 @@ function TabBtn({
 }
 
 function buildDM(): string {
-  return `Hi, I saw your comment on my post about AI. I made a course that explains everything I've learned. 30 lessons that take you from never having opened claude to building real stuff with it. plain english, no tech jargon unlocked.aylablumberg.com  !!`
+  return `Hi, I saw your comment on my post about AI. I made a course that explains everything I've learned. 29 lessons that take you from never having opened claude to building real stuff with it. plain english, no tech jargon unlocked.aylablumberg.com  !!`
 }
 
 function LeadCard({

@@ -5,6 +5,7 @@ import { VIDEO_SCRIPTS } from '@/lib/video-scripts'
 import AdminScripts from '@/components/AdminScripts'
 import AdminNav from '@/components/AdminNav'
 import { SELF_IDEA_POOL, CLIENT_IDEA_POOL } from '@/lib/idea-pools'
+import { TOTAL_LESSONS } from '@/lib/estimates'
 
 export const metadata = {
  title: 'Ayla Unlocked, Admin',
@@ -142,7 +143,7 @@ export default async function AdminDashboard() {
  <tr key={u.email} className="border-t border-[color:var(--border)] hover:bg-[color:var(--pink-pale)]/40">
  <Td><span className="font-mono text-[12px]">{u.email}</span></Td>
  <Td>{u.paid ? <Pill>paid</Pill> : <span className="text-muted-light text-[11px]">no</span>}</Td>
- <Td>{p?.last_lesson ?? 0} / 19</Td>
+ <Td>{Math.min(p?.last_lesson ?? 0, TOTAL_LESSONS)} / {TOTAL_LESSONS}</Td>
  <Td>{p?.completed_at ? <Pill>✓</Pill> : <span className="text-muted-light text-[11px]">&middot;</span>}</Td>
  <Td>{p?.bookmarks?.length ?? 0}</Td>
  <Td>{p?.confused?.length ?? 0}</Td>

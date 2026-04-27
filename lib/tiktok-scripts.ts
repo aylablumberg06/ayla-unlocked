@@ -45,7 +45,7 @@ export const TIKTOK_SCRIPTS: TikTokScript[] = [
  visual: 'Cut to: the Ayla Unlocked landing page hero. Slow zoom in on "Ayla Unlocked".',
  },
  {
- text: "30 lessons. No jargon. It feels like FaceTiming a friend who just figured it out.",
+ text: "29 lessons. No jargon. It feels like FaceTiming a friend who just figured it out.",
  visual: 'Cut to: the /course lesson dashboard, scrolling through the lesson list.',
  },
  {
@@ -76,7 +76,7 @@ export const TIKTOK_SCRIPTS: TikTokScript[] = [
  },
  {
  text: "She paid for my course on day one. She's currently in lesson 8.",
- visual: 'Cut to: admin dashboard showing her in the Students table — blur her email but show "Lesson 8 / 19".',
+ visual: 'Cut to: admin dashboard showing her in the Students table — blur her email but show "Lesson 8 / 29".',
  },
  {
  text: "She's drafting follow-up emails for her real estate clients in Claude. Faster than she ever did them by hand.",
