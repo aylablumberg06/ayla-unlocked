@@ -130,12 +130,12 @@ export default async function AdminDashboard() {
  <table className="w-full text-[13.5px]">
  <thead className="bg-[color:var(--pink-pale)] text-pink uppercase tracking-[1.5px] text-[10px]">
  <tr>
- <Th>Email</Th><Th>Paid</Th><Th>Lesson</Th><Th>Completed</Th><Th>Bookmarks</Th><Th>Confused</Th><Th>Last active</Th>
+ <Th>Email</Th><Th>Paid</Th><Th>Purchased</Th><Th>Lesson</Th><Th>Completed</Th><Th>Bookmarks</Th><Th>Confused</Th><Th>Last active</Th>
  </tr>
  </thead>
  <tbody>
  {users.length === 0 && (
- <tr><td colSpan={7} className="text-center p-10 text-muted-light italic">No signups yet.</td></tr>
+ <tr><td colSpan={8} className="text-center p-10 text-muted-light italic">No signups yet.</td></tr>
  )}
  {users.map((u: any) => {
  const p = progress.find((x: any) => x.email === u.email)
@@ -143,6 +143,13 @@ export default async function AdminDashboard() {
  <tr key={u.email} className="border-t border-[color:var(--border)] hover:bg-[color:var(--pink-pale)]/40">
  <Td><span className="font-mono text-[12px]">{u.email}</span></Td>
  <Td>{u.paid ? <Pill>paid</Pill> : <span className="text-muted-light text-[11px]">no</span>}</Td>
+ <Td>
+ {u.created_at ? (
+ <span title={new Date(u.created_at).toLocaleString()}>{formatPurchaseDate(u.created_at)}</span>
+ ) : (
+ <span className="text-muted-light text-[11px]">&middot;</span>
+ )}
+ </Td>
  <Td>{Math.min(p?.last_lesson ?? 0, TOTAL_LESSONS)} / {TOTAL_LESSONS}</Td>
  <Td>{p?.completed_at ? <Pill>✓</Pill> : <span className="text-muted-light text-[11px]">&middot;</span>}</Td>
  <Td>{p?.bookmarks?.length ?? 0}</Td>
@@ -443,6 +450,18 @@ function EmptyBox({ text }: { text: string }) {
  </div>
  )
 }
+function formatPurchaseDate(iso: string) {
+ const d = new Date(iso)
+ if (isNaN(d.getTime())) return ''
+ const now = new Date()
+ const sameYear = d.getFullYear() === now.getFullYear()
+ return d.toLocaleDateString('en-US', {
+ month: 'short',
+ day: 'numeric',
+ ...(sameYear ? {} : { year: 'numeric' }),
+ })
+}
+
 function timeAgo(iso: string) {
  if (!iso) return ''
  const d = new Date(iso).getTime()
