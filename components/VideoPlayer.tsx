@@ -147,11 +147,11 @@ export default function VideoPlayer({ src, poster, autoPlay, fallback, className
  const progressPct = duration > 0 ? (currentTime / duration) * 100 : 0
 
  return (
- <div className={`relative w-full h-full bg-black overflow-hidden ${className ?? ''}`}>
+ <div className={`relative w-full h-full bg-[color:var(--pink-pale)] overflow-hidden ${className ?? ''}`}>
  <video
  ref={ref}
  src={src}
- poster={poster}
+ poster={poster || '/ayla-loader-poster.svg'}
  autoPlay={autoPlay}
  playsInline
  disablePictureInPicture

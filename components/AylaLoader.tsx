@@ -18,15 +18,15 @@ export default function AylaLoader({
   size?: number
   label?: string
 }) {
-  const px = size ?? (inline ? 36 : 88)
+  const px = size ?? (inline ? 56 : 140)
   const wrapClass = inline
     ? 'inline-flex flex-col items-center gap-2'
-    : 'fixed inset-0 z-[120] flex flex-col items-center justify-center gap-3 bg-[rgba(253,246,240,0.78)] backdrop-blur-sm'
+    : 'fixed inset-0 z-[120] flex flex-col items-center justify-center gap-3 bg-[rgba(253,246,240,0.92)] backdrop-blur-sm'
   return (
     <div className={wrapClass} role="status" aria-live="polite">
       <span
         className="ayla-loader-bob inline-block rounded-full overflow-hidden"
-        style={{ width: px, height: px, boxShadow: '0 8px 22px rgba(232,41,92,0.18)' }}
+        style={{ width: px, height: px, boxShadow: '0 10px 28px rgba(232,41,92,0.22)' }}
       >
         <AylaThinkingAvatar />
       </span>
@@ -51,24 +51,43 @@ export default function AylaLoader({
   )
 }
 
+/**
+ * Brighter, less-black avatar so the loader doesn't look like a dark
+ * blob at small sizes. Hair is warm honey-brown (was near-black brown),
+ * eyes are deep plum (was #1A1A1A), and the whole face is bigger
+ * relative to the frame so the character reads clearly even at 56px.
+ */
 function AylaThinkingAvatar() {
   return (
     <svg viewBox="0 0 64 64" className="w-full h-full" aria-hidden="true">
+      {/* warm pale background */}
       <rect width="64" height="64" fill="#FFE4ED" />
-      <path d="M10 38 C10 20 22 10 32 10 C42 10 54 20 54 38 L54 58 L10 58 Z" fill="#6B3D2A" />
-      <ellipse cx="32" cy="34" rx="15" ry="17" fill="#F5D2B8" />
-      <path d="M17 26 C20 19 26 15 32 15 C38 15 44 18 47 26 C43 22 37 21 32 21 C27 21 22 23 17 26 Z" fill="#6B3D2A" />
-      <ellipse cx="26" cy="31" rx="1.4" ry="2" fill="#1A1A1A" />
-      <ellipse cx="38" cy="31" rx="1.4" ry="2" fill="#1A1A1A" />
-      <path d="M23 28 C25 26 28 26 29 28" stroke="#3B2416" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-      <path d="M35 27 C37 25 40 26 41 28" stroke="#3B2416" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-      <path d="M28 42 C30 43 33 43 36 41" stroke="#C45575" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-      <circle cx="23" cy="38" r="2.3" fill="#FF9BB3" opacity="0.55" />
-      <circle cx="41" cy="38" r="2.3" fill="#FF9BB3" opacity="0.55" />
-      <circle cx="32" cy="48" r="2.2" fill="#F5D2B8" />
-      <path d="M32 46 L34 42 L36 41" stroke="#F5D2B8" strokeWidth="3" strokeLinecap="round" fill="none" />
-      <circle cx="49" cy="14" r="4" fill="white" stroke="#E8295C" strokeWidth="1" />
-      <circle cx="44" cy="20" r="1.8" fill="white" stroke="#E8295C" strokeWidth="0.8" />
+      {/* hair — softer caramel instead of dark brown */}
+      <path d="M10 36 C10 18 22 8 32 8 C42 8 54 18 54 36 L54 60 L10 60 Z" fill="#B8763C" />
+      {/* highlight on hair */}
+      <path d="M14 30 C18 22 24 16 32 16 C40 16 46 22 50 30 C46 26 40 24 32 24 C24 24 18 26 14 30 Z" fill="#D89758" opacity="0.7" />
+      {/* face */}
+      <ellipse cx="32" cy="34" rx="16" ry="18" fill="#F8DBC0" />
+      {/* eyes — deep plum, softer than near-black */}
+      <ellipse cx="25" cy="32" rx="1.6" ry="2.2" fill="#5C2C50" />
+      <ellipse cx="39" cy="32" rx="1.6" ry="2.2" fill="#5C2C50" />
+      {/* tiny eye highlight */}
+      <circle cx="25.4" cy="31.4" r="0.5" fill="#FFF" />
+      <circle cx="39.4" cy="31.4" r="0.5" fill="#FFF" />
+      {/* eyebrows */}
+      <path d="M22 28 C24 26.6 27 26.6 28.5 28" stroke="#8B5A33" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+      <path d="M35.5 28 C37 26.6 40 26.6 42 28" stroke="#8B5A33" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+      {/* smile */}
+      <path d="M27 41 C30 43 34 43 37 41" stroke="#C45575" strokeWidth="1.7" fill="none" strokeLinecap="round" />
+      {/* blush */}
+      <circle cx="22" cy="38" r="2.6" fill="#FF9BB3" opacity="0.55" />
+      <circle cx="42" cy="38" r="2.6" fill="#FF9BB3" opacity="0.55" />
+      {/* sparkles around the head */}
+      <g fill="#E8295C">
+        <circle cx="51" cy="14" r="1.2" />
+        <circle cx="13" cy="18" r="0.9" />
+        <circle cx="55" cy="26" r="0.8" />
+      </g>
     </svg>
   )
 }
