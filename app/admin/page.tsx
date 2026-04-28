@@ -64,11 +64,13 @@ export default async function AdminDashboard() {
  let netRevenueCents: number | null = null
  try {
  let revenue = 0
+ let fees = 0
  let customers = 0
  let starting_after: string | undefined
  for (let page = 0; page < 3; page++) {
  const res = await stripe.charges.list({
  limit: 100,
+ expand: ['data.balance_transaction'],
  ...(starting_after ? { starting_after } : {}),
  })
  for (const c of res.data) {
@@ -76,6 +78,12 @@ export default async function AdminDashboard() {
  const net = (c.amount || 0) - (c.amount_refunded || 0)
  revenue += net
  if (net > 0) customers += 1
+ // Stripe fee is on the charge regardless of refund — refunds
+ // don't return the fee. Subtract it from take-home revenue.
+ const bt = c.balance_transaction
+ if (bt && typeof bt === 'object' && 'fee' in bt) {
+ fees += (bt as any).fee || 0
+ }
  }
  }
  if (!res.has_more) break
@@ -83,7 +91,7 @@ export default async function AdminDashboard() {
  if (!starting_after) break
  }
  paidCustomerCount = customers
- netRevenueCents = revenue
+ netRevenueCents = revenue - fees
  } catch (err) {
  console.error('[admin] stripe revenue fetch failed', err)
  }
@@ -93,13 +101,22 @@ export default async function AdminDashboard() {
  return Date.now() - d.getTime() < 7 * 24 * 60 * 60 * 1000
  }).length
 
- // Aggregate confused flags by lesson
- const confusedByLesson = confused.reduce<Record<string, number>>((acc, r: any) => {
+ // Aggregate confused flags by lesson — track count AND who flagged it.
+ type Flagger = { email: string | null; note: string | null; ts: string }
+ const confusedByLesson: Record<string, { count: number; flaggers: Flagger[] }> = {}
+ for (const r of confused as any[]) {
  const key = `${r.lesson_index} · ${r.lesson_tag ?? 'Unknown'}`
- acc[key] = (acc[key] ?? 0) + 1
- return acc
- }, {})
- const confusedRanked = Object.entries(confusedByLesson).sort((a, b) => b[1] - a[1]).slice(0, 10)
+ if (!confusedByLesson[key]) confusedByLesson[key] = { count: 0, flaggers: [] }
+ confusedByLesson[key].count += 1
+ confusedByLesson[key].flaggers.push({
+ email: r.email ?? null,
+ note: r.note ?? null,
+ ts: r.created_at ?? '',
+ })
+ }
+ const confusedRanked = Object.entries(confusedByLesson)
+ .sort((a, b) => b[1].count - a[1].count)
+ .slice(0, 10)
 
  // Group chat logs by session for readability
  const chatSessions = chatLogs.reduce<Record<string, typeof chatLogs>>((acc, row: any) => {
@@ -124,7 +141,7 @@ export default async function AdminDashboard() {
  accent
  />
  <Stat
- label="Net revenue"
+ label="Take-home"
  value={netRevenueCents == null ? '—' : `$${(netRevenueCents / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
  accent
  />
@@ -189,27 +206,48 @@ export default async function AdminDashboard() {
  <EmptyBox text="No one's flagged anything confusing yet." />
  ) : (
  <div className="bg-white rounded-2xl border border-[color:var(--border)] divide-y divide-[color:var(--border)]">
- {confusedRanked.map(([label, count]) => {
+ {confusedRanked.map(([label, info]) => {
  // label format: "<lesson_index> · <lesson_tag>"
  const idxStr = label.split(' · ')[0]
  const idxNum = Number.parseInt(idxStr, 10)
- const href = Number.isFinite(idxNum)
- ? `/course?lesson=${idxNum}`
- : '/course'
+ const href = Number.isFinite(idxNum) ? `/course?lesson=${idxNum}` : '/course'
  return (
- <Link
- key={label}
- href={href}
- className="group flex items-center justify-between p-4 px-6 hover:bg-[color:var(--pink-pale)]/40 transition"
- >
- <div className="font-mono text-[13px] group-hover:text-pink transition">{label} →</div>
+ <details key={label} className="group">
+ <summary className="cursor-pointer list-none flex items-center justify-between p-4 px-6 hover:bg-[color:var(--pink-pale)]/40 transition">
+ <div className="flex items-center gap-2">
+ <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor" className="opacity-60 text-mid group-open:rotate-180 transition-transform">
+ <path d="M2 4l4 4 4-4z" />
+ </svg>
+ <div className="font-mono text-[13px] text-dark">{label}</div>
+ </div>
  <div className="flex items-center gap-3">
  <div className="w-32 h-2 rounded-full bg-[color:var(--pink-pale)] overflow-hidden">
- <div className="h-full bg-pink" style={{ width: `${Math.min(100, count * 20)}%` }} />
+ <div className="h-full bg-pink" style={{ width: `${Math.min(100, info.count * 20)}%` }} />
  </div>
- <Pill>{count} flag{count === 1 ? '' : 's'}</Pill>
+ <Pill>{info.count} flag{info.count === 1 ? '' : 's'}</Pill>
  </div>
+ </summary>
+ <div className="px-6 pb-4 -mt-1 space-y-2 bg-[color:var(--pink-pale)]/30">
+ <div className="flex items-center gap-3 pt-3">
+ <Link href={href} className="text-[10px] tracking-[1.5px] uppercase font-semibold text-pink hover:underline">
+ Open lesson →
  </Link>
+ </div>
+ <ul className="space-y-2 pt-1">
+ {info.flaggers.map((f, i) => (
+ <li key={i} className="bg-white rounded-lg border border-[color:var(--border)] p-3">
+ <div className="flex items-center justify-between gap-3 flex-wrap">
+ <span className="font-mono text-[12px] text-dark">{f.email || '(anonymous)'}</span>
+ <span className="text-[10px] text-muted-light tracking-[1px]">{f.ts ? timeAgo(f.ts) : ''}</span>
+ </div>
+ {f.note && (
+ <div className="mt-2 text-[12.5px] text-mid leading-relaxed whitespace-pre-wrap">{f.note}</div>
+ )}
+ </li>
+ ))}
+ </ul>
+ </div>
+ </details>
  )
  })}
  </div>
