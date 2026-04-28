@@ -41,6 +41,20 @@ export default async function AdminDashboard() {
  const visits = visitRes.data ?? []
  const submissions = submissionsRes.data ?? []
 
+ // Map lesson index → human label (e.g. "12 - Get an Idea") so admin
+ // table can show what students bookmarked or flagged as confusing
+ // instead of just an opaque count.
+ const lessonTagByIndex: Record<number, string> = Object.fromEntries(
+ VIDEO_SCRIPTS.map((s) => [s.lessonIndex, s.lessonTag])
+ )
+ const labelLessons = (indices: number[] | null | undefined) => {
+ if (!indices || indices.length === 0) return ''
+ return [...indices]
+ .sort((a, b) => a - b)
+ .map((i) => lessonTagByIndex[i] || `Lesson ${i}`)
+ .join('\n')
+ }
+
  // Stripe-backed customer + revenue stats. The users table can have
  // duplicate rows for the same human (Stripe-email + the email they
  // typed at signup are both inserted as paid=true), so we count actual
@@ -152,8 +166,12 @@ export default async function AdminDashboard() {
  </Td>
  <Td>{Math.min(p?.last_lesson ?? 0, TOTAL_LESSONS)} / {TOTAL_LESSONS}</Td>
  <Td>{p?.completed_at ? <Pill>✓</Pill> : <span className="text-muted-light text-[11px]">&middot;</span>}</Td>
- <Td>{p?.bookmarks?.length ?? 0}</Td>
- <Td>{p?.confused?.length ?? 0}</Td>
+ <Td>
+ <LessonCountCell indices={p?.bookmarks} labelLessons={labelLessons} emptyLabel="No bookmarks" />
+ </Td>
+ <Td>
+ <LessonCountCell indices={p?.confused} labelLessons={labelLessons} emptyLabel="No flags" />
+ </Td>
  <Td>{p?.updated_at ? timeAgo(p.updated_at) : <span className="text-muted-light text-[11px]">never</span>}</Td>
  </tr>
  )
@@ -421,6 +439,48 @@ export default async function AdminDashboard() {
  </section>
  </div>
  </main>
+ )
+}
+
+function LessonCountCell({
+ indices,
+ labelLessons,
+ emptyLabel,
+}: {
+ indices: number[] | null | undefined
+ labelLessons: (i: number[] | null | undefined) => string
+ emptyLabel: string
+}) {
+ const list = Array.isArray(indices) ? indices : []
+ if (list.length === 0) {
+ return <span className="text-muted-light text-[11px]">0</span>
+ }
+ const tooltip = labelLessons(list)
+ return (
+ <details className="group">
+ <summary
+ className="cursor-pointer list-none inline-flex items-center gap-1 text-pink underline decoration-dotted underline-offset-2 hover:text-[#C51F4E]"
+ title={tooltip || emptyLabel}
+ >
+ {list.length}
+ <svg viewBox="0 0 12 12" width="9" height="9" fill="currentColor" className="opacity-60 group-open:rotate-180 transition-transform">
+ <path d="M2 4l4 4 4-4z" />
+ </svg>
+ </summary>
+ <ul className="mt-2 space-y-1 text-[11px] text-mid leading-snug min-w-[160px]">
+ {[...list].sort((a, b) => a - b).map((i) => (
+ <li key={i}>
+ <a
+ href={`/course?lesson=${i}`}
+ className="hover:text-pink underline decoration-dotted"
+ >
+ {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+ {(labelLessons([i]) || `Lesson ${i}`).split('\n')[0]}
+ </a>
+ </li>
+ ))}
+ </ul>
+ </details>
  )
 }
 
