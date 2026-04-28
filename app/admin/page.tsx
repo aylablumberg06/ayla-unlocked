@@ -118,6 +118,28 @@ export default async function AdminDashboard() {
  .sort((a, b) => b[1].count - a[1].count)
  .slice(0, 10)
 
+ // Aggregate starred (bookmarked) lessons the same way. Bookmarks live
+ // in user_progress.bookmarks (int[]). Each user contributes one entry
+ // per lesson they starred. No per-flag timestamp exists, so we fall
+ // back to the row's updated_at as a "as of" hint.
+ type Starrer = { email: string | null; ts: string }
+ const starredByLesson: Record<string, { count: number; starrers: Starrer[] }> = {}
+ for (const p of progress as any[]) {
+ const arr: number[] = Array.isArray(p?.bookmarks) ? p.bookmarks : []
+ for (const idx of arr) {
+ const key = `${idx} · ${lessonTagByIndex[idx] || 'Unknown'}`
+ if (!starredByLesson[key]) starredByLesson[key] = { count: 0, starrers: [] }
+ starredByLesson[key].count += 1
+ starredByLesson[key].starrers.push({
+ email: p.email ?? null,
+ ts: p.updated_at ?? '',
+ })
+ }
+ }
+ const starredRanked = Object.entries(starredByLesson)
+ .sort((a, b) => b[1].count - a[1].count)
+ .slice(0, 10)
+
  // Group chat logs by session for readability
  const chatSessions = chatLogs.reduce<Record<string, typeof chatLogs>>((acc, row: any) => {
  const k = row.session_id ?? row.email ?? row.id
@@ -243,6 +265,58 @@ export default async function AdminDashboard() {
  {f.note && (
  <div className="mt-2 text-[12.5px] text-mid leading-relaxed whitespace-pre-wrap">{f.note}</div>
  )}
+ </li>
+ ))}
+ </ul>
+ </div>
+ </details>
+ )
+ })}
+ </div>
+ )}
+ </section>
+
+ {/* STARRED */}
+ <section id="starred">
+ <h2 className="font-serif italic text-4xl mb-2">Starred lessons.</h2>
+ <p className="text-mid mb-6 text-[15px]">Most-bookmarked lessons. Click any row to see who starred it.</p>
+ {starredRanked.length === 0 ? (
+ <EmptyBox text="Nobody has starred a lesson yet." />
+ ) : (
+ <div className="bg-white rounded-2xl border border-[color:var(--border)] divide-y divide-[color:var(--border)]">
+ {starredRanked.map(([label, info]) => {
+ const idxStr = label.split(' · ')[0]
+ const idxNum = Number.parseInt(idxStr, 10)
+ const href = Number.isFinite(idxNum) ? `/course?lesson=${idxNum}` : '/course'
+ return (
+ <details key={label} className="group">
+ <summary className="cursor-pointer list-none flex items-center justify-between p-4 px-6 hover:bg-[color:var(--pink-pale)]/40 transition">
+ <div className="flex items-center gap-2">
+ <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor" className="opacity-60 text-mid group-open:rotate-180 transition-transform">
+ <path d="M2 4l4 4 4-4z" />
+ </svg>
+ <div className="font-mono text-[13px] text-dark">{label}</div>
+ </div>
+ <div className="flex items-center gap-3">
+ <div className="w-32 h-2 rounded-full bg-[color:var(--pink-pale)] overflow-hidden">
+ <div className="h-full bg-pink" style={{ width: `${Math.min(100, info.count * 20)}%` }} />
+ </div>
+ <Pill>★ {info.count}</Pill>
+ </div>
+ </summary>
+ <div className="px-6 pb-4 -mt-1 space-y-2 bg-[color:var(--pink-pale)]/30">
+ <div className="flex items-center gap-3 pt-3">
+ <Link href={href} className="text-[10px] tracking-[1.5px] uppercase font-semibold text-pink hover:underline">
+ Open lesson →
+ </Link>
+ </div>
+ <ul className="space-y-2 pt-1">
+ {info.starrers.map((s, i) => (
+ <li key={i} className="bg-white rounded-lg border border-[color:var(--border)] p-3">
+ <div className="flex items-center justify-between gap-3 flex-wrap">
+ <span className="font-mono text-[12px] text-dark">{s.email || '(anonymous)'}</span>
+ <span className="text-[10px] text-muted-light tracking-[1px]">{s.ts ? `as of ${timeAgo(s.ts)}` : ''}</span>
+ </div>
  </li>
  ))}
  </ul>

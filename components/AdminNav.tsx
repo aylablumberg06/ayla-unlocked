@@ -14,6 +14,7 @@ const GROUPS: Array<{ label: string; items: Item[] }> = [
  items: [
  { type: 'anchor', href: '#overview', label: 'Overview' },
  { type: 'anchor', href: '#confused', label: 'Confused flags' },
+ { type: 'anchor', href: '#starred', label: 'Starred lessons' },
  { type: 'anchor', href: '#visits', label: 'Visits' },
  ],
  },
