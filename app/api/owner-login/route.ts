@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic'
  *
  * GET /api/owner-login?secret=OWNER_DEV_SECRET
  *
- * Uses a stable password (OWNER_PASSWORD env, or fallback 'ayla123456')
+ * Uses a stable password (OWNER_PASSWORD env — required, no fallback)
  * so the regular /login form keeps working with the same creds after.
  * Only touches the auth user when a sign-in attempt fails.
  */
