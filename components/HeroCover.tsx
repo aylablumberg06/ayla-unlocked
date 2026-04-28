@@ -86,6 +86,15 @@ export default function HeroCover() {
  // If ended, restart from the beginning
  if (v.ended) v.currentTime = 0
  v.play().catch(() => {})
+ // Chrome/Safari sometimes lose the video frame buffer after a
+ // pause→play cycle in the same session, so the user hears audio
+ // but sees a black frame. Nudging currentTime by a hair forces
+ // the decoder to emit a fresh frame and repaint the layer.
+ requestAnimationFrame(() => {
+ if (!v.paused) {
+ try { v.currentTime = v.currentTime + 0.001 } catch {}
+ }
+ })
  } else {
  v.pause()
  }
@@ -253,17 +262,20 @@ function HeroVideo({
  return (
  <div className="relative aspect-[9/16] max-h-[560px] w-full max-w-[360px] mx-auto">
  {/* Inner clipping container for the video, only this gets overflow-hidden so corner stickers can poke past the rounded edge */}
- <div className="absolute inset-0 rounded-3xl overflow-hidden border border-[color:var(--border)] shadow-xl shadow-pink/10 bg-black">
+ <div className="absolute inset-0 rounded-3xl overflow-hidden border border-[color:var(--border)] shadow-xl shadow-pink/10 bg-[color:var(--pink-pale)]">
  <video
  ref={videoRef}
  src="/hero-video.mp4"
+ poster="/ayla-loader-poster.svg"
  className="absolute inset-0 w-full h-full object-cover cursor-pointer"
  autoPlay
  muted
  playsInline
  preload="auto"
  disablePictureInPicture
+ disableRemotePlayback
  controlsList="nofullscreen nodownload noplaybackrate noremoteplayback"
+ {...({ 'webkit-playsinline': '', 'x-webkit-airplay': 'deny' } as any)}
  onClick={onPauseClick}
  />
 
