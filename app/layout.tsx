@@ -43,9 +43,17 @@ export const metadata: Metadata = {
  },
 }
 
+// Inline before first paint so a returning dark-mode user doesn't see
+// a flash of light → dark on reload. Reads localStorage synchronously
+// and applies the .dark class to <html> before React hydrates.
+const themeInitScript = `(function(){try{var t=localStorage.getItem('au-theme');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
  return (
  <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
+ <head>
+ <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+ </head>
  <body className="grain">
  {children}
  <ConditionalChrome />

@@ -18,7 +18,7 @@ export default function AylaLoader({
   size?: number
   label?: string
 }) {
-  const px = size ?? (inline ? 56 : 140)
+  const px = size ?? (inline ? 36 : 88)
   const wrapClass = inline
     ? 'inline-flex flex-col items-center gap-2'
     : 'fixed inset-0 z-[120] flex flex-col items-center justify-center gap-3 bg-[rgba(253,246,240,0.92)] backdrop-blur-sm'
