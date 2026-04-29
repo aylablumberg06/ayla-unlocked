@@ -137,6 +137,10 @@ alter table users enable row level security;
 alter table contact_submissions enable row level security;
 alter table user_progress enable row level security;
 alter table confused_flags enable row level security;
+alter table chat_logs enable row level security;
+alter table visits enable row level security;
+alter table tiktok_leads enable row level security;
+alter table submissions enable row level security;
 
 drop policy if exists "users can read own row" on users;
 create policy "users can read own row"
