@@ -3071,7 +3071,7 @@ function CompletionPanel({
  <>
  <div className="comp-title">Congrats, legend.</div>
  <div className="comp-sub">
- Certificate generated. Check your email, or open and download the PDF below.
+ Certificate generated. Check your email — <strong>if you don&rsquo;t see it in 60 seconds, check your spam folder</strong>. You can also open and download the PDF below.
  Screenshot it. Post it. Go build something.
  </div>
  <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', marginTop: 20 }}>

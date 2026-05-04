@@ -59,7 +59,17 @@ export async function middleware(req: NextRequest) {
   }
 
   // ──────────────────────────────────────────────────────────
-  // /course is paid-only
+  // /course/certificate is public — students share their completion
+  // certificate with friends/LinkedIn/employers. The page renders
+  // purely from URL params (?name=&id=&date=), no DB read needed,
+  // so opening it doesn't expose anything sensitive.
+  // ──────────────────────────────────────────────────────────
+  if (path.startsWith('/course/certificate')) {
+    return res
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // /course (everything else) is paid-only
   // ──────────────────────────────────────────────────────────
   if (!path.startsWith('/course')) {
     return res

@@ -127,9 +127,12 @@ export async function POST(req: NextRequest) {
  }
  }
 
- if (body.completed === true && !current.completed_at) {
- current.completed_at = new Date().toISOString()
- }
+ // Note: we used to flip completed_at here on `body.completed === true`
+ // but that marked students as "complete" the moment they clicked Next
+ // past the last lesson, even if they never typed their name on the
+ // CompletionPanel and never got their certificate. Now ONLY
+ // /api/certificate sets completed_at, so "complete" actually means
+ // "got their certificate" not "saw the last screen."
 
  // Mark lesson complete / uncomplete
  if (body.complete_lesson && typeof body.complete_lesson.index === 'number') {

@@ -42,6 +42,8 @@ function SignupForm({ sessionId }: { sessionId?: string }) {
  <p className="text-mid font-light leading-relaxed">
  We sent a magic link to <span className="text-dark">{sentTo}</span>. Click it and
  you&apos;re in the course. You stay signed in on this device, no password needed.
+ <br /><br />
+ <span className="text-pink font-semibold">Don&apos;t see it in 60 seconds? Check your spam folder.</span>
  </p>
  <p className="text-[11px] tracking-[2px] uppercase text-pink mt-6 font-semibold">
  Usually arrives in about 10 seconds
