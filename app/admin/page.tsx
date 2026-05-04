@@ -183,12 +183,12 @@ export default async function AdminDashboard() {
  <table className="w-full text-[13.5px]">
  <thead className="bg-[color:var(--pink-pale)] text-pink uppercase tracking-[1.5px] text-[10px]">
  <tr>
- <Th>Email</Th><Th>Paid</Th><Th>Purchased</Th><Th>Lesson</Th><Th>Completed</Th><Th>Bookmarks</Th><Th>Confused</Th><Th>Last active</Th>
+ <Th>Email</Th><Th>Paid</Th><Th>Purchased</Th><Th>Lesson</Th><Th>Completed</Th><Th>Cert sent</Th><Th>Bookmarks</Th><Th>Confused</Th><Th>Last active</Th>
  </tr>
  </thead>
  <tbody>
  {users.length === 0 && (
- <tr><td colSpan={8} className="text-center p-10 text-muted-light italic">No signups yet.</td></tr>
+ <tr><td colSpan={9} className="text-center p-10 text-muted-light italic">No signups yet.</td></tr>
  )}
  {users.map((u: any) => {
  const p = progress.find((x: any) => x.email === u.email)
@@ -205,6 +205,19 @@ export default async function AdminDashboard() {
  </Td>
  <Td>{Math.min(p?.last_lesson ?? 0, TOTAL_LESSONS)} / {TOTAL_LESSONS}</Td>
  <Td>{p?.completed_at ? <Pill>✓</Pill> : <span className="text-muted-light text-[11px]">&middot;</span>}</Td>
+ <Td>
+ {p?.notes?._cert_id ? (
+ <span title={`Cert ID: ${p.notes._cert_id}${p.notes._cert_name ? ` · ${p.notes._cert_name}` : ''}`}>
+ <Pill>✓ sent</Pill>
+ </span>
+ ) : p?.completed_at ? (
+ <span className="text-[10px] tracking-[1px] uppercase text-pink font-semibold" title="Student finished but cert was never generated">
+ ! pending
+ </span>
+ ) : (
+ <span className="text-muted-light text-[11px]">&middot;</span>
+ )}
+ </Td>
  <Td>
  <LessonCountCell indices={p?.bookmarks} labelLessons={labelLessons} emptyLabel="No bookmarks" />
  </Td>
