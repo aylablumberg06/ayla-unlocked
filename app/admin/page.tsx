@@ -101,6 +101,31 @@ export default async function AdminDashboard() {
  return Date.now() - d.getTime() < 7 * 24 * 60 * 60 * 1000
  }).length
 
+ // Course ratings, stored in user_progress.notes._rating (1-5). Build the
+ // count distribution + average so the overview tile can show both.
+ const ratingDist: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }
+ let ratingSum = 0
+ let ratingCount = 0
+ for (const p of progress as any[]) {
+ const r = Number(p?.notes?._rating)
+ if (Number.isFinite(r) && r >= 1 && r <= 5) {
+ ratingDist[r] += 1
+ ratingSum += r
+ ratingCount += 1
+ }
+ }
+ const ratingAvg = ratingCount > 0 ? ratingSum / ratingCount : 0
+ const ratingMax = Math.max(1, ...Object.values(ratingDist))
+ const ratingNotes = (progress as any[])
+ .filter((p) => p?.notes?._rating_note)
+ .map((p) => ({
+ email: p.email,
+ rating: Number(p.notes._rating) || 0,
+ note: String(p.notes._rating_note),
+ ts: p.notes._rating_at || p.updated_at,
+ }))
+ .sort((a, b) => (a.ts < b.ts ? 1 : -1))
+
  // Aggregate confused flags by lesson — track count AND who flagged it.
  type Flagger = { email: string | null; note: string | null; ts: string }
  const confusedByLesson: Record<string, { count: number; flaggers: Flagger[] }> = {}
@@ -168,12 +193,62 @@ export default async function AdminDashboard() {
  accent
  />
  <Stat label="Completed" value={completedCount} />
+ <Stat
+ label={`Avg rating · ${ratingCount} ${ratingCount === 1 ? 'review' : 'reviews'}`}
+ value={ratingCount === 0 ? '—' : `${ratingAvg.toFixed(1)} ★`}
+ />
  <Stat label="Active (7d)" value={activeLast7} />
  <Stat label="Contact msgs" value={contacts.length} />
  <Stat label="Chat messages" value={chatLogs.length} />
  <Stat label="Confused flags" value={confused.length} />
  <Stat label="Page views" value={visits.length} />
  </div>
+
+ {/* Rating breakdown bar chart */}
+ {ratingCount > 0 && (
+ <div className="mt-6 bg-white rounded-2xl border border-[color:var(--border)] p-5 md:p-6">
+ <div className="text-[10px] font-semibold tracking-[2.5px] uppercase text-pink mb-4">Rating breakdown</div>
+ <div className="space-y-2">
+ {[5, 4, 3, 2, 1].map((star) => {
+ const count = ratingDist[star]
+ const widthPct = (count / ratingMax) * 100
+ const sharePct = (count / ratingCount) * 100
+ return (
+ <div key={star} className="flex items-center gap-3">
+ <div className="w-12 shrink-0 text-[12px] tracking-[1.5px] uppercase text-mid font-semibold">
+ {star} ★
+ </div>
+ <div className="flex-1 h-3 rounded-full bg-[color:var(--pink-pale)] overflow-hidden">
+ <div className="h-full bg-pink transition-all" style={{ width: `${widthPct}%` }} />
+ </div>
+ <div className="w-24 shrink-0 text-right text-[11px] tabular-nums text-mid">
+ <span className="text-dark font-semibold">{count}</span>
+ <span className="text-muted-light"> · {sharePct.toFixed(0)}%</span>
+ </div>
+ </div>
+ )
+ })}
+ </div>
+ {ratingNotes.length > 0 && (
+ <details className="mt-5">
+ <summary className="cursor-pointer text-[10px] tracking-[1.5px] uppercase text-pink font-semibold hover:underline list-none">
+ Show {ratingNotes.length} written {ratingNotes.length === 1 ? 'note' : 'notes'} →
+ </summary>
+ <div className="mt-3 space-y-2">
+ {ratingNotes.map((rn, i) => (
+ <div key={i} className="rounded-lg border border-[color:var(--border)] bg-[color:var(--pink-pale)]/40 p-3">
+ <div className="flex justify-between gap-3 flex-wrap mb-1.5">
+ <span className="font-mono text-[11px] text-mid">{rn.email}</span>
+ <span className="text-pink font-semibold text-[12px]">{rn.rating}/5 ★</span>
+ </div>
+ <div className="text-[13px] text-dark leading-relaxed whitespace-pre-wrap">{rn.note}</div>
+ </div>
+ ))}
+ </div>
+ </details>
+ )}
+ </div>
+ )}
  </section>
 
  {/* STUDENTS */}

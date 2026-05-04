@@ -2981,6 +2981,7 @@ function CompletionPanel({
  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
  const [certUrl, setCertUrl] = useState<string | null>(null)
  const [err, setErr] = useState<string | null>(null)
+ const [showRating, setShowRating] = useState(false)
 
  async function complete() {
  const n = name.trim()
@@ -3000,6 +3001,8 @@ function CompletionPanel({
  if (!r.ok) throw new Error(out?.error || 'Something went wrong.')
  setCertUrl(out.viewUrl)
  setStatus('done')
+ // Pop the rating modal once cert flow finishes successfully.
+ setShowRating(true)
  } catch (e: any) {
  setErr(e?.message || 'Something went wrong.')
  setStatus('error')
@@ -3101,6 +3104,177 @@ function CompletionPanel({
  </div>
  </>
  )}
+ {showRating && <RatingModal onClose={() => setShowRating(false)} />}
+ </div>
+ )
+}
+
+// ──────────────────────────────────────────────────────────
+// RatingModal — pops up after the cert is minted. 5 stars + optional
+// note. Click rightmost = all 5 fill. Stars fill pink left to right.
+// Saves to /api/rating which writes to user_progress.notes._rating.
+// ──────────────────────────────────────────────────────────
+function RatingModal({ onClose }: { onClose: () => void }) {
+ const [rating, setRating] = useState(0)
+ const [hover, setHover] = useState(0)
+ const [note, setNote] = useState('')
+ const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+ const [err, setErr] = useState<string | null>(null)
+
+ async function submit() {
+ if (!rating) return
+ setErr(null)
+ setStatus('sending')
+ try {
+ const r = await fetch('/api/rating', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ rating, note: note.trim() }),
+ })
+ if (!r.ok) {
+ const out = await r.json().catch(() => ({}))
+ throw new Error(out?.error || 'Could not save')
+ }
+ setStatus('sent')
+ setTimeout(onClose, 1100)
+ } catch (e: any) {
+ setStatus('error')
+ setErr(e?.message || 'Could not save')
+ }
+ }
+
+ const labels: Record<number, string> = {
+ 1: 'Honest is fine',
+ 2: 'Tell me what was off',
+ 3: 'Solid',
+ 4: 'Loved it',
+ 5: 'Best thing ever ✨',
+ }
+ const fill = hover || rating
+
+ return (
+ <div
+ onClick={onClose}
+ style={{
+ position: 'fixed', inset: 0, zIndex: 500,
+ background: 'rgba(26,26,26,0.45)', backdropFilter: 'blur(4px)',
+ display: 'flex', alignItems: 'center', justifyContent: 'center',
+ padding: 24,
+ }}
+ >
+ <div
+ onClick={(e) => e.stopPropagation()}
+ style={{
+ position: 'relative', width: '100%', maxWidth: 460,
+ background: 'white', borderRadius: 24, padding: '36px 36px 28px',
+ boxShadow: '0 30px 80px rgba(232,41,92,0.25)',
+ border: '1px solid rgba(232,41,92,0.12)', textAlign: 'center',
+ }}
+ >
+ <button
+ aria-label="Close"
+ onClick={onClose}
+ style={{
+ position: 'absolute', top: 14, right: 14, width: 32, height: 32, borderRadius: '50%',
+ border: 'none', background: '#FFE4ED', color: '#E8295C', fontSize: 18, cursor: 'pointer', lineHeight: 1,
+ }}
+ >
+ ×
+ </button>
+
+ {status === 'sent' ? (
+ <>
+ <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: 3, textTransform: 'uppercase', color: '#E8295C', marginBottom: 10 }}>Sent</div>
+ <h3 style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 26, margin: 0 }}>Thank you 🩷</h3>
+ </>
+ ) : (
+ <>
+ <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: 3, textTransform: 'uppercase', color: '#E8295C', marginBottom: 10 }}>How was it?</div>
+ <h3 style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 28, fontWeight: 400, margin: '0 0 8px', lineHeight: 1.15 }}>Rate Ayla Unlocked.</h3>
+ <p style={{ fontSize: 14, color: '#5C5C5C', lineHeight: 1.5, margin: '0 0 22px' }}>One quick question. Helps me figure out what to make next.</p>
+
+ <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 18 }}>
+ {[1, 2, 3, 4, 5].map((v) => {
+ const lit = v <= fill
+ return (
+ <button
+ key={v}
+ type="button"
+ onMouseEnter={() => setHover(v)}
+ onMouseLeave={() => setHover(0)}
+ onClick={() => setRating(v)}
+ aria-label={`${v} star${v === 1 ? '' : 's'}`}
+ style={{
+ width: 48, height: 48, padding: 0, border: 'none', background: 'transparent',
+ cursor: 'pointer', transition: 'transform 0.12s ease',
+ transform: hover === v ? 'scale(1.08)' : 'scale(1)',
+ }}
+ >
+ <svg viewBox="0 0 24 24" width={42} height={42}>
+ <path
+ d="M12 2 L14.85 8.78 L22 9.27 L16.4 14.14 L18.18 21.02 L12 17.27 L5.82 21.02 L7.6 14.14 L2 9.27 L9.15 8.78 Z"
+ stroke="#E8295C"
+ strokeWidth={1.6}
+ fill={lit ? (hover && v <= hover && !rating ? '#FFB3C6' : '#E8295C') : 'white'}
+ />
+ </svg>
+ </button>
+ )
+ })}
+ </div>
+
+ <div style={{ fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: '#5C5C5C', minHeight: 16, marginBottom: 18 }}>
+ {fill ? (
+ <>
+ <strong style={{ color: '#E8295C', fontWeight: 600 }}>{fill}/5</strong> · {labels[fill]}
+ </>
+ ) : (
+ 'Tap a star'
+ )}
+ </div>
+
+ <textarea
+ value={note}
+ onChange={(e) => setNote(e.target.value)}
+ placeholder="Anything you want to add? (optional)"
+ maxLength={1000}
+ style={{
+ width: '100%', padding: '12px 14px', borderRadius: 14,
+ border: '1px solid rgba(232,41,92,0.2)', background: '#FFF7FA',
+ fontFamily: 'inherit', fontSize: 13.5, lineHeight: 1.5, color: '#1A1A1A',
+ resize: 'none', outline: 'none', minHeight: 78, marginBottom: 18,
+ }}
+ />
+
+ {err && <div style={{ fontSize: 12, color: '#E8295C', marginBottom: 12 }}>{err}</div>}
+
+ <button
+ onClick={submit}
+ disabled={!rating || status === 'sending'}
+ style={{
+ background: '#E8295C', color: 'white', border: 'none',
+ padding: '12px 32px', borderRadius: 999,
+ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', fontWeight: 500,
+ cursor: !rating || status === 'sending' ? 'not-allowed' : 'pointer',
+ opacity: !rating || status === 'sending' ? 0.5 : 1,
+ transition: 'background 0.15s',
+ }}
+ >
+ {status === 'sending' ? 'Sending…' : 'Send rating'}
+ </button>
+ <button
+ onClick={onClose}
+ style={{
+ display: 'block', margin: '14px auto 0', background: 'none', border: 'none',
+ fontSize: 11, letterSpacing: 1, textTransform: 'uppercase',
+ color: '#ABABAB', cursor: 'pointer',
+ }}
+ >
+ Skip for now
+ </button>
+ </>
+ )}
+ </div>
  </div>
  )
 }
